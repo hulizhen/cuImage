@@ -11,6 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItemController = StatusItemController.shared
+    let preferenceManager = PreferenceManager.shared
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     }
