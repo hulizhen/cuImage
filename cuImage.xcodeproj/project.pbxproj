@@ -14,6 +14,12 @@
 		255958051E1BD78500B8469E /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958041E1BD78500B8469E /* StatusItemController.xib */; };
 		255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958101E1BDDD900B8469E /* AboutWindowController.swift */; };
 		255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958111E1BDDD900B8469E /* AboutWindowController.xib */; };
+		255958191E1BE00400B8469E /* GeneralPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958151E1BE00400B8469E /* GeneralPreferences.swift */; };
+		2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */; };
+		2559581B1E1BE00400B8469E /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */; };
+		2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958181E1BE00400B8469E /* PreferenceManager.swift */; };
+		255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */; };
+		255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958201E1BE03800B8469E /* PreferencesWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		255958041E1BD78500B8469E /* StatusItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemController.xib; sourceTree = "<group>"; };
 		255958101E1BDDD900B8469E /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		255958111E1BDDD900B8469E /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
+		255958151E1BE00400B8469E /* GeneralPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferences.swift; sourceTree = "<group>"; };
+		255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
+		255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
+		255958181E1BE00400B8469E /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		255958201E1BE03800B8469E /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				255957FE1E1BD70F00B8469E /* Application */,
+				2559581E1E1BE01C00B8469E /* Preferences */,
 				255958141E1BDDDC00B8469E /* About */,
 				255957FF1E1BD72400B8469E /* Supporting Files */,
 			);
@@ -92,6 +105,27 @@
 				255958111E1BDDD900B8469E /* AboutWindowController.xib */,
 			);
 			name = About;
+			sourceTree = "<group>";
+		};
+		2559581D1E1BE00D00B8469E /* General Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				255958151E1BE00400B8469E /* GeneralPreferences.swift */,
+				255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */,
+				255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */,
+			);
+			name = "General Preferences";
+			sourceTree = "<group>";
+		};
+		2559581E1E1BE01C00B8469E /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				255958181E1BE00400B8469E /* PreferenceManager.swift */,
+				2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */,
+				255958201E1BE03800B8469E /* PreferencesWindowController.xib */,
+				2559581D1E1BE00D00B8469E /* General Preferences */,
+			);
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,10 +188,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
 				255958051E1BD78500B8469E /* StatusItemController.xib in Resources */,
+				2559581B1E1BE00400B8469E /* GeneralPreferencesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +207,10 @@
 				255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */,
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
+				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
+				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
+				2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */,
+				255958191E1BE00400B8469E /* GeneralPreferences.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

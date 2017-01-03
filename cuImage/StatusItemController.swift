@@ -18,6 +18,7 @@ class StatusItemController: NSObject {
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     lazy var aboutWindowController: AboutWindowController = AboutWindowController()
+    lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
     
     private override init() {
         super.init()
@@ -36,7 +37,8 @@ class StatusItemController: NSObject {
     @IBAction func handleTappedMenuItem(_ item: NSMenuItem) {
         switch item {
         case preferencesMenuItem:
-            break
+            preferencesWindowController.showWindow(item)
+            NSApp.activate(ignoringOtherApps: true)
         case aboutMenuItem:
             aboutWindowController.showWindow(item)
             NSApp.activate(ignoringOtherApps: true)

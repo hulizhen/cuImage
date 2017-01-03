@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController" customModule="cuImage" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="UqQ-L8-ZeT" id="BAy-vF-E7J"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="UqQ-L8-ZeT">
+            <rect key="frame" x="0.0" y="0.0" width="231" height="76"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="TBY-dC-2CI" userLabel="Launch At Login">
+                    <rect key="frame" x="18" y="40" width="115" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="14" id="d4s-GZ-NfW"/>
+                        <constraint firstAttribute="width" constant="111" id="ssa-M3-tyW"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Launch at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Kos-qa-NH8" userLabel="Launch At Login">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.generalPreferences.launchAtLogin" id="9p4-Io-lYq"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="2PE-0Y-HbB" userLabel="Keep Windows Always On Top">
+                    <rect key="frame" x="18" y="18" width="195" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="191" id="C3d-Wm-Ko8"/>
+                        <constraint firstAttribute="height" constant="14" id="Mn2-Gr-jvG"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" title="Keep windows always on top" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ddc-7V-Wgv" userLabel="Keep Windows Always On Top">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.generalPreferences.keepWindowsOnTop" id="w6w-PQ-Zr8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="2PE-0Y-HbB" secondAttribute="bottom" constant="20" id="4O0-pb-OEn"/>
+                <constraint firstItem="2PE-0Y-HbB" firstAttribute="top" secondItem="TBY-dC-2CI" secondAttribute="bottom" constant="8" id="N6A-1K-Q37"/>
+                <constraint firstItem="2PE-0Y-HbB" firstAttribute="leading" secondItem="UqQ-L8-ZeT" secondAttribute="leading" constant="20" id="Zwl-2z-k9n"/>
+                <constraint firstAttribute="trailing" secondItem="2PE-0Y-HbB" secondAttribute="trailing" constant="20" id="aww-dW-XSa"/>
+                <constraint firstAttribute="trailing" secondItem="TBY-dC-2CI" secondAttribute="trailing" constant="100" id="bn2-SZ-hN4"/>
+                <constraint firstItem="TBY-dC-2CI" firstAttribute="top" secondItem="UqQ-L8-ZeT" secondAttribute="top" constant="20" id="yCa-F6-c1g"/>
+                <constraint firstItem="TBY-dC-2CI" firstAttribute="leading" secondItem="UqQ-L8-ZeT" secondAttribute="leading" constant="20" id="zJw-zu-8jO"/>
+            </constraints>
+            <point key="canvasLocation" x="108" y="361"/>
+        </customView>
+    </objects>
+</document>
