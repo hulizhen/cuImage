@@ -12,6 +12,8 @@
 		255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255957F31E1BD2A600B8469E /* MainMenu.xib */; };
 		255958031E1BD77100B8469E /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958021E1BD77100B8469E /* StatusItemController.swift */; };
 		255958051E1BD78500B8469E /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958041E1BD78500B8469E /* StatusItemController.xib */; };
+		255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958101E1BDDD900B8469E /* AboutWindowController.swift */; };
+		255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958111E1BDDD900B8469E /* AboutWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		255957F61E1BD2A600B8469E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		255958021E1BD77100B8469E /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 		255958041E1BD78500B8469E /* StatusItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemController.xib; sourceTree = "<group>"; };
+		255958101E1BDDD900B8469E /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
+		255958111E1BDDD900B8469E /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				255957FE1E1BD70F00B8469E /* Application */,
+				255958141E1BDDDC00B8469E /* About */,
 				255957FF1E1BD72400B8469E /* Supporting Files */,
 			);
 			path = cuImage;
@@ -78,6 +83,15 @@
 				255957F61E1BD2A600B8469E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		255958141E1BDDDC00B8469E /* About */ = {
+			isa = PBXGroup;
+			children = (
+				255958101E1BDDD900B8469E /* AboutWindowController.swift */,
+				255958111E1BDDD900B8469E /* AboutWindowController.xib */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
+				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
 				255958051E1BD78500B8469E /* StatusItemController.xib in Resources */,
 			);
@@ -153,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */,
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 			);
