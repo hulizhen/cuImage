@@ -50,12 +50,28 @@
 		255957EE1E1BD2A600B8469E /* cuImage */ = {
 			isa = PBXGroup;
 			children = (
-				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
-				255957F11E1BD2A600B8469E /* Assets.xcassets */,
-				255957F31E1BD2A600B8469E /* MainMenu.xib */,
-				255957F61E1BD2A600B8469E /* Info.plist */,
+				255957FE1E1BD70F00B8469E /* Application */,
+				255957FF1E1BD72400B8469E /* Supporting Files */,
 			);
 			path = cuImage;
+			sourceTree = "<group>";
+		};
+		255957FE1E1BD70F00B8469E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
+				255957F31E1BD2A600B8469E /* MainMenu.xib */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		255957FF1E1BD72400B8469E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				255957F11E1BD2A600B8469E /* Assets.xcassets */,
+				255957F61E1BD2A600B8469E /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +204,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -231,7 +247,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -242,10 +258,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6S532ZPWTN;
 				INFOPLIST_FILE = cuImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulizhen.cuImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -256,10 +274,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6S532ZPWTN;
 				INFOPLIST_FILE = cuImage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulizhen.cuImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
