@@ -11,8 +11,10 @@ import Cocoa
 class PreferencesWindowController: NSWindowController {
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet weak var generalToolbarItem: NSToolbarItem!
+    @IBOutlet weak var shortcutsToolbarItem: NSToolbarItem!
     
     lazy var generalPreferencesViewController: GeneralPreferencesViewController = GeneralPreferencesViewController()
+    lazy var shortcutsPreferencesViewController: ShortcutsPreferencesViewController = ShortcutsPreferencesViewController()
     
     override var windowNibName: String? {
         return self.className.components(separatedBy: ".").last
@@ -30,6 +32,8 @@ class PreferencesWindowController: NSWindowController {
         switch item {
         case generalToolbarItem:
             controller = generalPreferencesViewController
+        case shortcutsToolbarItem:
+            controller = shortcutsPreferencesViewController
         default:
             break
         }

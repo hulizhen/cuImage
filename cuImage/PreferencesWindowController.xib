@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="generalToolbarItem" destination="bua-bb-1FB" id="B13-lH-vpJ"/>
+                <outlet property="shortcutsToolbarItem" destination="Rzg-nJ-aHP" id="6YT-3J-0IR"/>
                 <outlet property="toolbar" destination="itw-4w-zLM" id="BL8-QF-hLh"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -24,10 +25,20 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="885C934F-4A10-440C-B29F-BF787E04D3CF" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="itw-4w-zLM">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="A48C7778-9B2E-4E55-8B1F-A4F03BE4E538" label="General" paletteLabel="General" tag="-1" image="GeneralPreference" selectable="YES" id="bua-bb-1FB"/>
+                    <toolbarItem implicitItemIdentifier="A48C7778-9B2E-4E55-8B1F-A4F03BE4E538" label="General" paletteLabel="General" tag="-1" image="GeneralPreference" selectable="YES" id="bua-bb-1FB">
+                        <connections>
+                            <action selector="handleTappedToolbarItem:" target="-2" id="yqV-Fp-qAF"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="AF2CBAAD-373A-478F-BD88-B36F8D6FE96E" label="Shortcuts" paletteLabel="Shortcuts" tag="-1" image="ShortcutPreference" selectable="YES" id="Rzg-nJ-aHP">
+                        <connections>
+                            <action selector="handleTappedToolbarItem:" target="-2" id="Oaf-qj-bvm"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="bua-bb-1FB"/>
+                    <toolbarItem reference="Rzg-nJ-aHP"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
@@ -37,5 +48,6 @@
     </objects>
     <resources>
         <image name="GeneralPreference" width="64" height="64"/>
+        <image name="ShortcutPreference" width="64" height="64"/>
     </resources>
 </document>
