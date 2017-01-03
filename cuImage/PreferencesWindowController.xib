@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="generalToolbarItem" destination="bua-bb-1FB" id="B13-lH-vpJ"/>
+                <outlet property="hostsToolbarItem" destination="F7E-0o-4KX" id="drE-MC-7CP"/>
                 <outlet property="shortcutsToolbarItem" destination="Rzg-nJ-aHP" id="6YT-3J-0IR"/>
                 <outlet property="toolbar" destination="itw-4w-zLM" id="BL8-QF-hLh"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -35,10 +36,16 @@
                             <action selector="handleTappedToolbarItem:" target="-2" id="Oaf-qj-bvm"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C04D996D-3DD4-40D7-B1F5-3B9E99F4C11F" label="Hosts" paletteLabel="Hosts" tag="-1" image="HostsPreference" selectable="YES" id="F7E-0o-4KX">
+                        <connections>
+                            <action selector="handleTappedToolbarItem:" target="-2" id="h8e-E0-sN6"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="bua-bb-1FB"/>
                     <toolbarItem reference="Rzg-nJ-aHP"/>
+                    <toolbarItem reference="F7E-0o-4KX"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
@@ -48,6 +55,7 @@
     </objects>
     <resources>
         <image name="GeneralPreference" width="64" height="64"/>
+        <image name="HostsPreference" width="64" height="64"/>
         <image name="ShortcutPreference" width="64" height="64"/>
     </resources>
 </document>

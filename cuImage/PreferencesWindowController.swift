@@ -12,9 +12,11 @@ class PreferencesWindowController: NSWindowController {
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet weak var generalToolbarItem: NSToolbarItem!
     @IBOutlet weak var shortcutsToolbarItem: NSToolbarItem!
+    @IBOutlet weak var hostsToolbarItem: NSToolbarItem!
     
     lazy var generalPreferencesViewController: GeneralPreferencesViewController = GeneralPreferencesViewController()
     lazy var shortcutsPreferencesViewController: ShortcutsPreferencesViewController = ShortcutsPreferencesViewController()
+    lazy var hostsPreferencesViewController: HostsPreferencesViewController = HostsPreferencesViewController()
     
     override var windowNibName: String? {
         return self.className.components(separatedBy: ".").last
@@ -34,6 +36,8 @@ class PreferencesWindowController: NSWindowController {
             controller = generalPreferencesViewController
         case shortcutsToolbarItem:
             controller = shortcutsPreferencesViewController
+        case hostsToolbarItem:
+            controller = hostsPreferencesViewController
         default:
             break
         }
