@@ -10,6 +10,8 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let statusItemController = StatusItemController.shared
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     }
 }

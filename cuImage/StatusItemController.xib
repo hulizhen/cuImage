@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StatusItemController" customModule="cuImage" customModuleProvider="target">
+            <connections>
+                <outlet property="aboutMenuItem" destination="mYk-F7-yO9" id="f3h-ms-3MI"/>
+                <outlet property="menu" destination="0pX-Ur-2Wk" id="paz-LK-sGH"/>
+                <outlet property="preferencesMenuItem" destination="VJI-Pz-n2Z" id="rIj-a0-jMp"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <menu id="0pX-Ur-2Wk">
+            <items>
+                <menuItem title="Preferences…" keyEquivalent="," id="VJI-Pz-n2Z">
+                    <connections>
+                        <action selector="handleTappedMenuItem:" target="-2" id="fop-r1-5BB"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="About" id="mYk-F7-yO9">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="handleTappedMenuItem:" target="-2" id="cc2-7p-1Xu"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="3rY-lE-RYJ"/>
+                <menuItem title="Quit cuImage" keyEquivalent="q" id="N8H-WJ-Zsf">
+                    <connections>
+                        <action selector="terminate:" target="-1" id="t3K-WD-RfR"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="82" y="100"/>
+        </menu>
+    </objects>
+</document>

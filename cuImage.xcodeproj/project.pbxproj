@@ -10,6 +10,8 @@
 		255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255957EF1E1BD2A600B8469E /* AppDelegate.swift */; };
 		255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 255957F11E1BD2A600B8469E /* Assets.xcassets */; };
 		255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255957F31E1BD2A600B8469E /* MainMenu.xib */; };
+		255958031E1BD77100B8469E /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958021E1BD77100B8469E /* StatusItemController.swift */; };
+		255958051E1BD78500B8469E /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958041E1BD78500B8469E /* StatusItemController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		255957F11E1BD2A600B8469E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		255957F41E1BD2A600B8469E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		255957F61E1BD2A600B8469E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		255958021E1BD77100B8469E /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
+		255958041E1BD78500B8469E /* StatusItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
+				255958021E1BD77100B8469E /* StatusItemController.swift */,
+				255958041E1BD78500B8469E /* StatusItemController.xib */,
 				255957F31E1BD2A600B8469E /* MainMenu.xib */,
 			);
 			name = Application;
@@ -136,6 +142,7 @@
 			files = (
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
+				255958051E1BD78500B8469E /* StatusItemController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +313,7 @@
 				255957FB1E1BD2A600B8469E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
