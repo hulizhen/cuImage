@@ -20,6 +20,7 @@
 		2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958181E1BE00400B8469E /* PreferenceManager.swift */; };
 		255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */; };
 		255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958201E1BE03800B8469E /* PreferencesWindowController.xib */; };
+		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		255958181E1BE00400B8469E /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		255958201E1BE03800B8469E /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
+		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
+		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
+		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +61,8 @@
 			children = (
 				255957EE1E1BD2A600B8469E /* cuImage */,
 				255957ED1E1BD2A600B8469E /* Products */,
+				609AB411EA9D0F6060FBBF88 /* Pods */,
+				C4B288B76C3200F74ED94C47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +135,23 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
+		609AB411EA9D0F6060FBBF88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */,
+				2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C4B288B76C3200F74ED94C47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 255957F91E1BD2A600B8469E /* Build configuration list for PBXNativeTarget "cuImage" */;
 			buildPhases = (
+				7959FA804A175C1DAD6ED0E5 /* [CP] Check Pods Manifest.lock */,
 				255957E81E1BD2A500B8469E /* Sources */,
 				255957E91E1BD2A500B8469E /* Frameworks */,
 				255957EA1E1BD2A500B8469E /* Resources */,
+				8435B53E3B6B7A7F0FD1F4F5 /* [CP] Embed Pods Frameworks */,
+				D16850FCC49F6D0519AD6162 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,6 +225,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7959FA804A175C1DAD6ED0E5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8435B53E3B6B7A7F0FD1F4F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cuImage/Pods-cuImage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D16850FCC49F6D0519AD6162 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-cuImage/Pods-cuImage-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		255957E81E1BD2A500B8469E /* Sources */ = {
@@ -320,6 +395,7 @@
 		};
 		255957FA1E1BD2A600B8469E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -336,6 +412,7 @@
 		};
 		255957FB1E1BD2A600B8469E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Mac Developer";
