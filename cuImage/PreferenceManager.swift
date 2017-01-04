@@ -14,4 +14,8 @@ class PreferenceManager: NSObject {
     let generalPreferences = GeneralPreferences.shared
     let shortcutsPreferences = ShortcutsPreferences.shared
     let hostsPreferences = HostsPreferences.shared
+    
+    private override init() {
+        super.init()
+    }
 }
