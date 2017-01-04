@@ -8,6 +8,10 @@
 
 import Cocoa
 
+protocol HostsPreferencesSaving {
+    func saveHostPreferences();
+}
+
 class HostsPreferences: NSObject {
     struct Key {
         static let currentHost = "currentHost"
@@ -18,7 +22,8 @@ class HostsPreferences: NSObject {
     
     static let shared = HostsPreferences()
     fileprivate let defaults = UserDefaults.standard
-    private let defaultPreferences: [String: Any] = [Key.currentHost: SupportedHost.qiniu.rawValue]
+    private let defaultPreferences: [String: Any] = [Key.currentHost: SupportedHost.qiniu.rawValue,
+                                                     Key.qiniuHost: NSKeyedArchiver.archivedData(withRootObject: QiniuHostPreferences())]
     
     private override init() {
         super.init()
@@ -30,19 +35,22 @@ class HostsPreferences: NSObject {
 // All preferences for general.
 extension HostsPreferences {
     var currentHost: String {
-        get { return defaults.value(forKey: Key.currentHost) as! String }
-        set { defaults.set(newValue, forKey: Key.currentHost) }
+        get {
+            return defaults.value(forKey: Key.currentHost) as! String
+        }
+        set {
+            defaults.set(newValue, forKey: Key.currentHost)
+        }
     }
 
     var qiniuHost: QiniuHostPreferences {
-        get { return defaults.value(forKey: Key.qiniuHost) as! QiniuHostPreferences }
-        set { defaults.set(newValue, forKey: Key.qiniuHost) }
+        get {
+            let data = defaults.value(forKey: Key.qiniuHost) as! Data
+            return NSKeyedUnarchiver.unarchiveObject(with: data) as! QiniuHostPreferences
+        }
+        set {
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue)
+            defaults.set(data, forKey: Key.qiniuHost)
+        }
     }
-}
-
-class QiniuHostPreferences: NSObject {
-    var accessKey: String?
-    var secretKey: String?
-    var domain: String?
-    var bucket: String?
 }

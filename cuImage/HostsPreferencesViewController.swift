@@ -14,9 +14,14 @@ class HostsPreferencesViewController: NSViewController {
     @IBOutlet weak var hostsPopUpButton: NSPopUpButton!
     @IBOutlet weak var hostPreferencesContentView: NSView!
     
+    var currentHostPreferencesViewController: NSViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        let currentHost = SupportedHost(rawValue: hostsPreferences.currentHost)!
+        currentHostPreferencesViewController = currentHost.viewController
+
         setUp()
     }
     
@@ -31,10 +36,12 @@ class HostsPreferencesViewController: NSViewController {
         hostsPopUpButton.bind(NSSelectedValueBinding, to: hostsPreferences, withKeyPath: HostsPreferences.Key.currentHost)
         
         // Select the current host.
-        let currentHostPreferencesView = SupportedHost(rawValue: hostsPreferences.currentHost)!.view
-        hostPreferencesContentView.addSubview(currentHostPreferencesView)
+        hostPreferencesContentView.addSubview(currentHostPreferencesViewController.view)
     }
     
     @IBAction private func saveHostPreferences(_ button: NSButton) {
+        if let controller = currentHostPreferencesViewController as? HostsPreferencesSaving {
+            controller.saveHostPreferences()
+        }
     }
 }

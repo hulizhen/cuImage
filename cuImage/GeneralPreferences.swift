@@ -37,12 +37,20 @@ class GeneralPreferences: NSObject {
 // All preferences for general.
 extension GeneralPreferences {
     var launchAtLogin: Bool {
-        get { return defaults.bool(forKey: Key.launchAtLogin) }
-        set { defaults.set(newValue, forKey: Key.launchAtLogin) }
+        get {
+            return defaults.bool(forKey: Key.launchAtLogin)
+        }
+        set {
+            defaults.set(newValue, forKey: Key.launchAtLogin)
+        }
     }
     
     var keepWindowsOnTop: Bool {
-        get { return defaults.bool(forKey: Key.keepWindowsOnTop) }
-        set { defaults.set(newValue, forKey: Key.keepWindowsOnTop) }
+        get {
+            return defaults.bool(forKey: Key.keepWindowsOnTop)
+        }
+        set {
+            defaults.set(newValue, forKey: Key.keepWindowsOnTop)
+        }
     }
 }
