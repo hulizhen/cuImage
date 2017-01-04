@@ -27,9 +27,17 @@ enum SupportedHost: String {
     }
     
     private func viewInNibNamed(_ name: String) -> NSView? {
-        var views = NSArray()
-        let loaded = Bundle.main.loadNibNamed(name, owner: nil, topLevelObjects: &views)
-        return loaded ? views.firstObject as? NSView : nil
+        var objects = NSArray()
+        guard Bundle.main.loadNibNamed(name, owner: nil, topLevelObjects: &objects) else {
+            return nil
+        }
+        
+        for object in objects {
+            if let view = object as? NSView {
+                return view
+            }
+        }
+        return nil
     }
     
     var image: NSImage {
@@ -38,9 +46,9 @@ enum SupportedHost: String {
         }
     }
     
-    var view: NSView {
+    var viewController: NSViewController {
         switch self {
-        case .qiniu: return viewInNibNamed("QiniuHostPreferencesView")!
+        case .qiniu: return QiniuHostPreferencesViewController(nibName: "QiniuHostPreferencesViewController", bundle: nil)!
         }
     }
 }

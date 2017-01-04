@@ -19,6 +19,8 @@ class QiniuHost: NSObject {
     fileprivate let uploadManager = QNUploadManager()!
     fileprivate var token: String!
     
+    let qiniuHostPreferences = PreferenceManager.shared.hostsPreferences.qiniuHost
+    
     private override init() {
         super.init()
     }
@@ -27,6 +29,10 @@ class QiniuHost: NSObject {
         self.init()
         
         self.delegate = delegate
+        
+        makeToken(withAccessKey: qiniuHostPreferences.accessKey,
+                  secretKey: qiniuHostPreferences.secretKey,
+                  scope: qiniuHostPreferences.bucket)
     }
     
     private func makeToken(withAccessKey accessKey: String, secretKey: String, scope: String) {
@@ -45,6 +51,37 @@ class QiniuHost: NSObject {
         
         // Make upload token by concatenating accessKey, encodedSign and encodedPolicy.
         token = accessKey + ":" + encodedSign + ":" + encodedPolicy
+    }
+}
+
+extension QiniuHost: Host {
+    func uploadImage(_ image: NSImage, named name: String, in type: NSBitmapImageFileType) {
+        guard let _ = token else {
+            assert(false, "Make the upload token first.")
+        }
+        
+        let bitmap = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
+        let data = bitmap.representation(using: type, properties: [:])
+        let option = QNUploadOption(mime: nil, progressHandler: progressHandler, params: nil, checkCrc: false, cancellationSignal: nil)
+        
+        // Image file name.
+        let key = name + "_" + Date.simpleFormatter.string(from: Date()) + "." + type.string
+        
+        // Upload image.
+        uploadManager.put(data, key: key, token: token, complete: { (info, key, response) in
+            print(info!, key!)
+            
+            if info!.isOK {
+                let urlString = "![](http://" + self.qiniuHostPreferences.domain + "/" + key! + ")"
+                self.delegate?.host(self, didUploadImageWithURLString: urlString)
+            } else {
+                assert(false, "Failed to upload image")
+            }
+        }, option: option)
+    }
+    
+    private func progressHandler(key: String?, percent: Float) {
+        delegate?.host(self, isUploadingImageWithPercent: percent)
     }
 }
 

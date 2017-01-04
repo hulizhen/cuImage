@@ -33,7 +33,9 @@
 		255958431E1BED7000B8469E /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958421E1BED7000B8469E /* String+Crypto.swift */; };
 		255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */; };
 		255958501E1BEF5300B8469E /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559584F1E1BEF5300B8469E /* UploadController.swift */; };
-		25F59CCA1E1CAFB900E24695 /* QiniuHostPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F59CC91E1CAFB900E24695 /* QiniuHostPreferencesView.xib */; };
+		257168661E1D1FC700134359 /* QiniuHostPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */; };
+		257168671E1D1FC700134359 /* QiniuHostPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */; };
+		257168691E1D24C000134359 /* QiniuHostPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257168681E1D24C000134359 /* QiniuHostPreferences.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +69,9 @@
 		255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBitmapImageFileType+String.swift"; sourceTree = "<group>"; };
 		255958461E1BEDC400B8469E /* cuImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cuImage-Bridging-Header.h"; sourceTree = "<group>"; };
 		2559584F1E1BEF5300B8469E /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
-		25F59CC91E1CAFB900E24695 /* QiniuHostPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostPreferencesView.xib; sourceTree = "<group>"; };
+		257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferencesViewController.swift; sourceTree = "<group>"; };
+		257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostPreferencesViewController.xib; sourceTree = "<group>"; };
+		257168681E1D24C000134359 /* QiniuHostPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferences.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
 		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,7 +199,9 @@
 			children = (
 				255958381E1BECCF00B8469E /* Host.swift */,
 				255958391E1BECCF00B8469E /* QiniuHost.swift */,
-				25F59CC91E1CAFB900E24695 /* QiniuHostPreferencesView.xib */,
+				257168681E1D24C000134359 /* QiniuHostPreferences.swift */,
+				257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */,
+				257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */,
 			);
 			name = Hosts;
 			sourceTree = "<group>";
@@ -294,8 +300,8 @@
 			files = (
 				255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */,
 				255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */,
+				257168671E1D1FC700134359 /* QiniuHostPreferencesViewController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
-				25F59CCA1E1CAFB900E24695 /* QiniuHostPreferencesView.xib in Resources */,
 				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
 				255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
@@ -360,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */,
+				257168661E1D1FC700134359 /* QiniuHostPreferencesViewController.swift in Sources */,
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
@@ -373,6 +380,7 @@
 				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
 				2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */,
+				257168691E1D24C000134359 /* QiniuHostPreferences.swift in Sources */,
 				2559582B1E1BE83D00B8469E /* HostsPreferences.swift in Sources */,
 				2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */,
 				255958241E1BE43300B8469E /* ShortcutsPreferences.swift in Sources */,

@@ -28,5 +28,6 @@ class ShortcutsPreferences: NSObject {
     }
     
     private func uploadImageOnPasteboard() {
+        UploadController.shared.uploadImageOnPasteboard()
     }
 }
