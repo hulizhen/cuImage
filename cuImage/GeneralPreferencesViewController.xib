@@ -7,6 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController" customModule="cuImage" customModuleProvider="target">
             <connections>
+                <outlet property="keepWindowsOnTopButton" destination="2PE-0Y-HbB" id="NTX-VV-A3R"/>
+                <outlet property="launchAtLoginButton" destination="TBY-dC-2CI" id="AcN-qr-0t3"/>
                 <outlet property="view" destination="UqQ-L8-ZeT" id="BAy-vF-E7J"/>
             </connections>
         </customObject>
@@ -26,9 +28,6 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.generalPreferences.launchAtLogin" id="9p4-Io-lYq"/>
-                    </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="2PE-0Y-HbB" userLabel="Keep Windows Always On Top">
                     <rect key="frame" x="18" y="18" width="195" height="18"/>
@@ -40,9 +39,6 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.generalPreferences.keepWindowsOnTop" id="w6w-PQ-Zr8"/>
-                    </connections>
                 </button>
             </subviews>
             <constraints>

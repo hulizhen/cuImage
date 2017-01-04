@@ -10,12 +10,12 @@ import Cocoa
 import MASShortcut
 
 class ShortcutsPreferences: NSObject {
-    static let shared = ShortcutsPreferences()
-    
     struct Key {
         static let uploadImageShortcut = "uploadImageShortcut"
     }
     
+    static let shared = ShortcutsPreferences()
+
     private override init() {
         super.init()
         

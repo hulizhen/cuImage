@@ -11,29 +11,28 @@ import Cocoa
 class HostsPreferencesViewController: NSViewController {
     let hostsPreferences = HostsPreferences.shared
     
-    // Properties below are bound to objects in Interface Builder.
-    let qiniuHostPreferences = QiniuHostPreferences()
-    
     @IBOutlet weak var hostsPopUpButton: NSPopUpButton!
     @IBOutlet weak var hostPreferencesContentView: NSView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         setUp()
     }
     
     private func setUp() {
         // Populate the hosts pop up button.
         for host in SupportedHost.allCases {
-            let item = NSMenuItem()
-            item.title = host.rawValue
-            item.image = host.image
-            hostsPopUpButton.menu!.addItem(item)
+            hostsPopUpButton.addItem(withTitle: host.rawValue)
+            hostsPopUpButton.lastItem!.image = host.image
         }
         
+        // Establish bindings between models and views.
+        hostsPopUpButton.bind(NSSelectedValueBinding, to: hostsPreferences, withKeyPath: HostsPreferences.Key.currentHost)
+        
         // Select the current host.
-        hostPreferencesContentView.addSubview(hostsPreferences.currentHost.view)
+        let currentHostPreferencesView = SupportedHost(rawValue: hostsPreferences.currentHost)!.view
+        hostPreferencesContentView.addSubview(currentHostPreferencesView)
     }
     
     @IBAction private func saveHostPreferences(_ button: NSButton) {

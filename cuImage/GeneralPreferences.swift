@@ -9,8 +9,6 @@
 import Cocoa
 
 class GeneralPreferences: NSObject {
-    static let shared = GeneralPreferences()
-    
     struct Key {
         static let launchAtLogin = "launchAtLogin"
         static let keepWindowsOnTop = "keepWindowsOnTop"
@@ -18,10 +16,8 @@ class GeneralPreferences: NSObject {
         private init() {}
     }
     
-    fileprivate var defaults: UserDefaults {
-        return UserDefaults.standard
-    }
-    
+    static let shared = GeneralPreferences()
+    fileprivate let defaults = UserDefaults.standard
     private let defaultPreferences: [String: Any] = [Key.launchAtLogin: false,
                                                      Key.keepWindowsOnTop: true]
     
@@ -38,6 +34,7 @@ class GeneralPreferences: NSObject {
     }
 }
 
+// All preferences for general.
 extension GeneralPreferences {
     var launchAtLogin: Bool {
         get { return defaults.bool(forKey: Key.launchAtLogin) }
