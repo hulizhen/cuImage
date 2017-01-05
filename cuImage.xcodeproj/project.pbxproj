@@ -124,10 +124,10 @@
 			isa = PBXGroup;
 			children = (
 				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
+				2559584F1E1BEF5300B8469E /* UploadController.swift */,
 				255958021E1BD77100B8469E /* StatusItemController.swift */,
 				255958041E1BD78500B8469E /* StatusItemController.xib */,
 				255957F31E1BD2A600B8469E /* MainMenu.xib */,
-				2559584F1E1BEF5300B8469E /* UploadController.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";

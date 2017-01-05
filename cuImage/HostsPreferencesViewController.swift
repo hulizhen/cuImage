@@ -40,7 +40,7 @@ class HostsPreferencesViewController: NSViewController {
     }
     
     @IBAction private func saveHostPreferences(_ button: NSButton) {
-        if let controller = currentHostPreferencesViewController as? HostsPreferencesSaving {
+        if let controller = currentHostPreferencesViewController as? HostsPreferencesSavable {
             controller.saveHostPreferences()
         }
     }

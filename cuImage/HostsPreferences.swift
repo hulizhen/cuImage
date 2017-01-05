@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol HostsPreferencesSaving {
+protocol HostsPreferencesSavable: class {
     func saveHostPreferences();
 }
 

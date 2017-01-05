@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class QiniuHostPreferencesViewController: NSViewController, HostsPreferencesSaving {
+class QiniuHostPreferencesViewController: NSViewController, HostsPreferencesSavable {
     @IBOutlet weak var accessKeyTextField: NSTextField!
     @IBOutlet weak var secretKeyTextField: NSTextField!
     @IBOutlet weak var domainTextField: NSTextField!
