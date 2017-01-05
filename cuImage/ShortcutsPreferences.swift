@@ -10,12 +10,12 @@ import Cocoa
 import MASShortcut
 
 class ShortcutsPreferences: NSObject {
-    static let shared = ShortcutsPreferences()
-    
-    struct ShortcutKey {
+    struct Key {
         static let uploadImageShortcut = "uploadImageShortcut"
     }
     
+    static let shared = ShortcutsPreferences()
+
     private override init() {
         super.init()
         
@@ -23,10 +23,11 @@ class ShortcutsPreferences: NSObject {
     }
     
     private func registerShortcuts() {
-        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: ShortcutKey.uploadImageShortcut,
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: Key.uploadImageShortcut,
                                                 toAction: uploadImageOnPasteboard)
     }
     
     private func uploadImageOnPasteboard() {
+        UploadController.shared.uploadImageOnPasteboard()
     }
 }

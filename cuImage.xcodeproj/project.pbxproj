@@ -24,9 +24,18 @@
 		255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */; };
 		255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */; };
 		2559582B1E1BE83D00B8469E /* HostsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582A1E1BE83D00B8469E /* HostsPreferences.swift */; };
-		2559582E1E1BE89E00B8469E /* QiniuHostPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582D1E1BE89E00B8469E /* QiniuHostPreferences.swift */; };
 		255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */; };
 		255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */; };
+		2559583A1E1BECCF00B8469E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958381E1BECCF00B8469E /* Host.swift */; };
+		2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958391E1BECCF00B8469E /* QiniuHost.swift */; };
+		2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559583D1E1BED4300B8469E /* Date+Formatter.swift */; };
+		255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958401E1BED5E00B8469E /* Data+Base64.swift */; };
+		255958431E1BED7000B8469E /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958421E1BED7000B8469E /* String+Crypto.swift */; };
+		255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */; };
+		255958501E1BEF5300B8469E /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559584F1E1BEF5300B8469E /* UploadController.swift */; };
+		257168661E1D1FC700134359 /* QiniuHostPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */; };
+		257168671E1D1FC700134359 /* QiniuHostPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */; };
+		257168691E1D24C000134359 /* QiniuHostPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257168681E1D24C000134359 /* QiniuHostPreferences.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,9 +59,19 @@
 		255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutsPreferencesViewController.swift; sourceTree = "<group>"; };
 		255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsPreferencesViewController.xib; sourceTree = "<group>"; };
 		2559582A1E1BE83D00B8469E /* HostsPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsPreferences.swift; sourceTree = "<group>"; };
-		2559582D1E1BE89E00B8469E /* QiniuHostPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferences.swift; sourceTree = "<group>"; };
 		2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsPreferencesViewController.swift; sourceTree = "<group>"; };
 		255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostsPreferencesViewController.xib; sourceTree = "<group>"; };
+		255958381E1BECCF00B8469E /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
+		255958391E1BECCF00B8469E /* QiniuHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHost.swift; sourceTree = "<group>"; };
+		2559583D1E1BED4300B8469E /* Date+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
+		255958401E1BED5E00B8469E /* Data+Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Base64.swift"; sourceTree = "<group>"; };
+		255958421E1BED7000B8469E /* String+Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
+		255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBitmapImageFileType+String.swift"; sourceTree = "<group>"; };
+		255958461E1BEDC400B8469E /* cuImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cuImage-Bridging-Header.h"; sourceTree = "<group>"; };
+		2559584F1E1BEF5300B8469E /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
+		257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferencesViewController.swift; sourceTree = "<group>"; };
+		257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostPreferencesViewController.xib; sourceTree = "<group>"; };
+		257168681E1D24C000134359 /* QiniuHostPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferences.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
 		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,8 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				255957FE1E1BD70F00B8469E /* Application */,
+				2559583C1E1BECD600B8469E /* Hosts */,
 				2559581E1E1BE01C00B8469E /* Preferences */,
 				255958141E1BDDDC00B8469E /* About */,
+				2559583F1E1BED4600B8469E /* Extensions */,
 				255957FF1E1BD72400B8469E /* Supporting Files */,
 			);
 			path = cuImage;
@@ -103,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
+				2559584F1E1BEF5300B8469E /* UploadController.swift */,
 				255958021E1BD77100B8469E /* StatusItemController.swift */,
 				255958041E1BD78500B8469E /* StatusItemController.xib */,
 				255957F31E1BD2A600B8469E /* MainMenu.xib */,
@@ -113,6 +135,7 @@
 		255957FF1E1BD72400B8469E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				255958461E1BEDC400B8469E /* cuImage-Bridging-Header.h */,
 				255957F11E1BD2A600B8469E /* Assets.xcassets */,
 				255957F61E1BD2A600B8469E /* Info.plist */,
 			);
@@ -165,11 +188,33 @@
 			isa = PBXGroup;
 			children = (
 				2559582A1E1BE83D00B8469E /* HostsPreferences.swift */,
-				2559582D1E1BE89E00B8469E /* QiniuHostPreferences.swift */,
 				2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */,
 				255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */,
 			);
 			name = "Hosts Preferences";
+			sourceTree = "<group>";
+		};
+		2559583C1E1BECD600B8469E /* Hosts */ = {
+			isa = PBXGroup;
+			children = (
+				255958381E1BECCF00B8469E /* Host.swift */,
+				255958391E1BECCF00B8469E /* QiniuHost.swift */,
+				257168681E1D24C000134359 /* QiniuHostPreferences.swift */,
+				257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */,
+				257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */,
+			);
+			name = Hosts;
+			sourceTree = "<group>";
+		};
+		2559583F1E1BED4600B8469E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2559583D1E1BED4300B8469E /* Date+Formatter.swift */,
+				255958401E1BED5E00B8469E /* Data+Base64.swift */,
+				255958421E1BED7000B8469E /* String+Crypto.swift */,
+				255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		609AB411EA9D0F6060FBBF88 /* Pods */ = {
@@ -225,6 +270,7 @@
 					255957EB1E1BD2A500B8469E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 6S532ZPWTN;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -254,6 +300,7 @@
 			files = (
 				255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */,
 				255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */,
+				257168671E1D1FC700134359 /* QiniuHostPreferencesViewController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
 				255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */,
@@ -319,13 +366,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */,
-				2559582E1E1BE89E00B8469E /* QiniuHostPreferences.swift in Sources */,
+				257168661E1D1FC700134359 /* QiniuHostPreferencesViewController.swift in Sources */,
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
+				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
 				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
+				255958501E1BEF5300B8469E /* UploadController.swift in Sources */,
+				255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */,
+				255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */,
+				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
+				2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */,
 				255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */,
 				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
+				2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */,
+				257168691E1D24C000134359 /* QiniuHostPreferences.swift in Sources */,
 				2559582B1E1BE83D00B8469E /* HostsPreferences.swift in Sources */,
 				2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */,
 				255958241E1BE43300B8469E /* ShortcutsPreferences.swift in Sources */,
@@ -442,6 +497,7 @@
 			baseConfigurationReference = 48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6S532ZPWTN;
@@ -450,6 +506,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulizhen.cuImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "cuImage/cuImage-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -459,6 +517,7 @@
 			baseConfigurationReference = 2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 6S532ZPWTN;
@@ -467,6 +526,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hulizhen.cuImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "cuImage/cuImage-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
