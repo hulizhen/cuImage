@@ -89,6 +89,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		251ADC981E1E061400D880C9 /* Qiniu Host */ = {
+			isa = PBXGroup;
+			children = (
+				255958391E1BECCF00B8469E /* QiniuHost.swift */,
+				257168681E1D24C000134359 /* QiniuHostPreferences.swift */,
+				257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */,
+				257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */,
+			);
+			name = "Qiniu Host";
+			sourceTree = "<group>";
+		};
 		255957E31E1BD2A500B8469E = {
 			isa = PBXGroup;
 			children = (
@@ -198,10 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				255958381E1BECCF00B8469E /* Host.swift */,
-				255958391E1BECCF00B8469E /* QiniuHost.swift */,
-				257168681E1D24C000134359 /* QiniuHostPreferences.swift */,
-				257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */,
-				257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */,
+				251ADC981E1E061400D880C9 /* Qiniu Host */,
 			);
 			name = Hosts;
 			sourceTree = "<group>";

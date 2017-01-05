@@ -35,12 +35,8 @@ class HostsPreferences: NSObject {
 // All preferences for general.
 extension HostsPreferences {
     var currentHost: String {
-        get {
-            return defaults.value(forKey: Key.currentHost) as! String
-        }
-        set {
-            defaults.set(newValue, forKey: Key.currentHost)
-        }
+        get { return defaults.value(forKey: Key.currentHost) as! String }
+        set { defaults.set(newValue, forKey: Key.currentHost) }
     }
 
     var qiniuHost: QiniuHostPreferences {

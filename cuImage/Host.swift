@@ -26,12 +26,14 @@ enum SupportedHost: String {
         return [.qiniu]
     }
 
+    /// An icon image followed by the host name.
     var image: NSImage {
         switch self {
         case .qiniu: return #imageLiteral(resourceName: "QiniuHost")
         }
     }
     
+    /// The view controller for host preferences setting pane.
     var viewController: NSViewController {
         switch self {
         case .qiniu: return QiniuHostPreferencesViewController(nibName: "QiniuHostPreferencesViewController", bundle: nil)!
