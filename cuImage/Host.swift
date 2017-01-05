@@ -25,21 +25,7 @@ enum SupportedHost: String {
     static var allCases: [SupportedHost] {
         return [.qiniu]
     }
-    
-    private func viewInNibNamed(_ name: String) -> NSView? {
-        var objects = NSArray()
-        guard Bundle.main.loadNibNamed(name, owner: nil, topLevelObjects: &objects) else {
-            return nil
-        }
-        
-        for object in objects {
-            if let view = object as? NSView {
-                return view
-            }
-        }
-        return nil
-    }
-    
+
     var image: NSImage {
         switch self {
         case .qiniu: return #imageLiteral(resourceName: "QiniuHost")

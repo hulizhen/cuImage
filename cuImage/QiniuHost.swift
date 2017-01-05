@@ -75,7 +75,7 @@ extension QiniuHost: Host {
                 let urlString = "![](http://" + self.qiniuHostPreferences.domain + "/" + key! + ")"
                 self.delegate?.host(self, didUploadImageWithURLString: urlString)
             } else {
-                assert(false, "Failed to upload image")
+                assert(false, "Failed to upload image.")
             }
         }, option: option)
     }
