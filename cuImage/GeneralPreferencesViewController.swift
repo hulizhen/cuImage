@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class GeneralPreferencesViewController: PreferencesViewController {
+class GeneralPreferencesViewController: BasePreferencesViewController {
     @IBOutlet weak var launchAtLoginButton: NSButton!
     @IBOutlet weak var keepWindowsOnTopButton: NSButton!
     

@@ -1,5 +1,5 @@
 //
-//  PreferencesViewController.swift
+//  BasePreferencesViewController.swift
 //  cuImage
 //
 //  Created by HuLizhen on 06/01/2017.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreferencesViewController: NSViewController {
+class BasePreferencesViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         

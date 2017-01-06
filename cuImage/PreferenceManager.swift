@@ -11,12 +11,18 @@ import Cocoa
 /// A convenient global handler to access preferences with subscripts.
 let preferences = PreferenceManager.shared
 
-final class PreferenceManager {
+final class PreferenceManager: NSObject {
     static let shared = PreferenceManager()
     fileprivate let defaults = UserDefaults.standard
     private let shortcutManager = ShortcutManager.shared
     
-    private init() {
+    private override init() {
+        super.init()
+        
+        registerDefaultPreferences()
+    }
+    
+    private func registerDefaultPreferences() {
         // Convert dictionary of type [PreferenceKey: Any] to [String: Any].
         let defaultValues: [String: Any] = defaultPreferences.reduce([:]) {
             var dictionary = $0

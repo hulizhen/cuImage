@@ -8,8 +8,5 @@
 
 import Cocoa
 
-class AboutWindowController: NSWindowController {
-    override var windowNibName: String? {
-        return self.className.components(separatedBy: ".").last
-    }
+class AboutWindowController: BaseWindowController {
 }

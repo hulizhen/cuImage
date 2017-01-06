@@ -9,7 +9,7 @@
 import Cocoa
 import MASShortcut
 
-class ShortcutsPreferencesViewController: PreferencesViewController {
+class ShortcutsPreferencesViewController: BasePreferencesViewController {
     @IBOutlet weak var uploadImageShortcutView: MASShortcutView!
     
     override func viewDidLoad() {

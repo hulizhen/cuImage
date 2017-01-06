@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreferencesWindowController: NSWindowController {
+class PreferencesWindowController: BaseWindowController {
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet weak var generalToolbarItem: NSToolbarItem!
     @IBOutlet weak var shortcutsToolbarItem: NSToolbarItem!
@@ -17,10 +17,6 @@ class PreferencesWindowController: NSWindowController {
     var preferencesViewControllers = [GeneralPreferencesViewController(),
                                       ShortcutsPreferencesViewController(),
                                       HostsPreferencesViewController()]
-    
-    override var windowNibName: String? {
-        return self.className.components(separatedBy: ".").last
-    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
