@@ -54,9 +54,7 @@ final class QiniuHost {
 
 extension QiniuHost: Host {
     func uploadImage(_ image: NSImage, named name: String, in type: NSBitmapImageFileType) {
-        guard let _ = token else {
-            assert(false, "Make the upload token first.")
-        }
+        assert(token != nil, "Make the upload token first.")
         
         let bitmap = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
         let data = bitmap.representation(using: type, properties: [:])
@@ -82,4 +80,3 @@ extension QiniuHost: Host {
         delegate?.host(self, isUploadingImageWithPercent: percent)
     }
 }
-

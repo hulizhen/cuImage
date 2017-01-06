@@ -26,7 +26,7 @@ class HostsPreferencesViewController: NSViewController {
     }
     
     private func setUp() {
-        currentHost = SupportedHost(rawValue: preferences[.currentHost]!) ?? .defaultHost
+        currentHost = SupportedHost(rawValue: preferences[.currentHost]) ?? .defaultHost
         currentHostInfoViewController = currentHost.viewController
 
         // Populate the hosts pop up button.

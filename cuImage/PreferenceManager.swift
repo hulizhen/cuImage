@@ -35,33 +35,33 @@ extension PreferenceManager {
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<URL>) -> URL? {
-        get { return defaults.url(forKey: key.rawValue) }
+    subscript(key: PreferenceKey<URL>) -> URL {
+        get { return defaults.url(forKey: key.rawValue) ?? URL(string: "")!}
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<[Any]>) -> [Any]? {
-        get { return defaults.array(forKey: key.rawValue) }
+    subscript(key: PreferenceKey<[Any]>) -> [Any] {
+        get { return defaults.array(forKey: key.rawValue) ?? []}
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
     subscript(key: PreferenceKey<[String: Any]>) -> [String: Any] {
-        get { return defaults.dictionary(forKey: key.rawValue)! }
+        get { return defaults.dictionary(forKey: key.rawValue) ?? [:] }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<String>) -> String? {
-        get { return defaults.string(forKey: key.rawValue) }
+    subscript(key: PreferenceKey<String>) -> String {
+        get { return defaults.string(forKey: key.rawValue) ?? ""}
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<[String]>) -> [String]? {
-        get { return defaults.stringArray(forKey: key.rawValue) }
+    subscript(key: PreferenceKey<[String]>) -> [String] {
+        get { return defaults.stringArray(forKey: key.rawValue) ?? []}
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<Data>) -> Data? {
-        get { return defaults.data(forKey: key.rawValue) }
+    subscript(key: PreferenceKey<Data>) -> Data {
+        get { return defaults.data(forKey: key.rawValue) ?? Data()}
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
