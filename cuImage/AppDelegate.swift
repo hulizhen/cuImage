@@ -12,7 +12,6 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItemController = StatusItemController.shared
     let uploadController = UploadController.shared
-    let preferenceManager = PreferenceManager.shared
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     }

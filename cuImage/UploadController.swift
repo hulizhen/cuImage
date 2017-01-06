@@ -8,15 +8,13 @@
 
 import Cocoa
 
-class UploadController: NSObject {    
+final class UploadController {
     static let shared = UploadController()
     
     private var host: Host?
     
-    private override init() {
-        super.init()
-        
-        host = QiniuHost(WithDelegate: self)
+    private init() {
+        host = QiniuHost(delegate: self)
     }
     
     /// Upload the image on pasteboard.

@@ -14,16 +14,12 @@
 		255958051E1BD78500B8469E /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958041E1BD78500B8469E /* StatusItemController.xib */; };
 		255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958101E1BDDD900B8469E /* AboutWindowController.swift */; };
 		255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958111E1BDDD900B8469E /* AboutWindowController.xib */; };
-		255958191E1BE00400B8469E /* GeneralPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958151E1BE00400B8469E /* GeneralPreferences.swift */; };
 		2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */; };
 		2559581B1E1BE00400B8469E /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */; };
-		2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958181E1BE00400B8469E /* PreferenceManager.swift */; };
 		255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */; };
 		255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958201E1BE03800B8469E /* PreferencesWindowController.xib */; };
-		255958241E1BE43300B8469E /* ShortcutsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958231E1BE43300B8469E /* ShortcutsPreferences.swift */; };
 		255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */; };
 		255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */; };
-		2559582B1E1BE83D00B8469E /* HostsPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582A1E1BE83D00B8469E /* HostsPreferences.swift */; };
 		255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */; };
 		255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */; };
 		2559583A1E1BECCF00B8469E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958381E1BECCF00B8469E /* Host.swift */; };
@@ -33,9 +29,13 @@
 		255958431E1BED7000B8469E /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958421E1BED7000B8469E /* String+Crypto.swift */; };
 		255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */; };
 		255958501E1BEF5300B8469E /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559584F1E1BEF5300B8469E /* UploadController.swift */; };
-		257168661E1D1FC700134359 /* QiniuHostPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */; };
-		257168671E1D1FC700134359 /* QiniuHostPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */; };
-		257168691E1D24C000134359 /* QiniuHostPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257168681E1D24C000134359 /* QiniuHostPreferences.swift */; };
+		255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */; };
+		255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */; };
+		255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9A1E1F4000000791EC /* Dictionariable.swift */; };
+		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
+		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
+		255B1DA21E1F8C9B000791EC /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */; };
+		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,16 +49,12 @@
 		255958041E1BD78500B8469E /* StatusItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemController.xib; sourceTree = "<group>"; };
 		255958101E1BDDD900B8469E /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		255958111E1BDDD900B8469E /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
-		255958151E1BE00400B8469E /* GeneralPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferences.swift; sourceTree = "<group>"; };
 		255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
-		255958181E1BE00400B8469E /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		255958201E1BE03800B8469E /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
-		255958231E1BE43300B8469E /* ShortcutsPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutsPreferences.swift; sourceTree = "<group>"; };
 		255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutsPreferencesViewController.swift; sourceTree = "<group>"; };
 		255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsPreferencesViewController.xib; sourceTree = "<group>"; };
-		2559582A1E1BE83D00B8469E /* HostsPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsPreferences.swift; sourceTree = "<group>"; };
 		2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsPreferencesViewController.swift; sourceTree = "<group>"; };
 		255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostsPreferencesViewController.xib; sourceTree = "<group>"; };
 		255958381E1BECCF00B8469E /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
@@ -69,9 +65,13 @@
 		255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSBitmapImageFileType+String.swift"; sourceTree = "<group>"; };
 		255958461E1BEDC400B8469E /* cuImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cuImage-Bridging-Header.h"; sourceTree = "<group>"; };
 		2559584F1E1BEF5300B8469E /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
-		257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferencesViewController.swift; sourceTree = "<group>"; };
-		257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostPreferencesViewController.xib; sourceTree = "<group>"; };
-		257168681E1D24C000134359 /* QiniuHostPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostPreferences.swift; sourceTree = "<group>"; };
+		255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfoViewController.swift; sourceTree = "<group>"; };
+		255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostInfoViewController.xib; sourceTree = "<group>"; };
+		255B1D9A1E1F4000000791EC /* Dictionariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionariable.swift; sourceTree = "<group>"; };
+		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutManager.swift; sourceTree = "<group>"; };
+		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
+		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
 		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +89,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		251ADC981E1E061400D880C9 /* Qiniu Host */ = {
+			isa = PBXGroup;
+			children = (
+				255958391E1BECCF00B8469E /* QiniuHost.swift */,
+				25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */,
+				255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */,
+				255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */,
+			);
+			name = "Qiniu Host";
+			sourceTree = "<group>";
+		};
 		255957E31E1BD2A500B8469E = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +125,7 @@
 				2559583C1E1BECD600B8469E /* Hosts */,
 				2559581E1E1BE01C00B8469E /* Preferences */,
 				255958141E1BDDDC00B8469E /* About */,
+				255B1D9C1E1F4005000791EC /* Protocols */,
 				2559583F1E1BED4600B8469E /* Extensions */,
 				255957FF1E1BD72400B8469E /* Supporting Files */,
 			);
@@ -151,57 +163,29 @@
 			name = About;
 			sourceTree = "<group>";
 		};
-		2559581D1E1BE00D00B8469E /* General Preferences */ = {
-			isa = PBXGroup;
-			children = (
-				255958151E1BE00400B8469E /* GeneralPreferences.swift */,
-				255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */,
-				255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */,
-			);
-			name = "General Preferences";
-			sourceTree = "<group>";
-		};
 		2559581E1E1BE01C00B8469E /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				255958181E1BE00400B8469E /* PreferenceManager.swift */,
+				255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */,
+				255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */,
+				255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */,
 				2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */,
 				255958201E1BE03800B8469E /* PreferencesWindowController.xib */,
-				2559581D1E1BE00D00B8469E /* General Preferences */,
-				255958251E1BE43700B8469E /* Shortcuts Preferences */,
-				2559582C1E1BE84100B8469E /* Hosts Preferences */,
-			);
-			name = Preferences;
-			sourceTree = "<group>";
-		};
-		255958251E1BE43700B8469E /* Shortcuts Preferences */ = {
-			isa = PBXGroup;
-			children = (
-				255958231E1BE43300B8469E /* ShortcutsPreferences.swift */,
+				255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */,
+				255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */,
 				255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */,
 				255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */,
-			);
-			name = "Shortcuts Preferences";
-			sourceTree = "<group>";
-		};
-		2559582C1E1BE84100B8469E /* Hosts Preferences */ = {
-			isa = PBXGroup;
-			children = (
-				2559582A1E1BE83D00B8469E /* HostsPreferences.swift */,
 				2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */,
 				255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */,
 			);
-			name = "Hosts Preferences";
+			name = Preferences;
 			sourceTree = "<group>";
 		};
 		2559583C1E1BECD600B8469E /* Hosts */ = {
 			isa = PBXGroup;
 			children = (
 				255958381E1BECCF00B8469E /* Host.swift */,
-				255958391E1BECCF00B8469E /* QiniuHost.swift */,
-				257168681E1D24C000134359 /* QiniuHostPreferences.swift */,
-				257168641E1D1FC700134359 /* QiniuHostPreferencesViewController.swift */,
-				257168651E1D1FC700134359 /* QiniuHostPreferencesViewController.xib */,
+				251ADC981E1E061400D880C9 /* Qiniu Host */,
 			);
 			name = Hosts;
 			sourceTree = "<group>";
@@ -215,6 +199,14 @@
 				255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		255B1D9C1E1F4005000791EC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				255B1D9A1E1F4000000791EC /* Dictionariable.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		609AB411EA9D0F6060FBBF88 /* Pods */ = {
@@ -299,8 +291,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */,
+				255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */,
 				255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */,
-				257168671E1D1FC700134359 /* QiniuHostPreferencesViewController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
 				255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */,
@@ -365,26 +357,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */,
 				255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */,
-				257168661E1D1FC700134359 /* QiniuHostPreferencesViewController.swift in Sources */,
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
 				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
 				255958501E1BEF5300B8469E /* UploadController.swift in Sources */,
 				255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */,
+				255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */,
 				255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */,
 				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
 				2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */,
 				255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */,
 				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
+				255B1DA21E1F8C9B000791EC /* PreferenceKey.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
+				255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */,
 				2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */,
-				257168691E1D24C000134359 /* QiniuHostPreferences.swift in Sources */,
-				2559582B1E1BE83D00B8469E /* HostsPreferences.swift in Sources */,
-				2559581C1E1BE00400B8469E /* PreferenceManager.swift in Sources */,
-				255958241E1BE43300B8469E /* ShortcutsPreferences.swift in Sources */,
-				255958191E1BE00400B8469E /* GeneralPreferences.swift in Sources */,
+				25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */,
+				255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

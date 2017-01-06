@@ -9,7 +9,7 @@
 import Cocoa
 import Qiniu
 
-class QiniuHost: NSObject {
+final class QiniuHost {
     private struct Constant {
         static let accessTokenDuration: TimeInterval = 3600
     }
@@ -18,24 +18,22 @@ class QiniuHost: NSObject {
     
     fileprivate let uploadManager = QNUploadManager()!
     fileprivate var token: String!
+
+    let qiniuHostInfo = QiniuHostInfo(dictionary: preferences[.qiniuHostInfo])
     
-    let qiniuHostPreferences = PreferenceManager.shared.hostsPreferences.qiniuHost
-    
-    private override init() {
-        super.init()
+    init() {
+        makeToken(accessKey: qiniuHostInfo.accessKey,
+                  secretKey: qiniuHostInfo.secretKey,
+                  scope: qiniuHostInfo.bucket)
     }
     
-    convenience init(WithDelegate delegate: HostDelegate?) {
+    convenience init(delegate: HostDelegate?) {
         self.init()
         
         self.delegate = delegate
-        
-        makeToken(withAccessKey: qiniuHostPreferences.accessKey,
-                  secretKey: qiniuHostPreferences.secretKey,
-                  scope: qiniuHostPreferences.bucket)
     }
     
-    private func makeToken(withAccessKey accessKey: String, secretKey: String, scope: String) {
+    private func makeToken(accessKey: String, secretKey: String, scope: String) {
         // Construct upload policy.
         let deadline = UInt32(Date().timeIntervalSince1970 + Constant.accessTokenDuration)
         let uploadPolicy: [String: Any] = ["scope": scope, "deadline": deadline]
@@ -64,7 +62,7 @@ extension QiniuHost: Host {
         let data = bitmap.representation(using: type, properties: [:])
         let option = QNUploadOption(mime: nil, progressHandler: progressHandler, params: nil, checkCrc: false, cancellationSignal: nil)
         
-        // Image file name.
+        // Make image file name.
         let key = name + "_" + Date.simpleFormatter.string(from: Date()) + "." + type.string
         
         // Upload image.
@@ -72,7 +70,7 @@ extension QiniuHost: Host {
             print(info!, key!)
             
             if info!.isOK {
-                let urlString = "![](" + self.qiniuHostPreferences.domain + "/" + key! + ")"
+                let urlString = "![](" + self.qiniuHostInfo.domain + "/" + key! + ")"
                 self.delegate?.host(self, didUploadImageWithURLString: urlString)
             } else {
                 assert(false, "Failed to upload image.")

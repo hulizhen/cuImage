@@ -12,8 +12,4 @@ class AboutWindowController: NSWindowController {
     override var windowNibName: String? {
         return self.className.components(separatedBy: ".").last
     }
-    
-    override func windowDidLoad() {
-        super.windowDidLoad()
-    }
 }
