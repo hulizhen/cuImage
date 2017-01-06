@@ -14,9 +14,9 @@ class PreferencesWindowController: NSWindowController {
     @IBOutlet weak var shortcutsToolbarItem: NSToolbarItem!
     @IBOutlet weak var hostsToolbarItem: NSToolbarItem!
     
-    lazy var generalPreferencesViewController: GeneralPreferencesViewController = GeneralPreferencesViewController()
-    lazy var shortcutsPreferencesViewController: ShortcutsPreferencesViewController = ShortcutsPreferencesViewController()
-    lazy var hostsPreferencesViewController: HostsPreferencesViewController = HostsPreferencesViewController()
+    var preferencesViewControllers = [GeneralPreferencesViewController(),
+                                      ShortcutsPreferencesViewController(),
+                                      HostsPreferencesViewController()]
     
     override var windowNibName: String? {
         return self.className.components(separatedBy: ".").last
@@ -26,21 +26,11 @@ class PreferencesWindowController: NSWindowController {
         super.windowDidLoad()
         
         toolbar.selectedItemIdentifier = generalToolbarItem.itemIdentifier
-        window!.contentViewController = generalPreferencesViewController
+        window!.contentViewController = preferencesViewControllers.first
     }
     
     @IBAction func handleTappedToolbarItem(_ item: NSToolbarItem) {
-        var controller: NSViewController!
-        switch item {
-        case generalToolbarItem:
-            controller = generalPreferencesViewController
-        case shortcutsToolbarItem:
-            controller = shortcutsPreferencesViewController
-        case hostsToolbarItem:
-            controller = hostsPreferencesViewController
-        default:
-            break
-        }
+        let controller = preferencesViewControllers[item.tag]
         
         // Keep the top-left point of window fixed.
         let frame = window!.frame
