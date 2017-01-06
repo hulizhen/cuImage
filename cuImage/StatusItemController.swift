@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class StatusItemController: NSObject {
+final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     
     @IBOutlet weak var menu: NSMenu!

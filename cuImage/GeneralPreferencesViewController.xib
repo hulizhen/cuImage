@@ -28,6 +28,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="jgw-3M-z5z" name="value" keyPath="values.launchAtLogin" id="My0-Ed-jpA"/>
+                    </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="2PE-0Y-HbB" userLabel="Keep Windows Always On Top">
                     <rect key="frame" x="18" y="18" width="195" height="18"/>
@@ -39,6 +42,9 @@
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <binding destination="jgw-3M-z5z" name="value" keyPath="values.keepWindowsOnTop" id="U5G-fN-QnZ"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
@@ -52,5 +58,6 @@
             </constraints>
             <point key="canvasLocation" x="108" y="361"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="jgw-3M-z5z"/>
     </objects>
 </document>

@@ -8,39 +8,40 @@
 
 import Cocoa
 
+protocol HostsPreferencesSavable: class {
+    func saveHostPreferences();
+}
+
 class HostsPreferencesViewController: NSViewController {
-    let hostsPreferences = HostsPreferences.shared
-    
     @IBOutlet weak var hostsPopUpButton: NSPopUpButton!
     @IBOutlet weak var hostPreferencesContentView: NSView!
     
-    var currentHostPreferencesViewController: NSViewController!
+    var currentHost: SupportedHost!
+    var currentHostInfoViewController: NSViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currentHost = SupportedHost(rawValue: hostsPreferences.currentHost)!
-        currentHostPreferencesViewController = currentHost.viewController
-
         setUp()
     }
     
     private func setUp() {
+        currentHost = SupportedHost(rawValue: preferences[.currentHost]!) ?? .defaultHost
+        currentHostInfoViewController = currentHost.viewController
+
         // Populate the hosts pop up button.
         for host in SupportedHost.allCases {
             hostsPopUpButton.addItem(withTitle: host.rawValue)
             hostsPopUpButton.lastItem!.image = host.image
         }
         
-        // Establish bindings between models and views.
-        hostsPopUpButton.bind(NSSelectedValueBinding, to: hostsPreferences, withKeyPath: HostsPreferences.Key.currentHost)
-        
         // Select the current host.
-        hostPreferencesContentView.addSubview(currentHostPreferencesViewController.view)
+        hostsPopUpButton.selectItem(withTitle: currentHost.rawValue)
+        hostPreferencesContentView.addSubview(currentHostInfoViewController.view)
     }
     
     @IBAction private func saveHostPreferences(_ button: NSButton) {
-        if let controller = currentHostPreferencesViewController as? HostsPreferencesSavable {
+        if let controller = currentHostInfoViewController as? HostsPreferencesSavable {
             controller.saveHostPreferences()
         }
     }

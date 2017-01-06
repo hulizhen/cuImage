@@ -71,6 +71,9 @@
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="hQ8-2x-1yA"/>
                     </popUpButtonCell>
+                    <connections>
+                        <binding destination="pFE-Vv-5Dx" name="selectedValue" keyPath="values.currentHost" id="HcU-FZ-NGN"/>
+                    </connections>
                 </popUpButton>
             </subviews>
             <constraints>
@@ -85,5 +88,6 @@
             </constraints>
             <point key="canvasLocation" x="150" y="121"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="pFE-Vv-5Dx"/>
     </objects>
 </document>

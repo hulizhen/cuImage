@@ -10,13 +10,13 @@ import Foundation
 
 /// A type that can be converted to and from a dictionary.
 protocol Dictionariable: class {
-    init(_ dictionary: [String: Any])
+    init(dictionary: [String: Any])
     func dictionary() -> [String: Any]
 }
 
 // Default implementation for protocol Dictionariable.
 extension Dictionariable where Self: NSObject {
-    init(_ dictionary: [String: Any]) {
+    init(dictionary: [String: Any]) {
         self.init()
         
         for child in Mirror(reflecting: self).children {
