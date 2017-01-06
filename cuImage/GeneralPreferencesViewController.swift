@@ -8,7 +8,13 @@
 
 import Cocoa
 
-class GeneralPreferencesViewController: NSViewController {    
+class GeneralPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var launchAtLoginButton: NSButton!
     @IBOutlet weak var keepWindowsOnTopButton: NSButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "General"
+    }
 }

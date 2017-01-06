@@ -9,12 +9,14 @@
 import Cocoa
 import MASShortcut
 
-class ShortcutsPreferencesViewController: NSViewController {
+class ShortcutsPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var uploadImageShortcutView: MASShortcutView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        title = "Shortcuts"
+
         uploadImageShortcutView.associatedUserDefaultsKey = PreferenceKeys.uploadImageShortcut.rawValue
     }
 }

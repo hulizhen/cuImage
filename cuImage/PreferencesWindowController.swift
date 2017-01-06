@@ -46,6 +46,6 @@ class PreferencesWindowController: NSWindowController {
         let frame = window!.frame
         let topLeftOrigin = NSPoint(x: frame.origin.x, y: frame.origin.y + frame.size.height)
         window!.contentViewController = controller
-        window!.setFrameTopLeftPoint(topLeftOrigin)
+        window!.setFrameTopLeftPoint(topLeftOrigin)        
     }
 }

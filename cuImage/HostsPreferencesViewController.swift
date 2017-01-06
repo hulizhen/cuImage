@@ -12,7 +12,7 @@ protocol HostsPreferencesSavable: class {
     func saveHostPreferences();
 }
 
-class HostsPreferencesViewController: NSViewController {
+class HostsPreferencesViewController: PreferencesViewController {
     @IBOutlet weak var hostsPopUpButton: NSPopUpButton!
     @IBOutlet weak var hostPreferencesContentView: NSView!
     
@@ -22,6 +22,8 @@ class HostsPreferencesViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Hosts"
+
         setUp()
     }
     

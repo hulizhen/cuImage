@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25577DFB1E1FE1FE0091735A /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577DFA1E1FE1FE0091735A /* PreferencesViewController.swift */; };
 		255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255957EF1E1BD2A600B8469E /* AppDelegate.swift */; };
 		255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 255957F11E1BD2A600B8469E /* Assets.xcassets */; };
 		255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255957F31E1BD2A600B8469E /* MainMenu.xib */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25577DFA1E1FE1FE0091735A /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		255957EC1E1BD2A600B8469E /* cuImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cuImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		255957EF1E1BD2A600B8469E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		255957F11E1BD2A600B8469E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */,
 				255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */,
 				255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */,
+				25577DFA1E1FE1FE0091735A /* PreferencesViewController.swift */,
 				2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */,
 				255958201E1BE03800B8469E /* PreferencesWindowController.xib */,
 				255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */,
@@ -362,6 +365,7 @@
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
+				25577DFB1E1FE1FE0091735A /* PreferencesViewController.swift in Sources */,
 				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
 				255958501E1BEF5300B8469E /* UploadController.swift in Sources */,
 				255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */,
