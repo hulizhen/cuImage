@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>cuImageLauncher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>250CFA041E20BBA1009B4F0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>25130C471E20E0C700830B3F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>251B09FD1E20D4AF00E79112</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>255957EB1E1BD2A500B8469E</key>
 		<dict>
 			<key>primary</key>
