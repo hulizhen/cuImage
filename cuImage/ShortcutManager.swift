@@ -14,6 +14,10 @@ class ShortcutManager {
     static let shared = ShortcutManager()
     
     private init() {
+        // Set the value transformer for MASShortcut.
+        let transformer = ValueTransformer(forName: NSValueTransformerName.keyedUnarchiveFromDataTransformerName)!
+        MASShortcutBinder.shared().bindingOptions = [NSValueTransformerBindingOption: transformer]
+        
         registerDefaultShortcuts()
         bindShortcuts()
     }
@@ -24,7 +28,9 @@ class ShortcutManager {
             dictionary[$1.key.rawValue] = $1.value
             return dictionary
         }
-        MASShortcutBinder.shared().registerDefaultShortcuts(defaultValues)
+//        MASShortcutBinder.shared().registerDefaultShortcuts(defaultValues)
+        let defaults = UserDefaults.standard
+        defaults.register(defaults: defaultValues)
     }
     
     private func bindShortcuts() {
@@ -37,11 +43,23 @@ class ShortcutManager {
     }
 }
 
+extension PreferenceManager {
+    subscript(key: PreferenceKey<MASShortcut>) -> MASShortcut {
+        // Read-only because the shortcuts is managed by MASShortcut.
+        get {
+            let data = defaults.data(forKey: key.rawValue)
+            let bindingOptions = MASShortcutBinder.shared().bindingOptions!
+            let transformer = bindingOptions[NSValueTransformerBindingOption] as! ValueTransformer
+            return transformer.transformedValue(data) as? MASShortcut ?? MASShortcut()
+        }
+    }
+}
+
 extension PreferenceKeys {
-    static let uploadImageShortcut = PreferenceKey<Any>("uploadImageShortcut")
+    static let uploadImageShortcut = PreferenceKey<MASShortcut>("uploadImageShortcut")
 }
 
 // The collection of all default shortcuts.
 fileprivate let defaultShortcuts: [PreferenceKeys: Any] = [
-    .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]),
+    .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]).data(),
 ]

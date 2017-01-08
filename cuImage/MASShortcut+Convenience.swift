@@ -14,4 +14,10 @@ extension MASShortcut {
         
         self.init(keyCode: UInt(key), modifierFlags: flags)
     }
+    
+    func data() -> Data {
+        let bindingOptions = MASShortcutBinder.shared().bindingOptions!
+        let transformer = bindingOptions[NSValueTransformerBindingOption] as! ValueTransformer
+        return transformer.reverseTransformedValue(self) as! Data
+    }
 }

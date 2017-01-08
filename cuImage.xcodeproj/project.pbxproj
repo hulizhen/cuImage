@@ -42,6 +42,7 @@
 		255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9A1E1F4000000791EC /* Dictionariable.swift */; };
 		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
+		25806C351E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */; };
 		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		255B1D9A1E1F4000000791EC /* Dictionariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionariable.swift; sourceTree = "<group>"; };
 		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutManager.swift; sourceTree = "<group>"; };
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+KeyEquivalent.swift"; sourceTree = "<group>"; };
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		2559583F1E1BED4600B8469E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */,
 				255958401E1BED5E00B8469E /* Data+Base64.swift */,
 				255958421E1BED7000B8469E /* String+Crypto.swift */,
 				2559583D1E1BED4300B8469E /* Date+Formatter.swift */,
@@ -489,6 +492,7 @@
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
 				25577DFB1E1FE1FE0091735A /* BasePreferencesViewController.swift in Sources */,
 				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
+				25806C351E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift in Sources */,
 				255958501E1BEF5300B8469E /* UploadController.swift in Sources */,
 				255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */,
 				255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */,

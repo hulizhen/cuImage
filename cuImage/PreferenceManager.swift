@@ -13,8 +13,8 @@ let preferences = PreferenceManager.shared
 
 final class PreferenceManager: NSObject {
     static let shared = PreferenceManager()
-    fileprivate let defaults = UserDefaults.standard
     private let shortcutManager = ShortcutManager.shared
+    let defaults = UserDefaults.standard
     
     private override init() {
         super.init()

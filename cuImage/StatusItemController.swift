@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASShortcut
 
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
@@ -24,6 +25,11 @@ final class StatusItemController: NSObject {
     private override init() {
         super.init()
         
+        setUp()
+        addObservers()
+    }
+    
+    private func setUp() {
         guard let nibName = self.className.components(separatedBy: ".").last,
             let nib = NSNib(nibNamed: nibName, bundle: nil),
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
@@ -48,5 +54,24 @@ final class StatusItemController: NSObject {
         default:
             break
         }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath else { return }
+        guard let key = PreferenceKeys(rawValue: keyPath) else { return }
+        
+        switch key {
+        case PreferenceKeys.uploadImageShortcut:
+            uploadImageMenuItem.setKeyEquivalent(withShortcut: preferences[.uploadImageShortcut])
+        default:
+            print("Observe value for key path: \(keyPath)")
+        }
+    }
+
+    fileprivate func addObservers() {
+        let defaults = UserDefaults.standard
+        
+        defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
+                             options: [.initial, .new], context: nil)
     }
 }
