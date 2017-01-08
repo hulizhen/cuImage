@@ -12,6 +12,7 @@ final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     
     @IBOutlet weak var menu: NSMenu!
+    @IBOutlet weak var uploadImageMenuItem: NSMenuItem!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
 
@@ -36,6 +37,8 @@ final class StatusItemController: NSObject {
 
     @IBAction func handleTappedMenuItem(_ item: NSMenuItem) {
         switch item {
+        case uploadImageMenuItem:
+            UploadController.shared.uploadImageOnPasteboard()
         case preferencesMenuItem:
             preferencesWindowController.showWindow(item)
             NSApp.activate(ignoringOtherApps: true)

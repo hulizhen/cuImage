@@ -9,12 +9,20 @@
                 <outlet property="aboutMenuItem" destination="mYk-F7-yO9" id="f3h-ms-3MI"/>
                 <outlet property="menu" destination="0pX-Ur-2Wk" id="paz-LK-sGH"/>
                 <outlet property="preferencesMenuItem" destination="VJI-Pz-n2Z" id="rIj-a0-jMp"/>
+                <outlet property="uploadImageMenuItem" destination="Vr8-wq-G2e" id="Poe-Rz-SPu"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu id="0pX-Ur-2Wk">
             <items>
+                <menuItem title="Upload Image" id="Vr8-wq-G2e">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="handleTappedMenuItem:" target="-2" id="bO9-XW-7Fr"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="saH-HL-6uN"/>
                 <menuItem title="Preferences…" keyEquivalent="," id="VJI-Pz-n2Z">
                     <connections>
                         <action selector="handleTappedMenuItem:" target="-2" id="fop-r1-5BB"/>
