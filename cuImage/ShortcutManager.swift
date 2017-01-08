@@ -8,15 +8,26 @@
 
 import Foundation
 import MASShortcut
+import Carbon.HIToolbox
 
 class ShortcutManager {
     static let shared = ShortcutManager()
     
     private init() {
-        registerShortcuts()
+        registerDefaultShortcuts()
+        bindShortcuts()
     }
     
-    private func registerShortcuts() {
+    private func registerDefaultShortcuts() {
+        let defaultValues: [String: Any] = defaultShortcuts.reduce([:]) {
+            var dictionary = $0
+            dictionary[$1.key.rawValue] = $1.value
+            return dictionary
+        }
+        MASShortcutBinder.shared().registerDefaultShortcuts(defaultValues)
+    }
+    
+    private func bindShortcuts() {
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: PreferenceKeys.uploadImageShortcut.rawValue,
                                                 toAction: uploadImageOnPasteboard)
     }
@@ -25,3 +36,12 @@ class ShortcutManager {
         UploadController.shared.uploadImageOnPasteboard()
     }
 }
+
+extension PreferenceKeys {
+    static let uploadImageShortcut = PreferenceKey<Any>("uploadImageShortcut")
+}
+
+// The collection of all default shortcuts.
+fileprivate let defaultShortcuts: [PreferenceKeys: Any] = [
+    .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]),
+]

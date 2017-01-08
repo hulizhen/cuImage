@@ -30,7 +30,6 @@ final class PreferenceManager: NSObject {
             return dictionary
         }
         defaults.register(defaults: defaultValues)
-        NSUserDefaultsController.shared().initialValues = defaultValues
     }
 }
 
@@ -91,3 +90,44 @@ extension PreferenceManager {
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
 }
+
+class PreferenceKeys: RawRepresentable, Hashable {
+    let rawValue: String
+    
+    required init!(rawValue: String) {
+        self.rawValue = rawValue
+    }
+    
+    convenience init(_ key: String) {
+        self.init(rawValue: key)
+    }
+    
+    var hashValue: Int {
+        return rawValue.hashValue
+    }
+}
+
+final class PreferenceKey<T>: PreferenceKeys { }
+
+/// The collection of all preference keys.
+extension PreferenceKeys {
+    // General
+    static let launchAtLogin = PreferenceKey<Bool>("launchAtLogin")
+    static let keepWindowsOnTop = PreferenceKey<Bool>("keepWindowsOnTop")
+    
+    // Hosts
+    static let currentHost = PreferenceKey<String>("currentHost")
+    static let qiniuHostInfo = PreferenceKey<[String: Any]>("qiniuHostInfo")
+}
+
+
+// The collection of all default preference, except shortcuts managed by MASShortcut.
+private let defaultPreferences: [PreferenceKeys: Any] = [
+    // General
+    .launchAtLogin: false,
+    .keepWindowsOnTop: true,
+    
+    // Hosts
+    .currentHost: SupportedHost.qiniu.rawValue,
+    .qiniuHostInfo: QiniuHostInfo().dictionary(),
+]

@@ -11,6 +11,7 @@
 		25130C4D1E20E0C700830B3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4C1E20E0C700830B3F /* Assets.xcassets */; };
 		25130C501E20E0C700830B3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4E1E20E0C700830B3F /* MainMenu.xib */; };
 		25130C571E20E13300830B3F /* cuImageLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25130C481E20E0C700830B3F /* cuImageLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */; };
 		25577DFB1E1FE1FE0091735A /* BasePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577DFA1E1FE1FE0091735A /* BasePreferencesViewController.swift */; };
 		25577E041E2088270091735A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577E031E2088270091735A /* Utilities.swift */; };
 		25577E071E20886C0091735A /* BaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577E061E20886C0091735A /* BaseWindowController.swift */; };
@@ -41,7 +42,6 @@
 		255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9A1E1F4000000791EC /* Dictionariable.swift */; };
 		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
-		255B1DA21E1F8C9B000791EC /* PreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */; };
 		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
@@ -65,6 +65,7 @@
 		25130C4C1E20E0C700830B3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25130C4F1E20E0C700830B3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		25130C511E20E0C700830B3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcut+Convenience.swift"; sourceTree = "<group>"; };
 		25577DFA1E1FE1FE0091735A /* BasePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePreferencesViewController.swift; sourceTree = "<group>"; };
 		25577E031E2088270091735A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		25577E061E20886C0091735A /* BaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWindowController.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		255B1D9A1E1F4000000791EC /* Dictionariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionariable.swift; sourceTree = "<group>"; };
 		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutManager.swift; sourceTree = "<group>"; };
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
-		255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceKey.swift; sourceTree = "<group>"; };
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */,
-				255B1DA11E1F8C9B000791EC /* PreferenceKey.swift */,
 				255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */,
 				2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */,
 				255958201E1BE03800B8469E /* PreferencesWindowController.xib */,
@@ -276,9 +275,10 @@
 		2559583F1E1BED4600B8469E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2559583D1E1BED4300B8469E /* Date+Formatter.swift */,
 				255958401E1BED5E00B8469E /* Data+Base64.swift */,
 				255958421E1BED7000B8469E /* String+Crypto.swift */,
+				2559583D1E1BED4300B8469E /* Date+Formatter.swift */,
+				2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */,
 				255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */,
 			);
 			name = Extensions;
@@ -494,10 +494,10 @@
 				255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */,
 				255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */,
 				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
+				2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */,
 				2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */,
 				255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */,
 				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
-				255B1DA21E1F8C9B000791EC /* PreferenceKey.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
 				255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */,
 				25577E071E20886C0091735A /* BaseWindowController.swift in Sources */,
@@ -702,6 +702,7 @@
 				25130C531E20E0C700830B3F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		255957E71E1BD2A500B8469E /* Build configuration list for PBXProject "cuImage" */ = {
 			isa = XCConfigurationList;
