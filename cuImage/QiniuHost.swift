@@ -48,6 +48,7 @@ final class QiniuHost: NSObject {
                               scope: qiniuHostInfo.bucket)
         default:
             print("Observe value for key path: \(keyPath)")
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     
