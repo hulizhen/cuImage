@@ -27,13 +27,9 @@ extension AppDelegate {
         
         switch key {
         case PreferenceKeys.launchAtLogin:
-            if let launch = change?[.newKey] as? Bool {
-                launchAtLogin(launch)
-            }
+            launchAtLogin(preferences[.launchAtLogin])
         case PreferenceKeys.keepWindowsOnTop:
-            if let top = change?[.newKey] as? Bool {
-                keepWindowsOnTop(top)
-            }
+            keepWindowsOnTop(preferences[.keepWindowsOnTop])
         default:
             print("Observe value for key path: \(keyPath)")
         }

@@ -9,7 +9,7 @@
 import Cocoa
 import Qiniu
 
-final class QiniuHost {
+final class QiniuHost: NSObject {
     private struct Constant {
         static let accessTokenDuration: TimeInterval = 3600
     }
@@ -19,12 +19,14 @@ final class QiniuHost {
     fileprivate let uploadManager = QNUploadManager()!
     fileprivate var token: String!
 
-    let qiniuHostInfo = QiniuHostInfo(dictionary: preferences[.qiniuHostInfo])
+    var qiniuHostInfo: QiniuHostInfo!
     
-    init() {
-        makeToken(accessKey: qiniuHostInfo.accessKey,
-                  secretKey: qiniuHostInfo.secretKey,
-                  scope: qiniuHostInfo.bucket)
+    override init() {
+        super.init()
+        
+        let defaults = UserDefaults.standard
+        defaults.addObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue,
+                             options: [.initial, .new], context: nil)
     }
     
     convenience init(delegate: HostDelegate?) {
@@ -33,7 +35,23 @@ final class QiniuHost {
         self.delegate = delegate
     }
     
-    private func makeToken(accessKey: String, secretKey: String, scope: String) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath else { return }
+        guard let key = PreferenceKeys(rawValue: keyPath) else { return }
+        
+        switch key {
+        case PreferenceKeys.qiniuHostInfo:
+            qiniuHostInfo = QiniuHostInfo(dictionary: preferences[.qiniuHostInfo])
+            
+            token = makeToken(accessKey: qiniuHostInfo.accessKey,
+                              secretKey: qiniuHostInfo.secretKey,
+                              scope: qiniuHostInfo.bucket)
+        default:
+            print("Observe value for key path: \(keyPath)")
+        }
+    }
+    
+    private func makeToken(accessKey: String, secretKey: String, scope: String) -> String {
         // Construct upload policy.
         let deadline = UInt32(Date().timeIntervalSince1970 + Constant.accessTokenDuration)
         let uploadPolicy: [String: Any] = ["scope": scope, "deadline": deadline]
@@ -48,7 +66,7 @@ final class QiniuHost {
         let encodedSign = encodedPolicy.hmac(algorithm: .sha1, key: secretKey)
         
         // Make upload token by concatenating accessKey, encodedSign and encodedPolicy.
-        token = accessKey + ":" + encodedSign + ":" + encodedPolicy
+        return accessKey + ":" + encodedSign + ":" + encodedPolicy
     }
 }
 
@@ -58,18 +76,21 @@ extension QiniuHost: Host {
         
         let bitmap = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
         let data = bitmap.representation(using: type, properties: [:])
-        let option = QNUploadOption(mime: nil, progressHandler: progressHandler, params: nil, checkCrc: false, cancellationSignal: nil)
+        let option = QNUploadOption(mime: nil, progressHandler: progressHandler,
+                                    params: nil, checkCrc: false, cancellationSignal: nil)
         
         // Make image file name.
         let key = name + "_" + Date.simpleFormatter.string(from: Date()) + "." + type.string
         
         // Upload image.
-        uploadManager.put(data, key: key, token: token, complete: { (info, key, response) in
+        uploadManager.put(data, key: key, token: token, complete: { [weak self] (info, key, response) in
+            guard let sself = self else { return }
+            
             print(info!, key!)
             
             if info!.isOK {
-                let urlString = "![](" + self.qiniuHostInfo.domain + "/" + key! + ")"
-                self.delegate?.host(self, didUploadImageWithURLString: urlString)
+                let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
             } else {
                 assert(false, "Failed to upload image.")
             }
