@@ -7,18 +7,18 @@
 //
 
 import Cocoa
+import MASShortcut
 
 /// A convenient global handler to access preferences with subscripts.
 let preferences = PreferenceManager.shared
 
-final class PreferenceManager: NSObject {
+// MARK: - PreferenceManager
+final class PreferenceManager {
     static let shared = PreferenceManager()
     private let shortcutManager = ShortcutManager.shared
     let defaults = UserDefaults.standard
     
-    private override init() {
-        super.init()
-        
+    private init() {
         registerDefaultPreferences()
     }
     
@@ -33,7 +33,7 @@ final class PreferenceManager: NSObject {
     }
 }
 
-// Subscripts
+// MARK: - Subscripts
 extension PreferenceManager {
     subscript(key: PreferenceKey<Any>) -> Any? {
         get { return defaults.object(forKey: key.rawValue) }
@@ -89,8 +89,19 @@ extension PreferenceManager {
         get { return defaults.double(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
+    
+    subscript(key: PreferenceKey<MASShortcut>) -> MASShortcut {
+        // Read-only because the shortcuts is managed and set by MASShortcut.
+        get {
+            let data = defaults.data(forKey: key.rawValue)
+            let bindingOptions = MASShortcutBinder.shared().bindingOptions!
+            let transformer = bindingOptions[NSValueTransformerBindingOption] as! ValueTransformer
+            return transformer.transformedValue(data) as? MASShortcut ?? MASShortcut()
+        }
+    }
 }
 
+// MARK: - PreferenceKeys
 class PreferenceKeys: RawRepresentable, Hashable {
     let rawValue: String
     
@@ -109,23 +120,28 @@ class PreferenceKeys: RawRepresentable, Hashable {
 
 final class PreferenceKey<T>: PreferenceKeys { }
 
-/// The collection of all preference keys.
+// MARK: - Preference Keys
 extension PreferenceKeys {
     // General
     static let launchAtLogin = PreferenceKey<Bool>("launchAtLogin")
     static let keepWindowsOnTop = PreferenceKey<Bool>("keepWindowsOnTop")
+    
+    // Shortcuts
+    static let uploadImageShortcut = PreferenceKey<MASShortcut>("uploadImageShortcut")
     
     // Hosts
     static let currentHost = PreferenceKey<String>("currentHost")
     static let qiniuHostInfo = PreferenceKey<[String: Any]>("qiniuHostInfo")
 }
 
-
-// The collection of all default preference, except shortcuts managed by MASShortcut.
+// MARK: - Default Preference Values
 private let defaultPreferences: [PreferenceKeys: Any] = [
     // General
     .launchAtLogin: false,
     .keepWindowsOnTop: true,
+    
+    // Shortcuts
+    .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]).data(),
     
     // Hosts
     .currentHost: SupportedHost.qiniu.rawValue,

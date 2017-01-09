@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol HostsPreferencesSavable: class {
-    func saveHostPreferences();
+    func saveHostPreferences()
 }
 
 class HostsPreferencesViewController: BasePreferencesViewController {
@@ -21,9 +21,8 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "Hosts"
-
+        
         setUp()
     }
     

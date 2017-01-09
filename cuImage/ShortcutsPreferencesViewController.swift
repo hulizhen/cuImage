@@ -14,7 +14,6 @@ class ShortcutsPreferencesViewController: BasePreferencesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "Shortcuts"
 
         uploadImageShortcutView.associatedUserDefaultsKey = PreferenceKeys.uploadImageShortcut.rawValue

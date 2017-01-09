@@ -12,8 +12,7 @@ import ServiceManagement
 func launchAtLogin(_ launch: Bool) {
     let launcherBundleIdentifier = "com.hulizhen.cuImageLauncher" as CFString
     
-    let enabled = SMLoginItemSetEnabled(launcherBundleIdentifier, launch)
-    print((enabled ? "Succeeded" : "Failed") + " to " + (launch ? "add" : "remove") + " login item.")
+    SMLoginItemSetEnabled(launcherBundleIdentifier, launch)
 }
 
 func keepWindowsOnTop(_ top: Bool) {

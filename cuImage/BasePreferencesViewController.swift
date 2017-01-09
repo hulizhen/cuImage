@@ -17,7 +17,7 @@ class BasePreferencesViewController: NSViewController {
         // Set preferences window title according to its content view controller.
         window.title = title!
         
-        // Stop get focus when switching to new prefrence pane.
+        // Prevent getting focus when switching to new preference pane.
         window.makeFirstResponder(nil)
     }
 }

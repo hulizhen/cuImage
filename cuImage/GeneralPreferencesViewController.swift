@@ -14,7 +14,6 @@ class GeneralPreferencesViewController: BasePreferencesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         title = "General"
     }
 }

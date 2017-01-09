@@ -8,15 +8,18 @@
 
 import Cocoa
 
+// MARK: - Host
 protocol Host: class {
-    func uploadImage(_ image: NSImage, named name: String, in type: NSBitmapImageFileType);
+    func uploadImage(_ image: NSImage, named name: String, in type: NSBitmapImageFileType)
 }
 
+// MARK: - HostDelegate
 protocol HostDelegate: class {
-    func host(_ host: Host, isUploadingImageWithPercent percent: Float);
-    func host(_ host: Host, didUploadImageWithURLString urlString: String);
+    func host(_ host: Host, isUploadingImageWithPercent percent: Float)
+    func host(_ host: Host, didUploadImageWithURLString urlString: String)
 }
 
+// MARK: - SupportedHost
 enum SupportedHost: String {
     case qiniu = "Qiniu"
     

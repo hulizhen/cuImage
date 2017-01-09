@@ -12,12 +12,12 @@ import MASShortcut
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+
     @IBOutlet weak var menu: NSMenu!
     @IBOutlet weak var uploadImageMenuItem: NSMenuItem!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
-
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     
     lazy var aboutWindowController: AboutWindowController = AboutWindowController()
     lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
@@ -56,6 +56,13 @@ final class StatusItemController: NSObject {
         }
     }
     
+    private func addObservers() {
+        let defaults = UserDefaults.standard
+        
+        defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
+                             options: [.initial, .new], context: nil)
+    }
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath else { return }
         guard let key = PreferenceKeys(rawValue: keyPath) else { return }
@@ -64,14 +71,7 @@ final class StatusItemController: NSObject {
         case PreferenceKeys.uploadImageShortcut:
             uploadImageMenuItem.setKeyEquivalent(withShortcut: preferences[.uploadImageShortcut])
         default:
-            print("Observe value for key path: \(keyPath)")
+            print("Observe value for key path: \(keyPath).")
         }
-    }
-
-    fileprivate func addObservers() {
-        let defaults = UserDefaults.standard
-        
-        defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
-                             options: [.initial, .new], context: nil)
     }
 }
