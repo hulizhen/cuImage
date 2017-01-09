@@ -22,6 +22,10 @@ final class StatusItemController: NSObject {
     lazy var aboutWindowController: AboutWindowController = AboutWindowController()
     lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
     
+    deinit {
+        removeObservers()
+    }
+    
     private override init() {
         super.init()
         
@@ -44,7 +48,7 @@ final class StatusItemController: NSObject {
     @IBAction func handleTappedMenuItem(_ item: NSMenuItem) {
         switch item {
         case uploadImageMenuItem:
-            UploadController.shared.uploadImageOnPasteboard()
+            UploadManager.shared.uploadImageOnPasteboard()
         case preferencesMenuItem:
             preferencesWindowController.showWindow(item)
             NSApp.activate(ignoringOtherApps: true)
@@ -63,6 +67,12 @@ final class StatusItemController: NSObject {
                              options: [.initial, .new], context: nil)
     }
     
+    fileprivate func removeObservers() {
+        let defaults = UserDefaults.standard
+        defaults.removeObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue)
+    }
+
+    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath else { return }
         guard let key = PreferenceKeys(rawValue: keyPath) else { return }
@@ -71,7 +81,6 @@ final class StatusItemController: NSObject {
         case PreferenceKeys.uploadImageShortcut:
             uploadImageMenuItem.setKeyEquivalent(withShortcut: preferences[.uploadImageShortcut])
         default:
-            print("Observe value for key path: \(keyPath).")
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }

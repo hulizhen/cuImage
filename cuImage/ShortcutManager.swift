@@ -30,6 +30,6 @@ final class ShortcutManager {
 // MARK: - Shortcut Actions
 extension ShortcutManager {
     fileprivate func uploadImageOnPasteboard() {
-        UploadController.shared.uploadImageOnPasteboard()
+        UploadManager.shared.uploadImageOnPasteboard()
     }
 }

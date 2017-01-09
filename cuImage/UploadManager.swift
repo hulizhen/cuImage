@@ -1,5 +1,5 @@
 //
-//  UploadController.swift
+//  UploadManager.swift
 //  cuImage
 //
 //  Created by HuLizhen on 03/01/2017.
@@ -8,8 +8,8 @@
 
 import Cocoa
 
-final class UploadController {
-    static let shared = UploadController()
+final class UploadManager {
+    static let shared = UploadManager()
     
     private var host: Host?
     
@@ -18,7 +18,7 @@ final class UploadController {
     }
     
     /// Upload the image on pasteboard.
-    /// - Parameter pasteboard: the pasteboard on which the image is. Use the general pasteboard by default.
+    /// - Parameter pasteboard: the pasteboard on which the image is, general pasteboard by default.
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         if let image = readImageFromPasteBoard() {
             host?.uploadImage(image, named: "Screenshot", in: .PNG)
@@ -26,12 +26,12 @@ final class UploadController {
     }
     
     private func readImageFromPasteBoard() -> NSImage? {
-        let pasteBoard = NSPasteboard.general()
+        let pasteboard = NSPasteboard.general()
         let classes = [NSImage.self]
         var image: NSImage?
         
-        if pasteBoard.canReadObject(forClasses: classes, options: nil) {
-            let array = pasteBoard.readObjects(forClasses: classes, options: nil)
+        if pasteboard.canReadObject(forClasses: classes, options: nil) {
+            let array = pasteboard.readObjects(forClasses: classes, options: nil)
             image = array?.first as? NSImage
         }
         
@@ -39,7 +39,7 @@ final class UploadController {
     }
 }
 
-extension UploadController: HostDelegate {
+extension UploadManager: HostDelegate {
     func host(_ host: Host, isUploadingImageWithPercent percent: Float) {
         print("Percent: \(percent)")
     }

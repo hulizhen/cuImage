@@ -12,10 +12,14 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItemController = StatusItemController.shared
-    let uploadController = UploadController.shared
+    let uploadManager = UploadManager.shared
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         addObservers()
+    }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        removeObservers()
     }
 }
 
@@ -31,17 +35,21 @@ extension AppDelegate {
         case PreferenceKeys.keepWindowsOnTop:
             keepWindowsOnTop(preferences[.keepWindowsOnTop])
         default:
-            print("Observe value for key path: \(keyPath)")
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     
     fileprivate func addObservers() {
         let defaults = UserDefaults.standard
-        
         defaults.addObserver(self, forKeyPath: PreferenceKeys.launchAtLogin.rawValue,
                              options: [.initial, .new], context: nil)
         defaults.addObserver(self, forKeyPath: PreferenceKeys.keepWindowsOnTop.rawValue,
                              options: [.initial, .new], context: nil)
+    }
+    
+    fileprivate func removeObservers() {
+        let defaults = UserDefaults.standard
+        defaults.removeObserver(self, forKeyPath: PreferenceKeys.launchAtLogin.rawValue)
+        defaults.removeObserver(self, forKeyPath: PreferenceKeys.keepWindowsOnTop.rawValue)
     }
 }

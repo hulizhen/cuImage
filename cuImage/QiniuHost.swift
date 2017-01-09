@@ -21,12 +21,13 @@ final class QiniuHost: NSObject {
 
     var qiniuHostInfo: QiniuHostInfo!
     
+    deinit {
+        removeObservers()
+    }
+    
     override init() {
         super.init()
-        
-        let defaults = UserDefaults.standard
-        defaults.addObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue,
-                             options: [.initial, .new], context: nil)
+        addObservers()
     }
     
     convenience init(delegate: HostDelegate?) {
@@ -34,6 +35,18 @@ final class QiniuHost: NSObject {
         
         self.delegate = delegate
     }
+    
+    private func addObservers() {
+        let defaults = UserDefaults.standard
+        defaults.addObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue,
+                             options: [.initial, .new], context: nil)
+    }
+    
+    fileprivate func removeObservers() {
+        let defaults = UserDefaults.standard
+        defaults.removeObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue)
+    }
+
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath else { return }
@@ -47,7 +60,6 @@ final class QiniuHost: NSObject {
                               secretKey: qiniuHostInfo.secretKey,
                               scope: qiniuHostInfo.bucket)
         default:
-            print("Observe value for key path: \(keyPath)")
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
@@ -77,8 +89,7 @@ extension QiniuHost: Host {
         
         let bitmap = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
         let data = bitmap.representation(using: type, properties: [:])
-        let option = QNUploadOption(mime: nil, progressHandler: progressHandler,
-                                    params: nil, checkCrc: false, cancellationSignal: nil)
+        let option = QNUploadOption(progressHandler: progressHandler)
         
         // Make image file name.
         let key = name + "_" + Date.simpleFormatter.string(from: Date()) + "." + type.string
