@@ -27,12 +27,23 @@ final class UploadManager {
     
     private func readImageFromPasteBoard() -> NSImage? {
         let pasteboard = NSPasteboard.general()
-        let classes = [NSImage.self]
         var image: NSImage?
         
-        if pasteboard.canReadObject(forClasses: classes, options: nil) {
-            let array = pasteboard.readObjects(forClasses: classes, options: nil)
-            image = array?.first as? NSImage
+        guard let types = pasteboard.types else { return nil }
+        
+        // Read image file if it is.
+        if types.contains(kUTTypeFileURL as String) {
+            if let files = pasteboard.propertyList(forType: NSFilenamesPboardType) as? NSArray,
+                let file = files.firstObject as? String {
+                image = NSImage(contentsOfFile: file)
+            }
+        }
+        
+        // Read image data on pasteboard.
+        if image == nil && types.contains(NSPasteboardTypePNG) {
+            if let objects = pasteboard.readObjects(forClasses: [NSImage.self], options: nil) {
+                image = objects.first as? NSImage
+            }
         }
         
         return image
