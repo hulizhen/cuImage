@@ -11,15 +11,15 @@ import Cocoa
 final class QiniuHostInfo: NSObject, Dictionariable {
     var accessKey = ""
     var secretKey = ""
-    var domain = ""
     var bucket = ""
+    var domain = ""
     
     override init() { }
     
-    init(accessKey: String, secretKey: String, domain: String, bucket: String) {
+    init(accessKey: String, secretKey: String, bucket: String, domain: String) {
         self.accessKey = accessKey
         self.secretKey = secretKey
-        self.domain = domain
         self.bucket = bucket
+        self.domain = domain
     }
 }

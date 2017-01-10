@@ -11,8 +11,8 @@ import Cocoa
 class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
     @IBOutlet weak var accessKeyTextField: NSTextField!
     @IBOutlet weak var secretKeyTextField: NSTextField!
-    @IBOutlet weak var domainTextField: NSTextField!
     @IBOutlet weak var bucketTextField: NSTextField!
+    @IBOutlet weak var domainTextField: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +23,16 @@ class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
     func validateHostInfo(completion: @escaping (Bool) -> ()) {
         let qiniuHostInfo = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                           secretKey: secretKeyTextField.stringValue,
-                                          domain: domainTextField.stringValue,
-                                          bucket: bucketTextField.stringValue)
+                                          bucket: bucketTextField.stringValue,
+                                          domain: domainTextField.stringValue)
         QiniuHost().validateHostInfo(qiniuHostInfo, completion: completion)
     }
     
     func saveHostInfo() {
         preferences[.qiniuHostInfo] = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                                     secretKey: secretKeyTextField.stringValue,
-                                                    domain: domainTextField.stringValue,
-                                                    bucket: bucketTextField.stringValue).dictionary()
+                                                    bucket: bucketTextField.stringValue,
+                                                    domain: domainTextField.stringValue).dictionary()
     }
     
     private func loadHostInfo() {
@@ -40,7 +40,7 @@ class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
         
         accessKeyTextField.stringValue = qiniuHostInfo.accessKey
         secretKeyTextField.stringValue = qiniuHostInfo.secretKey
-        domainTextField.stringValue = qiniuHostInfo.domain
         bucketTextField.stringValue = qiniuHostInfo.bucket
+        domainTextField.stringValue = qiniuHostInfo.domain
     }
 }

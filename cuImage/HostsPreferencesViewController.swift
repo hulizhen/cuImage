@@ -36,6 +36,9 @@ class HostsPreferencesViewController: BasePreferencesViewController {
             hostsPopUpButton.lastItem!.image = host.image
         }
         
+        // TODO: Remove the following line after supporting more hosts.
+        hostsPopUpButton.toolTip = "Currently support Qiniu host only. Wait a moment, please :)"
+        
         // Select the current host.
         hostsPopUpButton.selectItem(withTitle: currentHost.rawValue)
         hostPreferencesContentView.addSubview(currentHostInfoViewController.view)
