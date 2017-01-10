@@ -9,10 +9,8 @@
 import Cocoa
 import ServiceManagement
 
-func launchAtLogin(_ launch: Bool) {
-    let launcherBundleIdentifier = "com.hulizhen.cuImageLauncher" as CFString
-    
-    let enabled = SMLoginItemSetEnabled(launcherBundleIdentifier, launch)
+func launchAtLogin(_ launch: Bool) {    
+    let enabled = SMLoginItemSetEnabled(Constants.launcherBundleIdentifier as CFString, launch)
     print((enabled ? "Succeeded" : "Failed") + " to " + (launch ? "add" : "remove") + " login item.")
 }
 

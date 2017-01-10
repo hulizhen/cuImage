@@ -13,8 +13,9 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     @IBOutlet weak var hostPreferencesContentView: NSView!
     @IBOutlet weak var saveButton: NSButton!
     @IBOutlet weak var validateButton: NSButton!
-    @IBOutlet weak var validateResultText: NSTextField!
-    @IBOutlet weak var validatingIndicator: NSProgressIndicator!
+    @IBOutlet weak var validationResultText: NSTextField!
+    @IBOutlet weak var validationResultIndicator: NSImageView!
+    @IBOutlet weak var validationProgressIndicator: NSProgressIndicator!
     
     var currentHost: SupportedHost!
     var currentHostInfoViewController: NSViewController!
@@ -22,7 +23,11 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Hosts"
-        validateResultText.stringValue = ""
+        
+        // Host info validation things.
+        validationResultText.stringValue = ""
+        validationProgressIndicator.isHidden = true
+        validationResultIndicator.image = nil
         
         setUp()
     }
@@ -50,10 +55,16 @@ class HostsPreferencesViewController: BasePreferencesViewController {
         
         switch button {
         case validateButton:
-            validatingIndicator.startAnimation(self)
+            validationResultText.stringValue = "Validating..."
+            validationResultIndicator.image = nil
+            validationProgressIndicator.isHidden = false
+            validationProgressIndicator.startAnimation(self)
             controller.validateHostInfo { succeeded in
-                self.validateResultText.stringValue = (succeeded ? "Valid" : "Invalid") + " Configurations!"
-                self.validatingIndicator.stopAnimation(self)
+                self.validationProgressIndicator.stopAnimation(self)
+                self.validationProgressIndicator.isHidden = true
+                self.validationResultText.stringValue = succeeded ? "Valid!" : "Invalid!"
+                self.validationResultIndicator.image =
+                    NSImage(named: succeeded ? Constants.validIndicator : Constants.invalidIndicator)
             }
         case saveButton:
             controller.saveHostInfo()

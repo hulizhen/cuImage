@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		250B7E311E24FEC00095FAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250B7E301E24FEC00095FAEA /* Constants.swift */; };
 		25130C4B1E20E0C700830B3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25130C4A1E20E0C700830B3F /* AppDelegate.swift */; };
 		25130C4D1E20E0C700830B3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4C1E20E0C700830B3F /* Assets.xcassets */; };
 		25130C501E20E0C700830B3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4E1E20E0C700830B3F /* MainMenu.xib */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		250B7E301E24FEC00095FAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		25130C481E20E0C700830B3F /* cuImageLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cuImageLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25130C4A1E20E0C700830B3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25130C4C1E20E0C700830B3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		25577E051E20882C0091735A /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				250B7E301E24FEC00095FAEA /* Constants.swift */,
 				25577E031E2088270091735A /* Utilities.swift */,
 			);
 			name = Misc;
@@ -508,6 +511,7 @@
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
 				25577DFB1E1FE1FE0091735A /* BasePreferencesViewController.swift in Sources */,
+				250B7E311E24FEC00095FAEA /* Constants.swift in Sources */,
 				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
 				25806C351E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift in Sources */,
 				256E393D1E24AD5000CA2F5F /* HostInfoViewController.swift in Sources */,

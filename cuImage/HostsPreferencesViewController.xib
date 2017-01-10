@@ -12,7 +12,9 @@
                 <outlet property="hostsPopUpButton" destination="HHV-0w-add" id="V3B-3r-KIf"/>
                 <outlet property="saveButton" destination="QF9-qe-ZPG" id="mIa-cG-rbr"/>
                 <outlet property="validateButton" destination="dCF-dO-hq2" id="zi0-5n-EqE"/>
-                <outlet property="validateResultText" destination="BLv-JV-Boy" id="4Hh-J8-Fky"/>
+                <outlet property="validationProgressIndicator" destination="HFo-6z-Qk3" id="JLi-1x-oUw"/>
+                <outlet property="validationResultIndicator" destination="vA3-Nk-bH0" id="IVz-KL-djv"/>
+                <outlet property="validationResultText" destination="BLv-JV-Boy" id="4Hh-J8-Fky"/>
                 <outlet property="view" destination="cAb-nW-fFu" id="YRo-RD-kTu"/>
             </connections>
         </customObject>
@@ -51,6 +53,14 @@ DQ
                                     <action selector="handleTappedButton:" target="-2" id="G2h-fQ-bCz"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLv-JV-Boy">
+                                <rect key="frame" x="42" y="22" width="105" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Validation Result" id="J5V-bl-31N">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cbc-7W-OKR">
                                 <rect key="frame" x="0.0" y="51" width="461" height="177"/>
                                 <constraints>
@@ -58,29 +68,32 @@ DQ
                                     <constraint firstAttribute="width" constant="461" id="xLo-6a-Nfm"/>
                                 </constraints>
                             </customView>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="HFo-6z-Qk3">
-                                <rect key="frame" x="118" y="20" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="HFo-6z-Qk3">
+                                <rect key="frame" x="20" y="22" width="16" height="16"/>
                             </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLv-JV-Boy">
-                                <rect key="frame" x="18" y="20" width="94" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Validate Result" id="J5V-bl-31N">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vA3-Nk-bH0">
+                                <rect key="frame" x="22" y="24" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="2H9-aN-sD7"/>
+                                    <constraint firstAttribute="width" constant="12" id="aUA-H4-dOx"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Valid" id="2vG-Hd-Tiq"/>
+                            </imageView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="vA3-Nk-bH0" firstAttribute="centerX" secondItem="HFo-6z-Qk3" secondAttribute="centerX" id="0RC-jQ-2zu"/>
+                            <constraint firstItem="HFo-6z-Qk3" firstAttribute="leading" secondItem="ac9-ZY-0kj" secondAttribute="leading" constant="20" id="5Tv-pc-xwB"/>
                             <constraint firstItem="dCF-dO-hq2" firstAttribute="centerY" secondItem="QF9-qe-ZPG" secondAttribute="centerY" id="8mf-wZ-1zf"/>
                             <constraint firstItem="cbc-7W-OKR" firstAttribute="top" secondItem="ac9-ZY-0kj" secondAttribute="top" id="CtK-om-FWS"/>
                             <constraint firstItem="QF9-qe-ZPG" firstAttribute="top" secondItem="cbc-7W-OKR" secondAttribute="bottom" constant="10" id="IOv-LD-fF1"/>
+                            <constraint firstItem="BLv-JV-Boy" firstAttribute="leading" secondItem="HFo-6z-Qk3" secondAttribute="trailing" constant="8" id="M9v-O0-BPc"/>
                             <constraint firstAttribute="trailing" secondItem="cbc-7W-OKR" secondAttribute="trailing" id="QAG-Dz-qzs"/>
                             <constraint firstItem="BLv-JV-Boy" firstAttribute="centerY" secondItem="dCF-dO-hq2" secondAttribute="centerY" id="R6J-hE-aqa"/>
                             <constraint firstAttribute="bottom" secondItem="QF9-qe-ZPG" secondAttribute="bottom" constant="20" id="Yox-cC-mQu"/>
                             <constraint firstAttribute="trailing" secondItem="QF9-qe-ZPG" secondAttribute="trailing" constant="20" id="YyG-RL-k26"/>
                             <constraint firstItem="cbc-7W-OKR" firstAttribute="leading" secondItem="ac9-ZY-0kj" secondAttribute="leading" id="a8Q-GL-JXR"/>
-                            <constraint firstItem="BLv-JV-Boy" firstAttribute="leading" secondItem="ac9-ZY-0kj" secondAttribute="leading" constant="20" id="jfb-6f-wPc"/>
+                            <constraint firstItem="vA3-Nk-bH0" firstAttribute="centerY" secondItem="HFo-6z-Qk3" secondAttribute="centerY" id="jvF-cf-4lr"/>
+                            <constraint firstItem="HFo-6z-Qk3" firstAttribute="centerY" secondItem="BLv-JV-Boy" secondAttribute="centerY" id="wAE-IX-tK3"/>
                             <constraint firstItem="QF9-qe-ZPG" firstAttribute="leading" secondItem="dCF-dO-hq2" secondAttribute="trailing" constant="12" id="xEn-Gk-xA5"/>
                         </constraints>
                     </view>
@@ -122,4 +135,7 @@ DQ
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="pFE-Vv-5Dx"/>
     </objects>
+    <resources>
+        <image name="Valid" width="48" height="48"/>
+    </resources>
 </document>
