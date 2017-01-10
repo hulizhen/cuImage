@@ -81,6 +81,31 @@ final class QiniuHost: NSObject {
         // Make upload token by concatenating accessKey, encodedSign and encodedPolicy.
         return accessKey + ":" + encodedSign + ":" + encodedPolicy
     }
+    
+    func validateHostInfo(_ hostInfo: QiniuHostInfo, completion: @escaping (Bool) -> ()) {
+        let testString = "Hello"
+        let token = makeToken(accessKey: hostInfo.accessKey,
+                              secretKey: hostInfo.secretKey,
+                              scope: hostInfo.bucket)
+        
+        // Upload test string.
+        uploadManager.put(testString.data(using: .utf8), key: testString, token: token,
+                          complete: { (info, key, response) in
+                            print(info!, key!)
+                            var succeeded = info!.isOK
+                            
+                            // if the token is valid, then validate the domain.
+                            if succeeded {
+                                if let url = URL(string: hostInfo.domain + "/" + testString),
+                                    let string = try? String(contentsOf: url) {
+                                    succeeded = testString == string
+                                } else {
+                                    succeeded = false
+                                }
+                            }
+                            completion(succeeded)
+        }, option: nil)
+    }
 }
 
 extension QiniuHost: Host {
@@ -97,7 +122,6 @@ extension QiniuHost: Host {
         // Upload image.
         uploadManager.put(data, key: key, token: token, complete: { [weak self] (info, key, response) in
             guard let sself = self else { return }
-            
             print(info!, key!)
             
             if info!.isOK {

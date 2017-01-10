@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class QiniuHostInfoViewController: NSViewController, HostsPreferencesSavable {
+class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
     @IBOutlet weak var accessKeyTextField: NSTextField!
     @IBOutlet weak var secretKeyTextField: NSTextField!
     @IBOutlet weak var domainTextField: NSTextField!
@@ -17,17 +17,25 @@ class QiniuHostInfoViewController: NSViewController, HostsPreferencesSavable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadHostPreferences()
+        loadHostInfo()
     }
     
-    func saveHostPreferences() {
+    func validateHostInfo(completion: @escaping (Bool) -> ()) {
+        let qiniuHostInfo = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
+                                          secretKey: secretKeyTextField.stringValue,
+                                          domain: domainTextField.stringValue,
+                                          bucket: bucketTextField.stringValue)
+        QiniuHost().validateHostInfo(qiniuHostInfo, completion: completion)
+    }
+    
+    func saveHostInfo() {
         preferences[.qiniuHostInfo] = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                                     secretKey: secretKeyTextField.stringValue,
                                                     domain: domainTextField.stringValue,
                                                     bucket: bucketTextField.stringValue).dictionary()
     }
     
-    private func loadHostPreferences() {
+    private func loadHostInfo() {
         let qiniuHostInfo = QiniuHostInfo(dictionary: preferences[.qiniuHostInfo])
         
         accessKeyTextField.stringValue = qiniuHostInfo.accessKey

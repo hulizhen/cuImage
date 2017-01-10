@@ -8,13 +8,12 @@
 
 import Cocoa
 
-protocol HostsPreferencesSavable: class {
-    func saveHostPreferences()
-}
-
 class HostsPreferencesViewController: BasePreferencesViewController {
     @IBOutlet weak var hostsPopUpButton: NSPopUpButton!
     @IBOutlet weak var hostPreferencesContentView: NSView!
+    @IBOutlet weak var saveButton: NSButton!
+    @IBOutlet weak var validateButton: NSButton!
+    @IBOutlet weak var validateResultText: NSTextField!
     
     var currentHost: SupportedHost!
     var currentHostInfoViewController: NSViewController!
@@ -22,6 +21,7 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Hosts"
+        validateResultText.stringValue = ""
         
         setUp()
     }
@@ -41,9 +41,18 @@ class HostsPreferencesViewController: BasePreferencesViewController {
         hostPreferencesContentView.addSubview(currentHostInfoViewController.view)
     }
     
-    @IBAction private func saveHostPreferences(_ button: NSButton) {
-        if let controller = currentHostInfoViewController as? HostsPreferencesSavable {
-            controller.saveHostPreferences()
+    @IBAction private func handleTappedButton(_ button: NSButton) {
+        guard let controller = currentHostInfoViewController as? HostInfoViewController else { return }
+        
+        switch button {
+        case validateButton:
+            controller.validateHostInfo { succeeded in
+                self.validateResultText.stringValue = (succeeded ? "Valid" : "Invalid") + " Configurations!"
+            }
+        case saveButton:
+            controller.saveHostInfo()
+        default:
+            break
         }
     }
 }

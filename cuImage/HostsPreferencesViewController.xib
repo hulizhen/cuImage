@@ -10,6 +10,9 @@
             <connections>
                 <outlet property="hostPreferencesContentView" destination="cbc-7W-OKR" id="HqD-n9-bon"/>
                 <outlet property="hostsPopUpButton" destination="HHV-0w-add" id="V3B-3r-KIf"/>
+                <outlet property="saveButton" destination="QF9-qe-ZPG" id="mIa-cG-rbr"/>
+                <outlet property="validateButton" destination="dCF-dO-hq2" id="zi0-5n-EqE"/>
+                <outlet property="validateResultText" destination="BLv-JV-Boy" id="4Hh-J8-Fky"/>
                 <outlet property="view" destination="cAb-nW-fFu" id="YRo-RD-kTu"/>
             </connections>
         </customObject>
@@ -50,17 +53,39 @@ DQ
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="saveHostPreferences:" target="-2" id="owP-6h-cQy"/>
+                                    <action selector="handleTappedButton:" target="-2" id="Qn1-GH-M9h"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCF-dO-hq2">
+                                <rect key="frame" x="288" y="13" width="89" height="32"/>
+                                <buttonCell key="cell" type="push" title="Validate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RL5-pB-8JI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleTappedButton:" target="-2" id="G2h-fQ-bCz"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLv-JV-Boy">
+                                <rect key="frame" x="18" y="22" width="94" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Validate Result" id="J5V-bl-31N">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="dCF-dO-hq2" firstAttribute="centerY" secondItem="QF9-qe-ZPG" secondAttribute="centerY" id="8mf-wZ-1zf"/>
                             <constraint firstItem="cbc-7W-OKR" firstAttribute="top" secondItem="ac9-ZY-0kj" secondAttribute="top" id="CtK-om-FWS"/>
                             <constraint firstItem="QF9-qe-ZPG" firstAttribute="top" secondItem="cbc-7W-OKR" secondAttribute="bottom" constant="8" id="IOv-LD-fF1"/>
                             <constraint firstAttribute="trailing" secondItem="cbc-7W-OKR" secondAttribute="trailing" id="QAG-Dz-qzs"/>
+                            <constraint firstItem="BLv-JV-Boy" firstAttribute="centerY" secondItem="dCF-dO-hq2" secondAttribute="centerY" id="R6J-hE-aqa"/>
                             <constraint firstAttribute="bottom" secondItem="QF9-qe-ZPG" secondAttribute="bottom" constant="20" id="Yox-cC-mQu"/>
                             <constraint firstAttribute="trailing" secondItem="QF9-qe-ZPG" secondAttribute="trailing" constant="20" id="YyG-RL-k26"/>
                             <constraint firstItem="cbc-7W-OKR" firstAttribute="leading" secondItem="ac9-ZY-0kj" secondAttribute="leading" id="a8Q-GL-JXR"/>
+                            <constraint firstItem="BLv-JV-Boy" firstAttribute="leading" secondItem="ac9-ZY-0kj" secondAttribute="leading" constant="20" id="dsI-wx-Q1q"/>
+                            <constraint firstItem="QF9-qe-ZPG" firstAttribute="leading" secondItem="dCF-dO-hq2" secondAttribute="trailing" constant="12" id="xEn-Gk-xA5"/>
                         </constraints>
                     </view>
                 </box>
