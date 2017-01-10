@@ -14,6 +14,7 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     @IBOutlet weak var saveButton: NSButton!
     @IBOutlet weak var validateButton: NSButton!
     @IBOutlet weak var validateResultText: NSTextField!
+    @IBOutlet weak var validatingIndicator: NSProgressIndicator!
     
     var currentHost: SupportedHost!
     var currentHostInfoViewController: NSViewController!
@@ -49,8 +50,10 @@ class HostsPreferencesViewController: BasePreferencesViewController {
         
         switch button {
         case validateButton:
+            validatingIndicator.startAnimation(self)
             controller.validateHostInfo { succeeded in
                 self.validateResultText.stringValue = (succeeded ? "Valid" : "Invalid") + " Configurations!"
+                self.validatingIndicator.stopAnimation(self)
             }
         case saveButton:
             controller.saveHostInfo()
