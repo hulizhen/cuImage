@@ -83,6 +83,12 @@ final class QiniuHost: NSObject {
     }
     
     func validateHostInfo(_ hostInfo: QiniuHostInfo, completion: @escaping (Bool) -> ()) {
+        guard hostInfo.accessKey != "", hostInfo.secretKey != "",
+            hostInfo.bucket != "", hostInfo.domain != "" else {
+                completion(false)
+                return
+        }
+        
         let testString = Constants.testString
         let token = makeToken(accessKey: hostInfo.accessKey,
                               secretKey: hostInfo.secretKey,

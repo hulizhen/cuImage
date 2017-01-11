@@ -12,7 +12,7 @@ import MASShortcut
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
 
     @IBOutlet weak var menu: NSMenu!
     @IBOutlet weak var uploadImageMenuItem: NSMenuItem!
@@ -40,7 +40,9 @@ final class StatusItemController: NSObject {
                 fatalError("Failed to instantiate \(self.className)")
         }
         
-        statusItem.title = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
+        let image = NSImage(named: Constants.statusItemIcon)
+        image!.isTemplate = true
+        statusItem.image = image
         statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
         statusItem.menu = menu
     }
