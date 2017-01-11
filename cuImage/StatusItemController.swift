@@ -37,7 +37,7 @@ final class StatusItemController: NSObject {
         guard let nibName = self.className.components(separatedBy: ".").last,
             let nib = NSNib(nibNamed: nibName, bundle: nil),
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
-                fatalError("Failed to instantiate \(self.className)")
+                assert(false, "Failed to instantiate \(self.className)")
         }
         
         let image = NSImage(named: Constants.statusItemIcon)

@@ -115,7 +115,33 @@ final class QiniuHost: NSObject {
 }
 
 extension QiniuHost: Host {
-    func uploadImage(_ image: NSImage, named name: String, in type: NSBitmapImageFileType) {
+    func uploadImageFile(_ fileURL: URL) {
+        assert(token != nil, "Make the upload token first.")
+        
+        let option = QNUploadOption(progressHandler: progressHandler)
+        
+        // Make image file name.
+        let components = fileURL.lastPathComponent.components(separatedBy: ".")
+        let prefix = components.first ?? ""
+        let suffix = components.last ?? ""
+        let key = prefix + "_" + Date.simpleFormatter.string(from: Date()) + "." + suffix
+        
+        // Upload image file.
+        uploadManager.putFile(fileURL.relativePath, key: key, token: token,
+                              complete: { [weak self] (info, key, response) in
+                                guard let sself = self else { return }
+                                print(info!, key!)
+                                if info!.isOK {
+                                    let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                                    sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
+                                } else {
+                                    // TODO: Show alert dialog to the user!
+                                    assert(false, "Failed to upload image.")
+                                }
+            }, option: option)
+    }
+    
+    func uploadImageData(_ image: NSImage, named name: String, in type: NSBitmapImageFileType) {
         assert(token != nil, "Make the upload token first.")
         
         let bitmap = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
@@ -125,18 +151,20 @@ extension QiniuHost: Host {
         // Make image file name.
         let key = name + "_" + Date.simpleFormatter.string(from: Date()) + "." + type.string
         
-        // Upload image.
-        uploadManager.put(data, key: key, token: token, complete: { [weak self] (info, key, response) in
-            guard let sself = self else { return }
-            print(info!, key!)
-            
-            if info!.isOK {
-                let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
-                sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
-            } else {
-                assert(false, "Failed to upload image.")
-            }
-        }, option: option)
+        // Upload image data.
+        uploadManager.put(data, key: key, token: token,
+                          complete: { [weak self] (info, key, response) in
+                            guard let sself = self else { return }
+                            print(info!, key!)
+                            
+                            if info!.isOK {
+                                let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                                sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
+                            } else {
+                                // TODO: Show alert dialog to the user!
+                                assert(false, "Failed to upload image.")
+                            }
+            }, option: option)
     }
     
     private func progressHandler(key: String?, percent: Float) {
