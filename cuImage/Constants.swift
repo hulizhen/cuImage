@@ -12,6 +12,7 @@ struct Constants {
     // Assets
     static let appIcon = "AppIcon"
     static let statusItemIcon = "StatusItemIcon"
+    static let draggingDestinationBox = "DraggingDestinationBox"
     static let validIndicator = "ValidIndicator"
     static let invalidIndicator = "InvalidIndicator"
     static let generalPreferences = "GeneralPreferences"

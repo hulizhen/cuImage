@@ -10,8 +10,7 @@ import Cocoa
 import ServiceManagement
 
 func launchAtLogin(_ launch: Bool) {    
-    let enabled = SMLoginItemSetEnabled(Constants.launcherBundleIdentifier as CFString, launch)
-    print((enabled ? "Succeeded" : "Failed") + " to " + (launch ? "add" : "remove") + " login item.")
+    SMLoginItemSetEnabled(Constants.launcherBundleIdentifier as CFString, launch)
 }
 
 func keepWindowsOnTop(_ top: Bool) {
