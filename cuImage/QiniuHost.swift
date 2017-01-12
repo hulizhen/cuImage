@@ -132,7 +132,7 @@ extension QiniuHost: Host {
                                 guard let sself = self else { return }
                                 print(info!, key!)
                                 if info!.isOK {
-                                    let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                                    let urlString = sself.qiniuHostInfo.domain + "/" + key!
                                     sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
                                 } else {
                                     // TODO: Show alert dialog to the user!
@@ -158,7 +158,7 @@ extension QiniuHost: Host {
                             print(info!, key!)
                             
                             if info!.isOK {
-                                let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                                let urlString = sself.qiniuHostInfo.domain + "/" + key!
                                 sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
                             } else {
                                 // TODO: Show alert dialog to the user!

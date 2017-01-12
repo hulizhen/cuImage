@@ -61,4 +61,16 @@ extension AppDelegate: NSUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        switch notification.activationType {
+        case .actionButtonClicked, .contentsClicked:
+            if let text = notification.informativeText,
+                let url = URL(string: text) {
+                NSWorkspace.shared().open(url)
+            }
+        default:
+            break
+        }
+    }
 }

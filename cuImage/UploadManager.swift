@@ -44,9 +44,10 @@ extension UploadManager: HostDelegate {
     func host(_ host: Host, didUploadImageWithURLString urlString: String) {
         NSUserNotificationCenter.default.deliverNotification(withTitle: "Image Uploaded", subtitle: "", text: urlString)
         
+        let markdownURL = "![](" + urlString + ")"
         let pasteBoard = NSPasteboard.general()
         pasteBoard.declareTypes([NSPasteboardTypeString], owner: nil)
-        assert(pasteBoard.setString(urlString, forType: NSPasteboardTypeString),
+        assert(pasteBoard.setString(markdownURL, forType: NSPasteboardTypeString),
                "Failed to write object to the general pasteboard")
     }
 }
