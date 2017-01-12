@@ -22,45 +22,18 @@ final class UploadManager {
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         guard let host = host else { return }
         guard let types = pasteboard.types else { return }
+        guard let objects = pasteboard.readObjects(forClasses: [NSURL.self, NSImage.self], options: nil) else { return }
         
-        // Read image file if it is.
-        if types.contains(kUTTypeFileURL as String) {
-            guard let objects = pasteboard.readObjects(forClasses: [NSURL.self], options: nil) else { return }
-            
-            // Determine whether the file is an image file.
-            let fileURL = objects.first as! NSURL
-            let fileExtension = fileURL.pathExtension as! CFString
-            let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)
-            if let uti = uti?.takeRetainedValue(), UTTypeConformsTo(uti, kUTTypeImage) {
-                host.uploadImageFile(fileURL as URL)
+        // Read the file if it is an image file, otherwise upload the image data.
+        if types.contains(kUTTypeFileURL as String),
+            let fileURL = objects.first as? URL {
+            if fileURL.conformsToUTI(type: kUTTypeImage) {
+                host.uploadImageFile(fileURL)
             }
-        } else if let image = readImageFromPasteBoard() {
+        } else if types.contains(kUTTypeImage as String),
+            let image = objects.first as? NSImage {
             host.uploadImageData(image, named: "Screenshot", in: .PNG)
         }
-    }
-    
-    private func readImageFromPasteBoard() -> NSImage? {
-        let pasteboard = NSPasteboard.general()
-        var image: NSImage?
-        
-        guard let types = pasteboard.types else { return nil }
-        
-        // Read image file if it is.
-        if types.contains(kUTTypeFileURL as String) {
-            if let files = pasteboard.propertyList(forType: NSFilenamesPboardType) as? NSArray,
-                let file = files.firstObject as? String {
-                image = NSImage(contentsOfFile: file)
-            }
-        }
-        
-        // Read image data on pasteboard.
-        if image == nil && types.contains(NSPasteboardTypePNG) {
-            if let objects = pasteboard.readObjects(forClasses: [NSImage.self], options: nil) {
-                image = objects.first as? NSImage
-            }
-        }
-        
-        return image
     }
 }
 

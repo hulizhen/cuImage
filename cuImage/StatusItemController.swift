@@ -12,7 +12,7 @@ import MASShortcut
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    let statusItem: NSStatusItem
 
     @IBOutlet weak var menu: NSMenu!
     @IBOutlet weak var uploadImageMenuItem: NSMenuItem!
@@ -24,11 +24,13 @@ final class StatusItemController: NSObject {
     
     deinit {
         removeObservers()
+        NSStatusBar.system().removeStatusItem(statusItem)
     }
     
     private override init() {
+        statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
         super.init()
-        
+
         setUp()
         addObservers()
     }
@@ -40,11 +42,9 @@ final class StatusItemController: NSObject {
                 assert(false, "Failed to instantiate \(self.className)")
         }
         
-        let image = NSImage(named: Constants.statusItemIcon)
-        image!.isTemplate = true
-        statusItem.image = image
-        statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
         statusItem.menu = menu
+        statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
+        statusItem.button!.addSubview(StatusItemView(frame: statusItem.button!.frame))
     }
 
     @IBAction func handleTappedMenuItem(_ item: NSMenuItem) {
