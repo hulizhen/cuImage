@@ -21,7 +21,8 @@ final class UploadManager {
     /// - Parameter pasteboard: the pasteboard on which the image is, general pasteboard by default.
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         guard let host = host else { return }
-        guard let objects = pasteboard.readObjects(forClasses: [NSURL.self, NSImage.self], options: nil) else { return }
+        let classes: [AnyClass] = [NSURL.self, NSImage.self]
+        guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return }
         
         if let fileURL = objects.first as? URL {
             // Upload the file if it is an image file.
@@ -41,7 +42,7 @@ extension UploadManager: HostDelegate {
     }
     
     func host(_ host: Host, didUploadImageWithURLString urlString: String) {
-        print("URL String: \(urlString)")
+        NSUserNotificationCenter.default.deliverNotification(withTitle: "Image Uploaded", subtitle: "", text: urlString)
         
         let pasteBoard = NSPasteboard.general()
         pasteBoard.declareTypes([NSPasteboardTypeString], owner: nil)
