@@ -24,10 +24,10 @@ final class UploadManager {
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return }
         
-        if let fileURL = objects.first as? URL {
+        if let url = objects.first as? URL {
             // Upload the file if it is an image file.
-            if fileURL.conformsToUTI(type: kUTTypeImage) {
-                host.uploadImageFile(fileURL)
+            if url.isImageFileURL() {
+                host.uploadImageFile(url)
             }
         } else if let image = objects.first as? NSImage {
             // Upload the image if it is just an screenshot image.
