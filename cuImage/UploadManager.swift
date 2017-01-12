@@ -27,12 +27,10 @@ final class UploadManager {
         if types.contains(kUTTypeFileURL as String) {
             guard let objects = pasteboard.readObjects(forClasses: [NSURL.self], options: nil) else { return }
             
-            // Determine whether the file is an image file.
-            let fileURL = objects.first as! NSURL
-            let fileExtension = fileURL.pathExtension as! CFString
-            let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)
-            if let uti = uti?.takeRetainedValue(), UTTypeConformsTo(uti, kUTTypeImage) {
-                host.uploadImageFile(fileURL as URL)
+            // Upload the file if it is an image file.
+            let fileURL = objects.first as! URL
+            if fileURL.conformsToUTI(type: kUTTypeImage) {
+                host.uploadImageFile(fileURL)
             }
         } else if let image = readImageFromPasteBoard() {
             host.uploadImageData(image, named: "Screenshot", in: .PNG)

@@ -38,9 +38,23 @@ final class StatusItemView: NSImageView {
     }
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        image = draggingDestinationBox
+        let pasteboard = sender.draggingPasteboard()
+        let none = NSDragOperation()
+        let operations = NSDragOperation.copy
+        guard let types = pasteboard.types else { return none }
         
-        return .copy
+        // Return none if the file is not a image file.
+        if types.contains(kUTTypeFileURL as String) {
+            let objects = pasteboard.readObjects(forClasses: [NSURL.self], options: nil)
+            guard let fileURL = objects?.first as? URL else { return none }
+
+            if fileURL.conformsToUTI(type: kUTTypeImage) == false {
+                return none
+            }
+        }
+
+        image = draggingDestinationBox
+        return operations
     }
     
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
