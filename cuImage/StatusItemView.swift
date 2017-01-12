@@ -32,8 +32,8 @@ final class StatusItemView: NSImageView {
         // Unregister the default dragged types.
         unregisterDraggedTypes()
         
-        // Register the dragged types for only image and file.
-        let draggedTypes = [kUTTypeImage as String, kUTTypeFileURL as String]
+        // Register the dragged types for only file and image.
+        let draggedTypes = [kUTTypeFileURL as String, kUTTypeImage as String]
         register(forDraggedTypes: draggedTypes)
     }
     
@@ -58,12 +58,17 @@ final class StatusItemView: NSImageView {
     }
     
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        sender.animatesToDestination = true
         return true
+    }
+    
+    override func wantsPeriodicDraggingUpdates() -> Bool {
+        return false
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         image = statusItemIcon
+        let uploadManager = (NSApp.delegate as! AppDelegate).uploadManager
+        uploadManager.uploadImageOnPasteboard(sender.draggingPasteboard())
         return true
     }
     
