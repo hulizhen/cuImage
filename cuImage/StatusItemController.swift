@@ -64,7 +64,6 @@ final class StatusItemController: NSObject {
     
     private func addObservers() {
         let defaults = UserDefaults.standard
-        
         defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
                              options: [.initial, .new], context: nil)
     }
@@ -73,7 +72,6 @@ final class StatusItemController: NSObject {
         let defaults = UserDefaults.standard
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue)
     }
-
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath else { return }

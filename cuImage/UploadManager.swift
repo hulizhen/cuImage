@@ -21,17 +21,15 @@ final class UploadManager {
     /// - Parameter pasteboard: the pasteboard on which the image is, general pasteboard by default.
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         guard let host = host else { return }
-        guard let types = pasteboard.types else { return }
         guard let objects = pasteboard.readObjects(forClasses: [NSURL.self, NSImage.self], options: nil) else { return }
         
-        // Read the file if it is an image file, otherwise upload the image data.
-        if types.contains(kUTTypeFileURL as String),
-            let fileURL = objects.first as? URL {
+        if let fileURL = objects.first as? URL {
+            // Upload the file if it is an image file.
             if fileURL.conformsToUTI(type: kUTTypeImage) {
                 host.uploadImageFile(fileURL)
             }
-        } else if types.contains(kUTTypeImage as String),
-            let image = objects.first as? NSImage {
+        } else if let image = objects.first as? NSImage {
+            // Upload the image if it is just an screenshot image.
             host.uploadImageData(image, named: "Screenshot", in: .PNG)
         }
     }

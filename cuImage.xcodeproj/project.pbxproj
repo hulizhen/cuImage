@@ -217,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				255957FE1E1BD70F00B8469E /* Application */,
-				258BE7451E26808E00D04D23 /* Status Item */,
 				2559583C1E1BECD600B8469E /* Hosts */,
 				2559581E1E1BE01C00B8469E /* Preferences */,
 				255958141E1BDDDC00B8469E /* About */,
@@ -234,8 +233,11 @@
 			isa = PBXGroup;
 			children = (
 				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
-				2559584F1E1BEF5300B8469E /* UploadManager.swift */,
 				255957F31E1BD2A600B8469E /* MainMenu.xib */,
+				2559584F1E1BEF5300B8469E /* UploadManager.swift */,
+				255958021E1BD77100B8469E /* StatusItemController.swift */,
+				255958041E1BD78500B8469E /* StatusItemController.xib */,
+				258BE74E1E27516500D04D23 /* StatusItemView.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -307,16 +309,6 @@
 				255B1D9A1E1F4000000791EC /* Dictionariable.swift */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		258BE7451E26808E00D04D23 /* Status Item */ = {
-			isa = PBXGroup;
-			children = (
-				255958021E1BD77100B8469E /* StatusItemController.swift */,
-				255958041E1BD78500B8469E /* StatusItemController.xib */,
-				258BE74E1E27516500D04D23 /* StatusItemView.swift */,
-			);
-			name = "Status Item";
 			sourceTree = "<group>";
 		};
 		609AB411EA9D0F6060FBBF88 /* Pods */ = {
