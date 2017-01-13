@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         addObservers()
+        NSUserNotificationCenter.default.delegate = self
     }
     
     func applicationWillTerminate(_ notification: Notification) {
@@ -51,5 +52,25 @@ extension AppDelegate {
         let defaults = UserDefaults.standard
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.launchAtLogin.rawValue)
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.keepWindowsOnTop.rawValue)
+    }
+}
+
+// MARK: - NSUserNotificationCenterDelegate
+extension AppDelegate: NSUserNotificationCenterDelegate {
+    // Deliver the notification even if the application is already frontmost.
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
+    }
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        switch notification.activationType {
+        case .actionButtonClicked, .contentsClicked:
+            if let text = notification.informativeText,
+                let url = URL(string: text) {
+                NSWorkspace.shared().open(url)
+            }
+        default:
+            break
+        }
     }
 }

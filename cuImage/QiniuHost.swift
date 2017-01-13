@@ -115,24 +115,24 @@ final class QiniuHost: NSObject {
 }
 
 extension QiniuHost: Host {
-    func uploadImageFile(_ fileURL: URL) {
+    func uploadImageFile(_ url: URL) {
         assert(token != nil, "Make the upload token first.")
         
         let option = QNUploadOption(progressHandler: progressHandler)
         
         // Make image file name.
-        let components = fileURL.lastPathComponent.components(separatedBy: ".")
+        let components = url.lastPathComponent.components(separatedBy: ".")
         let prefix = components.first ?? ""
-        let suffix = components.last ?? ""
+        let suffix = (url.pathExtension == "") ? "png" : url.pathExtension
         let key = prefix + "_" + Date.simpleFormatter.string(from: Date()) + "." + suffix
         
         // Upload image file.
-        uploadManager.putFile(fileURL.relativePath, key: key, token: token,
+        uploadManager.putFile(url.relativePath, key: key, token: token,
                               complete: { [weak self] (info, key, response) in
                                 guard let sself = self else { return }
                                 print(info!, key!)
                                 if info!.isOK {
-                                    let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                                    let urlString = sself.qiniuHostInfo.domain + "/" + key!
                                     sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
                                 } else {
                                     // TODO: Show alert dialog to the user!
@@ -158,7 +158,7 @@ extension QiniuHost: Host {
                             print(info!, key!)
                             
                             if info!.isOK {
-                                let urlString = "![](" + sself.qiniuHostInfo.domain + "/" + key! + ")"
+                                let urlString = sself.qiniuHostInfo.domain + "/" + key!
                                 sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
                             } else {
                                 // TODO: Show alert dialog to the user!
