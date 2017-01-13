@@ -13,10 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Check whether the main application is already running.
         var isRunning = false
-        let mainAppBundleIdentifier = "com.hulizhen.cuImage"
+        let mainApplicationBundleIdentifier = Bundle.main.infoDictionary!["MainApplicationBundleIdentifier"] as! String
         let runningApplications = NSWorkspace.shared().runningApplications
         for app in runningApplications {
-            if app.bundleIdentifier == mainAppBundleIdentifier {
+            if app.bundleIdentifier == mainApplicationBundleIdentifier {
                 isRunning = true
                 break
             }

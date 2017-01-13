@@ -26,6 +26,8 @@
 	<true/>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>MainApplicationBundleIdentifier</key>
+	<string>com.hulizhen.cuImage</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 HuLizhen. All rights reserved.</string>
 	<key>NSMainNibFile</key>

@@ -19,9 +19,6 @@ struct Constants {
     static let shortcutsPreferences = "ShortcutsPreferences"
     static let hostsPreferences = "HostPreferences"
     
-    // Identifiers
-    static let launcherBundleIdentifier = "com.hulizhen.cuImageLauncher"
-    
     // Used for validating host informations.
     static let testString = "Hello"
 }
