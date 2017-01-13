@@ -32,15 +32,15 @@ class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
         preferences[.qiniuHostInfo] = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                                     secretKey: secretKeyTextField.stringValue,
                                                     bucket: bucketTextField.stringValue,
-                                                    domain: domainTextField.stringValue).dictionary()
+                                                    domain: domainTextField.stringValue)
     }
     
     private func loadHostInfo() {
-        let qiniuHostInfo = QiniuHostInfo(dictionary: preferences[.qiniuHostInfo])
-        
-        accessKeyTextField.stringValue = qiniuHostInfo.accessKey
-        secretKeyTextField.stringValue = qiniuHostInfo.secretKey
-        bucketTextField.stringValue = qiniuHostInfo.bucket
-        domainTextField.stringValue = qiniuHostInfo.domain
+        if let qiniuHostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
+            accessKeyTextField.stringValue = qiniuHostInfo.accessKey
+            secretKeyTextField.stringValue = qiniuHostInfo.secretKey
+            bucketTextField.stringValue = qiniuHostInfo.bucket
+            domainTextField.stringValue = qiniuHostInfo.domain
+        }
     }
 }

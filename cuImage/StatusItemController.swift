@@ -79,7 +79,9 @@ final class StatusItemController: NSObject {
         
         switch key {
         case PreferenceKeys.uploadImageShortcut:
-            uploadImageMenuItem.setKeyEquivalent(withShortcut: preferences[.uploadImageShortcut])
+            if let shortcut = preferences[.uploadImageShortcut] {
+                uploadImageMenuItem.setKeyEquivalent(withShortcut: shortcut)
+            }
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

@@ -39,7 +39,6 @@
 		255958501E1BEF5300B8469E /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559584F1E1BEF5300B8469E /* UploadManager.swift */; };
 		255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */; };
 		255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */; };
-		255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9A1E1F4000000791EC /* Dictionariable.swift */; };
 		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
 		256E393D1E24AD5000CA2F5F /* HostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */; };
@@ -49,6 +48,7 @@
 		258BE7551E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */; };
 		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
 		25DFF6D21E23A0040071F2EC /* cuImageLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25130C481E20E0C700830B3F /* cuImageLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E5F00E1E2886EC0004C12A /* HostInfo.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,7 +105,6 @@
 		2559584F1E1BEF5300B8469E /* UploadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UploadManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfoViewController.swift; sourceTree = "<group>"; };
 		255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostInfoViewController.xib; sourceTree = "<group>"; };
-		255B1D9A1E1F4000000791EC /* Dictionariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionariable.swift; sourceTree = "<group>"; };
 		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShortcutManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfoViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		258BE7521E2771D000D04D23 /* URL+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Convenience.swift"; sourceTree = "<group>"; };
 		258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserNotificationCenter+Convenience.swift"; sourceTree = "<group>"; };
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
+		25E5F00E1E2886EC0004C12A /* HostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfo.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
 		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,7 +222,6 @@
 				2559583C1E1BECD600B8469E /* Hosts */,
 				2559581E1E1BE01C00B8469E /* Preferences */,
 				255958141E1BDDDC00B8469E /* About */,
-				255B1D9C1E1F4005000791EC /* Protocols */,
 				2559583F1E1BED4600B8469E /* Extensions */,
 				25577E091E208A5E0091735A /* Bases */,
 				25577E051E20882C0091735A /* Misc */,
@@ -285,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				255958381E1BECCF00B8469E /* Host.swift */,
+				25E5F00E1E2886EC0004C12A /* HostInfo.swift */,
 				256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */,
 				251ADC981E1E061400D880C9 /* Qiniu Host */,
 			);
@@ -304,14 +304,6 @@
 				255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		255B1D9C1E1F4005000791EC /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				255B1D9A1E1F4000000791EC /* Dictionariable.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		609AB411EA9D0F6060FBBF88 /* Pods */ = {
@@ -520,6 +512,7 @@
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
+				25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */,
 				25577DFB1E1FE1FE0091735A /* BasePreferencesViewController.swift in Sources */,
 				250B7E311E24FEC00095FAEA /* Constants.swift in Sources */,
 				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
@@ -537,7 +530,6 @@
 				255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */,
 				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
-				255B1D9B1E1F4000000791EC /* Dictionariable.swift in Sources */,
 				25577E071E20886C0091735A /* BaseWindowController.swift in Sources */,
 				2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */,
 				25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */,

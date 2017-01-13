@@ -17,7 +17,7 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     @IBOutlet weak var validationResultIndicator: NSImageView!
     @IBOutlet weak var validationProgressIndicator: NSProgressIndicator!
     
-    var currentHost: SupportedHost!
+    var currentHost = SupportedHost.defaultHost
     var currentHostInfoViewController: NSViewController!
     
     override func viewDidLoad() {
@@ -33,7 +33,11 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     }
     
     private func setUp() {
-        currentHost = SupportedHost(rawValue: preferences[.currentHost]) ?? .defaultHost
+        if let host = preferences[.currentHost] {
+            currentHost = SupportedHost(rawValue: host) ?? .defaultHost
+        } else {
+            preferences[.currentHost] = currentHost.rawValue
+        }
         currentHostInfoViewController = currentHost.viewController
 
         // Populate the hosts pop up button.
@@ -62,7 +66,7 @@ class HostsPreferencesViewController: BasePreferencesViewController {
             controller.validateHostInfo { succeeded in
                 self.validationProgressIndicator.stopAnimation(self)
                 self.validationProgressIndicator.isHidden = true
-                self.validationResultText.stringValue = succeeded ? "Valid!" : "Invalid!"
+                self.validationResultText.stringValue = (succeeded ? "Valid" : "Invalid") + " Configurations!"
                 self.validationResultIndicator.image =
                     NSImage(named: succeeded ? Constants.validIndicator : Constants.invalidIndicator)
             }

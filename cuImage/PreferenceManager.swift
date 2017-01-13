@@ -40,33 +40,33 @@ extension PreferenceManager {
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<URL>) -> URL {
-        get { return defaults.url(forKey: key.rawValue) ?? URL(string: "")!}
+    subscript(key: PreferenceKey<URL>) -> URL? {
+        get { return defaults.url(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<[Any]>) -> [Any] {
-        get { return defaults.array(forKey: key.rawValue) ?? []}
+    subscript(key: PreferenceKey<[Any]>) -> [Any]? {
+        get { return defaults.array(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<[String: Any]>) -> [String: Any] {
-        get { return defaults.dictionary(forKey: key.rawValue) ?? [:] }
+    subscript(key: PreferenceKey<[String: Any]>) -> [String: Any]? {
+        get { return defaults.dictionary(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<String>) -> String {
-        get { return defaults.string(forKey: key.rawValue) ?? ""}
+    subscript(key: PreferenceKey<String>) -> String? {
+        get { return defaults.string(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<[String]>) -> [String] {
-        get { return defaults.stringArray(forKey: key.rawValue) ?? []}
+    subscript(key: PreferenceKey<[String]>) -> [String]? {
+        get { return defaults.stringArray(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<Data>) -> Data {
-        get { return defaults.data(forKey: key.rawValue) ?? Data()}
+    subscript(key: PreferenceKey<Data>) -> Data? {
+        get { return defaults.data(forKey: key.rawValue) }
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
@@ -90,13 +90,30 @@ extension PreferenceManager {
         set { defaults.set(newValue, forKey: key.rawValue) }
     }
     
-    subscript(key: PreferenceKey<MASShortcut>) -> MASShortcut {
+    subscript(key: PreferenceKey<MASShortcut>) -> MASShortcut? {
         // Read-only because the shortcuts is managed and set by MASShortcut.
         get {
+            var object: MASShortcut?
             let data = defaults.data(forKey: key.rawValue)
-            let bindingOptions = MASShortcutBinder.shared().bindingOptions!
-            let transformer = bindingOptions[NSValueTransformerBindingOption] as! ValueTransformer
-            return transformer.transformedValue(data) as? MASShortcut ?? MASShortcut()
+            if let options = MASShortcutBinder.shared().bindingOptions,
+                let transformer = options[NSValueTransformerBindingOption] as? ValueTransformer {
+                object = transformer.transformedValue(data) as? MASShortcut
+            }
+            return object
+        }
+    }
+    
+    subscript(key: PreferenceKey<HostInfo>) -> HostInfo? {
+        get {
+            var object: HostInfo?
+            if let data = defaults.data(forKey: key.rawValue) {
+                object = NSKeyedUnarchiver.unarchiveObject(with: data) as? HostInfo
+            }
+            return object
+        }
+        set {
+            let data = NSKeyedArchiver.archivedData(withRootObject: newValue as Any)
+            defaults.set(data, forKey: key.rawValue)
         }
     }
 }
@@ -131,7 +148,7 @@ extension PreferenceKeys {
     
     // Hosts
     static let currentHost = PreferenceKey<String>("currentHost")
-    static let qiniuHostInfo = PreferenceKey<[String: Any]>("qiniuHostInfo")
+    static let qiniuHostInfo = PreferenceKey<HostInfo>("qiniuHostInfo")
 }
 
 // MARK: - Default Preference Values
@@ -145,5 +162,5 @@ private let defaultPreferences: [PreferenceKeys: Any] = [
     
     // Hosts
     .currentHost: SupportedHost.qiniu.rawValue,
-    .qiniuHostInfo: QiniuHostInfo().dictionary(),
+    .qiniuHostInfo: NSKeyedArchiver.archivedData(withRootObject: QiniuHostInfo()),
 ]

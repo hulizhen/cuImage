@@ -54,11 +54,12 @@ final class QiniuHost: NSObject {
         
         switch key {
         case PreferenceKeys.qiniuHostInfo:
-            qiniuHostInfo = QiniuHostInfo(dictionary: preferences[.qiniuHostInfo])
-            
-            token = makeToken(accessKey: qiniuHostInfo.accessKey,
-                              secretKey: qiniuHostInfo.secretKey,
-                              scope: qiniuHostInfo.bucket)
+            if let hostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
+                qiniuHostInfo = hostInfo
+                token = makeToken(accessKey: qiniuHostInfo.accessKey,
+                                  secretKey: qiniuHostInfo.secretKey,
+                                  scope: qiniuHostInfo.bucket)
+            }
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
