@@ -9,4 +9,12 @@
 import Cocoa
 
 class AboutWindowController: BaseWindowController {
+    @IBOutlet weak var copyrightLabel: NSTextField!
+    
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        
+        let copyright = Bundle.main.infoDictionary![Constants.humanReadableCopyright] as! String
+        copyrightLabel.stringValue = copyright
+    }
 }

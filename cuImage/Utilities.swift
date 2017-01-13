@@ -10,7 +10,7 @@ import Cocoa
 import ServiceManagement
 
 func launchAtLogin(_ launch: Bool) {
-    let launcherBundleIdentifier = Bundle.main.infoDictionary!["LauncherBundleIdentifier"] as! String
+    let launcherBundleIdentifier = Bundle.main.infoDictionary![Constants.launcherBundleIdentifier] as! String
     SMLoginItemSetEnabled(launcherBundleIdentifier as CFString, launch)
 }
 

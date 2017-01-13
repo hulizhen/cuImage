@@ -21,4 +21,8 @@ struct Constants {
     
     // Used for validating host informations.
     static let testString = "Hello"
+    
+    // Keys in Info.plist.
+    static let launcherBundleIdentifier = "LauncherBundleIdentifier"
+    static let humanReadableCopyright = "NSHumanReadableCopyright"
 }
