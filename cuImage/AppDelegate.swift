@@ -19,6 +19,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.default.delegate = self
     }
     
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
+        // Ask whether the windows can be closed, in case there is unsaved changes.
+        for window in NSApp.windows {
+            if window.isMember(of: NSWindow.self),
+                let windowShouldClose = window.delegate?.windowShouldClose {
+                if windowShouldClose(self) == false {
+                    return .terminateLater
+                }
+            }
+        }
+        return .terminateNow
+    }
+    
     func applicationWillTerminate(_ notification: Notification) {
         removeObservers()
     }
@@ -27,8 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 // MARK: - Observers
 extension AppDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath else { return }
-        guard let key = PreferenceKeys(rawValue: keyPath) else { return }
+        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
         
         switch key {
         case PreferenceKeys.launchAtLogin:

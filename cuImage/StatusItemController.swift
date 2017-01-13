@@ -74,8 +74,7 @@ final class StatusItemController: NSObject {
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath else { return }
-        guard let key = PreferenceKeys(rawValue: keyPath) else { return }
+        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
         
         switch key {
         case PreferenceKeys.uploadImageShortcut:

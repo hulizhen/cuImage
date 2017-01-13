@@ -14,9 +14,19 @@ class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
     @IBOutlet weak var bucketTextField: NSTextField!
     @IBOutlet weak var domainTextField: NSTextField!
     
+    // The access control is awesome :)
+    fileprivate(set) var isInfoChanged = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        accessKeyTextField.delegate = self
+        secretKeyTextField.delegate = self
+        bucketTextField.delegate = self
+        domainTextField.delegate = self
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
         loadHostInfo()
     }
     
@@ -29,10 +39,15 @@ class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
     }
     
     func saveHostInfo() {
+        isInfoChanged = false
         preferences[.qiniuHostInfo] = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                                     secretKey: secretKeyTextField.stringValue,
                                                     bucket: bucketTextField.stringValue,
                                                     domain: domainTextField.stringValue)
+    }
+    
+    func discardHostInfo() {
+        isInfoChanged = false
     }
     
     private func loadHostInfo() {
@@ -42,5 +57,11 @@ class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
             bucketTextField.stringValue = qiniuHostInfo.bucket
             domainTextField.stringValue = qiniuHostInfo.domain
         }
+    }
+}
+
+extension QiniuHostInfoViewController: NSTextFieldDelegate {
+    override func controlTextDidChange(_ obj: Notification) {
+        isInfoChanged = true
     }
 }

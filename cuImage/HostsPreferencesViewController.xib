@@ -21,13 +21,13 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="cAb-nW-fFu">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="295"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="293"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="60g-gm-lpO" userLabel="Host Preferences Content Box">
-                    <rect key="frame" x="17" y="16" width="465" height="232"/>
+                    <rect key="frame" x="17" y="16" width="465" height="230"/>
                     <view key="contentView" id="ac9-ZY-0kj">
-                        <rect key="frame" x="2" y="2" width="461" height="228"/>
+                        <rect key="frame" x="2" y="2" width="461" height="226"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QF9-qe-ZPG">
@@ -62,7 +62,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="cbc-7W-OKR">
-                                <rect key="frame" x="0.0" y="51" width="461" height="177"/>
+                                <rect key="frame" x="0.0" y="49" width="461" height="177"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="177" id="tye-aq-xNd"/>
                                     <constraint firstAttribute="width" constant="461" id="xLo-6a-Nfm"/>
@@ -85,7 +85,7 @@ DQ
                             <constraint firstItem="HFo-6z-Qk3" firstAttribute="leading" secondItem="ac9-ZY-0kj" secondAttribute="leading" constant="20" id="5Tv-pc-xwB"/>
                             <constraint firstItem="dCF-dO-hq2" firstAttribute="centerY" secondItem="QF9-qe-ZPG" secondAttribute="centerY" id="8mf-wZ-1zf"/>
                             <constraint firstItem="cbc-7W-OKR" firstAttribute="top" secondItem="ac9-ZY-0kj" secondAttribute="top" id="CtK-om-FWS"/>
-                            <constraint firstItem="QF9-qe-ZPG" firstAttribute="top" secondItem="cbc-7W-OKR" secondAttribute="bottom" constant="10" id="IOv-LD-fF1"/>
+                            <constraint firstItem="QF9-qe-ZPG" firstAttribute="top" secondItem="cbc-7W-OKR" secondAttribute="bottom" constant="8" id="IOv-LD-fF1"/>
                             <constraint firstItem="BLv-JV-Boy" firstAttribute="leading" secondItem="HFo-6z-Qk3" secondAttribute="trailing" constant="8" id="M9v-O0-BPc"/>
                             <constraint firstAttribute="trailing" secondItem="cbc-7W-OKR" secondAttribute="trailing" id="QAG-Dz-qzs"/>
                             <constraint firstItem="BLv-JV-Boy" firstAttribute="centerY" secondItem="dCF-dO-hq2" secondAttribute="centerY" id="R6J-hE-aqa"/>
@@ -99,7 +99,7 @@ DQ
                     </view>
                 </box>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-7M-0Ff">
-                    <rect key="frame" x="18" y="256" width="37" height="17"/>
+                    <rect key="frame" x="18" y="254" width="37" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Host:" id="SWh-CA-qNC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -107,7 +107,7 @@ DQ
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HHV-0w-add">
-                    <rect key="frame" x="59" y="251" width="105" height="26"/>
+                    <rect key="frame" x="59" y="249" width="105" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="SDC-s0-w48"/>
                     </constraints>
