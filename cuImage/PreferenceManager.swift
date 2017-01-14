@@ -8,6 +8,7 @@
 
 import Cocoa
 import MASShortcut
+import RNCryptor
 
 /// A convenient global handler to access preferences with subscripts.
 let preferences = PreferenceManager.shared
@@ -104,16 +105,19 @@ extension PreferenceManager {
     }
     
     subscript(key: PreferenceKey<HostInfo>) -> HostInfo? {
+        // Encrypt host info preferences.
         get {
             var object: HostInfo?
-            if let data = defaults.data(forKey: key.rawValue) {
+            if let encrypted = defaults.data(forKey: key.rawValue),
+                let data = try? RNCryptor.decrypt(data: encrypted, withPassword: Constants.cryptoKey) {
                 object = NSKeyedUnarchiver.unarchiveObject(with: data) as? HostInfo
             }
             return object
         }
         set {
             let data = NSKeyedArchiver.archivedData(withRootObject: newValue as Any)
-            defaults.set(data, forKey: key.rawValue)
+            let encrypted = RNCryptor.encrypt(data: data, withPassword: Constants.cryptoKey)
+            defaults.set(encrypted, forKey: key.rawValue)
         }
     }
 }

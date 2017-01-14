@@ -25,4 +25,12 @@ struct Constants {
     // Keys in Info.plist.
     static let launcherBundleIdentifier = "LauncherBundleIdentifier"
     static let humanReadableCopyright = "NSHumanReadableCopyright"
+    
+    // Random crypto string in hex format for cryptor.
+    // This hould not been changed, otherwise the data
+    // encrypted previously will not be decrypted correctly.
+    static let cryptoKey = String(bytes: [0x55, 0x63, 0x3A, 0x54,
+                                          0x53, 0x6E, 0x67, 0x57,
+                                          0x6E, 0x6F, 0x38, 0x24,
+                                          0x4F, 0x33, 0x4F, 0x64], encoding: .utf8)!
 }
