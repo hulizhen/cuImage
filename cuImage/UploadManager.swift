@@ -39,6 +39,7 @@ final class UploadManager {
 extension UploadManager: HostDelegate {
     func host(_ host: Host, isUploadingImageWithPercent percent: Float) {
         print("Percent: \(percent)")
+        StatusItemController.shared.statusItemView.updateImage(with: percent)
     }
     
     func host(_ host: Host, didUploadImageWithURLString urlString: String) {
@@ -49,5 +50,7 @@ extension UploadManager: HostDelegate {
         pasteBoard.declareTypes([NSPasteboardTypeString], owner: nil)
         assert(pasteBoard.setString(markdownURL, forType: NSPasteboardTypeString),
                "Failed to write object to the general pasteboard")
+        
+        StatusItemController.shared.statusItemView.resetImage()
     }
 }

@@ -10,8 +10,9 @@ import Cocoa
 
 // Implementation of the drag-drop-upload feature.
 final class StatusItemView: NSImageView {
-    private let statusItemIcon = NSImage(named: Constants.statusItemIcon)!
-    private let draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
+    fileprivate var statusItemIcon: NSImage!
+    fileprivate var draggingDestinationBox: NSImage!
+    private var uploadingProgressImage: [NSImage]!
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -24,8 +25,15 @@ final class StatusItemView: NSImageView {
     }
     
     private func setUp() {
+        statusItemIcon = NSImage(named: Constants.statusItemIcon)!
         statusItemIcon.isTemplate = true
+        draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
         draggingDestinationBox.isTemplate = true
+        uploadingProgressImage = [NSImage]()
+        for i in 0..<Constants.uploadingProgressCount {
+            uploadingProgressImage.append(NSImage(named: Constants.uploadingProgress + "\(i)")!)
+            uploadingProgressImage[i].isTemplate = true
+        }
 
         image = statusItemIcon
         
@@ -37,6 +45,18 @@ final class StatusItemView: NSImageView {
         register(forDraggedTypes: draggedTypes)
     }
     
+    func updateImage(with percent: Float) {
+        let index = Int((percent * Float(Constants.uploadingProgressCount - 1)).rounded())
+        image = uploadingProgressImage[index]
+    }
+    
+    func resetImage() {
+        image = statusItemIcon
+    }
+}
+
+// MARK: - NSDraggingDestination
+extension StatusItemView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         let pasteboard = sender.draggingPasteboard()
         let classes: [AnyClass] = [NSURL.self, NSImage.self]

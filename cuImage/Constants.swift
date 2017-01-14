@@ -18,6 +18,9 @@ struct Constants {
     static let generalPreferences = "GeneralPreferences"
     static let shortcutsPreferences = "ShortcutsPreferences"
     static let hostsPreferences = "HostPreferences"
+    static let uploadingProgress = "UploadingProgress"
+
+    static let uploadingProgressCount = 13  // 0 ... 12
     
     // Used for validating host informations.
     static let testString = "Hello"
