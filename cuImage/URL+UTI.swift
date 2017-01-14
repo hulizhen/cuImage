@@ -20,17 +20,4 @@ extension URL {
             return false
         }
     }
-    
-    /// Determine whether the URL is an image file URL.
-    func isImageFileURL() -> Bool {
-        if pathExtension == "", NSImage(contentsOf: self) != nil {
-            // True if the url is an image file URL, even without a path extension.
-            return true
-        } else if conformsToUTI(type: kUTTypeImage) {
-            // True if the url conforms to image UTI.
-            return true
-        } else {
-            return false
-        }
-    }
 }

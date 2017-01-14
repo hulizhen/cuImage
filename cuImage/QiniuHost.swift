@@ -115,41 +115,14 @@ final class QiniuHost: NSObject {
 }
 
 extension QiniuHost: Host {
-    func uploadImageFile(_ url: URL) {
+    func uploadImage(_ image: NSImage, named name: String) {
         assert(token != nil, "Make the upload token first.")
         
+        let data = image.tiffRepresentation
         let option = QNUploadOption(progressHandler: progressHandler)
         
         // Make image file name.
-        let components = url.lastPathComponent.components(separatedBy: ".")
-        let prefix = components.first ?? ""
-        let suffix = (url.pathExtension == "") ? "png" : url.pathExtension
-        let key = prefix + "_" + Date.simpleFormatter.string(from: Date()) + "." + suffix
-        
-        // Upload image file.
-        uploadManager.putFile(url.relativePath, key: key, token: token,
-                              complete: { [weak self] (info, key, response) in
-                                guard let sself = self else { return }
-                                print(info!, key!)
-                                if info!.isOK {
-                                    let urlString = sself.qiniuHostInfo.domain + "/" + key!
-                                    sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
-                                } else {
-                                    // TODO: Show alert dialog to the user!
-                                    assert(false, "Failed to upload image.")
-                                }
-            }, option: option)
-    }
-    
-    func uploadImageData(_ image: NSImage, named name: String, in type: NSBitmapImageFileType) {
-        assert(token != nil, "Make the upload token first.")
-        
-        let bitmap = NSBitmapImageRep(cgImage: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
-        let data = bitmap.representation(using: type, properties: [:])
-        let option = QNUploadOption(progressHandler: progressHandler)
-        
-        // Make image file name.
-        let key = name + "_" + Date.simpleFormatter.string(from: Date()) + "." + type.string
+        let key = Date.simpleFormatter.string(from: Date()) + "_" + name
         
         // Upload image data.
         uploadManager.put(data, key: key, token: token,

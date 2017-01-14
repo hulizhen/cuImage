@@ -24,14 +24,22 @@ final class UploadManager {
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return }
         
+        var image: NSImage?
+        var name: String?
+        
         if let url = objects.first as? URL {
-            // Upload the file if it is an image file.
-            if url.isImageFileURL() {
-                host.uploadImageFile(url)
+            image = NSImage(contentsOf: url)
+            name = url.lastPathComponent
+            if url.pathExtension == "" {
+                name = name! + "." + NSBitmapImageFileType.JPEG.string
             }
-        } else if let image = objects.first as? NSImage {
-            // Upload the image if it is just an screenshot image.
-            host.uploadImageData(image, named: "Screenshot", in: .PNG)
+        } else {
+            image = (objects.first as? NSImage)?.compression(by: 1.0)
+            name = "Screenshot." + NSBitmapImageFileType.JPEG.string
+        }
+        
+        if image != nil {
+            host.uploadImage(image!, named: name!)
         }
     }
 }
