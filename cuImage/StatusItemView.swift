@@ -10,6 +10,7 @@ import Cocoa
 
 // Implementation of the drag-drop-upload feature.
 final class StatusItemView: NSImageView {
+    fileprivate let uploadManager = UploadManager.shared
     fileprivate var statusItemIcon: NSImage!
     fileprivate var draggingDestinationBox: NSImage!
     private var uploadingProgressImage: [NSImage]!
@@ -58,6 +59,7 @@ final class StatusItemView: NSImageView {
 // MARK: - NSDraggingDestination
 extension StatusItemView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        guard uploadManager.isUploading == false else { return NSDragOperation() }
         let pasteboard = sender.draggingPasteboard()
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return NSDragOperation() }
@@ -91,6 +93,7 @@ extension StatusItemView {
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
+        guard uploadManager.isUploading == false else { return }
         image = statusItemIcon
     }
 }

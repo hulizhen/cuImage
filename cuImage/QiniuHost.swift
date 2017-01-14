@@ -132,9 +132,12 @@ extension QiniuHost: Host {
                             
                             if info!.isOK {
                                 let urlString = sself.qiniuHostInfo.domain + "/" + key!
-                                sself.delegate?.host(sself, didUploadImageWithURLString: urlString)
+                                sself.delegate?.host(sself, didSucceedToUploadImageWithURLString: urlString)
                             } else {
                                 // TODO: Show alert dialog to the user!
+                                let domain = Bundle.main.infoDictionary![kCFBundleIdentifierKey as String] as! String
+                                let error = NSError(domain: domain, code: 0, userInfo: nil)
+                                sself.delegate?.host(sself, didFailToUploadImageWithError: error)
                                 assert(false, "Failed to upload image.")
                             }
             }, option: option)

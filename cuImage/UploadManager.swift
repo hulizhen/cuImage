@@ -10,7 +10,8 @@ import Cocoa
 
 final class UploadManager {
     static let shared = UploadManager()
-    
+    var isUploading = false
+
     private var host: Host?
     
     private init() {
@@ -20,6 +21,8 @@ final class UploadManager {
     /// Upload the image on pasteboard.
     /// - Parameter pasteboard: the pasteboard on which the image is, general pasteboard by default.
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
+        isUploading = true
+        guard isUploading else { return }
         guard let host = host else { return }
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return }
@@ -50,7 +53,7 @@ extension UploadManager: HostDelegate {
         StatusItemController.shared.statusItemView.updateImage(with: percent)
     }
     
-    func host(_ host: Host, didUploadImageWithURLString urlString: String) {
+    func host(_ host: Host, didSucceedToUploadImageWithURLString urlString: String) {
         NSUserNotificationCenter.default.deliverNotification(withTitle: "Image Uploaded", subtitle: "", text: urlString)
         
         let markdownURL = "![](" + urlString + ")"
@@ -60,5 +63,10 @@ extension UploadManager: HostDelegate {
                "Failed to write object to the general pasteboard")
         
         StatusItemController.shared.statusItemView.resetImage()
+        isUploading = false
+    }
+    
+    func host(_ host: Host, didFailToUploadImageWithError error: NSError) {
+        isUploading = false
     }
 }

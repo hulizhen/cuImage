@@ -16,7 +16,8 @@ protocol Host: class {
 // MARK: - HostDelegate
 protocol HostDelegate: class {
     func host(_ host: Host, isUploadingImageWithPercent percent: Float)
-    func host(_ host: Host, didUploadImageWithURLString url: String)
+    func host(_ host: Host, didSucceedToUploadImageWithURLString url: String)
+    func host(_ host: Host, didFailToUploadImageWithError error: NSError)
 }
 
 // MARK: - SupportedHost

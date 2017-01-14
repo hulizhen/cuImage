@@ -647,6 +647,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -808,6 +809,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = cuImage/cuImage.entitlements;
@@ -829,6 +831,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = cuImage/cuImage.entitlements;
