@@ -17,17 +17,20 @@ PODS:
   - Qiniu (7.1.5):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
+  - RNCryptor (5.0.1)
 
 DEPENDENCIES:
   - MASShortcut
   - Qiniu (~> 7.1)
+  - RNCryptor (~> 5.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
+  RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
 
-PODFILE CHECKSUM: 2570733f926fc3cb70e44206c7e36b6ccf06f3c3
+PODFILE CHECKSUM: 2b6ffa2c855dcf502983078582873a734a605e78
 
 COCOAPODS: 1.1.1
