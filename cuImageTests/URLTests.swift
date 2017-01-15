@@ -1,15 +1,16 @@
 //
-//  cuImageTests.swift
-//  cuImageTests
+//  URLTests.swift
+//  cuImage
 //
-//  Created by HuLizhen on 14/01/2017.
+//  Created by HuLizhen on 15/01/2017.
 //  Copyright © 2017 HuLizhen. All rights reserved.
 //
 
 import XCTest
+@testable import cuImage
 
-class cuImageTests: XCTestCase {
-    
+class URLTests: XCTestCase {
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -20,16 +21,31 @@ class cuImageTests: XCTestCase {
         super.tearDown()
     }
     
+    // Copy one or more image files onto the general pasteboard.
+    func testImageFileExtension() {
+        let pasteboard = NSPasteboard.general()
+        let classes: [AnyClass] = [NSImage.self, NSURL.self]
+        let options: [String : Any]? = nil
+        guard pasteboard.canReadObject(forClasses: classes, options: options) else { return }
+        guard let objects = pasteboard.readObjects(forClasses: classes, options: options) else { return }
+        
+        for object in objects {
+            if let url = object as? URL {
+                print("[Path: \(url), Extension: \(url.imageFileExtension())]")
+            }
+        }
+    }
+
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
         }
     }
-    
+
 }

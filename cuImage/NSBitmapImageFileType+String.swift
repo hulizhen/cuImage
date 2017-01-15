@@ -15,7 +15,7 @@ extension NSBitmapImageFileType {
         case .BMP:      return "bmp"
         case .GIF:      return "gif"
         case .PNG:      return "png"
-        case .JPEG:     return "jpg"
+        case .JPEG:     return "jpeg"
         case .JPEG2000: return "jp2"
         }
     }

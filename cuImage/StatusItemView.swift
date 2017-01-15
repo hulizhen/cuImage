@@ -59,13 +59,12 @@ final class StatusItemView: NSImageView {
 // MARK: - NSDraggingDestination
 extension StatusItemView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        guard uploadManager.isUploading == false else { return NSDragOperation() }
         let pasteboard = sender.draggingPasteboard()
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return NSDragOperation() }
         
         if let url = objects.first as? URL {
-            if NSImage(contentsOf: url) != nil {
+            if url.imageFileExtension() != nil {
                 image = draggingDestinationBox
                 return NSDragOperation.copy
             }
@@ -93,7 +92,6 @@ extension StatusItemView {
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
-        guard uploadManager.isUploading == false else { return }
         image = statusItemIcon
     }
 }
