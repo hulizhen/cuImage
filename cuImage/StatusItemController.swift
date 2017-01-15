@@ -17,9 +17,11 @@ final class StatusItemController: NSObject {
 
     @IBOutlet weak var menu: NSMenu!
     @IBOutlet weak var uploadImageMenuItem: NSMenuItem!
+    @IBOutlet weak var uploadHistoryMenu: NSMenu!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
-    
+    @IBOutlet weak var clearHistoryMenuItem: NSMenuItem!
+
     lazy var aboutWindowController: AboutWindowController = AboutWindowController()
     lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
     
@@ -43,7 +45,6 @@ final class StatusItemController: NSObject {
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
                 assert(false, "Failed to instantiate \(self.className)")
         }
-        
         
         statusItem.button!.addSubview(statusItemView)
         statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
