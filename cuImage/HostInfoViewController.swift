@@ -19,8 +19,15 @@ protocol HostInfoViewController: class {
 
 // Default implementation
 extension HostInfoViewController {
-    /// Show alert dialog if the info is changed.
-    /// - Return: Return true if info is changed, otherwise return false.
+    /**
+     Show alert dialog if the info is changed.
+     
+     - parameters:
+        - window: The window on which to display the sheet.
+        - completion: The completion handler that gets called when the sheet’s modal session ends.
+     
+     - returns: Return true if info is changed, otherwise return false.
+     */
     func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool {
         if (isInfoChanged) {
             let alert = NSAlert()

@@ -9,8 +9,14 @@
 import Cocoa
 
 extension URL {
-    /// Determine whether the URL is conformed to the specified UTI type.
-    /// - Parameter type: the uniform type identifier against which to test conformance.
+    /**
+     Determine whether the URL conforms to the specified UTI type.
+     
+     - parameters:
+        - type: the uniform type identifier against which to test conformance.
+     
+     - returns: True if the URL conforms to the UTI type, false if not.
+     */
     func conformsToUTI(type: CFString) -> Bool {
         let fileExtension = self.pathExtension as CFString
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, fileExtension, nil)

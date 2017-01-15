@@ -18,8 +18,12 @@ final class UploadManager {
         host = QiniuHost(delegate: self)
     }
     
-    /// Upload the image on pasteboard.
-    /// - Parameter pasteboard: the pasteboard on which the image is, general pasteboard by default.
+    /**
+     Upload the image on pasteboard.
+     
+     - parameters:
+        - pasteboard: the pasteboard on which the image is, general pasteboard by default.
+     */
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         isUploading = true
         guard isUploading else { return }
