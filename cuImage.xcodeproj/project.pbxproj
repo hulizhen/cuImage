@@ -43,6 +43,8 @@
 		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
 		256E393D1E24AD5000CA2F5F /* HostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */; };
+		257458111E2C5FE900138E3C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257458101E2C5FE900138E3C /* CoreDataController.swift */; };
+		257458381E2C703B00138E3C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257458361E2C703B00138E3C /* DataModel.xcdatamodeld */; };
 		25806C351E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */; };
 		258502D61E2B4493009566AB /* URLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258502D51E2B4493009566AB /* URLTests.swift */; };
 		258BE74F1E27516500D04D23 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258BE74E1E27516500D04D23 /* StatusItemView.swift */; };
@@ -123,6 +125,8 @@
 		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShortcutManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfoViewController.swift; sourceTree = "<group>"; };
+		257458101E2C5FE900138E3C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		257458371E2C703B00138E3C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+KeyEquivalent.swift"; sourceTree = "<group>"; };
 		258502D51E2B4493009566AB /* URLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTests.swift; sourceTree = "<group>"; };
 		258BE74E1E27516500D04D23 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				255957FE1E1BD70F00B8469E /* Application */,
+				2574580F1E2C526600138E3C /* Data Model */,
 				2559583C1E1BECD600B8469E /* Hosts */,
 				2559581E1E1BE01C00B8469E /* Preferences */,
 				255958141E1BDDDC00B8469E /* About */,
@@ -339,6 +344,15 @@
 				255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		2574580F1E2C526600138E3C /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				257458101E2C5FE900138E3C /* CoreDataController.swift */,
+				257458361E2C703B00138E3C /* DataModel.xcdatamodeld */,
+			);
+			name = "Data Model";
 			sourceTree = "<group>";
 		};
 		609AB411EA9D0F6060FBBF88 /* Pods */ = {
@@ -600,10 +614,12 @@
 				255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */,
 				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
 				258BE7551E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift in Sources */,
+				257458111E2C5FE900138E3C /* CoreDataController.swift in Sources */,
 				258BE74F1E27516500D04D23 /* StatusItemView.swift in Sources */,
 				2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */,
 				2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */,
 				255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */,
+				257458381E2C703B00138E3C /* DataModel.xcdatamodeld in Sources */,
 				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
 				25577E071E20886C0091735A /* BaseWindowController.swift in Sources */,
@@ -888,6 +904,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		257458361E2C703B00138E3C /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				257458371E2C703B00138E3C /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 257458371E2C703B00138E3C /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 255957E41E1BD2A500B8469E /* Project object */;
 }

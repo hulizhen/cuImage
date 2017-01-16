@@ -24,7 +24,6 @@
                         <action selector="handleTappedMenuItem:" target="-2" id="bO9-XW-7Fr"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="QHK-l6-p7h"/>
                 <menuItem title="Upload History" id="Kfr-2y-AEv">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Upload History" id="dXn-LR-h8h">

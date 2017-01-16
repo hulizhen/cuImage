@@ -13,6 +13,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItemController = StatusItemController.shared
     let uploadManager = UploadManager.shared
+    let coreDataController = CoreDataController.shared
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         addObservers()

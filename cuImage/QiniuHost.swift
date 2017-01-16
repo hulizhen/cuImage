@@ -135,7 +135,7 @@ extension QiniuHost: Host {
                                 sself.delegate?.host(sself, didSucceedToUploadImageWithURLString: urlString)
                             } else {
                                 // TODO: Show alert dialog to the user!
-                                let domain = Bundle.main.infoDictionary![kCFBundleIdentifierKey as String] as! String
+                                let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
                                 let error = NSError(domain: domain, code: 0, userInfo: nil)
                                 sself.delegate?.host(sself, didFailToUploadImageWithError: error)
                                 assert(false, "Failed to upload image.")
