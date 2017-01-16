@@ -13,7 +13,7 @@ final class StatusItemView: NSImageView {
     fileprivate let uploadManager = UploadManager.shared
     fileprivate var statusItemIcon: NSImage!
     fileprivate var draggingDestinationBox: NSImage!
-    private var uploadingProgressImage: [NSImage]!
+    private var uploadingProgressImages: [NSImage]!
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -30,11 +30,18 @@ final class StatusItemView: NSImageView {
         statusItemIcon.isTemplate = true
         draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
         draggingDestinationBox.isTemplate = true
-        uploadingProgressImage = [NSImage]()
-        for i in 0..<Constants.uploadingProgressCount {
-            uploadingProgressImage.append(NSImage(named: Constants.uploadingProgress + "\(i)")!)
-            uploadingProgressImage[i].isTemplate = true
+        
+        uploadingProgressImages = (0..<Constants.uploadingProgressCount).reduce([]) {
+            var images: [NSImage] = $0.0
+            images.append(NSImage(named: Constants.uploadingProgress + "\($0.1)")!)
+            images[$0.1].isTemplate = true
+            return images
         }
+//        uploadingProgressImages = [NSImage]()
+//        for i in 0..<Constants.uploadingProgressCount {
+//            uploadingProgressImages.append(NSImage(named: Constants.uploadingProgress + "\(i)")!)
+//            uploadingProgressImages[i].isTemplate = true
+//        }
 
         image = statusItemIcon
         
@@ -48,7 +55,7 @@ final class StatusItemView: NSImageView {
     
     func updateImage(with percent: Float) {
         let index = Int((percent * Float(Constants.uploadingProgressCount - 1)).rounded())
-        image = uploadingProgressImage[index]
+        image = uploadingProgressImages[index]
     }
     
     func resetImage() {

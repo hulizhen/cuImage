@@ -1,5 +1,5 @@
 //
-//  URL+Image.swift
+//  URL+Convenience.swift
 //  cuImage
 //
 //  Created by HuLizhen on 12/01/2017.

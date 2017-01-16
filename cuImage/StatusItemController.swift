@@ -8,9 +8,11 @@
 
 import Cocoa
 import MASShortcut
+import CoreData
 
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
+    private let managedObjectContext = CoreDataController.shared.managedObjectContext
     
     let statusItem: NSStatusItem
     let statusItemView: StatusItemView
@@ -49,6 +51,8 @@ final class StatusItemController: NSObject {
         statusItem.button!.addSubview(statusItemView)
         statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
         statusItem.menu = menu
+        
+        makeUploadHistoryMenu()
     }
 
     @IBAction func handleTappedMenuItem(_ item: NSMenuItem) {
@@ -70,11 +74,20 @@ final class StatusItemController: NSObject {
         let defaults = UserDefaults.standard
         defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
                              options: [.initial, .new], context: nil)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(managedObjectContextObjectsDidChange(notification:)),
+                                       name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+                                       object: nil)
     }
     
     fileprivate func removeObservers() {
         let defaults = UserDefaults.standard
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -87,6 +100,52 @@ final class StatusItemController: NSObject {
             }
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+    
+    func makeUploadHistoryMenu(with uploadedItems: [UploadedItem]) {
+        for uploadedItem in uploadedItems {
+            if let data = uploadedItem.thumbnail as? Data,
+                let thumbnail = NSImage(data: data) {
+                let item = NSMenuItem()
+                item.title = ""
+                item.target = self
+                item.action = #selector(handleUploadedItemMenuItem(_:))
+                item.keyEquivalentModifierMask = []
+                item.image = thumbnail
+                item.toolTip = uploadedItem.urlString
+                item.representedObject = uploadedItem
+                
+                // Skip the 'Clear History' and separator menu item.
+                uploadHistoryMenu.insertItem(item, at: 2)
+            }
+        }
+    }
+    
+    func makeUploadHistoryMenu() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedItem")
+        
+        if let items = (try? managedObjectContext.fetch(fetchRequest)) as? [UploadedItem] {
+            makeUploadHistoryMenu(with: items)
+        }
+    }
+    
+    func managedObjectContextObjectsDidChange(notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+
+        if let inserts = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject>, inserts.count > 0 {
+            if let uploadedItems = Array(inserts) as? [UploadedItem] {
+                makeUploadHistoryMenu(with: uploadedItems)
+            }
+        }
+    }
+    
+    func handleUploadedItemMenuItem(_ item: NSMenuItem) {
+        guard let uploadedItem = item.representedObject as? UploadedItem else { return }
+        
+        if let urlString = uploadedItem.urlString {
+            let markdownURL = "![](" + urlString + ")"
+            Utilities.setPasteboard(with: markdownURL)
         }
     }
 }
