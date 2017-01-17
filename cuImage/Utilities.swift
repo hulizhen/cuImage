@@ -23,9 +23,13 @@ struct Utilities {
         }
     }
     
-    static func setPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general(), with urlString: String) {
+    static func setPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general(),
+                              with urlString: String,
+                              inMarkdown markdown: Bool) {
+        let string = markdown ? "![](" + urlString + ")" : urlString
+
         pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
-        pasteboard.setString(urlString, forType: NSPasteboardTypeString)
+        pasteboard.setString(string, forType: NSPasteboardTypeString)
         
         NSUserNotificationCenter.default.deliverNotification(withTitle: "Image Uploaded",
                                                              subtitle: "URL has been copied to pasteboard",

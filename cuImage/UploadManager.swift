@@ -57,8 +57,7 @@ extension UploadManager: HostDelegate {
     }
     
     func host(_ host: Host, didSucceedToUploadImage image: NSImage, urlString: String) {
-        let markdownURL = "![](" + urlString + ")"
-        Utilities.setPasteboard(with: markdownURL)
+        Utilities.setPasteboard(with: urlString, inMarkdown: true)
         
         // Add the uploaded image to history.
         let managedObjectContext = CoreDataController.shared.managedObjectContext

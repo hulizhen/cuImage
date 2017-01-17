@@ -191,8 +191,7 @@ final class StatusItemController: NSObject {
         guard let uploadedItem = item.representedObject as? UploadedItem else { return }
         
         if let urlString = uploadedItem.urlString {
-            let markdownURL = "![](" + urlString + ")"
-            Utilities.setPasteboard(with: markdownURL)
+            Utilities.setPasteboard(with: urlString, inMarkdown: true)
         }
     }
 }
