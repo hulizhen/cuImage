@@ -7,7 +7,6 @@
         <customObject id="-2" userLabel="File's Owner" customClass="StatusItemController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="aboutMenuItem" destination="mYk-F7-yO9" id="f3h-ms-3MI"/>
-                <outlet property="clearHistoryMenuItem" destination="dbH-cr-WMa" id="DrE-qx-cD7"/>
                 <outlet property="menu" destination="0pX-Ur-2Wk" id="paz-LK-sGH"/>
                 <outlet property="preferencesMenuItem" destination="VJI-Pz-n2Z" id="rIj-a0-jMp"/>
                 <outlet property="uploadHistoryMenu" destination="dXn-LR-h8h" id="8yQ-SD-gbj"/>
@@ -26,17 +25,7 @@
                 </menuItem>
                 <menuItem title="Upload History" id="Kfr-2y-AEv">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Upload History" id="dXn-LR-h8h">
-                        <items>
-                            <menuItem title="Clear History" id="dbH-cr-WMa">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="handleTappedMenuItem:" target="-2" id="iEo-NZ-w4G"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="aVQ-ks-Hyv"/>
-                        </items>
-                    </menu>
+                    <menu key="submenu" title="Upload History" id="dXn-LR-h8h"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="saH-HL-6uN"/>
                 <menuItem title="Preferences…" keyEquivalent="," id="VJI-Pz-n2Z">

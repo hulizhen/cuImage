@@ -12,7 +12,7 @@ import CoreData
 
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
-    private let managedObjectContext = CoreDataController.shared.managedObjectContext
+    private let coreDataController = CoreDataController.shared
     
     let statusItem: NSStatusItem
     let statusItemView: StatusItemView
@@ -22,7 +22,9 @@ final class StatusItemController: NSObject {
     @IBOutlet weak var uploadHistoryMenu: NSMenu!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
-    @IBOutlet weak var clearHistoryMenuItem: NSMenuItem!
+    var clearHistoryMenuItem: NSMenuItem!
+    
+    var uploadHistoryMenuItems = [NSMenuItem]()
 
     lazy var aboutWindowController: AboutWindowController = AboutWindowController()
     lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
@@ -52,6 +54,16 @@ final class StatusItemController: NSObject {
         statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
         statusItem.menu = menu
         
+        uploadHistoryMenu.autoenablesItems = false
+        
+        // Insert 'Clear History' and separator menu items to upload history submenu.
+        clearHistoryMenuItem = NSMenuItem(title: "Clear History",
+                                          action: #selector(clearUploadHistory(_:)),
+                                          keyEquivalent: "")
+        clearHistoryMenuItem.target = self
+        uploadHistoryMenuItems.append(clearHistoryMenuItem)
+        uploadHistoryMenuItems.append(NSMenuItem.separator())
+        
         makeUploadHistoryMenu()
     }
 
@@ -59,6 +71,8 @@ final class StatusItemController: NSObject {
         switch item {
         case uploadImageMenuItem:
             UploadManager.shared.uploadImageOnPasteboard()
+        case clearHistoryMenuItem:
+            clearUploadHistory(item)
         case preferencesMenuItem:
             preferencesWindowController.showWindow(item)
             NSApp.activate(ignoringOtherApps: true)
@@ -102,8 +116,31 @@ final class StatusItemController: NSObject {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
+
+    func clearUploadHistory(_ sender: NSMenuItem) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedItem")
+        
+        if #available(macOS 10.11, *) {
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            let _ = try? coreDataController.persistentStoreCoordinator.execute(deleteRequest,
+                                                                               with: coreDataController.managedObjectContext)
+        } else {
+            // Fallback on earlier versions
+            
+        }
+        
+        makeUploadHistoryMenu(with: [])
+    }
     
-    func makeUploadHistoryMenu(with uploadedItems: [UploadedItem]) {
+    private func makeUploadHistoryMenu(with uploadedItems: [UploadedItem], reset: Bool = true) {
+        if reset {
+            uploadHistoryMenu.removeAllItems()
+            for item in uploadHistoryMenuItems {
+                uploadHistoryMenu.addItem(item)
+            }
+        }
+        
+        // Populate menu with uploaded items.
         for uploadedItem in uploadedItems {
             if let data = uploadedItem.thumbnail as? Data,
                 let thumbnail = NSImage(data: data) {
@@ -117,15 +154,17 @@ final class StatusItemController: NSObject {
                 item.representedObject = uploadedItem
                 
                 // Skip the 'Clear History' and separator menu item.
-                uploadHistoryMenu.insertItem(item, at: 2)
+                uploadHistoryMenu.insertItem(item, at: uploadHistoryMenuItems.count)
             }
         }
+        
+        clearHistoryMenuItem.isEnabled = uploadHistoryMenu.numberOfItems > uploadHistoryMenuItems.count
     }
     
-    func makeUploadHistoryMenu() {
+    private func makeUploadHistoryMenu() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedItem")
         
-        if let items = (try? managedObjectContext.fetch(fetchRequest)) as? [UploadedItem] {
+        if let items = (try? coreDataController.managedObjectContext.fetch(fetchRequest)) as? [UploadedItem] {
             makeUploadHistoryMenu(with: items)
         }
     }
@@ -135,9 +174,11 @@ final class StatusItemController: NSObject {
 
         if let inserts = userInfo[NSInsertedObjectsKey] as? Set<NSManagedObject>, inserts.count > 0 {
             if let uploadedItems = Array(inserts) as? [UploadedItem] {
-                makeUploadHistoryMenu(with: uploadedItems)
+                makeUploadHistoryMenu(with: uploadedItems, reset: false)
             }
         }
+        
+        clearHistoryMenuItem.isEnabled = uploadHistoryMenu.numberOfItems > uploadHistoryMenuItems.count
     }
     
     func handleUploadedItemMenuItem(_ item: NSMenuItem) {
