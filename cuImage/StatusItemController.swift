@@ -13,6 +13,8 @@ import CoreData
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     private let coreDataController = CoreDataController.shared
+    private let aboutWindowController = AboutWindowController.shared
+    private let preferencesWindowController = PreferencesWindowController.shared
     
     let statusItem: NSStatusItem
     let statusItemView: StatusItemView
@@ -27,8 +29,6 @@ final class StatusItemController: NSObject {
     
     var uploadHistoryMenuItems = [NSMenuItem]()
 
-    lazy var aboutWindowController: AboutWindowController = AboutWindowController()
-    lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController()
     
     deinit {
         removeObservers()

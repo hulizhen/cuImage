@@ -26,7 +26,9 @@ final class UploadManager {
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         guard let host = host else { return }
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
-        guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return }
+        guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else {
+            return
+        }
         
         var image: NSImage?
         var name: String?
@@ -84,5 +86,6 @@ extension UploadManager: HostDelegate {
     }
     
     func host(_ host: Host, didFailToUploadImage image: NSImage, error: NSError) {
+        StatusItemController.shared.statusItemView.resetImage()
     }
 }

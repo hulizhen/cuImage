@@ -11,10 +11,6 @@ import Cocoa
 final class GeneralPreferencesPaneController: BasePreferencesPaneController {
     @IBOutlet weak var notificationPreferencesButton: NSButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func handleTappedButton(_ button: NSButton) {
         let notificationPreferencesPaneURL = URL(fileURLWithPath: Constants.notificationPreferencesPane)
         NSWorkspace.shared().open(notificationPreferencesPaneURL)

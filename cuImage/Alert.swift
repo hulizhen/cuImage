@@ -19,6 +19,5 @@ final class Alert: NSAlert {
         NSApp.activate(ignoringOtherApps: true)
 
         super.beginSheetModal(for: sheetWindow, completionHandler: handler)
-        return
     }
 }

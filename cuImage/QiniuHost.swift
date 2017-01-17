@@ -111,10 +111,29 @@ final class QiniuHost: NSObject {
                             completion(succeeded)
         }, option: nil)
     }
+    
+    fileprivate func alertToConfigureHostInfo() {
+        let alert = Alert()
+        alert.messageText = "Wrong host information. Do you want to configure your host now?"
+        alert.informativeText = "You should get your host configured correctly before uploading images."
+        alert.addButton(withTitle: "Configure")
+        alert.addButton(withTitle: "Cancel")
+        alert.alertStyle = .critical
+        let response = alert.runModal()
+        if response == NSAlertFirstButtonReturn {   // Configure
+            PreferencesWindowController.shared.showHostPreferencesPane()
+        }
+    }
 }
 
 extension QiniuHost: Host {
     func uploadImage(_ image: NSImage, named name: String) {
+        // Make the upload token first.
+        if token == nil {
+            alertToConfigureHostInfo()
+            return
+        }
+        
         let data = image.tiffRepresentation
         let option = QNUploadOption(progressHandler: progressHandler)
         
@@ -135,7 +154,13 @@ extension QiniuHost: Host {
                                 let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
                                 let error = NSError(domain: domain, code: 0, userInfo: nil)
                                 sself.delegate?.host(sself, didFailToUploadImage: image, error: error)
-                                assert(false, "Failed to upload image.")
+                                
+                                if info!.statusCode == 401 {    // Bad token.
+                                    sself.alertToConfigureHostInfo()
+                                } else {
+                                    NSApp.activate(ignoringOtherApps: true)
+                                    NSApp.presentError(info!.error)
+                                }
                             }
             }, option: option)
     }

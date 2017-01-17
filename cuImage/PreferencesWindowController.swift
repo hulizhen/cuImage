@@ -9,6 +9,8 @@
 import Cocoa
 
 final class PreferencesWindowController: BaseWindowController, NSWindowDelegate {
+    static let shared = PreferencesWindowController()
+    
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet weak var generalToolbarItem: NSToolbarItem!
     @IBOutlet weak var shortcutsToolbarItem: NSToolbarItem!
@@ -17,7 +19,7 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
     var preferencesPaneControllers = [GeneralPreferencesPaneController(),
                                       ShortcutsPreferencesPaneController(),
                                       HostsPreferencesPaneController()]
-    
+        
     override func windowDidLoad() {
         super.windowDidLoad()
         
@@ -35,12 +37,8 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
     @IBAction func showPreferencesPane(with item: NSToolbarItem) {
         guard let window = window else { return }
         
+        let controller = preferencesPaneControllers[item.tag]
         let view = preferencesPaneControllers[item.tag].view
-        
-        // Remove current subviews from window content view.
-        window.contentView?.subviews.forEach { view in
-            view.removeFromSuperviewWithoutNeedingDisplay()
-        }
         
         // Resize window to fit to new view.
         var frame = window.frameRect(forContentRect: view.frame)
@@ -51,8 +49,16 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
         // Set window title.
         window.title = item.paletteLabel
         
-        // Add new view to window content view.
-        window.contentView?.addSubview(view)
+        // Update content view controller.
+        window.contentViewController = controller
+    }
+    
+    func showHostPreferencesPane() {
+        showWindow(self)
+        
+        guard let window = window else { return }
+        window.toolbar?.selectedItemIdentifier = hostsToolbarItem.itemIdentifier
+        showPreferencesPane(with: hostsToolbarItem)
     }
     
     func windowShouldClose(_ sender: Any) -> Bool {

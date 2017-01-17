@@ -9,8 +9,10 @@
 import Cocoa
 
 final class AboutWindowController: BaseWindowController {
+    static let shared = AboutWindowController()
+
     @IBOutlet weak var copyrightLabel: NSTextField!
-    
+
     override func windowDidLoad() {
         super.windowDidLoad()
         

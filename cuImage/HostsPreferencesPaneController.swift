@@ -65,9 +65,9 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
             controller.validateHostInfo { succeeded in
                 self.validationProgressIndicator.stopAnimation(self)
                 self.validationProgressIndicator.isHidden = true
-                self.validationResultText.stringValue = (succeeded ? "Valid" : "Invalid") + " Configurations!"
+                self.validationResultText.stringValue = "Validation " + (succeeded ? "Succeeded!" : "Failed!")
                 self.validationResultIndicator.image =
-                    NSImage(named: succeeded ? Constants.validIndicator : Constants.invalidIndicator)
+                    NSImage(named: succeeded ? Constants.succeededIndicator : Constants.failedIndicator)
             }
         case saveButton:
             controller.saveHostInfo()
