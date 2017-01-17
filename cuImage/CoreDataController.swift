@@ -100,7 +100,7 @@ final class CoreDataController {
     
     // MARK: - Core Data Saving support
     
-    func saveAction(_ sender: AnyObject?) {
+    func save() {
         // Performs the save action, which is to send the save: message to the managed object context. Any encountered errors are presented to the user.
         if !managedObjectContext.commitEditing() {
             print("Unable to commit editing before saving")
