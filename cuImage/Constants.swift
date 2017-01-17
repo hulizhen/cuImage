@@ -31,6 +31,11 @@ struct Constants {
     static let launcherBundleIdentifier = "LauncherBundleIdentifier"
     static let humanReadableCopyright = "NSHumanReadableCopyright"
     
+    // Email information for feedback.
+    static let emailRecipient = "ihulizhen@foxmail.com"
+    static let emailSubject = "[cuImage]"
+    static let emailBody = "Thanks for the feedback. Any detail would be helpful :)"
+    
     // Random crypto string in hex format for cryptor.
     // This hould not been changed, otherwise the data
     // encrypted previously will not be decrypted correctly.

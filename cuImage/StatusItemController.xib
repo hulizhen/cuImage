@@ -7,6 +7,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="StatusItemController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="aboutMenuItem" destination="mYk-F7-yO9" id="f3h-ms-3MI"/>
+                <outlet property="feedbackMenuItem" destination="ysP-BG-gE2" id="Ttd-hI-n3n"/>
                 <outlet property="menu" destination="0pX-Ur-2Wk" id="paz-LK-sGH"/>
                 <outlet property="preferencesMenuItem" destination="VJI-Pz-n2Z" id="rIj-a0-jMp"/>
                 <outlet property="uploadHistoryMenu" destination="dXn-LR-h8h" id="8yQ-SD-gbj"/>
@@ -35,6 +36,9 @@
                 </menuItem>
                 <menuItem title="Feedback…" id="ysP-BG-gE2">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="handleTappedMenuItem:" target="-2" id="3BO-61-57N"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="About…" id="mYk-F7-yO9">
                     <modifierMask key="keyEquivalentModifierMask"/>

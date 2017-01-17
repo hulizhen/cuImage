@@ -21,6 +21,7 @@ final class StatusItemController: NSObject {
     @IBOutlet weak var uploadImageMenuItem: NSMenuItem!
     @IBOutlet weak var uploadHistoryMenu: NSMenu!
     @IBOutlet weak var preferencesMenuItem: NSMenuItem!
+    @IBOutlet weak var feedbackMenuItem: NSMenuItem!
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
     var clearHistoryMenuItem: NSMenuItem!
     
@@ -76,6 +77,10 @@ final class StatusItemController: NSObject {
         case preferencesMenuItem:
             preferencesWindowController.showWindow(item)
             NSApp.activate(ignoringOtherApps: true)
+        case feedbackMenuItem:
+            DispatchQueue.main.async {
+                Utilities.launchEmailApplication()
+            }
         case aboutMenuItem:
             aboutWindowController.showWindow(item)
             NSApp.activate(ignoringOtherApps: true)
