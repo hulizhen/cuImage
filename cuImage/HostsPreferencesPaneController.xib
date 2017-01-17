@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="HostsPreferencesViewController" customModule="cuImage" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="HostsPreferencesPaneController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="hostPreferencesContentView" destination="cbc-7W-OKR" id="HqD-n9-bon"/>
                 <outlet property="hostsPopUpButton" destination="HHV-0w-add" id="V3B-3r-KIf"/>

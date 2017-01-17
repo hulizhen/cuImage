@@ -8,38 +8,58 @@
 
 import Cocoa
 
-class PreferencesWindowController: BaseWindowController, NSWindowDelegate {
+final class PreferencesWindowController: BaseWindowController, NSWindowDelegate {
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet weak var generalToolbarItem: NSToolbarItem!
     @IBOutlet weak var shortcutsToolbarItem: NSToolbarItem!
     @IBOutlet weak var hostsToolbarItem: NSToolbarItem!
     
-    var preferencesViewControllers = [GeneralPreferencesViewController(),
-                                      ShortcutsPreferencesViewController(),
-                                      HostsPreferencesViewController()]
+    var preferencesPaneControllers = [GeneralPreferencesPaneController(),
+                                      ShortcutsPreferencesPaneController(),
+                                      HostsPreferencesPaneController()]
     
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        toolbar.selectedItemIdentifier = generalToolbarItem.itemIdentifier
-        window!.contentViewController = preferencesViewControllers.first
+        guard let window = window else { return }
+        guard let leftmostItem = window.toolbar?.items.first else { return }
+        
+        // Set the default pane.
+        window.toolbar?.selectedItemIdentifier = leftmostItem.itemIdentifier
+        showPreferencesPane(with: leftmostItem)
+        
+        // Sets the window’s location to the center of the screen.
+        window.center()
     }
         
-    @IBAction func handleTappedToolbarItem(_ item: NSToolbarItem) {
-        let controller = preferencesViewControllers[item.tag]
+    @IBAction func showPreferencesPane(with item: NSToolbarItem) {
+        guard let window = window else { return }
         
-        // Keep the top-left point of window fixed.
-        let frame = window!.frame
-        let topLeftOrigin = NSPoint(x: frame.origin.x, y: frame.origin.y + frame.size.height)
-        window!.contentViewController = controller
-        window!.setFrameTopLeftPoint(topLeftOrigin)        
+        let view = preferencesPaneControllers[item.tag].view
+        
+        // Remove current subviews from window content view.
+        window.contentView?.subviews.forEach { view in
+            view.removeFromSuperviewWithoutNeedingDisplay()
+        }
+        
+        // Resize window to fit to new view.
+        var frame = window.frameRect(forContentRect: view.frame)
+        frame.origin = window.frame.origin
+        frame.origin.y += window.frame.height - frame.height
+        window.setFrame(frame, display: false, animate: true)
+        
+        // Set window title.
+        window.title = item.paletteLabel
+        
+        // Add new view to window content view.
+        window.contentView?.addSubview(view)
     }
     
     func windowShouldClose(_ sender: Any) -> Bool {
-        guard let preferencesViewController =
-            preferencesViewControllers[hostsToolbarItem.tag] as? HostsPreferencesViewController,
+        guard let preferencesPaneController =
+            preferencesPaneControllers[hostsToolbarItem.tag] as? HostsPreferencesPaneController,
             let infoViewController =
-            preferencesViewController.currentHostInfoViewController as? HostInfoViewController else {
+            preferencesPaneController.currentHostInfoViewController as? HostInfoViewController else {
                 return true
         }
         

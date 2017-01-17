@@ -1,5 +1,5 @@
 //
-//  ShortcutsPreferencesViewController.swift
+//  ShortcutsPreferencesPaneController.swift
 //  cuImage
 //
 //  Created by HuLizhen on 03/01/2017.
@@ -9,12 +9,11 @@
 import Cocoa
 import MASShortcut
 
-class ShortcutsPreferencesViewController: BasePreferencesViewController {
+final class ShortcutsPreferencesPaneController: BasePreferencesPaneController {
     @IBOutlet weak var uploadImageShortcutView: MASShortcutView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Shortcuts"
 
         uploadImageShortcutView.associatedUserDefaultsKey = PreferenceKeys.uploadImageShortcut.rawValue
     }

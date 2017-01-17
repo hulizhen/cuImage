@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AboutWindowController: BaseWindowController {
+final class AboutWindowController: BaseWindowController {
     @IBOutlet weak var copyrightLabel: NSTextField!
     
     override func windowDidLoad() {

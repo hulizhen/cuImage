@@ -37,9 +37,6 @@ struct Utilities {
     }
     
     static func launchEmailApplication() {
-        // Make the app active.
-        NSApp.activate(ignoringOtherApps: true)
-
         // Closure for copying email address to general pasteboard.
         let copyEmailAddress = {
             let pasteboard = NSPasteboard.general()
@@ -51,7 +48,7 @@ struct Utilities {
                                                                  text: Constants.emailRecipient)
         }
         
-        let alert = NSAlert()
+        let alert = Alert()
         alert.messageText = "Do you want to launch email application?"
         alert.informativeText = "You can also just copy author's email address."
         alert.addButton(withTitle: "Launch")
@@ -75,7 +72,7 @@ struct Utilities {
             
             // Offer an option of copying email address when failed to launch email application.
             if done == false {
-                let alert = NSAlert()
+                let alert = Alert()
                 alert.messageText = "Failed to launch email application. Copy Author's email address?"
                 alert.informativeText = "Please launch email application yourself."
                 alert.addButton(withTitle: "Copy")

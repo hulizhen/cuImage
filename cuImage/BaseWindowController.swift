@@ -15,8 +15,13 @@ class BaseWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-    
+        
         let top = preferences[.keepWindowsOnTop]
         Utilities.keepWindowsOnTop(top)
+    }
+    
+    override func showWindow(_ sender: Any?) {
+        NSApp.activate(ignoringOtherApps: true)
+        super.showWindow(sender)
     }
 }

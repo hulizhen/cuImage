@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController" customModule="cuImage" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesPaneController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="notificationPreferencesButton" destination="KdG-Rx-LZi" id="0hD-xj-eDU"/>
                 <outlet property="view" destination="UqQ-L8-ZeT" id="BAy-vF-E7J"/>
@@ -19,9 +19,6 @@
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="TBY-dC-2CI" userLabel="Launch At Login">
                     <rect key="frame" x="107" y="155" width="203" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="cfY-BW-Pw8"/>
-                    </constraints>
                     <buttonCell key="cell" type="check" title="Launch cuImage at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Kos-qa-NH8" userLabel="Launch At Login">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -32,9 +29,6 @@
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="2PE-0Y-HbB" userLabel="Keep Windows Always On Top">
                     <rect key="frame" x="107" y="133" width="195" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="coi-Pn-Lf2"/>
-                    </constraints>
                     <buttonCell key="cell" type="check" title="Keep windows always on top" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ddc-7V-Wgv" userLabel="Keep Windows Always On Top">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -45,9 +39,6 @@
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="72M-YJ-QrW">
                     <rect key="frame" x="107" y="99" width="207" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="rJe-dv-iHQ"/>
-                    </constraints>
                     <buttonCell key="cell" type="check" title="Use Markdown-style URL" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hBu-Pl-8bf">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -58,9 +49,6 @@
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="BcR-si-wtr">
                     <rect key="frame" x="107" y="77" width="262" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="14" id="tnY-4K-frq"/>
-                    </constraints>
                     <buttonCell key="cell" type="check" title="Automatically copy URL when uploaded" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2BY-sC-PqD">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>

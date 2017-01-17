@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ShortcutsPreferencesViewController" customModule="cuImage" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="ShortcutsPreferencesPaneController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="uploadImageShortcutView" destination="rLD-ry-Ahs" id="09f-lx-hKZ"/>
                 <outlet property="view" destination="2qv-Z9-ACX" id="mJD-6A-2Vc"/>

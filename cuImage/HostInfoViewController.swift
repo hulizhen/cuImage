@@ -30,7 +30,7 @@ extension HostInfoViewController {
      */
     func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool {
         if (isInfoChanged) {
-            let alert = NSAlert()
+            let alert = Alert()
             alert.messageText = "Do you want to save the changes?"
             alert.informativeText = "The changes will be lost if you don't save them!"
             alert.addButton(withTitle: "Save")

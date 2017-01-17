@@ -1,5 +1,5 @@
 //
-//  GeneralPreferencesViewController.swift
+//  GeneralPreferencesPaneController.swift
 //  cuImage
 //
 //  Created by HuLizhen on 03/01/2017.
@@ -8,12 +8,11 @@
 
 import Cocoa
 
-class GeneralPreferencesViewController: BasePreferencesViewController {
+final class GeneralPreferencesPaneController: BasePreferencesPaneController {
     @IBOutlet weak var notificationPreferencesButton: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "General"
     }
     
     @IBAction func handleTappedButton(_ button: NSButton) {

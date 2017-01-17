@@ -76,14 +76,12 @@ final class StatusItemController: NSObject {
             clearUploadHistory(item)
         case preferencesMenuItem:
             preferencesWindowController.showWindow(item)
-//            NSApp.activate(ignoringOtherApps: true)
         case feedbackMenuItem:
             DispatchQueue.main.async {
                 Utilities.launchEmailApplication()
             }
         case aboutMenuItem:
             aboutWindowController.showWindow(item)
-//            NSApp.activate(ignoringOtherApps: true)
         default:
             break
         }

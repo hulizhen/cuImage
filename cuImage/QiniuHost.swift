@@ -32,7 +32,6 @@ final class QiniuHost: NSObject {
     
     convenience init(delegate: HostDelegate?) {
         self.init()
-        
         self.delegate = delegate
     }
     
@@ -116,8 +115,6 @@ final class QiniuHost: NSObject {
 
 extension QiniuHost: Host {
     func uploadImage(_ image: NSImage, named name: String) {
-        assert(token != nil, "Make the upload token first.")
-        
         let data = image.tiffRepresentation
         let option = QNUploadOption(progressHandler: progressHandler)
         

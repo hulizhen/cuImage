@@ -26,22 +26,17 @@ final class StatusItemView: NSImageView {
     }
     
     private func setUp() {
+        // Make the images used for status menu templates.
         statusItemIcon = NSImage(named: Constants.statusItemIcon)!
         statusItemIcon.isTemplate = true
         draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
         draggingDestinationBox.isTemplate = true
-        
         uploadingProgressImages = (0..<Constants.uploadingProgressCount).reduce([]) {
             var images: [NSImage] = $0.0
             images.append(NSImage(named: Constants.uploadingProgress + "\($0.1)")!)
             images[$0.1].isTemplate = true
             return images
         }
-//        uploadingProgressImages = [NSImage]()
-//        for i in 0..<Constants.uploadingProgressCount {
-//            uploadingProgressImages.append(NSImage(named: Constants.uploadingProgress + "\(i)")!)
-//            uploadingProgressImages[i].isTemplate = true
-//        }
 
         image = statusItemIcon
         

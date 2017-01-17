@@ -1,5 +1,5 @@
 //
-//  HostsPreferencesViewController.swift
+//  HostsPreferencesPaneController.swift
 //  cuImage
 //
 //  Created by HuLizhen on 03/01/2017.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class HostsPreferencesViewController: BasePreferencesViewController {
+final class HostsPreferencesPaneController: BasePreferencesPaneController {
     @IBOutlet weak var hostsPopUpButton: NSPopUpButton!
     @IBOutlet weak var hostPreferencesContentView: NSView!
     @IBOutlet weak var saveButton: NSButton!
@@ -22,7 +22,6 @@ class HostsPreferencesViewController: BasePreferencesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Hosts"
         
         // Host info validation things.
         validationResultText.stringValue = ""

@@ -13,7 +13,7 @@
 		25130C4D1E20E0C700830B3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4C1E20E0C700830B3F /* Assets.xcassets */; };
 		25130C501E20E0C700830B3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4E1E20E0C700830B3F /* MainMenu.xib */; };
 		2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */; };
-		25577DFB1E1FE1FE0091735A /* BasePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577DFA1E1FE1FE0091735A /* BasePreferencesViewController.swift */; };
+		25577DFB1E1FE1FE0091735A /* BasePreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577DFA1E1FE1FE0091735A /* BasePreferencesPaneController.swift */; };
 		25577E041E2088270091735A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577E031E2088270091735A /* Utilities.swift */; };
 		25577E071E20886C0091735A /* BaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577E061E20886C0091735A /* BaseWindowController.swift */; };
 		255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255957EF1E1BD2A600B8469E /* AppDelegate.swift */; };
@@ -23,14 +23,14 @@
 		255958051E1BD78500B8469E /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958041E1BD78500B8469E /* StatusItemController.xib */; };
 		255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958101E1BDDD900B8469E /* AboutWindowController.swift */; };
 		255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958111E1BDDD900B8469E /* AboutWindowController.xib */; };
-		2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */; };
-		2559581B1E1BE00400B8469E /* GeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */; };
+		2559581A1E1BE00400B8469E /* GeneralPreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958161E1BE00400B8469E /* GeneralPreferencesPaneController.swift */; };
+		2559581B1E1BE00400B8469E /* GeneralPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958171E1BE00400B8469E /* GeneralPreferencesPaneController.xib */; };
 		255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */; };
 		255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958201E1BE03800B8469E /* PreferencesWindowController.xib */; };
-		255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */; };
-		255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */; };
-		255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */; };
-		255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */; };
+		255958281E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958261E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift */; };
+		255958291E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958271E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib */; };
+		255958311E1BE8E800B8469E /* HostsPreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582F1E1BE8E800B8469E /* HostsPreferencesPaneController.swift */; };
+		255958321E1BE8E800B8469E /* HostsPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958301E1BE8E800B8469E /* HostsPreferencesPaneController.xib */; };
 		2559583A1E1BECCF00B8469E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958381E1BECCF00B8469E /* Host.swift */; };
 		2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958391E1BECCF00B8469E /* QiniuHost.swift */; };
 		2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559583D1E1BED4300B8469E /* Date+Formatter.swift */; };
@@ -53,6 +53,7 @@
 		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
 		25DFF6D21E23A0040071F2EC /* cuImageLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25130C481E20E0C700830B3F /* cuImageLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E5F00E1E2886EC0004C12A /* HostInfo.swift */; };
+		25E910AE1E2E535D006D74F9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E910AD1E2E535D006D74F9 /* Alert.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,7 +93,7 @@
 		2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcut+Convenience.swift"; sourceTree = "<group>"; };
 		254834E11E24780F0098C16F /* cuImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImage.entitlements; sourceTree = "<group>"; };
 		254834E21E247A150098C16F /* cuImageLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImageLauncher.entitlements; sourceTree = "<group>"; };
-		25577DFA1E1FE1FE0091735A /* BasePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePreferencesViewController.swift; sourceTree = "<group>"; };
+		25577DFA1E1FE1FE0091735A /* BasePreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BasePreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		25577E031E2088270091735A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		25577E061E20886C0091735A /* BaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWindowController.swift; sourceTree = "<group>"; };
 		255957EC1E1BD2A600B8469E /* cuImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cuImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,14 +105,14 @@
 		255958041E1BD78500B8469E /* StatusItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemController.xib; sourceTree = "<group>"; };
 		255958101E1BDDD900B8469E /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		255958111E1BDDD900B8469E /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
-		255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
-		255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesViewController.xib; sourceTree = "<group>"; };
-		2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		255958161E1BE00400B8469E /* GeneralPreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GeneralPreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		255958171E1BE00400B8469E /* GeneralPreferencesPaneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesPaneController.xib; sourceTree = "<group>"; };
+		2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255958201E1BE03800B8469E /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
-		255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutsPreferencesViewController.swift; sourceTree = "<group>"; };
-		255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsPreferencesViewController.xib; sourceTree = "<group>"; };
-		2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsPreferencesViewController.swift; sourceTree = "<group>"; };
-		255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostsPreferencesViewController.xib; sourceTree = "<group>"; };
+		255958261E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShortcutsPreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		255958271E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsPreferencesPaneController.xib; sourceTree = "<group>"; };
+		2559582F1E1BE8E800B8469E /* HostsPreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HostsPreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		255958301E1BE8E800B8469E /* HostsPreferencesPaneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostsPreferencesPaneController.xib; sourceTree = "<group>"; };
 		255958381E1BECCF00B8469E /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		255958391E1BECCF00B8469E /* QiniuHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHost.swift; sourceTree = "<group>"; };
 		2559583D1E1BED4300B8469E /* Date+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserNotificationCenter+Convenience.swift"; sourceTree = "<group>"; };
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
 		25E5F00E1E2886EC0004C12A /* HostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfo.swift; sourceTree = "<group>"; };
+		25E910AD1E2E535D006D74F9 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
 		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,8 +227,9 @@
 		25577E091E208A5E0091735A /* Bases */ = {
 			isa = PBXGroup;
 			children = (
+				25E910AD1E2E535D006D74F9 /* Alert.swift */,
 				25577E061E20886C0091735A /* BaseWindowController.swift */,
-				25577DFA1E1FE1FE0091735A /* BasePreferencesViewController.swift */,
+				25577DFA1E1FE1FE0091735A /* BasePreferencesPaneController.swift */,
 			);
 			name = Bases;
 			sourceTree = "<group>";
@@ -307,12 +310,12 @@
 				255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */,
 				2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */,
 				255958201E1BE03800B8469E /* PreferencesWindowController.xib */,
-				255958161E1BE00400B8469E /* GeneralPreferencesViewController.swift */,
-				255958171E1BE00400B8469E /* GeneralPreferencesViewController.xib */,
-				255958261E1BE46900B8469E /* ShortcutsPreferencesViewController.swift */,
-				255958271E1BE46900B8469E /* ShortcutsPreferencesViewController.xib */,
-				2559582F1E1BE8E800B8469E /* HostsPreferencesViewController.swift */,
-				255958301E1BE8E800B8469E /* HostsPreferencesViewController.xib */,
+				255958161E1BE00400B8469E /* GeneralPreferencesPaneController.swift */,
+				255958171E1BE00400B8469E /* GeneralPreferencesPaneController.xib */,
+				255958261E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift */,
+				255958271E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib */,
+				2559582F1E1BE8E800B8469E /* HostsPreferencesPaneController.swift */,
+				255958301E1BE8E800B8469E /* HostsPreferencesPaneController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -521,13 +524,13 @@
 			files = (
 				255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */,
 				255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */,
-				255958321E1BE8E800B8469E /* HostsPreferencesViewController.xib in Resources */,
+				255958321E1BE8E800B8469E /* HostsPreferencesPaneController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
-				255958291E1BE46900B8469E /* ShortcutsPreferencesViewController.xib in Resources */,
+				255958291E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
 				255958051E1BD78500B8469E /* StatusItemController.xib in Resources */,
-				2559581B1E1BE00400B8469E /* GeneralPreferencesViewController.xib in Resources */,
+				2559581B1E1BE00400B8469E /* GeneralPreferencesPaneController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,9 +614,9 @@
 				255957F01E1BD2A600B8469E /* AppDelegate.swift in Sources */,
 				2559583A1E1BECCF00B8469E /* Host.swift in Sources */,
 				25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */,
-				25577DFB1E1FE1FE0091735A /* BasePreferencesViewController.swift in Sources */,
+				25577DFB1E1FE1FE0091735A /* BasePreferencesPaneController.swift in Sources */,
 				250B7E311E24FEC00095FAEA /* Constants.swift in Sources */,
-				2559581A1E1BE00400B8469E /* GeneralPreferencesViewController.swift in Sources */,
+				2559581A1E1BE00400B8469E /* GeneralPreferencesPaneController.swift in Sources */,
 				25806C351E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift in Sources */,
 				256E393D1E24AD5000CA2F5F /* HostInfoViewController.swift in Sources */,
 				255958501E1BEF5300B8469E /* UploadManager.swift in Sources */,
@@ -626,12 +629,13 @@
 				258BE74F1E27516500D04D23 /* StatusItemView.swift in Sources */,
 				2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */,
 				2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */,
-				255958311E1BE8E800B8469E /* HostsPreferencesViewController.swift in Sources */,
+				255958311E1BE8E800B8469E /* HostsPreferencesPaneController.swift in Sources */,
 				257458381E2C703B00138E3C /* DataModel.xcdatamodeld in Sources */,
-				255958281E1BE46900B8469E /* ShortcutsPreferencesViewController.swift in Sources */,
+				255958281E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift in Sources */,
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
 				25577E071E20886C0091735A /* BaseWindowController.swift in Sources */,
 				2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */,
+				25E910AE1E2E535D006D74F9 /* Alert.swift in Sources */,
 				25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */,
 				255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */,
 			);

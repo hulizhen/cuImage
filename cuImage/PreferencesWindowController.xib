@@ -29,17 +29,17 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="A48C7778-9B2E-4E55-8B1F-A4F03BE4E538" label="General" paletteLabel="General" image="GeneralPreferences" selectable="YES" id="bua-bb-1FB">
                         <connections>
-                            <action selector="handleTappedToolbarItem:" target="-2" id="yqV-Fp-qAF"/>
+                            <action selector="showPreferencesPaneWith:" target="-2" id="fVP-VP-F2O"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="AF2CBAAD-373A-478F-BD88-B36F8D6FE96E" label="Shortcuts" paletteLabel="Shortcuts" tag="1" image="ShortcutsPreferences" selectable="YES" id="Rzg-nJ-aHP">
                         <connections>
-                            <action selector="handleTappedToolbarItem:" target="-2" id="Oaf-qj-bvm"/>
+                            <action selector="showPreferencesPaneWith:" target="-2" id="uOn-tr-CNu"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C04D996D-3DD4-40D7-B1F5-3B9E99F4C11F" label="Hosts" paletteLabel="Hosts" tag="2" image="HostsPreferences" selectable="YES" id="F7E-0o-4KX">
                         <connections>
-                            <action selector="handleTappedToolbarItem:" target="-2" id="h8e-E0-sN6"/>
+                            <action selector="showPreferencesPaneWith:" target="-2" id="TF8-JG-0Td"/>
                         </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
