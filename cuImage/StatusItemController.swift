@@ -76,14 +76,14 @@ final class StatusItemController: NSObject {
             clearUploadHistory(item)
         case preferencesMenuItem:
             preferencesWindowController.showWindow(item)
-            NSApp.activate(ignoringOtherApps: true)
+//            NSApp.activate(ignoringOtherApps: true)
         case feedbackMenuItem:
             DispatchQueue.main.async {
                 Utilities.launchEmailApplication()
             }
         case aboutMenuItem:
             aboutWindowController.showWindow(item)
-            NSApp.activate(ignoringOtherApps: true)
+//            NSApp.activate(ignoringOtherApps: true)
         default:
             break
         }
@@ -196,7 +196,7 @@ final class StatusItemController: NSObject {
         guard let uploadedItem = item.representedObject as? UploadedItem else { return }
         
         if let urlString = uploadedItem.urlString {
-            Utilities.setPasteboard(with: urlString, inMarkdown: true)
+            Utilities.setPasteboard(with: urlString, inMarkdown: preferences[.useMarkdownStyleURL])
         }
     }
 }

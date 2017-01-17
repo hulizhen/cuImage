@@ -43,16 +43,6 @@ DQ
                                     <action selector="handleTappedButton:" target="-2" id="Qn1-GH-M9h"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCF-dO-hq2">
-                                <rect key="frame" x="288" y="13" width="89" height="32"/>
-                                <buttonCell key="cell" type="push" title="Validate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RL5-pB-8JI">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="handleTappedButton:" target="-2" id="G2h-fQ-bCz"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLv-JV-Boy">
                                 <rect key="frame" x="42" y="22" width="105" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Validation Result" id="J5V-bl-31N">
@@ -79,6 +69,16 @@ DQ
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Valid" id="2vG-Hd-Tiq"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCF-dO-hq2">
+                                <rect key="frame" x="288" y="13" width="89" height="32"/>
+                                <buttonCell key="cell" type="push" title="Validate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RL5-pB-8JI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="handleTappedButton:" target="-2" id="G2h-fQ-bCz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="vA3-Nk-bH0" firstAttribute="centerX" secondItem="HFo-6z-Qk3" secondAttribute="centerX" id="0RC-jQ-2zu"/>
@@ -117,7 +117,7 @@ DQ
                         <menu key="menu" id="hQ8-2x-1yA"/>
                     </popUpButtonCell>
                     <connections>
-                        <binding destination="pFE-Vv-5Dx" name="selectedValue" keyPath="values.currentHost" id="HcU-FZ-NGN"/>
+                        <binding destination="pFE-Vv-5Dx" name="selectedValue" keyPath="values.CurrentHost" id="jSw-ot-i4q"/>
                     </connections>
                 </popUpButton>
             </subviews>

@@ -37,6 +37,9 @@ struct Utilities {
     }
     
     static func launchEmailApplication() {
+        // Make the app active.
+        NSApp.activate(ignoringOtherApps: true)
+
         // Closure for copying email address to general pasteboard.
         let copyEmailAddress = {
             let pasteboard = NSPasteboard.general()

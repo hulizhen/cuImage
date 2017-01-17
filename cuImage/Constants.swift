@@ -43,4 +43,7 @@ struct Constants {
                                           0x53, 0x6E, 0x67, 0x57,
                                           0x6E, 0x6F, 0x38, 0x24,
                                           0x4F, 0x33, 0x4F, 0x64], encoding: .utf8)!
+    
+    // Misc
+    static let notificationPreferencesPane = "/System/Library/PreferencePanes/Notifications.prefPane"
 }

@@ -10,7 +10,7 @@
                 <outlet property="generalToolbarItem" destination="bua-bb-1FB" id="B13-lH-vpJ"/>
                 <outlet property="hostsToolbarItem" destination="F7E-0o-4KX" id="drE-MC-7CP"/>
                 <outlet property="shortcutsToolbarItem" destination="Rzg-nJ-aHP" id="6YT-3J-0IR"/>
-                <outlet property="toolbar" destination="itw-4w-zLM" id="BL8-QF-hLh"/>
+                <outlet property="toolbar" destination="itw-4w-zLM" id="QkJ-dL-Vfa"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -20,7 +20,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="400" y="400" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -55,8 +55,8 @@
         </window>
     </objects>
     <resources>
-        <image name="GeneralPreferences" width="64" height="64"/>
-        <image name="HostsPreferences" width="64" height="64"/>
-        <image name="ShortcutsPreferences" width="64" height="64"/>
+        <image name="GeneralPreferences" width="56" height="56"/>
+        <image name="HostsPreferences" width="56" height="55"/>
+        <image name="ShortcutsPreferences" width="48" height="48"/>
     </resources>
 </document>

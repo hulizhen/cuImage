@@ -9,11 +9,15 @@
 import Cocoa
 
 class GeneralPreferencesViewController: BasePreferencesViewController {
-    @IBOutlet weak var launchAtLoginButton: NSButton!
-    @IBOutlet weak var keepWindowsOnTopButton: NSButton!
+    @IBOutlet weak var notificationPreferencesButton: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "General"
+    }
+    
+    @IBAction func handleTappedButton(_ button: NSButton) {
+        let notificationPreferencesPaneURL = URL(fileURLWithPath: Constants.notificationPreferencesPane)
+        NSWorkspace.shared().open(notificationPreferencesPaneURL)
     }
 }

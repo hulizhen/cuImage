@@ -144,15 +144,17 @@ final class PreferenceKey<T>: PreferenceKeys { }
 // MARK: - Preference Keys
 extension PreferenceKeys {
     // General
-    static let launchAtLogin = PreferenceKey<Bool>("launchAtLogin")
-    static let keepWindowsOnTop = PreferenceKey<Bool>("keepWindowsOnTop")
+    static let launchAtLogin = PreferenceKey<Bool>("LaunchAtLogin")
+    static let keepWindowsOnTop = PreferenceKey<Bool>("KeepWindowsOnTop")
+    static let useMarkdownStyleURL = PreferenceKey<Bool>("UseMarkdownStyleURL")
+    static let copyURLWhenUploaded = PreferenceKey<Bool>("CopyURLWhenUploaded")
     
     // Shortcuts
-    static let uploadImageShortcut = PreferenceKey<MASShortcut>("uploadImageShortcut")
+    static let uploadImageShortcut = PreferenceKey<MASShortcut>("UploadImageShortcut")
     
     // Hosts
-    static let currentHost = PreferenceKey<String>("currentHost")
-    static let qiniuHostInfo = PreferenceKey<HostInfo>("qiniuHostInfo")
+    static let currentHost = PreferenceKey<String>("CurrentHost")
+    static let qiniuHostInfo = PreferenceKey<HostInfo>("QiniuHostInfo")
 }
 
 // MARK: - Default Preference Values
@@ -160,6 +162,8 @@ private let defaultPreferences: [PreferenceKeys: Any] = [
     // General
     .launchAtLogin: false,
     .keepWindowsOnTop: true,
+    .useMarkdownStyleURL: true,
+    .copyURLWhenUploaded: true,
     
     // Shortcuts
     .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]).data(),
