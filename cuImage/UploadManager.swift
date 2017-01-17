@@ -56,18 +56,32 @@ extension UploadManager: HostDelegate {
         StatusItemController.shared.statusItemView.updateImage(with: percent)
     }
     
-    func host(_ host: Host, didSucceedToUploadImageWithURLString urlString: String) {
-        NSUserNotificationCenter.default.deliverNotification(withTitle: "Image Uploaded", subtitle: "", text: urlString)
-        
+    func host(_ host: Host, didSucceedToUploadImage image: NSImage, urlString: String) {
         let markdownURL = "![](" + urlString + ")"
-        let pasteBoard = NSPasteboard.general()
-        pasteBoard.declareTypes([NSPasteboardTypeString], owner: nil)
-        assert(pasteBoard.setString(markdownURL, forType: NSPasteboardTypeString),
-               "Failed to write object to the general pasteboard")
+        Utilities.setPasteboard(with: markdownURL)
+        
+        // Add the uploaded image to history.
+        let managedObjectContext = CoreDataController.shared.managedObjectContext
+        let uploadedItem = NSEntityDescription.insertNewObject(forEntityName: "UploadedItem",
+                                                                into: managedObjectContext) as! UploadedItem
+        uploadedItem.date = NSDate()
+        uploadedItem.urlString = urlString
+        if let imageTiff = image.tiffRepresentation,
+            let thumbnail = image.thumbnail(maxSize: 200),
+            let thumbnailTiff = thumbnail.tiffRepresentation {
+            uploadedItem.image = NSData(data: imageTiff)
+            uploadedItem.thumbnail = NSData(data: thumbnailTiff)
+        }
+        
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
         
         StatusItemController.shared.statusItemView.resetImage()
     }
     
-    func host(_ host: Host, didFailToUploadImageWithError error: NSError) {
+    func host(_ host: Host, didFailToUploadImage image: NSImage, error: NSError) {
     }
 }

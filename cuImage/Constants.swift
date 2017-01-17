@@ -26,6 +26,8 @@ struct Constants {
     static let testString = "Hello"
     
     // Keys in Info.plist.
+    static let applicationName = kCFBundleNameKey as String
+    static let mainBundleIdentifier = kCFBundleIdentifierKey as String
     static let launcherBundleIdentifier = "LauncherBundleIdentifier"
     static let humanReadableCopyright = "NSHumanReadableCopyright"
     

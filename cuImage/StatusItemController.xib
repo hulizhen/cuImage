@@ -9,6 +9,7 @@
                 <outlet property="aboutMenuItem" destination="mYk-F7-yO9" id="f3h-ms-3MI"/>
                 <outlet property="menu" destination="0pX-Ur-2Wk" id="paz-LK-sGH"/>
                 <outlet property="preferencesMenuItem" destination="VJI-Pz-n2Z" id="rIj-a0-jMp"/>
+                <outlet property="uploadHistoryMenu" destination="dXn-LR-h8h" id="8yQ-SD-gbj"/>
                 <outlet property="uploadImageMenuItem" destination="Vr8-wq-G2e" id="Poe-Rz-SPu"/>
             </connections>
         </customObject>
@@ -22,20 +23,24 @@
                         <action selector="handleTappedMenuItem:" target="-2" id="bO9-XW-7Fr"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Upload History" id="Kfr-2y-AEv">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Upload History" id="dXn-LR-h8h"/>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="saH-HL-6uN"/>
                 <menuItem title="Preferences…" keyEquivalent="," id="VJI-Pz-n2Z">
                     <connections>
                         <action selector="handleTappedMenuItem:" target="-2" id="fop-r1-5BB"/>
                     </connections>
                 </menuItem>
-                <menuItem title="About" id="mYk-F7-yO9">
+                <menuItem title="About…" id="mYk-F7-yO9">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="handleTappedMenuItem:" target="-2" id="cc2-7p-1Xu"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="3rY-lE-RYJ"/>
-                <menuItem title="Quit cuImage" keyEquivalent="q" id="N8H-WJ-Zsf">
+                <menuItem title="Quit" keyEquivalent="q" id="N8H-WJ-Zsf">
                     <connections>
                         <action selector="terminate:" target="-1" id="t3K-WD-RfR"/>
                     </connections>

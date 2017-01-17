@@ -13,6 +13,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItemController = StatusItemController.shared
     let uploadManager = UploadManager.shared
+    let coreDataController = CoreDataController.shared
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         addObservers()
@@ -33,6 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillTerminate(_ notification: Notification) {
+        coreDataController.save()
         removeObservers()
     }
 }
@@ -44,9 +46,9 @@ extension AppDelegate {
         
         switch key {
         case PreferenceKeys.launchAtLogin:
-            launchAtLogin(preferences[.launchAtLogin])
+            Utilities.launchAtLogin(preferences[.launchAtLogin])
         case PreferenceKeys.keepWindowsOnTop:
-            keepWindowsOnTop(preferences[.keepWindowsOnTop])
+            Utilities.keepWindowsOnTop(preferences[.keepWindowsOnTop])
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

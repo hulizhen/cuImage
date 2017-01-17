@@ -17,6 +17,6 @@ class BaseWindowController: NSWindowController {
         super.windowDidLoad()
     
         let top = preferences[.keepWindowsOnTop]
-        keepWindowsOnTop(top)
+        Utilities.keepWindowsOnTop(top)
     }
 }
