@@ -26,8 +26,14 @@ final class UploadManager {
     func uploadImageOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         guard let host = host else { return }
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
+        
+        let alertNoImagesToUpload = {
+            NSAlert.alert(messageText: "No images to upload.",
+                          informativeText: "Before uploading, you should take a screenshort, copy images or drag images to cuImage icon on status bar.")
+        }
+        
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else {
-            // TODO: Notify user!!!
+            alertNoImagesToUpload()
             return
         }
         
@@ -49,13 +55,14 @@ final class UploadManager {
         
         if image != nil {
             host.uploadImage(image!, named: name!)
+        } else {
+            alertNoImagesToUpload()
         }
     }
 }
 
 extension UploadManager: HostDelegate {
     func host(_ host: Host, isUploadingImageWithPercent percent: Float) {
-        print("Percent: \(percent)")
         StatusItemController.shared.statusItemView.updateImage(with: percent)
     }
     

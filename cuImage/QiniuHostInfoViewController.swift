@@ -30,7 +30,7 @@ final class QiniuHostInfoViewController: NSViewController, HostInfoViewControlle
         loadHostInfo()
     }
     
-    func validateHostInfo(completion: @escaping (Bool) -> ()) {
+    func validateHostInfo(completion: @escaping (Bool) -> Void) {
         let qiniuHostInfo = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                           secretKey: secretKeyTextField.stringValue,
                                           bucket: bucketTextField.stringValue,

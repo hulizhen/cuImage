@@ -81,7 +81,7 @@ final class QiniuHost: NSObject {
         return accessKey + ":" + encodedSign + ":" + encodedPolicy
     }
     
-    func validateHostInfo(_ hostInfo: QiniuHostInfo, completion: @escaping (Bool) -> ()) {
+    func validateHostInfo(_ hostInfo: QiniuHostInfo, completion: @escaping (Bool) -> Void) {
         guard hostInfo.accessKey != "", hostInfo.secretKey != "",
             hostInfo.bucket != "", hostInfo.domain != "" else {
                 completion(false)
@@ -113,15 +113,13 @@ final class QiniuHost: NSObject {
     }
     
     fileprivate func alertToConfigureHostInfo() {
-        let alert = Alert()
-        alert.messageText = "Wrong host information. Do you want to configure your host now?"
-        alert.informativeText = "You should get your host configured correctly before uploading images."
-        alert.addButton(withTitle: "Configure")
-        alert.addButton(withTitle: "Cancel")
-        alert.alertStyle = .critical
-        let response = alert.runModal()
-        if response == NSAlertFirstButtonReturn {   // Configure
-            PreferencesWindowController.shared.showHostPreferencesPane()
+        NSAlert.alert(alertStyle: .critical,
+                      messageText: "Wrong host information. Do you want to configure your host now?",
+                      informativeText: "You should get your host configured correctly before uploading images.",
+                      buttonTitles: ["Configure", "Cancel"]) { response in
+                        if response == NSAlertFirstButtonReturn {   // Configure
+                            PreferencesWindowController.shared.showHostPreferencesPane()
+                        }
         }
     }
 }

@@ -15,6 +15,7 @@ final class ShortcutsPreferencesPaneController: BasePreferencesPaneController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Join the key view loop, but without focus ring.
         uploadImageShortcutView.setAcceptsFirstResponder(true)
         uploadImageShortcutView.associatedUserDefaultsKey = PreferenceKeys.uploadImageShortcut.rawValue
     }

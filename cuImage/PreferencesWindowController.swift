@@ -29,7 +29,7 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
         // Set the default pane.
         window.toolbar?.selectedItemIdentifier = leftmostItem.itemIdentifier
         showPreferencesPane(with: leftmostItem)
-        
+
         // Sets the window’s location to the center of the screen.
         window.center()
     }

@@ -28,6 +28,10 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         validationProgressIndicator.isHidden = true
         validationResultIndicator.image = nil
         
+        // Tool tips.
+        validateButton.toolTip = "Press ⌘D to Validate."
+        saveButton.toolTip = "Press ↩ to Save"
+        
         setUp()
     }
     

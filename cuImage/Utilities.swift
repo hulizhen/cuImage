@@ -48,43 +48,75 @@ struct Utilities {
                                                                  text: Constants.emailRecipient)
         }
         
-        let alert = Alert()
-        alert.messageText = "Do you want to launch email application?"
-        alert.informativeText = "You can also just copy author's email address."
-        alert.addButton(withTitle: "Launch")
-        alert.addButton(withTitle: "Copy")
-        alert.addButton(withTitle: "Cancel")
-        alert.alertStyle = .warning
-        let response = alert.runModal()
-        if response == NSAlertFirstButtonReturn {   // Launch
-            var done = false
-
-            // Launch email application.
-            if let emailService = NSSharingService(named: NSSharingServiceNameComposeEmail) {
-                emailService.recipients = [Constants.emailRecipient]
-                emailService.subject = Constants.emailSubject
-
-                if emailService.canPerform(withItems: nil) {
-                    emailService.perform(withItems: [Constants.emailBody])
-                    done = true
-                }
-            }
-            
-            // Offer an option of copying email address when failed to launch email application.
-            if done == false {
-                let alert = Alert()
-                alert.messageText = "Failed to launch email application. Copy Author's email address?"
-                alert.informativeText = "Please launch email application yourself."
-                alert.addButton(withTitle: "Copy")
-                alert.addButton(withTitle: "Cancel")
-                alert.alertStyle = .warning
-                let response = alert.runModal()
-                if response == NSAlertFirstButtonReturn {   // Copy
-                    copyEmailAddress()
-                }
-            }
-        } else if response == NSAlertSecondButtonReturn {   // Copy
-            copyEmailAddress()
+        NSAlert.alert(messageText: "Do you want to launch email application?",
+                      informativeText: "You can also just copy author's email address.",
+                      buttonTitles: ["Launch", "Copy", "Cancel"]) { response in
+                        if response == NSAlertFirstButtonReturn {   // Launch
+                            var done = false
+                            
+                            // Launch email application.
+                            if let emailService = NSSharingService(named: NSSharingServiceNameComposeEmail) {
+                                emailService.recipients = [Constants.emailRecipient]
+                                emailService.subject = Constants.emailSubject
+                                
+                                if emailService.canPerform(withItems: nil) {
+                                    emailService.perform(withItems: [Constants.emailBody])
+                                    done = true
+                                }
+                            }
+                            
+                            // Offer an option of copying email address when failed to launch email application.
+                            if done == false {
+                                NSAlert.alert(messageText: "Failed to launch email application. Copy Author's email address?",
+                                              informativeText: "Please launch email application yourself.",
+                                              buttonTitles: ["Copy", "Cancel"]) { response in
+                                                if response == NSAlertFirstButtonReturn {   // Copy
+                                                    copyEmailAddress()
+                                                }
+                                }
+                            }
+                        } else if response == NSAlertSecondButtonReturn {   // Copy
+                            copyEmailAddress()
+                        }
         }
+        
+//        let alert = Alert()
+//        alert.messageText = "Do you want to launch email application?"
+//        alert.informativeText = "You can also just copy author's email address."
+//        alert.addButton(withTitle: "Launch")
+//        alert.addButton(withTitle: "Copy")
+//        alert.addButton(withTitle: "Cancel")
+//        alert.alertStyle = .warning
+//        let response = alert.runModal()
+//        if response == NSAlertFirstButtonReturn {   // Launch
+//            var done = false
+//
+//            // Launch email application.
+//            if let emailService = NSSharingService(named: NSSharingServiceNameComposeEmail) {
+//                emailService.recipients = [Constants.emailRecipient]
+//                emailService.subject = Constants.emailSubject
+//
+//                if emailService.canPerform(withItems: nil) {
+//                    emailService.perform(withItems: [Constants.emailBody])
+//                    done = true
+//                }
+//            }
+//            
+//            // Offer an option of copying email address when failed to launch email application.
+//            if done == false {
+//                let alert = Alert()
+//                alert.messageText = "Failed to launch email application. Copy Author's email address?"
+//                alert.informativeText = "Please launch email application yourself."
+//                alert.addButton(withTitle: "Copy")
+//                alert.addButton(withTitle: "Cancel")
+//                alert.alertStyle = .warning
+//                let response = alert.runModal()
+//                if response == NSAlertFirstButtonReturn {   // Copy
+//                    copyEmailAddress()
+//                }
+//            }
+//        } else if response == NSAlertSecondButtonReturn {   // Copy
+//            copyEmailAddress()
+//        }
     }
 }

@@ -12,7 +12,7 @@ protocol HostInfoViewController: class {
     var isInfoChanged: Bool { get }
     
     func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool
-    func validateHostInfo(completion: @escaping (Bool) -> ())
+    func validateHostInfo(completion: @escaping (Bool) -> Void)
     func saveHostInfo()
     func discardHostInfo()
 }
@@ -30,14 +30,9 @@ extension HostInfoViewController {
      */
     func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool {
         if (isInfoChanged) {
-            let alert = Alert()
-            alert.messageText = "Do you want to save the changes?"
-            alert.informativeText = "The changes will be lost if you don't save them!"
-            alert.addButton(withTitle: "Save")
-            alert.addButton(withTitle: "Cancel")
-            alert.addButton(withTitle: "Discard")
-            alert.alertStyle = .warning
-            alert.beginSheetModal(for: window, completionHandler: completion)
+            NSAlert.alert(for: window, messageText: "Do you want to save the changes?",
+                          informativeText: "The changes will be lost if you don't save them!",
+                          buttonTitles: ["Save", "Cancel", "Discard"], completion: completion)
         }
         return isInfoChanged
     }
