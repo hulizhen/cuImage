@@ -10,7 +10,7 @@ import Cocoa
 
 // MARK: - Host
 protocol Host: class {
-    func uploadImage(_ image: NSImage, named name: String)
+    func uploadImageData(_ data: Data, named name: String)
 }
 
 // MARK: - HostDelegate

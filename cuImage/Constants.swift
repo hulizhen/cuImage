@@ -19,6 +19,7 @@ struct Constants {
     static let shortcutsPreferences = "ShortcutsPreferences"
     static let hostsPreferences = "HostPreferences"
     static let uploadingProgress = "UploadingProgress"
+    static let alertSound = "AlertSound"
     static let dropSound = "DropSound"
 
     static let uploadingProgressCount = 13  // 0 ... 12

@@ -16,6 +16,9 @@ final class AboutWindowController: BaseWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         
+        // Sets the window’s location to the center of the screen.
+        window?.center()
+        
         let copyright = Bundle.main.infoDictionary![Constants.humanReadableCopyright] as! String
         copyrightLabel.stringValue = copyright
     }

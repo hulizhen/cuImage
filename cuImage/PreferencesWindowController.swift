@@ -24,14 +24,14 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
         super.windowDidLoad()
         
         guard let window = window else { return }
-        guard let leftmostItem = window.toolbar?.items.first else { return }
         
-        // Set the default pane.
-        window.toolbar?.selectedItemIdentifier = leftmostItem.itemIdentifier
-        showPreferencesPane(with: leftmostItem)
-
         // Sets the window’s location to the center of the screen.
         window.center()
+
+        // Set the default pane.
+        guard let leftmostItem = window.toolbar?.items.first else { return }
+        window.toolbar?.selectedItemIdentifier = leftmostItem.itemIdentifier
+        showPreferencesPane(with: leftmostItem)
     }
 
     @IBAction func showPreferencesPane(with item: NSToolbarItem) {

@@ -37,27 +37,32 @@ final class UploadManager {
             return
         }
         
-        var image: NSImage?
+        var data: Data?
         var name: String?
-        
         if let url = objects.first as? URL {
             if let fileExtension = url.imageFileExtension() {
-                image = NSImage(contentsOf: url)
+                data = try? Data(contentsOf: url)
                 name = url.lastPathComponent
                 if url.pathExtension == "" {
                     name = name! + "." + fileExtension
                 }
             }
-        } else {
-            image = (objects.first as? NSImage)?.compression(by: 1.0)
-            name = "Screenshot." + NSBitmapImageFileType.JPEG.string
+        } else if let image = (objects.first as? NSImage) {
+            if let tiff = image.tiffRepresentation {
+                let bitmap = NSBitmapImageRep(data: tiff)
+                data = bitmap?.representation(using: .JPEG, properties: [:])
+                name = "Screenshot." + NSBitmapImageFileType.JPEG.string
+            }
         }
         
-        if image != nil {
-            host.uploadImage(image!, named: name!)
+        if data != nil {
+            host.uploadImageData(data!, named: name!)
         } else {
             alertNoImagesToUpload()
         }
+        
+        // Initialize the uploading progress with zero.
+        StatusItemController.shared.statusItemView.updateImage(with: 0)
     }
 }
 

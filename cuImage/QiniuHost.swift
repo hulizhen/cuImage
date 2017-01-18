@@ -94,21 +94,21 @@ final class QiniuHost: NSObject {
                               scope: hostInfo.bucket)
         
         // Upload test string.
-        uploadManager.put(testString.data(using: .utf8), key: testString, token: token,
-                          complete: { (info, key, response) in
-                            print(info!, key!)
-                            var succeeded = info!.isOK
-                            
-                            // if the token is valid, then validate the domain.
-                            if succeeded {
-                                if let url = URL(string: hostInfo.domain + "/" + testString),
-                                    let string = try? String(contentsOf: url) {
-                                    succeeded = testString == string
-                                } else {
-                                    succeeded = false
-                                }
-                            }
-                            completion(succeeded)
+        uploadManager.put(testString.data(using: .utf8), key: testString, token: token, complete: { (info, key, response) in
+            guard let info = info, let key = key else { return }
+            print(info, key)
+            var succeeded = info.isOK
+            
+            // if the token is valid, then validate the domain.
+            if succeeded {
+                if let url = URL(string: hostInfo.domain + "/" + testString),
+                    let string = try? String(contentsOf: url) {
+                    succeeded = testString == string
+                } else {
+                    succeeded = false
+                }
+            }
+            completion(succeeded)
         }, option: nil)
     }
     
@@ -125,41 +125,39 @@ final class QiniuHost: NSObject {
 }
 
 extension QiniuHost: Host {
-    func uploadImage(_ image: NSImage, named name: String) {
+    func uploadImageData(_ data: Data, named name: String) {
         // Make the upload token first.
         if token == nil {
             alertToConfigureHostInfo()
             return
         }
         
-        let data = image.tiffRepresentation
         let option = QNUploadOption(progressHandler: progressHandler)
         
         // Make image file name.
         let key = Date.simpleFormatter.string(from: Date()) + "_" + name
         
         // Upload image data.
-        uploadManager.put(data, key: key, token: token,
-                          complete: { [weak self] (info, key, response) in
-                            guard let sself = self else { return }
-                            print(info!, key!)
-                            
-                            if info!.isOK {
-                                let urlString = sself.qiniuHostInfo.domain + "/" + key!
-                                sself.delegate?.host(sself, didSucceedToUploadImage: image, urlString: urlString)
-                            } else {
-                                // TODO: Show alert dialog to the user!
-                                let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
-                                let error = NSError(domain: domain, code: 0, userInfo: nil)
-                                sself.delegate?.host(sself, didFailToUploadImage: image, error: error)
-                                
-                                if info!.statusCode == 401 {    // Bad token.
-                                    sself.alertToConfigureHostInfo()
-                                } else {
-                                    NSApp.activate(ignoringOtherApps: true)
-                                    NSApp.presentError(info!.error)
-                                }
-                            }
+        uploadManager.put(data, key: key, token: token, complete: { [weak self] (info, key, response) in
+            guard let sself = self else { return }
+            guard let info = info, let key = key else { return }
+            print(info, key)
+            
+            if info.isOK {
+                let urlString = sself.qiniuHostInfo.domain + "/" + key
+                sself.delegate?.host(sself, didSucceedToUploadImage: NSImage(data: data)!, urlString: urlString)
+            } else {
+                let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
+                let error = NSError(domain: domain, code: 0, userInfo: nil)
+                sself.delegate?.host(sself, didFailToUploadImage: NSImage(data: data)!, error: error)
+                
+                if info.statusCode == 401 {    // Bad token.
+                    sself.alertToConfigureHostInfo()
+                } else {
+                    NSApp.activate(ignoringOtherApps: true)
+                    NSApp.presentError(info.error)
+                }
+            }
             }, option: option)
     }
     
