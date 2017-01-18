@@ -30,7 +30,7 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         
         // Tool tips.
         validateButton.toolTip = "Press ⌘D to Validate."
-        saveButton.toolTip = "Press ↩ to Save"
+        saveButton.toolTip = "Press ↩ to Save."
         
         setUp()
     }

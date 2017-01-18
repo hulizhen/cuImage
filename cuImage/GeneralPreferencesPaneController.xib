@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesPaneController" customModule="cuImage" customModuleProvider="target">
             <connections>
                 <outlet property="notificationPreferencesButton" destination="KdG-Rx-LZi" id="0hD-xj-eDU"/>
+                <outlet property="qualitySlider" destination="8VX-db-nVh" id="51x-tl-nw0"/>
                 <outlet property="view" destination="UqQ-L8-ZeT" id="BAy-vF-E7J"/>
             </connections>
         </customObject>
