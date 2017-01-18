@@ -15,6 +15,7 @@ final class ShortcutsPreferencesPaneController: BasePreferencesPaneController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        uploadImageShortcutView.setAcceptsFirstResponder(true)
         uploadImageShortcutView.associatedUserDefaultsKey = PreferenceKeys.uploadImageShortcut.rawValue
     }
 }

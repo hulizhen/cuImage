@@ -33,15 +33,23 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
         // Sets the window’s location to the center of the screen.
         window.center()
     }
-        
+
     @IBAction func showPreferencesPane(with item: NSToolbarItem) {
         guard let window = window else { return }
         
+        // Make sure the toolbar item is selected.
+        // In case the method is called when toolbar item responds to
+        // key events(ex. tap spacebar while it is focused) instead of mouse click.
+        toolbar.selectedItemIdentifier = item.itemIdentifier
+        
         let controller = preferencesPaneControllers[item.tag]
-        let view = preferencesPaneControllers[item.tag].view
+        
+        // Important: Nil out the content view controller.
+        // This makes window resize itself according to its content view every time.
+        window.contentViewController = nil
         
         // Resize window to fit to new view.
-        var frame = window.frameRect(forContentRect: view.frame)
+        var frame = window.frameRect(forContentRect: controller.view.frame)
         frame.origin = window.frame.origin
         frame.origin.y += window.frame.height - frame.height
         window.setFrame(frame, display: false, animate: true)

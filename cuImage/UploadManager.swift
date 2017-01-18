@@ -27,6 +27,7 @@ final class UploadManager {
         guard let host = host else { return }
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else {
+            // TODO: Notify user!!!
             return
         }
         
