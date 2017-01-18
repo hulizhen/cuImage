@@ -47,7 +47,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="3rY-lE-RYJ"/>
-                <menuItem title="Quit" keyEquivalent="q" id="N8H-WJ-Zsf">
+                <menuItem title="Quit cuImage" keyEquivalent="q" id="N8H-WJ-Zsf">
                     <connections>
                         <action selector="terminate:" target="-1" id="t3K-WD-RfR"/>
                     </connections>

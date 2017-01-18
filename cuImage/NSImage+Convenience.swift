@@ -10,19 +10,19 @@ import Cocoa
 
 extension NSImage {
     /**
-     Compress image by specified factor.
+     Get JPEG representation image data with specified compression quality.
      
      - parameters:
-        - factor: The value is a float between 0.0 and 1.0,
+        - quality: The value is a float between 0.0 and 1.0,
                     with 1.0 resulting in no compression and
                     0.0 resulting in the maximum compression possible.
      
-     - returns: Compressed JPEG image data if succeeded, otherwise nil.
+     - returns: JPEG representation image data with specified compression quality.
      */
-    func compressedData(by factor: Float) -> Data? {
+    func JPEGRepresentation(with quality: Float = 1.0) -> Data? {
         if let tiffRepresentation = self.tiffRepresentation,
             let bitmap = NSBitmapImageRep(data: tiffRepresentation),
-            let data = bitmap.representation(using: .JPEG, properties: [NSImageCompressionFactor: factor]) {
+            let data = bitmap.representation(using: .JPEG, properties: [NSImageCompressionFactor: quality]) {
             return data
         }
         return nil

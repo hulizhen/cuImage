@@ -146,8 +146,10 @@ extension PreferenceKeys {
     // General
     static let launchAtLogin = PreferenceKey<Bool>("LaunchAtLogin")
     static let keepWindowsOnTop = PreferenceKey<Bool>("KeepWindowsOnTop")
-    static let useMarkdownStyleURL = PreferenceKey<Bool>("UseMarkdownStyleURL")
+    static let useMarkdownURL = PreferenceKey<Bool>("UseMarkdownURL")
     static let copyURLWhenUploaded = PreferenceKey<Bool>("CopyURLWhenUploaded")
+    static let useJPEGCompression = PreferenceKey<Bool>("UseJPEGCompression")
+    static let jpegCompressionQuality = PreferenceKey<Float>("JPEGCompressionQuality")
     
     // Shortcuts
     static let uploadImageShortcut = PreferenceKey<MASShortcut>("UploadImageShortcut")
@@ -162,8 +164,10 @@ private let defaultPreferences: [PreferenceKeys: Any] = [
     // General
     .launchAtLogin: false,
     .keepWindowsOnTop: true,
-    .useMarkdownStyleURL: true,
+    .useMarkdownURL: true,
     .copyURLWhenUploaded: true,
+    .useJPEGCompression: true,
+    .jpegCompressionQuality: 0.8,
     
     // Shortcuts
     .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]).data(),

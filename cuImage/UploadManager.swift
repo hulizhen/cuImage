@@ -32,29 +32,40 @@ final class UploadManager {
                           informativeText: "Before uploading, you should take a screenshort, copy images or drag images to cuImage icon on status bar.")
         }
         
+        // Read URL or images data from pasteboard.
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else {
             alertNoImagesToUpload()
             return
         }
         
-        let compressionFactor: Float = 1.0
+        let useJPEGCompression = preferences[.useJPEGCompression]
+        let jpegCompressionQuality = preferences[.jpegCompressionQuality]
+        let jpegString =  NSBitmapImageFileType.JPEG.string
 
-        var image: NSImage?
-        var name: String?
+        var imageData: Data!
+        var fileName: String!
         if let url = objects.first as? URL,
             let fileExtension = url.imageFileExtension() {
-            image = NSImage(contentsOf: url)
-            name = url.lastPathComponent
-            if url.pathExtension == "" {
-                name = name! + "." + fileExtension
+            // Get file name without path extension.
+            fileName = url.deletingPathExtension().lastPathComponent
+
+            if useJPEGCompression {
+                let image = NSImage(contentsOf: url)
+                imageData = image?.JPEGRepresentation(with: jpegCompressionQuality)
+            } else {
+                imageData = try? Data(contentsOf: url)
             }
+            fileName.append("." + (useJPEGCompression ? jpegString : fileExtension))
         } else {
-            image = objects.first as? NSImage
-            name = "Screenshot." + NSBitmapImageFileType.JPEG.string
+            // Always use JPEG for screenshots, but the compression quality is depend on preferences.
+            let image = objects.first as? NSImage
+            let compressionQuality = useJPEGCompression ? jpegCompressionQuality : 1.0
+            imageData = image?.JPEGRepresentation(with: compressionQuality)
+            fileName.append("Screenshot." + jpegString)
         }
         
-        if let data = image?.compressedData(by: compressionFactor) {
-            host.uploadImageData(data, named: name!)
+        if imageData != nil && fileName != nil {
+            host.uploadImageData(imageData, named: fileName)
         } else {
             alertNoImagesToUpload()
         }
@@ -71,7 +82,7 @@ extension UploadManager: HostDelegate {
     
     func host(_ host: Host, didSucceedToUploadImage image: NSImage, urlString: String) {
         if preferences[.copyURLWhenUploaded] {
-            Utilities.setPasteboard(with: urlString, inMarkdown: preferences[.useMarkdownStyleURL])
+            Utilities.setPasteboard(with: urlString, inMarkdown: preferences[.useMarkdownURL])
         }
         
         // Add the uploaded image to history.
