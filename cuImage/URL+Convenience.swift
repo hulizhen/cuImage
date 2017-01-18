@@ -23,7 +23,7 @@ extension URL {
         
         if let source = CGImageSourceCreateWithURL(self as CFURL, options as CFDictionary),
             let uti = CGImageSourceGetType(source),
-            UTTypeConformsTo(uti, kUTTypePDF) == false,
+            !UTTypeConformsTo(uti, kUTTypePDF),
             UTTypeConformsTo(uti, kUTTypeImage) == true {
             return (uti as String).components(separatedBy: ".").last
         } else {
@@ -39,11 +39,11 @@ extension URL {
      
      - returns: True if the URL conforms to the UTI type, false if not.
      */
-    func conformsToUTI(type: String) -> Bool {
+    func conformsToUTI(type: CFString) -> Bool {
         let pathExtension = self.pathExtension as CFString
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, nil)
         if let uti = uti?.takeRetainedValue() {
-            return UTTypeConformsTo(uti, type as CFString)
+            return UTTypeConformsTo(uti, type)
         } else {
             return false
         }

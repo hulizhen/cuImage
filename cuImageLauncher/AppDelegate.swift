@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        if isRunning == false {
+        if !isRunning {
             // Get absolute path of the main application.
             let pathComponents = Bundle.main.bundlePath.components(separatedBy: "/")
             let appPath = pathComponents[0..<pathComponents.count - 4].joined(separator: "/")

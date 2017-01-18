@@ -9,12 +9,12 @@
 import Cocoa
 
 extension NSUserNotificationCenter {
-    func deliverNotification(withTitle title: String, subtitle: String, text: String,
+    func deliverNotification(withTitle title: String, subtitle: String = "", informativeText: String,
                                  soundName: String = NSUserNotificationDefaultSoundName) {
         let notification = NSUserNotification()        
         notification.title = title
         notification.subtitle = subtitle
-        notification.informativeText = text
+        notification.informativeText = informativeText
         notification.soundName = soundName
         NSUserNotificationCenter.default.deliver(notification)
     }

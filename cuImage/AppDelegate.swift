@@ -25,7 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for window in NSApp.windows {
             if window.isMember(of: NSWindow.self),
                 let windowShouldClose = window.delegate?.windowShouldClose {
-                if windowShouldClose(self) == false {
+                if !windowShouldClose(self) {
                     return .terminateLater
                 }
             }

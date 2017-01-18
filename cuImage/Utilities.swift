@@ -23,17 +23,16 @@ struct Utilities {
         }
     }
     
-    static func setPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general(),
-                              with urlString: String,
-                              inMarkdown markdown: Bool) {
+    static func writePasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general(),
+                                with urlString: String,
+                                inMarkdown markdown: Bool) {
         let string = markdown ? "![](" + urlString + ")" : urlString
-
+        
         pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
         pasteboard.setString(string, forType: NSPasteboardTypeString)
         
-        NSUserNotificationCenter.default.deliverNotification(withTitle: "Image Uploaded",
-                                                             subtitle: "URL has been copied",
-                                                             text: urlString)
+        NSUserNotificationCenter.default.deliverNotification(withTitle: "URL of uploaded image has been copied",
+                                                             informativeText: urlString)
     }
     
     static func launchEmailApplication() {
@@ -44,8 +43,7 @@ struct Utilities {
             pasteboard.setString(Constants.emailRecipient, forType: NSPasteboardTypeString)
             
             NSUserNotificationCenter.default.deliverNotification(withTitle: "Email Address Copied",
-                                                                 subtitle: "",
-                                                                 text: Constants.emailRecipient)
+                                                                 informativeText: Constants.emailRecipient)
         }
         
         NSAlert.alert(messageText: "Do you want to launch email application?",
@@ -66,7 +64,7 @@ struct Utilities {
                             }
                             
                             // Offer an option of copying email address when failed to launch email application.
-                            if done == false {
+                            if !done {
                                 NSAlert.alert(messageText: "Failed to launch email application. Copy Author's email address?",
                                               informativeText: "Please launch email application yourself.",
                                               buttonTitles: ["Copy", "Cancel"]) { response in
@@ -79,44 +77,5 @@ struct Utilities {
                             copyEmailAddress()
                         }
         }
-        
-//        let alert = Alert()
-//        alert.messageText = "Do you want to launch email application?"
-//        alert.informativeText = "You can also just copy author's email address."
-//        alert.addButton(withTitle: "Launch")
-//        alert.addButton(withTitle: "Copy")
-//        alert.addButton(withTitle: "Cancel")
-//        alert.alertStyle = .warning
-//        let response = alert.runModal()
-//        if response == NSAlertFirstButtonReturn {   // Launch
-//            var done = false
-//
-//            // Launch email application.
-//            if let emailService = NSSharingService(named: NSSharingServiceNameComposeEmail) {
-//                emailService.recipients = [Constants.emailRecipient]
-//                emailService.subject = Constants.emailSubject
-//
-//                if emailService.canPerform(withItems: nil) {
-//                    emailService.perform(withItems: [Constants.emailBody])
-//                    done = true
-//                }
-//            }
-//            
-//            // Offer an option of copying email address when failed to launch email application.
-//            if done == false {
-//                let alert = Alert()
-//                alert.messageText = "Failed to launch email application. Copy Author's email address?"
-//                alert.informativeText = "Please launch email application yourself."
-//                alert.addButton(withTitle: "Copy")
-//                alert.addButton(withTitle: "Cancel")
-//                alert.alertStyle = .warning
-//                let response = alert.runModal()
-//                if response == NSAlertFirstButtonReturn {   // Copy
-//                    copyEmailAddress()
-//                }
-//            }
-//        } else if response == NSAlertSecondButtonReturn {   // Copy
-//            copyEmailAddress()
-//        }
     }
 }

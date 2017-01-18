@@ -48,20 +48,23 @@ final class UploadManager {
             let fileExtension = url.imageFileExtension() {
             // Get file name without path extension.
             fileName = url.deletingPathExtension().lastPathComponent
+            
+            // Do not compress gif image file.
+            let isGIF = url.conformsToUTI(type: kUTTypeGIF)
 
-            if useJPEGCompression {
+            if useJPEGCompression && !isGIF {
                 let image = NSImage(contentsOf: url)
                 imageData = image?.JPEGRepresentation(with: jpegCompressionQuality)
             } else {
                 imageData = try? Data(contentsOf: url)
             }
-            fileName.append("." + (useJPEGCompression ? jpegString : fileExtension))
+            fileName.append("." + (useJPEGCompression && !isGIF ? jpegString : fileExtension))
         } else {
             // Always use JPEG for screenshots, but the compression quality is depend on preferences.
             let image = objects.first as? NSImage
             let compressionQuality = useJPEGCompression ? jpegCompressionQuality : 1.0
             imageData = image?.JPEGRepresentation(with: compressionQuality)
-            fileName.append("Screenshot." + jpegString)
+            fileName = "Screenshot." + jpegString
         }
         
         if imageData != nil && fileName != nil {
@@ -82,7 +85,7 @@ extension UploadManager: HostDelegate {
     
     func host(_ host: Host, didSucceedToUploadImage image: NSImage, urlString: String) {
         if preferences[.copyURLWhenUploaded] {
-            Utilities.setPasteboard(with: urlString, inMarkdown: preferences[.useMarkdownURL])
+            Utilities.writePasteboard(with: urlString, inMarkdown: preferences[.useMarkdownURL])
         }
         
         // Add the uploaded image to history.
