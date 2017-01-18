@@ -91,6 +91,7 @@ extension StatusItemView {
     }
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
+        NSSound(named: Constants.dropSound)?.play()
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {

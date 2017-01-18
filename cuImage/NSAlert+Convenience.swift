@@ -18,13 +18,11 @@ extension NSAlert {
         alert.informativeText = informativeText
         alert.alertStyle = alertStyle
         
+        // If no button titles are provided, a default "OK" button will be added.
         if let titles = buttonTitles {
             for title in titles {
                 alert.addButton(withTitle: title)
             }
-        } else {
-            // Default to "OK" button if there is not button titles provided.
-            alert.addButton(withTitle: "OK")
         }
         
         NSApp.activate(ignoringOtherApps: true)
