@@ -37,26 +37,24 @@ final class UploadManager {
             return
         }
         
-        var data: Data?
+        let compressionFactor: Float = 1.0
+
+        var image: NSImage?
         var name: String?
-        if let url = objects.first as? URL {
-            if let fileExtension = url.imageFileExtension() {
-                data = try? Data(contentsOf: url)
-                name = url.lastPathComponent
-                if url.pathExtension == "" {
-                    name = name! + "." + fileExtension
-                }
+        if let url = objects.first as? URL,
+            let fileExtension = url.imageFileExtension() {
+            image = NSImage(contentsOf: url)
+            name = url.lastPathComponent
+            if url.pathExtension == "" {
+                name = name! + "." + fileExtension
             }
-        } else if let image = (objects.first as? NSImage) {
-            if let tiff = image.tiffRepresentation {
-                let bitmap = NSBitmapImageRep(data: tiff)
-                data = bitmap?.representation(using: .JPEG, properties: [:])
-                name = "Screenshot." + NSBitmapImageFileType.JPEG.string
-            }
+        } else {
+            image = objects.first as? NSImage
+            name = "Screenshot." + NSBitmapImageFileType.JPEG.string
         }
         
-        if data != nil {
-            host.uploadImageData(data!, named: name!)
+        if let data = image?.compressedData(by: compressionFactor) {
+            host.uploadImageData(data, named: name!)
         } else {
             alertNoImagesToUpload()
         }
