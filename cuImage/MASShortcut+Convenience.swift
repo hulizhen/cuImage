@@ -9,7 +9,7 @@
 import MASShortcut
 
 extension MASShortcut {
-    convenience init(key: Int, modifiers: [NSEventModifierFlags]) {
+    convenience init(key: Int, modifiers: [NSEventModifierFlags] = []) {
         let flags = modifiers.reduce(0) { $0 | $1.rawValue }
         
         self.init(keyCode: UInt(key), modifierFlags: flags)

@@ -23,18 +23,6 @@ struct Utilities {
         }
     }
     
-    static func writePasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general(),
-                                with urlString: String,
-                                inMarkdown markdown: Bool) {
-        let string = markdown ? "![](" + urlString + ")" : urlString
-        
-        pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
-        pasteboard.setString(string, forType: NSPasteboardTypeString)
-        
-        NSUserNotificationCenter.default.deliverNotification(withTitle: "URL of uploaded image has been copied",
-                                                             informativeText: urlString)
-    }
-    
     static func launchEmailApplication() {
         // Closure for copying email address to general pasteboard.
         let copyEmailAddress = {

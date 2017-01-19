@@ -10,16 +10,10 @@ import Cocoa
 import Qiniu
 
 final class QiniuHost: NSObject {
-    private struct Constant {
-        static let accessTokenDuration: TimeInterval = 3600
-    }
-    
     weak var delegate: HostDelegate?
-    
     fileprivate let uploadManager = QNUploadManager()!
-    fileprivate var token: String!
 
-    var qiniuHostInfo: QiniuHostInfo!
+    var qiniuHostInfo: QiniuHostInfo?
     
     deinit {
         removeObservers()
@@ -46,7 +40,6 @@ final class QiniuHost: NSObject {
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue)
     }
 
-    
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
         
@@ -54,22 +47,22 @@ final class QiniuHost: NSObject {
         case PreferenceKeys.qiniuHostInfo:
             if let hostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
                 qiniuHostInfo = hostInfo
-                token = makeToken(accessKey: qiniuHostInfo.accessKey,
-                                  secretKey: qiniuHostInfo.secretKey,
-                                  scope: qiniuHostInfo.bucket)
             }
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     
-    private func makeToken(accessKey: String, secretKey: String, scope: String) -> String {
+    fileprivate func makeToken(accessKey: String, secretKey: String, scope: String) -> String? {
         // Construct upload policy.
-        let deadline = UInt32(Date().timeIntervalSince1970 + Constant.accessTokenDuration)
+        let accessTokenDuration: TimeInterval = 86400 // One day.
+        let deadline = UInt32(Date().timeIntervalSince1970 + accessTokenDuration)
         let uploadPolicy: [String: Any] = ["scope": scope, "deadline": deadline]
         
         // Convert the policy to JSON data.
-        let jsonData = try! JSONSerialization.data(withJSONObject: uploadPolicy, options: .prettyPrinted)
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: uploadPolicy, options: .prettyPrinted) else {
+            return nil
+        }
         
         // Encode the policy with URL safe base64.
         let encodedPolicy = jsonData.urlSafeBase64EncodedString()
@@ -127,9 +120,12 @@ final class QiniuHost: NSObject {
 extension QiniuHost: Host {
     func uploadImageData(_ data: Data, named name: String) {
         // Make the upload token first.
-        if token == nil {
-            alertToConfigureHostInfo()
-            return
+        guard let hostInfo = qiniuHostInfo,
+            let token = makeToken(accessKey: hostInfo.accessKey,
+                                  secretKey: hostInfo.secretKey,
+                                  scope: hostInfo.bucket) else {
+                                    alertToConfigureHostInfo()
+                                    return
         }
         
         let option = QNUploadOption(progressHandler: progressHandler)
@@ -144,7 +140,7 @@ extension QiniuHost: Host {
             print(info, key)
             
             if info.isOK {
-                let urlString = sself.qiniuHostInfo.domain + "/" + key
+                let urlString = hostInfo.domain + "/" + key
                 sself.delegate?.host(sself, didSucceedToUploadImage: NSImage(data: data)!, urlString: urlString)
             } else {
                 let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String

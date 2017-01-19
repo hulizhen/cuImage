@@ -13,6 +13,7 @@
 		25130C4D1E20E0C700830B3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4C1E20E0C700830B3F /* Assets.xcassets */; };
 		25130C501E20E0C700830B3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4E1E20E0C700830B3F /* MainMenu.xib */; };
 		2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */; };
+		25563E7F1E30700500FFC799 /* NSPasteboard+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25563E7E1E30700500FFC799 /* NSPasteboard+Convenience.swift */; };
 		25577DFB1E1FE1FE0091735A /* BasePreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577DFA1E1FE1FE0091735A /* BasePreferencesPaneController.swift */; };
 		25577E041E2088270091735A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577E031E2088270091735A /* Utilities.swift */; };
 		25577E071E20886C0091735A /* BaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25577E061E20886C0091735A /* BaseWindowController.swift */; };
@@ -93,6 +94,7 @@
 		2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcut+Convenience.swift"; sourceTree = "<group>"; };
 		254834E11E24780F0098C16F /* cuImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImage.entitlements; sourceTree = "<group>"; };
 		254834E21E247A150098C16F /* cuImageLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImageLauncher.entitlements; sourceTree = "<group>"; };
+		25563E7E1E30700500FFC799 /* NSPasteboard+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSPasteboard+Convenience.swift"; sourceTree = "<group>"; };
 		25577DFA1E1FE1FE0091735A /* BasePreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BasePreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		25577E031E2088270091735A /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		25577E061E20886C0091735A /* BaseWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWindowController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				255958421E1BED7000B8469E /* String+Crypto.swift */,
 				2559583D1E1BED4300B8469E /* Date+Formatter.swift */,
 				258BE7521E2771D000D04D23 /* URL+Convenience.swift */,
+				25563E7E1E30700500FFC799 /* NSPasteboard+Convenience.swift */,
 				258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */,
 				2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */,
 				25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */,
@@ -636,6 +639,7 @@
 				255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */,
 				25577E071E20886C0091735A /* BaseWindowController.swift in Sources */,
 				2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */,
+				25563E7F1E30700500FFC799 /* NSPasteboard+Convenience.swift in Sources */,
 				25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */,
 				255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */,
 			);

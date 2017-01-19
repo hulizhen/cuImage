@@ -71,6 +71,7 @@ final class UploadManager {
             host.uploadImageData(imageData, named: fileName)
         } else {
             alertNoImagesToUpload()
+            return
         }
         
         // Initialize the uploading progress with zero.
@@ -84,14 +85,18 @@ extension UploadManager: HostDelegate {
     }
     
     func host(_ host: Host, didSucceedToUploadImage image: NSImage, urlString: String) {
+        var title = "Image uploaded"
         if preferences[.copyURLWhenUploaded] {
-            Utilities.writePasteboard(with: urlString, inMarkdown: preferences[.useMarkdownURL])
+            NSPasteboard.general().setURLString(urlString, inMarkdown: preferences[.useMarkdownURL])
+            title = "Uploaded image's URL has been copied"
         }
+        NSUserNotificationCenter.default.deliverNotification(withTitle: title, informativeText: urlString)
+
         
         // Add the uploaded image to history.
         let managedObjectContext = CoreDataController.shared.managedObjectContext
         let uploadedItem = NSEntityDescription.insertNewObject(forEntityName: "UploadedItem",
-                                                                into: managedObjectContext) as! UploadedItem
+                                                               into: managedObjectContext) as! UploadedItem
         uploadedItem.date = NSDate()
         uploadedItem.urlString = urlString
         if let imageTiff = image.tiffRepresentation,

@@ -154,7 +154,7 @@ extension PreferenceKeys {
     // Shortcuts
     static let uploadImageShortcut = PreferenceKey<MASShortcut>("UploadImageShortcut")
     
-    // Hosts
+    // Hosts/Users/hulz/Tmp/images/enabled.bmp
     static let currentHost = PreferenceKey<String>("CurrentHost")
     static let qiniuHostInfo = PreferenceKey<HostInfo>("QiniuHostInfo")
 }
@@ -170,7 +170,7 @@ private let defaultPreferences: [PreferenceKeys: Any] = [
     .jpegCompressionQuality: 0.8,
     
     // Shortcuts
-    .uploadImageShortcut: MASShortcut(key: kVK_ANSI_U, modifiers: [.command, .shift]).data(),
+    .uploadImageShortcut: MASShortcut(key: kVK_F9).data(),
     
     // Hosts
     .currentHost: SupportedHost.qiniu.rawValue,
