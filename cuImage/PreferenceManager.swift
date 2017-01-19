@@ -154,7 +154,7 @@ extension PreferenceKeys {
     // Shortcuts
     static let uploadImageShortcut = PreferenceKey<MASShortcut>("UploadImageShortcut")
     
-    // Hosts/Users/hulz/Tmp/images/enabled.bmp
+    // Hosts
     static let currentHost = PreferenceKey<String>("CurrentHost")
     static let qiniuHostInfo = PreferenceKey<HostInfo>("QiniuHostInfo")
 }

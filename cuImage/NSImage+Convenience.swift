@@ -30,6 +30,11 @@ extension NSImage {
 
     /**
      Generate thumbnail of the image.
+     
+     - parameters:
+        - maxSize: The maximum width and height in pixels of a thumbnail.
+     
+     - returns: Thumbnail of the image.
      */
     func thumbnail(maxSize: Float) -> NSImage? {
         var options: [String: Any?] = [kCGImageSourceShouldCache as String: false]

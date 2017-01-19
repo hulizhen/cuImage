@@ -23,6 +23,7 @@ struct Constants {
     static let dropSound = "DropSound"
 
     static let uploadingProgressCount = 13  // 0 ... 12
+    static let maxSizeOfthumbnail = Float(200)
     
     // Used for validating host informations.
     static let testString = "Hello"

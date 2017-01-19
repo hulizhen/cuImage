@@ -195,7 +195,7 @@ final class StatusItemController: NSObject {
         
         if let urlString = uploadedItem.urlString {
             NSPasteboard.general().setURLString(urlString, inMarkdown: preferences[.useMarkdownURL])
-            NSUserNotificationCenter.default.deliverNotification(withTitle: "Uploaded image's URL has been copied",
+            NSUserNotificationCenter.default.deliverNotification(withTitle: "Uploaded Image's URL Copied",
                                                                  informativeText: urlString)
         }
     }

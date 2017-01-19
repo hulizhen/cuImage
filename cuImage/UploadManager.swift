@@ -10,15 +10,15 @@ import Cocoa
 
 final class UploadManager {
     static let shared = UploadManager()
-
     private var host: Host?
+    fileprivate var isUploading = false
     
     private init() {
         host = QiniuHost(delegate: self)
     }
     
     /**
-     Upload the image on pasteboard.
+     Upload the images on pasteboard.
      
      - parameters:
         - pasteboard: the pasteboard on which the image is, general pasteboard by default.
@@ -38,9 +38,16 @@ final class UploadManager {
             return
         }
         
+        // Alert if currently uploading.
+        if isUploading {
+            return
+        } else {
+            isUploading = true
+        }
+        
         let useJPEGCompression = preferences[.useJPEGCompression]
         let jpegCompressionQuality = preferences[.jpegCompressionQuality]
-        let jpegString =  NSBitmapImageFileType.JPEG.string
+        let jpegString = NSBitmapImageFileType.JPEG.string
 
         var imageData: Data!
         var fileName: String!
@@ -69,13 +76,13 @@ final class UploadManager {
         
         if imageData != nil && fileName != nil {
             host.uploadImageData(imageData, named: fileName)
+
+            // Initialize the uploading progress with zero.
+            StatusItemController.shared.statusItemView.updateImage(with: 0)
         } else {
             alertNoImagesToUpload()
-            return
+            isUploading = false
         }
-        
-        // Initialize the uploading progress with zero.
-        StatusItemController.shared.statusItemView.updateImage(with: 0)
     }
 }
 
@@ -85,24 +92,21 @@ extension UploadManager: HostDelegate {
     }
     
     func host(_ host: Host, didSucceedToUploadImage image: NSImage, urlString: String) {
-        var title = "Image uploaded"
+        var title = "Image Uploaded"
         if preferences[.copyURLWhenUploaded] {
             NSPasteboard.general().setURLString(urlString, inMarkdown: preferences[.useMarkdownURL])
-            title = "Uploaded image's URL has been copied"
+            title = "Uploaded Image's URL Copied"
         }
         NSUserNotificationCenter.default.deliverNotification(withTitle: title, informativeText: urlString)
 
-        
         // Add the uploaded image to history.
         let managedObjectContext = CoreDataController.shared.managedObjectContext
         let uploadedItem = NSEntityDescription.insertNewObject(forEntityName: "UploadedItem",
                                                                into: managedObjectContext) as! UploadedItem
         uploadedItem.date = NSDate()
         uploadedItem.urlString = urlString
-        if let imageTiff = image.tiffRepresentation,
-            let thumbnail = image.thumbnail(maxSize: 200),
+        if let thumbnail = image.thumbnail(maxSize: Constants.maxSizeOfthumbnail),
             let thumbnailTiff = thumbnail.tiffRepresentation {
-            uploadedItem.image = NSData(data: imageTiff)
             uploadedItem.thumbnail = NSData(data: thumbnailTiff)
         }
         
@@ -113,9 +117,11 @@ extension UploadManager: HostDelegate {
         }
         
         StatusItemController.shared.statusItemView.resetImage()
+        isUploading = false
     }
     
     func host(_ host: Host, didFailToUploadImage image: NSImage, error: NSError) {
         StatusItemController.shared.statusItemView.resetImage()
+        isUploading = false
     }
 }
