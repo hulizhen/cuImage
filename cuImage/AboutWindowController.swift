@@ -11,7 +11,11 @@ import Cocoa
 final class AboutWindowController: BaseWindowController {
     static let shared = AboutWindowController()
 
-    @IBOutlet weak var copyrightLabel: NSTextField!
+    @IBOutlet weak var appIconImageView: NSImageView!
+    @IBOutlet weak var applicationNameTextField: NSTextField!
+    @IBOutlet weak var copyrightTextField: NSTextField!
+    @IBOutlet weak var versionTextField: NSTextField!
+    @IBOutlet weak var extraInformationTextView: NSTextView!
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -19,7 +23,23 @@ final class AboutWindowController: BaseWindowController {
         // Sets the window’s location to the center of the screen.
         window?.center()
         
-        let copyright = Bundle.main.infoDictionary![Constants.humanReadableCopyright] as! String
-        copyrightLabel.stringValue = copyright
+        let infoDictionary = Bundle.main.infoDictionary!
+        let applicationName = infoDictionary[Constants.applicationName] as! String
+        let iconFileName = infoDictionary[Constants.iconFileName] as! String
+        let copyright = infoDictionary[Constants.humanReadableCopyright] as! String
+        let shortVersion = infoDictionary[Constants.shortVersion] as! String
+        let buildVersion = infoDictionary[Constants.buildVersion] as! String
+        let version = "Version \(shortVersion) (Build \(buildVersion))"
+        let extraInformation =
+            "Special thanks to these awesome third-party libraries: " +
+            "MASShortcut: by shpakovski, licensed under the 2-clause BSD license." +
+            "RNCryptor: " +
+            "Qiniu: which use AFNetworking, HappyDNS"
+        
+        applicationNameTextField.stringValue = applicationName
+        appIconImageView.image = NSImage(named: iconFileName)
+        copyrightTextField.stringValue = copyright
+        versionTextField.stringValue = version
+        extraInformationTextView.string = extraInformation
     }
 }

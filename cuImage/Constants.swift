@@ -10,7 +10,6 @@ import Foundation
 
 struct Constants {
     // Assets
-    static let appIcon = "AppIcon"
     static let statusItemIcon = "StatusItemIcon"
     static let draggingDestinationBox = "DraggingDestinationBox"
     static let succeededIndicator = "SucceededIndicator"
@@ -33,9 +32,12 @@ struct Constants {
     static let testString = "Hello"
     
     // Keys in Info.plist.
-    static let applicationName = kCFBundleNameKey as String
-    static let mainBundleIdentifier = kCFBundleIdentifierKey as String
+    static let applicationName = "CFBundleName"
+    static let iconFileName = "CFBundleIconFile"
+    static let mainBundleIdentifier = "CFBundleIdentifier"
     static let launcherBundleIdentifier = "LauncherBundleIdentifier"
+    static let shortVersion = "CFBundleShortVersionString"
+    static let buildVersion = "CFBundleVersion"
     static let humanReadableCopyright = "NSHumanReadableCopyright"
     
     // Email information for feedback.
