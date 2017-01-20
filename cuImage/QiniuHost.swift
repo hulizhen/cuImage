@@ -13,27 +13,15 @@ final class QiniuHost: NSObject {
     weak var delegate: HostDelegate?
     fileprivate let uploadManager = QNUploadManager()!
     fileprivate var qiniuHostInfo: QiniuHostInfo?
-    fileprivate var token: String?
-
-    // Timer for refreshing token.
-    private var timer: Timer!
     private let tokenValidityDuration: TimeInterval = 3600
     
     deinit {
-        timer.invalidate()
         removeObservers()
     }
     
     override init() {
         super.init()
         addObservers()
-        
-        let tokenRefreshInterval = tokenValidityDuration / 2
-        timer = Timer.scheduledTimer(timeInterval: tokenRefreshInterval,
-                                     target: self,
-                                     selector: #selector(refreshToken(_:)),
-                                     userInfo: nil,
-                                     repeats: true)
     }
     
     convenience init(delegate: HostDelegate?) {
@@ -59,21 +47,10 @@ final class QiniuHost: NSObject {
         case PreferenceKeys.qiniuHostInfo:
             if let hostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
                 qiniuHostInfo = hostInfo
-                token = makeToken(accessKey: hostInfo.accessKey,
-                                  secretKey: hostInfo.secretKey,
-                                  scope: hostInfo.bucket)
             }
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
-    }
-    
-    func refreshToken(_ timer: Timer) {
-        guard let hostInfo = qiniuHostInfo else { return }
-        
-        token = makeToken(accessKey: hostInfo.accessKey,
-                          secretKey: hostInfo.secretKey,
-                          scope: hostInfo.bucket)
     }
     
     fileprivate func makeToken(accessKey: String, secretKey: String, scope: String) -> String? {
@@ -143,9 +120,11 @@ extension QiniuHost: Host {
     func uploadImageData(_ data: Data, named name: String) {
         // Make the upload token first.
         guard let hostInfo = qiniuHostInfo,
-            let token = token else {
-                alertToConfigureHostInfo()
-                return
+            let token = makeToken(accessKey: hostInfo.accessKey,
+                                  secretKey: hostInfo.secretKey,
+                                  scope: hostInfo.bucket) else {
+                                    alertToConfigureHostInfo()
+                                    return
         }
         
         let option = QNUploadOption(progressHandler: progressHandler)
