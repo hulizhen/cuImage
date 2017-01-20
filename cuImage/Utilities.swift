@@ -30,7 +30,7 @@ struct Utilities {
             pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
             pasteboard.setString(Constants.emailRecipient, forType: NSPasteboardTypeString)
             
-            NSUserNotificationCenter.default.deliverNotification(withTitle: "Email Address Copied",
+            NSUserNotificationCenter.default.deliverNotification(with: "Email Address Copied",
                                                                  informativeText: Constants.emailRecipient)
         }
         

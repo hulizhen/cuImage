@@ -9,10 +9,16 @@
 import Cocoa
 
 extension NSPasteboard {
-    func setURLString(_ urlString: String, inMarkdown markdown: Bool) {
-        let string = markdown ? "![](" + urlString + ")" : urlString
-        
+    /**
+     Add URL strings to pasteboard.
+     
+     - parameters:
+        - urlStrings: an array of URL strings.
+        - markdown: Make the specified URL string in markdown-style or not.
+     */
+    func addURLStrings(_ urlStrings: [String], markdown: Bool) {
+        let strings = markdown ? urlStrings.map { "![](" + $0 + ")" } : urlStrings
         declareTypes([NSPasteboardTypeString], owner: nil)
-        setString(string, forType: NSPasteboardTypeString)
+        writeObjects(strings as [NSString])
     }
 }

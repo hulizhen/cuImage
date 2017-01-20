@@ -9,7 +9,7 @@
 import Cocoa
 
 extension NSUserNotificationCenter {
-    func deliverNotification(withTitle title: String, subtitle: String = "", informativeText: String,
+    func deliverNotification(with title: String, subtitle: String = "", informativeText: String = "",
                                  soundName: String = NSUserNotificationDefaultSoundName) {
         let notification = NSUserNotification()        
         notification.title = title

@@ -12,16 +12,28 @@ import Qiniu
 final class QiniuHost: NSObject {
     weak var delegate: HostDelegate?
     fileprivate let uploadManager = QNUploadManager()!
+    fileprivate var qiniuHostInfo: QiniuHostInfo?
+    fileprivate var token: String?
 
-    var qiniuHostInfo: QiniuHostInfo?
+    // Timer for refreshing token.
+    private var timer: Timer!
+    private let tokenValidityDuration: TimeInterval = 3600
     
     deinit {
+        timer.invalidate()
         removeObservers()
     }
     
     override init() {
         super.init()
         addObservers()
+        
+        let tokenRefreshInterval = tokenValidityDuration / 2
+        timer = Timer.scheduledTimer(timeInterval: tokenRefreshInterval,
+                                     target: self,
+                                     selector: #selector(refreshToken(_:)),
+                                     userInfo: nil,
+                                     repeats: true)
     }
     
     convenience init(delegate: HostDelegate?) {
@@ -47,16 +59,26 @@ final class QiniuHost: NSObject {
         case PreferenceKeys.qiniuHostInfo:
             if let hostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
                 qiniuHostInfo = hostInfo
+                token = makeToken(accessKey: hostInfo.accessKey,
+                                  secretKey: hostInfo.secretKey,
+                                  scope: hostInfo.bucket)
             }
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
     
+    func refreshToken(_ timer: Timer) {
+        guard let hostInfo = qiniuHostInfo else { return }
+        
+        token = makeToken(accessKey: hostInfo.accessKey,
+                          secretKey: hostInfo.secretKey,
+                          scope: hostInfo.bucket)
+    }
+    
     fileprivate func makeToken(accessKey: String, secretKey: String, scope: String) -> String? {
         // Construct upload policy.
-        let accessTokenDuration: TimeInterval = 86400 // One day.
-        let deadline = UInt32(Date().timeIntervalSince1970 + accessTokenDuration)
+        let deadline = UInt32(Date().timeIntervalSince1970 + tokenValidityDuration)
         let uploadPolicy: [String: Any] = ["scope": scope, "deadline": deadline]
         
         // Convert the policy to JSON data.
@@ -121,43 +143,33 @@ extension QiniuHost: Host {
     func uploadImageData(_ data: Data, named name: String) {
         // Make the upload token first.
         guard let hostInfo = qiniuHostInfo,
-            let token = makeToken(accessKey: hostInfo.accessKey,
-                                  secretKey: hostInfo.secretKey,
-                                  scope: hostInfo.bucket) else {
-                                    alertToConfigureHostInfo()
-                                    return
+            let token = token else {
+                alertToConfigureHostInfo()
+                return
         }
         
         let option = QNUploadOption(progressHandler: progressHandler)
         
-        // Make image file name.
-        let key = Date.simpleFormatter.string(from: Date()) + "_" + name
-        
         // Upload image data.
-        uploadManager.put(data, key: key, token: token, complete: { [weak self] (info, key, response) in
+        uploadManager.put(data, key: name, token: token, complete: { [weak self] (info, key, response) in
             guard let sself = self else { return }
             guard let info = info, let key = key else { return }
-            print(info, key)
             
             if info.isOK {
                 let urlString = hostInfo.domain + "/" + key
-                sself.delegate?.host(sself, didSucceedToUploadImage: NSImage(data: data)!, urlString: urlString)
+                sself.delegate?.host(sself, didSucceedToUploadImageNamed: name, urlString: urlString)
             } else {
+                print("Failed to upload: \(info), \(key)")
                 let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
                 let error = NSError(domain: domain, code: 0, userInfo: nil)
-                sself.delegate?.host(sself, didFailToUploadImage: NSImage(data: data)!, error: error)
-                
-                if info.statusCode == 401 {    // Bad token.
-                    sself.alertToConfigureHostInfo()
-                } else {
-                    NSApp.activate(ignoringOtherApps: true)
-                    NSApp.presentError(info.error)
-                }
+                sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
             }
             }, option: option)
     }
     
     private func progressHandler(key: String?, percent: Float) {
-        delegate?.host(self, isUploadingImageWithPercent: percent)
+        if let name = key {
+            delegate?.host(self, isUploadingImageNamed: name, percent: percent)
+        }
     }
 }

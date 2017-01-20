@@ -71,7 +71,7 @@ final class StatusItemController: NSObject {
     @IBAction func handleTappedMenuItem(_ item: NSMenuItem) {
         switch item {
         case uploadImageMenuItem:
-            UploadManager.shared.uploadImageOnPasteboard()
+            UploadManager.shared.uploadImagesOnPasteboard()
         case clearHistoryMenuItem:
             clearUploadHistory(item)
         case preferencesMenuItem:
@@ -194,9 +194,8 @@ final class StatusItemController: NSObject {
         guard let uploadedItem = item.representedObject as? UploadedItem else { return }
         
         if let urlString = uploadedItem.urlString {
-            NSPasteboard.general().setURLString(urlString, inMarkdown: preferences[.useMarkdownURL])
-            NSUserNotificationCenter.default.deliverNotification(withTitle: "Uploaded Image's URL Copied",
-                                                                 informativeText: urlString)
+            NSPasteboard.general().addURLStrings([urlString], markdown: preferences[.useMarkdownURL])
+            NSUserNotificationCenter.default.deliverNotification(with: "Selected image's URL copied.")
         }
     }
 }
