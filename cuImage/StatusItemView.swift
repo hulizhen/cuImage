@@ -67,14 +67,24 @@ extension StatusItemView {
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return NSDragOperation() }
         
-        // TODO: Could be images from documents, handle them!
-        if let url = objects.first as? URL {
-            if url.imageFileExtension() != nil {
+        
+        for object in objects {
+            var isImage = false
+            
+            if let url = object as? URL {
+                if url.imageFileExtension() != nil {
+                    isImage = true
+                }
+            } else {
+                isImage = true
+            }
+            
+            if isImage {
                 image = draggingDestinationBox
                 return NSDragOperation.copy
             }
         }
-        
+
         return NSDragOperation()
     }
     

@@ -34,8 +34,8 @@ fileprivate struct UploadStatus {
     mutating func notifyIfFinished() {
         if isFinished {
             let copyURLWhenUploaded = preferences[.copyURLWhenUploaded]
-            let title = "Images Uploaded: \(succeededItemsCount) succeeded, \(failedItemsCount) failed."
-            let informativeText = copyURLWhenUploaded ? "Uploaded images' URL copied." : ""
+            let title = copyURLWhenUploaded ? "Uploaded images' URL copied." : ""
+            let informativeText = "Images Uploaded: \(succeededItemsCount) succeeded, \(failedItemsCount) failed."
             
             if copyURLWhenUploaded {
                 NSPasteboard.general().addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
