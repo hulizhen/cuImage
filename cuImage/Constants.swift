@@ -18,12 +18,16 @@ struct Constants {
     static let generalPreferences = "GeneralPreferences"
     static let shortcutsPreferences = "ShortcutsPreferences"
     static let hostsPreferences = "HostPreferences"
-    static let uploadingProgress = "UploadingProgress"
+    static let uploadProgress = "UploadProgress"
     static let alertSound = "AlertSound"
     static let dropSound = "DropSound"
 
-    static let uploadingProgressCount = 13  // 0 ... 12
-    static let maxSizeOfthumbnail = Float(200)
+    static let uploadProgressImagesCount = 13  // 0 ... 12
+    static let maxSizeOfthumbnail: Float = 200
+    
+    // Use for generating random string.
+    static let characterSet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    static let randomCharactersLength = 6
     
     // Used for validating host informations.
     static let testString = "Hello"

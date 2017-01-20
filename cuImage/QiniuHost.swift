@@ -130,22 +130,19 @@ extension QiniuHost: Host {
         
         let option = QNUploadOption(progressHandler: progressHandler)
         
-        // Make image file name.
-        let key = Date.simpleFormatter.string(from: Date()) + "_" + name
-        
         // Upload image data.
-        uploadManager.put(data, key: key, token: token, complete: { [weak self] (info, key, response) in
+        uploadManager.put(data, key: name, token: token, complete: { [weak self] (info, key, response) in
             guard let sself = self else { return }
             guard let info = info, let key = key else { return }
-            print(info, key)
+//            print(info, key)
             
             if info.isOK {
                 let urlString = hostInfo.domain + "/" + key
-                sself.delegate?.host(sself, didSucceedToUploadImage: NSImage(data: data)!, urlString: urlString)
+                sself.delegate?.host(sself, didSucceedToUploadImageNamed: name, urlString: urlString)
             } else {
                 let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
                 let error = NSError(domain: domain, code: 0, userInfo: nil)
-                sself.delegate?.host(sself, didFailToUploadImage: NSImage(data: data)!, error: error)
+                sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
                 
                 if info.statusCode == 401 {    // Bad token.
                     sself.alertToConfigureHostInfo()
@@ -158,6 +155,8 @@ extension QiniuHost: Host {
     }
     
     private func progressHandler(key: String?, percent: Float) {
-        delegate?.host(self, isUploadingImageWithPercent: percent)
+        if let name = key {
+            delegate?.host(self, isUploadingImageNamed: name, percent: percent)
+        }
     }
 }

@@ -13,7 +13,7 @@ final class StatusItemView: NSImageView {
     fileprivate let uploadManager = UploadManager.shared
     fileprivate var statusItemIcon: NSImage!
     fileprivate var draggingDestinationBox: NSImage!
-    private var uploadingProgressImages: [NSImage]!
+    private var uploadProgressImages: [NSImage]!
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -31,9 +31,9 @@ final class StatusItemView: NSImageView {
         statusItemIcon.isTemplate = true
         draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
         draggingDestinationBox.isTemplate = true
-        uploadingProgressImages = (0..<Constants.uploadingProgressCount).reduce([]) {
+        uploadProgressImages = (0..<Constants.uploadProgressImagesCount).reduce([]) {
             var images: [NSImage] = $0.0
-            images.append(NSImage(named: Constants.uploadingProgress + "\($0.1)")!)
+            images.append(NSImage(named: Constants.uploadProgress + "\($0.1)")!)
             images[$0.1].isTemplate = true
             return images
         }
@@ -49,8 +49,10 @@ final class StatusItemView: NSImageView {
     }
     
     func updateImage(with percent: Float) {
-        let index = Int((percent * Float(Constants.uploadingProgressCount - 1)).rounded())
-        image = uploadingProgressImages[index]
+        assert(percent >= 0 && percent <= 1)
+        guard percent >= 0 && percent <= 1 else { return }
+        let index = Int((percent * Float(Constants.uploadProgressImagesCount - 1)).rounded())
+        image = uploadProgressImages[index]
     }
     
     func resetImage() {
@@ -87,7 +89,7 @@ extension StatusItemView {
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
         image = statusItemIcon
         let uploadManager = (NSApp.delegate as! AppDelegate).uploadManager
-        uploadManager.uploadImageOnPasteboard(sender.draggingPasteboard())
+        uploadManager.uploadImagesOnPasteboard(sender.draggingPasteboard())
         return true
     }
     
