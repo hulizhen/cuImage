@@ -78,7 +78,7 @@ final class StatusItemController: NSObject {
             preferencesWindowController.showWindow(item)
         case feedbackMenuItem:
             DispatchQueue.main.async {
-                Utilities.launchEmailApplication()
+                launchEmailApplication()
             }
         case aboutMenuItem:
             aboutWindowController.showWindow(item)

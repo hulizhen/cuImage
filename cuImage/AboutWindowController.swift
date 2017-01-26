@@ -28,7 +28,7 @@ final class AboutWindowController: BaseWindowController {
         let copyright = infoDictionary[Constants.humanReadableCopyright] as! String
         let shortVersion = infoDictionary[Constants.shortVersion] as! String
         let buildVersion = infoDictionary[Constants.buildVersion] as! String
-        let version = "Version \(shortVersion) (Build \(buildVersion))"
+        let version = "Version \(shortVersion) (\(buildVersion))"
         
         applicationNameTextField.stringValue = applicationName
         appIconImageView.image = NSImage(named: iconFileName)

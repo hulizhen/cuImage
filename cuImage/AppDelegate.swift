@@ -46,9 +46,9 @@ extension AppDelegate {
         
         switch key {
         case PreferenceKeys.launchAtLogin:
-            Utilities.launchAtLogin(preferences[.launchAtLogin])
+            launchAtLogin(preferences[.launchAtLogin])
         case PreferenceKeys.keepWindowsOnTop:
-            Utilities.keepWindowsOnTop(preferences[.keepWindowsOnTop])
+            keepWindowsOnTop(preferences[.keepWindowsOnTop])
         default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }

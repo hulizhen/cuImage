@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSWorkspace.shared().launchApplication(appPath)
         }
         
-        // Terminate the launch helper.
+        // Terminate the launcher.
         NSApp.terminate(self)
     }
 }
