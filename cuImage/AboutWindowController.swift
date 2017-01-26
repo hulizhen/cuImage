@@ -15,7 +15,6 @@ final class AboutWindowController: BaseWindowController {
     @IBOutlet weak var applicationNameTextField: NSTextField!
     @IBOutlet weak var copyrightTextField: NSTextField!
     @IBOutlet weak var versionTextField: NSTextField!
-    @IBOutlet weak var extraInformationTextView: NSTextView!
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -30,16 +29,10 @@ final class AboutWindowController: BaseWindowController {
         let shortVersion = infoDictionary[Constants.shortVersion] as! String
         let buildVersion = infoDictionary[Constants.buildVersion] as! String
         let version = "Version \(shortVersion) (Build \(buildVersion))"
-        let extraInformation =
-            "Special thanks to these awesome third-party libraries: " +
-            "MASShortcut: by shpakovski, licensed under the 2-clause BSD license." +
-            "RNCryptor: " +
-            "Qiniu: which use AFNetworking, HappyDNS"
         
         applicationNameTextField.stringValue = applicationName
         appIconImageView.image = NSImage(named: iconFileName)
         copyrightTextField.stringValue = copyright
         versionTextField.stringValue = version
-        extraInformationTextView.string = extraInformation
     }
 }

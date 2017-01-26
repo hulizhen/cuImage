@@ -11,7 +11,6 @@
                 <outlet property="applicationNameTextField" destination="b82-gQ-gwk" id="I2j-uJ-Z3T"/>
                 <outlet property="copyrightLabel" destination="tcH-mh-mde" id="gFW-WY-S5b"/>
                 <outlet property="copyrightTextField" destination="tcH-mh-mde" id="Jki-kK-MDl"/>
-                <outlet property="extraInformationTextView" destination="4z2-5w-77F" id="XWA-Nx-n2u"/>
                 <outlet property="versionLabel" destination="4Ja-dO-bso" id="Ij1-pe-6uf"/>
                 <outlet property="versionTextField" destination="4Ja-dO-bso" id="yHv-Yj-srM"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -19,102 +18,63 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="314" height="312"/>
+            <rect key="contentRect" x="196" y="240" width="314" height="213"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="314" height="312"/>
+                <rect key="frame" x="0.0" y="0.0" width="314" height="213"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcH-mh-mde">
-                        <rect key="frame" x="18" y="20" width="278" height="16"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2017 HuLizhen. All rights reserved." id="fPv-Ot-VcE">
-                            <font key="font" metaFont="cellTitle"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dkF-ON-iYW">
-                        <rect key="frame" x="20" y="228" width="64" height="64"/>
+                        <rect key="frame" x="125" y="129" width="64" height="64"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="64" id="Kkr-YB-e1u"/>
-                            <constraint firstAttribute="height" constant="64" id="vJL-KX-bcq"/>
+                            <constraint firstAttribute="height" constant="64" id="FaD-O3-ddM"/>
+                            <constraint firstAttribute="width" constant="64" id="tP1-xB-AMg"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="6Lw-4P-gNr"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-dO-bso">
-                        <rect key="frame" x="102" y="236" width="140" height="16"/>
+                        <rect key="frame" x="87" y="56" width="140" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.2.3 (Build 123)" id="gfO-PH-oqJ">
                             <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-gQ-gwk">
+                        <rect key="frame" x="109" y="80" width="97" height="29"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="cuImage" id="phg-vz-Gmt">
+                            <font key="font" size="24" name="HelveticaNeue"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="Cga-7L-hgy">
-                        <rect key="frame" x="0.0" y="56" width="314" height="152"/>
-                        <clipView key="contentView" id="E7y-70-QyK">
-                            <rect key="frame" x="1" y="1" width="312" height="150"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView editable="NO" importsGraphics="NO" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="4z2-5w-77F">
-                                    <rect key="frame" x="0.0" y="-0.5" width="312" height="150"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="312" height="150"/>
-                                    <size key="maxSize" width="463" height="10000000"/>
-                                    <attributedString key="textStorage">
-                                        <fragment content="Extra Information">
-                                            <attributes>
-                                                <color key="NSColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="cellTitle"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Kw7-Ss-ujE">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="9R2-m3-zF9">
-                            <rect key="frame" x="-100" y="-100" width="16" height="152"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-gQ-gwk">
-                        <rect key="frame" x="102" y="260" width="82" height="24"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="cuImage" id="phg-vz-Gmt">
-                            <font key="font" size="20" name="HelveticaNeue"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcH-mh-mde">
+                        <rect key="frame" x="18" y="20" width="278" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2017 HuLizhen. All rights reserved." id="fPv-Ot-VcE">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="tcH-mh-mde" secondAttribute="trailing" constant="20" id="7Ha-KP-lgz"/>
-                    <constraint firstItem="b82-gQ-gwk" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="28" id="EDu-Vb-hgk"/>
-                    <constraint firstAttribute="trailing" secondItem="Cga-7L-hgy" secondAttribute="trailing" id="Ef8-U2-Atj"/>
-                    <constraint firstItem="4Ja-dO-bso" firstAttribute="leading" secondItem="b82-gQ-gwk" secondAttribute="leading" id="Jnu-b7-4gD"/>
-                    <constraint firstItem="Cga-7L-hgy" firstAttribute="top" secondItem="dkF-ON-iYW" secondAttribute="bottom" constant="20" id="Qok-gx-X7p"/>
-                    <constraint firstItem="dkF-ON-iYW" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="Z0p-Uo-bmE"/>
-                    <constraint firstItem="dkF-ON-iYW" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="c75-E0-t34"/>
-                    <constraint firstItem="tcH-mh-mde" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="ewN-ib-97V"/>
-                    <constraint firstAttribute="bottom" secondItem="tcH-mh-mde" secondAttribute="bottom" constant="20" id="he7-T2-leP"/>
-                    <constraint firstItem="tcH-mh-mde" firstAttribute="top" secondItem="Cga-7L-hgy" secondAttribute="bottom" constant="20" id="jh2-4S-nch"/>
-                    <constraint firstItem="4Ja-dO-bso" firstAttribute="top" secondItem="b82-gQ-gwk" secondAttribute="bottom" constant="8" id="lnC-qG-RjM"/>
-                    <constraint firstItem="b82-gQ-gwk" firstAttribute="leading" secondItem="dkF-ON-iYW" secondAttribute="trailing" constant="20" id="tGJ-gw-KSs"/>
-                    <constraint firstItem="Cga-7L-hgy" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="tOw-PG-sIM"/>
+                    <constraint firstItem="dkF-ON-iYW" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Lr7-1c-TX8"/>
+                    <constraint firstItem="b82-gQ-gwk" firstAttribute="top" secondItem="dkF-ON-iYW" secondAttribute="bottom" constant="20" id="Msv-9U-hFR"/>
+                    <constraint firstItem="tcH-mh-mde" firstAttribute="top" secondItem="4Ja-dO-bso" secondAttribute="bottom" constant="20" id="XDD-bt-X6R"/>
+                    <constraint firstItem="b82-gQ-gwk" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="cTF-IG-A3v"/>
+                    <constraint firstItem="tcH-mh-mde" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="eME-Vb-IwE"/>
+                    <constraint firstItem="dkF-ON-iYW" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="eWc-YV-2Xu"/>
+                    <constraint firstItem="4Ja-dO-bso" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="k0p-Zm-VKe"/>
+                    <constraint firstAttribute="bottom" secondItem="tcH-mh-mde" secondAttribute="bottom" constant="20" id="kz0-9i-jLT"/>
+                    <constraint firstItem="4Ja-dO-bso" firstAttribute="top" secondItem="b82-gQ-gwk" secondAttribute="bottom" constant="8" id="uY3-tM-hRv"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="56" y="180"/>
+            <point key="canvasLocation" x="49" y="128"/>
         </window>
     </objects>
     <resources>
