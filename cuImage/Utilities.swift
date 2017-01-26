@@ -23,6 +23,36 @@ struct Utilities {
         }
     }
     
+    static func systemInformation() -> String {
+        var information = ""
+        let processInfo = ProcessInfo()
+        
+        // Cloure for getting system profile.
+        let systemProfile = { (key: String) -> String in
+            var info: String?
+            var count: Int = 0
+            
+            sysctlbyname(key, nil, &count, nil, 0)
+            if count > 0 {
+                var data = [UInt8](repeating: 0, count: count)
+                sysctlbyname(key, &data, &count, nil, 0)
+                info = String(bytes: data, encoding: .utf8)
+            }
+            return info ?? ""
+        }
+        
+        information += "\n\n\n\n\n"
+        information += "------------------ System Information ------------------\n"
+        information += "| macOS:            \(processInfo.operatingSystemVersionString)\n"
+        information += "| Machine Model:    \(systemProfile("hw.model"))\n"
+        information += "| CPU:              \(systemProfile("machdep.cpu.brand_string"))\n"
+        information += "| Physical Memory:  \(processInfo.physicalMemory / 1024 / 1024) MB\n"
+        information += "| Application Path: \(Bundle.main.bundlePath)\n"
+        information += "--------------------------------------------------------\n"
+        
+        return information
+    }
+    
     static func launchEmailApplication() {
         // Closure for copying email address to general pasteboard.
         let copyEmailAddress = {

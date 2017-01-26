@@ -43,7 +43,7 @@ struct Constants {
     // Email information for feedback.
     static let emailRecipient = "ihulizhen@foxmail.com"
     static let emailSubject = "[cuImage Feedback]"
-    static let emailBody = "Thanks for the feedback. Any detail would be helpful :)"
+    static let emailBody = Utilities.systemInformation()
     
     // Random crypto string in hex format for cryptor.
     // This hould not been changed, otherwise the data
