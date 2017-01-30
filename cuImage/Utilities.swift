@@ -22,6 +22,10 @@ func keepWindowsOnTop(_ top: Bool) {
     }
 }
 
+func localizedString(key: String, comment: String = "") -> String {
+    return NSLocalizedString(key, comment: comment)
+}
+
 func systemInformation() -> String {
     var information = ""
     let processInfo = ProcessInfo()
