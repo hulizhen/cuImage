@@ -46,7 +46,7 @@ struct Constants {
     static let emailBody = systemInformation()
     
     // Extra information in About window.
-    static let applicationDescription = "A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically."
+    static let applicationDescription = localizedString(key: "A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically.")
     static let authorLink = "http://hulizhen.github.io"
     static let thirdPartyLibraries = [
         ThirdPartyLibrary(name: "MASShortcut",

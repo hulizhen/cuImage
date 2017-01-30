@@ -49,7 +49,7 @@ func systemInformation() -> String {
     let buildVersion = systemProfile("kern.osversion")
     
     information += "\n\n\n\n\n"
-    information += "------------------ System Information ------------------\n"
+    information += "------------------ " + localizedString(key: "System Information") + " ------------------\n"
     information += "| macOS:            Version \(shortVersion) (Build \(buildVersion))\n"
     information += "| Machine Model:    \(systemProfile("hw.model"))\n"
     information += "| CPU:              \(systemProfile("machdep.cpu.brand_string"))\n"
@@ -67,13 +67,15 @@ func launchEmailApplication() {
         pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
         pasteboard.setString(Constants.emailRecipient, forType: NSPasteboardTypeString)
         
-        NSUserNotificationCenter.default.deliverNotification(with: "Email Address Copied",
+        NSUserNotificationCenter.default.deliverNotification(with: localizedString(key: "Email Address Copied"),
                                                              informativeText: Constants.emailRecipient)
     }
     
-    NSAlert.alert(messageText: "Do you want to launch email application?",
-                  informativeText: "You can also just copy author's email address.",
-                  buttonTitles: ["Launch", "Copy", "Cancel"]) { response in
+    NSAlert.alert(messageText: localizedString(key: "Do you want to launch email application?"),
+                  informativeText: localizedString(key: "You can also just copy author's email address."),
+                  buttonTitles: [localizedString(key: "Launch"),
+                                 localizedString(key: "Copy"),
+                                 localizedString(key: "Cancel")]) { response in
                     if response == NSAlertFirstButtonReturn {   // Launch
                         var done = false
                         
@@ -90,9 +92,9 @@ func launchEmailApplication() {
                         
                         // Offer an option of copying email address when failed to launch email application.
                         if !done {
-                            NSAlert.alert(messageText: "Failed to launch email application. Copy Author's email address?",
-                                          informativeText: "Please launch email application yourself.",
-                                          buttonTitles: ["Copy", "Cancel"]) { response in
+                            NSAlert.alert(messageText: localizedString(key: "Failed to launch email application. Copy Author's email address?"),
+                                          informativeText: localizedString(key: "Please launch email application yourself."),
+                                          buttonTitles: [localizedString(key: "Copy"), localizedString(key: "Cancel")]) { response in
                                             if response == NSAlertFirstButtonReturn {   // Copy
                                                 copyEmailAddress()
                                             }

@@ -29,8 +29,8 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         validationResultIndicator.image = nil
         
         // Tool tips.
-        validateButton.toolTip = "Press ⌘D to Validate."
-        saveButton.toolTip = "Press ↩ to Save."
+        validateButton.toolTip = localizedString(key: "Press ⌘D to Validate.")
+        saveButton.toolTip = localizedString(key: "Press ↩ to Save.")
         
         setUp()
     }
@@ -50,7 +50,7 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         }
         
         // TODO: Remove the following line after supporting more hosts.
-        hostsPopUpButton.toolTip = "Currently support Qiniu host only. Wait a moment, please :)"
+        hostsPopUpButton.toolTip = localizedString(key: "Currently support Qiniu host only. Wait a moment, please :)")
         
         // Select the current host.
         hostsPopUpButton.selectItem(withTitle: currentHost.rawValue)
@@ -62,14 +62,15 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         
         switch button {
         case validateButton:
-            validationResultText.stringValue = "Validating..."
+            validationResultText.stringValue = localizedString(key: "Validating...")
             validationResultIndicator.image = nil
             validationProgressIndicator.isHidden = false
             validationProgressIndicator.startAnimation(self)
             controller.validateHostInfo { succeeded in
                 self.validationProgressIndicator.stopAnimation(self)
                 self.validationProgressIndicator.isHidden = true
-                self.validationResultText.stringValue = "Validation " + (succeeded ? "Succeeded!" : "Failed!")
+                self.validationResultText.stringValue = localizedString(key: "Validation ") +
+                    (succeeded ? localizedString(key: "Succeeded!") : localizedString(key: "Failed!"))
                 self.validationResultIndicator.image =
                     NSImage(named: succeeded ? Constants.succeededIndicator : Constants.failedIndicator)
             }
