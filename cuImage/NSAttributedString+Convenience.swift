@@ -9,11 +9,12 @@
 import Cocoa
 
 extension NSAttributedString {
+    /**
+     Make an attributed string with embeded hyperlink.
+     */
     static func hyperlink(from string: String, with url: URL) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
         let range = NSMakeRange(0, attributedString.length)
-        
-        attributedString.beginEditing()
         
         // Attach link.
         attributedString.addAttribute(NSLinkAttributeName,
@@ -30,8 +31,18 @@ extension NSAttributedString {
                                       value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue),
                                       range: range)
         
-        attributedString.endEditing()
-        
         return attributedString
+    }
+    
+    static func +(lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+        let result = NSMutableAttributedString()
+        
+        result.append(lhs)
+        result.append(rhs)
+        return result
+    }
+    
+    static func +=(lhs: inout NSAttributedString, rhs: NSAttributedString) {
+        lhs = lhs + rhs
     }
 }

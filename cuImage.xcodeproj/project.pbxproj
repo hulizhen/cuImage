@@ -59,7 +59,7 @@
 		25DFF6D21E23A0040071F2EC /* cuImageLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25130C481E20E0C700830B3F /* cuImageLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E5F00E1E2886EC0004C12A /* HostInfo.swift */; };
 		25E910B81E2F05DF006D74F9 /* NSAlert+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E910B71E2F05DF006D74F9 /* NSAlert+Convenience.swift */; };
-		25EAAE081E3F077700FA143A /* NSAttributedString+Hyperlink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EAAE071E3F077700FA143A /* NSAttributedString+Hyperlink.swift */; };
+		25EAAE081E3F077700FA143A /* NSAttributedString+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EAAE071E3F077700FA143A /* NSAttributedString+Convenience.swift */; };
 		EFCE6B82C9043CEF4A58A0EC /* Pods_cuImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */; };
 /* End PBXBuildFile section */
 
@@ -147,7 +147,7 @@
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
 		25E5F00E1E2886EC0004C12A /* HostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfo.swift; sourceTree = "<group>"; };
 		25E910B71E2F05DF006D74F9 /* NSAlert+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAlert+Convenience.swift"; sourceTree = "<group>"; };
-		25EAAE071E3F077700FA143A /* NSAttributedString+Hyperlink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Hyperlink.swift"; sourceTree = "<group>"; };
+		25EAAE071E3F077700FA143A /* NSAttributedString+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Convenience.swift"; sourceTree = "<group>"; };
 		2A7C860188CF3C6FBF7A8EF2 /* Pods-cuImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.release.xcconfig"; sourceTree = "<group>"; };
 		48FBB0269350A6B177499FB3 /* Pods-cuImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuImage/Pods-cuImage.debug.xcconfig"; sourceTree = "<group>"; };
 		6C53067A7C1CEBA1D76A5189 /* Pods_cuImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,7 +355,7 @@
 				255958421E1BED7000B8469E /* String+Crypto.swift */,
 				2559583D1E1BED4300B8469E /* Date+Formatter.swift */,
 				258BE7521E2771D000D04D23 /* URL+Convenience.swift */,
-				25EAAE071E3F077700FA143A /* NSAttributedString+Hyperlink.swift */,
+				25EAAE071E3F077700FA143A /* NSAttributedString+Convenience.swift */,
 				25563E7E1E30700500FFC799 /* NSPasteboard+Convenience.swift */,
 				258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */,
 				2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */,
@@ -648,7 +648,7 @@
 				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
 				258BE7551E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift in Sources */,
 				257458111E2C5FE900138E3C /* CoreDataController.swift in Sources */,
-				25EAAE081E3F077700FA143A /* NSAttributedString+Hyperlink.swift in Sources */,
+				25EAAE081E3F077700FA143A /* NSAttributedString+Convenience.swift in Sources */,
 				258BE74F1E27516500D04D23 /* StatusItemView.swift in Sources */,
 				2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */,
 				25E910B81E2F05DF006D74F9 /* NSAlert+Convenience.swift in Sources */,

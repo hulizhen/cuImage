@@ -45,6 +45,27 @@ struct Constants {
     static let emailSubject = "[cuImage Feedback]"
     static let emailBody = systemInformation()
     
+    // Extra information in About window.
+    static let applicationDescription = "A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically."
+    static let authorLink = "http://hulizhen.github.io"
+    static let thirdPartyLibraries = [
+        ThirdPartyLibrary(name: "MASShortcut",
+                          link: "https://github.com/shpakovski/MASShortcut",
+                          description: "Modern framework for managing global keyboard shortcuts compatible with Mac App Store."),
+        ThirdPartyLibrary(name: "RNCryptor",
+                          link: "https://github.com/RNCryptor/RNCryptor",
+                          description: "CCCryptor (AES encryption) wrappers for iOS/macOS in Swift."),
+        ThirdPartyLibrary(name: "QiniuSDK",
+                          link: "https://github.com/qiniu/objc-sdk",
+                          description: "Qiniu Resource (Cloud) Storage Objective-C SDK for iOS/macOS"),
+        ThirdPartyLibrary(name: "AFNetworking",
+                          link: "https://github.com/AFNetworking/AFNetworking",
+                          description: "A delightful networking framework for iOS/watchOS/tvOS/macOS."),
+        ThirdPartyLibrary(name: "HappyDNS",
+                          link: "https://github.com/qiniu/happy-dns-objc",
+                          description: "DNS library in Objective-C."),
+    ]
+    
     // Random crypto string in hex format for cryptor.
     // This hould not been changed, otherwise the data
     // encrypted previously will not be decrypted correctly.
