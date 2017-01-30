@@ -50,9 +50,12 @@ final class StatusItemController: NSObject {
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
                 assert(false, "Failed to instantiate \(self.className)")
         }
-        
+
+        let infoDictionary = Bundle.main.infoDictionary!
+        let applicationName = infoDictionary[Constants.applicationName] as! String
+        let shortVersion = infoDictionary[Constants.shortVersion] as! String
+        statusItem.toolTip = applicationName + " " + shortVersion
         statusItem.button!.addSubview(statusItemView)
-        statusItem.toolTip = Bundle.main.infoDictionary![kIOBundleNameKey] as? String
         statusItem.menu = menu
         
         uploadHistoryMenu.autoenablesItems = false
