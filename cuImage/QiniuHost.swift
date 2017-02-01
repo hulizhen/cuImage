@@ -106,9 +106,9 @@ final class QiniuHost: NSObject {
     
     fileprivate func alertToConfigureHostInfo() {
         NSAlert.alert(alertStyle: .critical,
-                      messageText: localizedString(key: "Wrong host information. Do you want to configure your host now?"),
-                      informativeText: localizedString(key: "You should get your host configured correctly before uploading images."),
-                      buttonTitles: [localizedString(key: "Configure"), localizedString(key: "Cancel")]) { response in
+                      messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                      informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                      buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
                         if response == NSAlertFirstButtonReturn {   // Configure
                             PreferencesWindowController.shared.showHostPreferencesPane()
                         }

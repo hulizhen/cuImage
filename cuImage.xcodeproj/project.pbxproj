@@ -47,6 +47,7 @@
 		255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */; };
 		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
+		2567B42C1E41D12E00085614 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2567B42B1E41D12E00085614 /* LocalizedStrings.swift */; };
 		256E393D1E24AD5000CA2F5F /* HostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */; };
 		257458111E2C5FE900138E3C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257458101E2C5FE900138E3C /* CoreDataController.swift */; };
 		257458381E2C703B00138E3C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257458361E2C703B00138E3C /* DataModel.xcdatamodeld */; };
@@ -136,6 +137,7 @@
 		255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostInfoViewController.xib; sourceTree = "<group>"; };
 		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShortcutManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		2567B42B1E41D12E00085614 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfoViewController.swift; sourceTree = "<group>"; };
 		257458101E2C5FE900138E3C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		257458371E2C703B00138E3C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				25577E031E2088270091735A /* Utilities.swift */,
 				250B7E301E24FEC00095FAEA /* Constants.swift */,
+				2567B42B1E41D12E00085614 /* LocalizedStrings.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */,
 				254F83E81E3114E3001790C3 /* String+Random.swift in Sources */,
 				255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */,
+				2567B42C1E41D12E00085614 /* LocalizedStrings.swift in Sources */,
 				255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */,
 				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
 				258BE7551E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift in Sources */,

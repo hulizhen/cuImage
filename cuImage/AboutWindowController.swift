@@ -35,7 +35,7 @@ final class AboutWindowController: BaseWindowController {
         let copyright = infoDictionary[Constants.humanReadableCopyright] as! String
         let shortVersion = infoDictionary[Constants.shortVersion] as! String
         let buildVersion = infoDictionary[Constants.buildVersion] as! String
-        let version = localizedString(key: "Version") + " \(shortVersion) (\(buildVersion))"
+        let version = LocalizedStrings.version + " \(shortVersion) (\(buildVersion))"
         
         let attributes = [kCTFontAttributeName as String: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize())]
         let applicationDescription =
@@ -43,11 +43,13 @@ final class AboutWindowController: BaseWindowController {
         NSAttributedString(string: " by ") +
         NSAttributedString.hyperlink(from: "Hu Lizhen", with: URL(string: Constants.authorLink)!) +
         NSAttributedString(string: "\n") +
-        NSAttributedString(string: Constants.applicationDescription) +
+        NSAttributedString(string: LocalizedStrings.applicationDescription) +
         NSAttributedString(string: "\n\n\n")
         
-        var thirdPartyLibrariesInfo = NSAttributedString(string: localizedString(key: "Acknowledgment\n"), attributes: attributes) +
-            NSAttributedString(string: localizedString(key: "Special thanks to these awesome third-party libraries:\n"))
+        var thirdPartyLibrariesInfo = NSAttributedString(string: LocalizedStrings.acknowledgment, attributes: attributes) +
+            NSAttributedString(string: "\n") +
+            NSAttributedString(string: LocalizedStrings.specialThanks) +
+            NSAttributedString(string: "\n")
         for lib in Constants.thirdPartyLibraries {
             thirdPartyLibrariesInfo += NSAttributedString(string: "\n")
             thirdPartyLibrariesInfo += NSAttributedString.hyperlink(from: lib.name, with: URL(string: lib.link)!)

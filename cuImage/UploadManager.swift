@@ -34,8 +34,8 @@ fileprivate struct UploadStatus {
     mutating func notifyIfFinished() {
         if isFinished {
             let copyURLWhenUploaded = preferences[.copyURLWhenUploaded]
-            let title = localizedString(key: "Images uploaded: \(succeededItemsCount) succeeded, \(failedItemsCount) failed.")
-            let informativeText = copyURLWhenUploaded ? localizedString(key: "Uploaded images' URL copied.") : ""
+            let title = String(format: LocalizedStrings.uploadResult, succeededItemsCount, failedItemsCount)
+            let informativeText = copyURLWhenUploaded ? LocalizedStrings.urlOfUploadedImageCopied : ""
             
             if copyURLWhenUploaded {
                 NSPasteboard.general().addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
@@ -81,13 +81,13 @@ final class UploadManager {
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         
         let alertForNoImages = {
-            NSAlert.alert(messageText: localizedString(key: "No images to upload."),
-                          informativeText: localizedString(key: "Before uploading, you should take a screenshort, copy images or drag images to cuImage icon on status bar."))
+            NSAlert.alert(messageText: LocalizedStrings.noImagesToUploadAlertMessageText,
+                          informativeText: LocalizedStrings.noImagesToUploadAlertInformativeText)
         }
         
         // Reset upload status, alert if currently uploading.
         if uploadStatus.isUploading {
-            NSAlert.alert(messageText: localizedString(key: "Previous uploads have not finished yet, try it later."))
+            NSAlert.alert(messageText: LocalizedStrings.uploadingAlertMessageText)
             return
         } else {
             uploadStatus.reset()
