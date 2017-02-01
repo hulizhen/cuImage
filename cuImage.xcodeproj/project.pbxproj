@@ -13,6 +13,13 @@
 		25130C4D1E20E0C700830B3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4C1E20E0C700830B3F /* Assets.xcassets */; };
 		25130C501E20E0C700830B3F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25130C4E1E20E0C700830B3F /* MainMenu.xib */; };
 		2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */; };
+		254AF2381E41DE8E00FB7687 /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF23A1E41DE8E00FB7687 /* StatusItemController.xib */; };
+		254AF23D1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF23F1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib */; };
+		254AF2421E41DF5400FB7687 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF2441E41DF5400FB7687 /* PreferencesWindowController.xib */; };
+		254AF2451E41DF5800FB7687 /* GeneralPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF2471E41DF5800FB7687 /* GeneralPreferencesPaneController.xib */; };
+		254AF2481E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF24A1E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib */; };
+		254AF24B1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF24D1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib */; };
+		254AF24E1E41DF6000FB7687 /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF2501E41DF6000FB7687 /* AboutWindowController.xib */; };
 		254F83E81E3114E3001790C3 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F83E71E3114E3001790C3 /* String+Random.swift */; };
 		254F83EA1E3193E0001790C3 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F83E91E3193E0001790C3 /* StringTests.swift */; };
 		254F83EC1E31ADA1001790C3 /* NSPasteboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254F83EB1E31ADA1001790C3 /* NSPasteboardTests.swift */; };
@@ -25,17 +32,11 @@
 		255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 255957F11E1BD2A600B8469E /* Assets.xcassets */; };
 		255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255957F31E1BD2A600B8469E /* MainMenu.xib */; };
 		255958031E1BD77100B8469E /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958021E1BD77100B8469E /* StatusItemController.swift */; };
-		255958051E1BD78500B8469E /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958041E1BD78500B8469E /* StatusItemController.xib */; };
 		255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958101E1BDDD900B8469E /* AboutWindowController.swift */; };
-		255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958111E1BDDD900B8469E /* AboutWindowController.xib */; };
 		2559581A1E1BE00400B8469E /* GeneralPreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958161E1BE00400B8469E /* GeneralPreferencesPaneController.swift */; };
-		2559581B1E1BE00400B8469E /* GeneralPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958171E1BE00400B8469E /* GeneralPreferencesPaneController.xib */; };
 		255958211E1BE03800B8469E /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */; };
-		255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958201E1BE03800B8469E /* PreferencesWindowController.xib */; };
 		255958281E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958261E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift */; };
-		255958291E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958271E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib */; };
 		255958311E1BE8E800B8469E /* HostsPreferencesPaneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559582F1E1BE8E800B8469E /* HostsPreferencesPaneController.swift */; };
-		255958321E1BE8E800B8469E /* HostsPreferencesPaneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255958301E1BE8E800B8469E /* HostsPreferencesPaneController.xib */; };
 		2559583A1E1BECCF00B8469E /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958381E1BECCF00B8469E /* Host.swift */; };
 		2559583B1E1BECCF00B8469E /* QiniuHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958391E1BECCF00B8469E /* QiniuHost.swift */; };
 		2559583E1E1BED4300B8469E /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559583D1E1BED4300B8469E /* Date+Formatter.swift */; };
@@ -44,7 +45,6 @@
 		255958451E1BED8400B8469E /* NSBitmapImageFileType+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */; };
 		255958501E1BEF5300B8469E /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2559584F1E1BEF5300B8469E /* UploadManager.swift */; };
 		255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */; };
-		255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */; };
 		255B1D9E1E1F8AD2000791EC /* ShortcutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */; };
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
 		2567B42C1E41D12E00085614 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2567B42B1E41D12E00085614 /* LocalizedStrings.swift */; };
@@ -100,6 +100,22 @@
 		2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcut+Convenience.swift"; sourceTree = "<group>"; };
 		254834E11E24780F0098C16F /* cuImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImage.entitlements; sourceTree = "<group>"; };
 		254834E21E247A150098C16F /* cuImageLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImageLauncher.entitlements; sourceTree = "<group>"; };
+		254AF2361E41DE7E00FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		254AF2371E41DE7E00FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		254AF2391E41DE8E00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatusItemController.xib; sourceTree = "<group>"; };
+		254AF23C1E41DE9800FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StatusItemController.strings"; sourceTree = "<group>"; };
+		254AF23E1E41DEBC00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QiniuHostInfoViewController.xib; sourceTree = "<group>"; };
+		254AF2411E41DEC800FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/QiniuHostInfoViewController.strings"; sourceTree = "<group>"; };
+		254AF2431E41DF5400FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
+		254AF2461E41DF5800FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPreferencesPaneController.xib; sourceTree = "<group>"; };
+		254AF2491E41DF5A00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShortcutsPreferencesPaneController.xib; sourceTree = "<group>"; };
+		254AF24C1E41DF5D00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HostsPreferencesPaneController.xib; sourceTree = "<group>"; };
+		254AF24F1E41DF6000FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
+		254AF2521E41DF6D00FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferencesWindowController.strings"; sourceTree = "<group>"; };
+		254AF2541E41DF8C00FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/GeneralPreferencesPaneController.strings"; sourceTree = "<group>"; };
+		254AF2561E41E1E800FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShortcutsPreferencesPaneController.strings"; sourceTree = "<group>"; };
+		254AF25A1E41E22300FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/HostsPreferencesPaneController.strings"; sourceTree = "<group>"; };
+		254AF25C1E41E27100FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/AboutWindowController.strings"; sourceTree = "<group>"; };
 		254F83E71E3114E3001790C3 /* String+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
 		254F83E91E3193E0001790C3 /* StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		254F83EB1E31ADA1001790C3 /* NSPasteboardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPasteboardTests.swift; sourceTree = "<group>"; };
@@ -114,17 +130,11 @@
 		255957F41E1BD2A600B8469E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		255957F61E1BD2A600B8469E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		255958021E1BD77100B8469E /* StatusItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StatusItemController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		255958041E1BD78500B8469E /* StatusItemController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusItemController.xib; sourceTree = "<group>"; };
 		255958101E1BDDD900B8469E /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
-		255958111E1BDDD900B8469E /* AboutWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutWindowController.xib; sourceTree = "<group>"; };
 		255958161E1BE00400B8469E /* GeneralPreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GeneralPreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		255958171E1BE00400B8469E /* GeneralPreferencesPaneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesPaneController.xib; sourceTree = "<group>"; };
 		2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesWindowController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		255958201E1BE03800B8469E /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		255958261E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShortcutsPreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		255958271E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutsPreferencesPaneController.xib; sourceTree = "<group>"; };
 		2559582F1E1BE8E800B8469E /* HostsPreferencesPaneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HostsPreferencesPaneController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		255958301E1BE8E800B8469E /* HostsPreferencesPaneController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HostsPreferencesPaneController.xib; sourceTree = "<group>"; };
 		255958381E1BECCF00B8469E /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Host.swift; sourceTree = "<group>"; };
 		255958391E1BECCF00B8469E /* QiniuHost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHost.swift; sourceTree = "<group>"; };
 		2559583D1E1BED4300B8469E /* Date+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
@@ -134,7 +144,6 @@
 		255958461E1BEDC400B8469E /* cuImage-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cuImage-Bridging-Header.h"; sourceTree = "<group>"; };
 		2559584F1E1BEF5300B8469E /* UploadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UploadManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfoViewController.swift; sourceTree = "<group>"; };
-		255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QiniuHostInfoViewController.xib; sourceTree = "<group>"; };
 		255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShortcutManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		2567B42B1E41D12E00085614 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
@@ -227,7 +236,7 @@
 				255958391E1BECCF00B8469E /* QiniuHost.swift */,
 				25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */,
 				255B1D961E1F2873000791EC /* QiniuHostInfoViewController.swift */,
-				255B1D971E1F2873000791EC /* QiniuHostInfoViewController.xib */,
+				254AF23F1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib */,
 			);
 			name = "Qiniu Host";
 			sourceTree = "<group>";
@@ -315,7 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				255958101E1BDDD900B8469E /* AboutWindowController.swift */,
-				255958111E1BDDD900B8469E /* AboutWindowController.xib */,
+				254AF2501E41DF6000FB7687 /* AboutWindowController.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -326,13 +335,13 @@
 				255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */,
 				255B1D9D1E1F8AD2000791EC /* ShortcutManager.swift */,
 				2559581F1E1BE03800B8469E /* PreferencesWindowController.swift */,
-				255958201E1BE03800B8469E /* PreferencesWindowController.xib */,
+				254AF2441E41DF5400FB7687 /* PreferencesWindowController.xib */,
 				255958161E1BE00400B8469E /* GeneralPreferencesPaneController.swift */,
-				255958171E1BE00400B8469E /* GeneralPreferencesPaneController.xib */,
+				254AF2471E41DF5800FB7687 /* GeneralPreferencesPaneController.xib */,
 				255958261E1BE46900B8469E /* ShortcutsPreferencesPaneController.swift */,
-				255958271E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib */,
+				254AF24A1E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib */,
 				2559582F1E1BE8E800B8469E /* HostsPreferencesPaneController.swift */,
-				255958301E1BE8E800B8469E /* HostsPreferencesPaneController.xib */,
+				254AF24D1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -381,7 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				255958021E1BD77100B8469E /* StatusItemController.swift */,
-				255958041E1BD78500B8469E /* StatusItemController.xib */,
+				254AF23A1E41DE8E00FB7687 /* StatusItemController.xib */,
 				258BE74E1E27516500D04D23 /* StatusItemView.swift */,
 			);
 			name = "Status Item";
@@ -509,6 +518,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 255957E31E1BD2A500B8469E;
 			productRefGroup = 255957ED1E1BD2A600B8469E /* Products */;
@@ -543,15 +553,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255958221E1BE03800B8469E /* PreferencesWindowController.xib in Resources */,
-				255B1D991E1F2873000791EC /* QiniuHostInfoViewController.xib in Resources */,
-				255958321E1BE8E800B8469E /* HostsPreferencesPaneController.xib in Resources */,
+				254AF2421E41DF5400FB7687 /* PreferencesWindowController.xib in Resources */,
+				254AF23D1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib in Resources */,
+				254AF24B1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
-				255958131E1BDDD900B8469E /* AboutWindowController.xib in Resources */,
-				255958291E1BE46900B8469E /* ShortcutsPreferencesPaneController.xib in Resources */,
+				254AF24E1E41DF6000FB7687 /* AboutWindowController.xib in Resources */,
+				254AF2481E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
-				255958051E1BD78500B8469E /* StatusItemController.xib in Resources */,
-				2559581B1E1BE00400B8469E /* GeneralPreferencesPaneController.xib in Resources */,
+				254AF2381E41DE8E00FB7687 /* StatusItemController.xib in Resources */,
+				254AF2451E41DF5800FB7687 /* GeneralPreferencesPaneController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,14 +694,79 @@
 			isa = PBXVariantGroup;
 			children = (
 				25130C4F1E20E0C700830B3F /* Base */,
+				254AF2371E41DE7E00FB7687 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		254AF23A1E41DE8E00FB7687 /* StatusItemController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF2391E41DE8E00FB7687 /* Base */,
+				254AF23C1E41DE9800FB7687 /* zh-Hans */,
+			);
+			name = StatusItemController.xib;
+			sourceTree = "<group>";
+		};
+		254AF23F1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF23E1E41DEBC00FB7687 /* Base */,
+				254AF2411E41DEC800FB7687 /* zh-Hans */,
+			);
+			name = QiniuHostInfoViewController.xib;
+			sourceTree = "<group>";
+		};
+		254AF2441E41DF5400FB7687 /* PreferencesWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF2431E41DF5400FB7687 /* Base */,
+				254AF2521E41DF6D00FB7687 /* zh-Hans */,
+			);
+			name = PreferencesWindowController.xib;
+			sourceTree = "<group>";
+		};
+		254AF2471E41DF5800FB7687 /* GeneralPreferencesPaneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF2461E41DF5800FB7687 /* Base */,
+				254AF2541E41DF8C00FB7687 /* zh-Hans */,
+			);
+			name = GeneralPreferencesPaneController.xib;
+			sourceTree = "<group>";
+		};
+		254AF24A1E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF2491E41DF5A00FB7687 /* Base */,
+				254AF2561E41E1E800FB7687 /* zh-Hans */,
+			);
+			name = ShortcutsPreferencesPaneController.xib;
+			sourceTree = "<group>";
+		};
+		254AF24D1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF24C1E41DF5D00FB7687 /* Base */,
+				254AF25A1E41E22300FB7687 /* zh-Hans */,
+			);
+			name = HostsPreferencesPaneController.xib;
+			sourceTree = "<group>";
+		};
+		254AF2501E41DF6000FB7687 /* AboutWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				254AF24F1E41DF6000FB7687 /* Base */,
+				254AF25C1E41E27100FB7687 /* zh-Hans */,
+			);
+			name = AboutWindowController.xib;
 			sourceTree = "<group>";
 		};
 		255957F31E1BD2A600B8469E /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				255957F41E1BD2A600B8469E /* Base */,
+				254AF2361E41DE7E00FB7687 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -775,6 +850,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -824,6 +900,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

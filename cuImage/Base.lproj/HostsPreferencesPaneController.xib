@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="500" height="293"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="60g-gm-lpO" userLabel="Host Preferences Content Box">
+                <box titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="60g-gm-lpO" userLabel="Host Preferences Content Box">
                     <rect key="frame" x="17" y="16" width="465" height="230"/>
                     <view key="contentView" id="ac9-ZY-0kj">
                         <rect key="frame" x="2" y="2" width="461" height="226"/>

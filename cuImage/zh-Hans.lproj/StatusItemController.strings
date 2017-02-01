@@ -1,0 +1,21 @@
+
+/* Class = "NSMenuItem"; title = "Upload History"; ObjectID = "Kfr-2y-AEv"; */
+"Kfr-2y-AEv.title" = "上传历史";
+
+/* Class = "NSMenuItem"; title = "Quit cuImage"; ObjectID = "N8H-WJ-Zsf"; */
+"N8H-WJ-Zsf.title" = "退出cuImage";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "VJI-Pz-n2Z"; */
+"VJI-Pz-n2Z.title" = "偏好设置…";
+
+/* Class = "NSMenuItem"; title = "Upload Image"; ObjectID = "Vr8-wq-G2e"; */
+"Vr8-wq-G2e.title" = "上传图片";
+
+/* Class = "NSMenu"; title = "Upload History"; ObjectID = "dXn-LR-h8h"; */
+"dXn-LR-h8h.title" = "上传历史";
+
+/* Class = "NSMenuItem"; title = "About…"; ObjectID = "mYk-F7-yO9"; */
+"mYk-F7-yO9.title" = "关于…";
+
+/* Class = "NSMenuItem"; title = "Feedback…"; ObjectID = "ysP-BG-gE2"; */
+"ysP-BG-gE2.title" = "反馈…";
