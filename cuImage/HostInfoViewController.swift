@@ -17,7 +17,7 @@ protocol HostInfoViewController: class {
     func discardHostInfo()
 }
 
-// Default implementation
+// Default implementation.
 extension HostInfoViewController {
     /**
      Show alert dialog if the info is changed.

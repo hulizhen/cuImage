@@ -9,6 +9,8 @@
 import Cocoa
 
 class HostInfo: NSObject, NSCoding {
+    var name = ""
+
     override init() {
         super.init()
     }
@@ -16,18 +18,28 @@ class HostInfo: NSObject, NSCoding {
     convenience required init?(coder aDecoder: NSCoder) {
         self.init()
         
-        for child in Mirror(reflecting: self).children {
-            if let key = child.label {
-                setValue(aDecoder.decodeObject(forKey: key), forKey: key)
-            }
+        forEachChildOfMirror(reflecting: self) { key in
+            setValue(aDecoder.decodeObject(forKey: key), forKey: key)
         }
     }
     
     func encode(with aCoder: NSCoder) {
-        for child in Mirror(reflecting: self).children {
-            if let key = child.label {
-                aCoder.encode(value(forKey: key), forKey: key)
+        forEachChildOfMirror(reflecting: self) { key in
+            aCoder.encode(value(forKey: key), forKey: key)
+        }
+    }
+    
+    private func forEachChildOfMirror(reflecting subject: Any, handler: (String) -> Void) {
+        var mirror: Mirror? = Mirror(reflecting: subject)
+        while mirror != nil {
+            for child in mirror!.children {
+                if let key = child.label {
+                    handler(key)
+                }
             }
+            
+            // Get super class's properties.
+            mirror = mirror!.superclassMirror
         }
     }
 }

@@ -9,7 +9,6 @@
 import Cocoa
 
 final class QiniuHostInfo: HostInfo {
-    var name = ""
     var accessKey = ""
     var secretKey = ""
     var bucket = ""
