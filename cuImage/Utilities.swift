@@ -2,8 +2,8 @@
 //  swift
 //  cuImage
 //
-//  Created by HuLizhen on 07/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 07/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa

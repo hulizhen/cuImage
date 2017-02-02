@@ -15,7 +15,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="UqQ-L8-ZeT">
-            <rect key="frame" x="0.0" y="0.0" width="540" height="274"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="274"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="TBY-dC-2CI" userLabel="Launch At Login">

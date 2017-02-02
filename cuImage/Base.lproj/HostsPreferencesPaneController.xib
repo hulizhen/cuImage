@@ -105,7 +105,7 @@ DQ
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="SDC-s0-w48"/>
                     </constraints>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="hTU-kG-gj6" userLabel="Hosts Pop Up Button">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" id="hTU-kG-gj6" userLabel="Hosts Pop Up Button">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="hQ8-2x-1yA"/>

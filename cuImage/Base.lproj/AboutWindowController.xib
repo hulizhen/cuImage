@@ -86,8 +86,8 @@
                         </scroller>
                     </scrollView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcH-mh-mde">
-                        <rect key="frame" x="11" y="20" width="278" height="16"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2017 HuLizhen. All rights reserved." id="fPv-Ot-VcE">
+                        <rect key="frame" x="9" y="20" width="282" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Copyright © 2017 Lizhen Hu. All rights reserved." id="fPv-Ot-VcE">
                             <font key="font" metaFont="cellTitle"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

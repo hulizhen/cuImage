@@ -2,8 +2,8 @@
 //  AboutWindowController.swift
 //  cuImage
 //
-//  Created by HuLizhen on 03/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 03/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -41,7 +41,7 @@ final class AboutWindowController: BaseWindowController {
         let applicationDescription =
         NSAttributedString(string: "cuImage(See You, Image!)", attributes: attributes) +
         NSAttributedString(string: " by ") +
-        NSAttributedString.hyperlink(from: "Hu Lizhen", with: URL(string: Constants.authorLink)!) +
+        NSAttributedString.hyperlink(from: "Lizhen Hu", with: URL(string: Constants.authorLink)!) +
         NSAttributedString(string: "\n") +
         NSAttributedString(string: LocalizedStrings.applicationDescription) +
         NSAttributedString(string: "\n\n\n")
