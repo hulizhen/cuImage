@@ -35,7 +35,7 @@ final class AboutWindowController: BaseWindowController {
         let copyright = infoDictionary[Constants.humanReadableCopyright] as! String
         let shortVersion = infoDictionary[Constants.shortVersion] as! String
         let buildVersion = infoDictionary[Constants.buildVersion] as! String
-        let version = LocalizedStrings.version + " \(shortVersion) (\(buildVersion))"
+        let version = LocalizedStrings.version + " \(shortVersion) (Build \(buildVersion))"
         
         let attributes = [kCTFontAttributeName as String: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize())]
         let applicationDescription =

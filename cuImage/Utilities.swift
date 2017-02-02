@@ -41,15 +41,22 @@ func systemInformation() -> String {
     }
     
     let version = processInfo.operatingSystemVersion
-    let shortVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-    let buildVersion = systemProfile("kern.osversion")
+    let osShortVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+    let osBuildVersion = systemProfile("kern.osversion")
+    let osVersion = "\(osShortVersion) (Build \(osBuildVersion))"
+    
+    let infoDictionary = Bundle.main.infoDictionary!
+    let appShortVersion = infoDictionary[Constants.shortVersion] as! String
+    let appBuildVersion = infoDictionary[Constants.buildVersion] as! String
+    let appVersion = "\(appShortVersion) (Build \(appBuildVersion))"
     
     information += "\n\n\n\n\n"
     information += "------------------ " + LocalizedStrings.systemInformation + " ------------------\n"
-    information += "| macOS:            Version \(shortVersion) (Build \(buildVersion))\n"
-    information += "| Machine Model:    \(systemProfile("hw.model"))\n"
-    information += "| CPU:              \(systemProfile("machdep.cpu.brand_string"))\n"
-    information += "| Physical Memory:  \(processInfo.physicalMemory / 1024 / 1024) MB\n"
+    information += "| macOS: Version \(osVersion)\n"
+    information += "| Machine Model: \(systemProfile("hw.model"))\n"
+    information += "| CPU: \(systemProfile("machdep.cpu.brand_string"))\n"
+    information += "| Physical Memory: \(processInfo.physicalMemory / 1024 / 1024) MB\n"
+    information += "| Application Version: \(appVersion)\n"
     information += "| Application Path: \(Bundle.main.bundlePath)\n"
     information += "--------------------------------------------------------\n"
     
