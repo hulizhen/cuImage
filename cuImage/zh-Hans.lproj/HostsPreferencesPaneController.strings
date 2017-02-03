@@ -1,0 +1,12 @@
+
+/* Class = "NSButtonCell"; title = "Save"; ObjectID = "7iJ-tS-UOQ"; */
+"7iJ-tS-UOQ.title" = "保存";
+
+/* Class = "NSTextFieldCell"; title = "Validation Result"; ObjectID = "J5V-bl-31N"; */
+"J5V-bl-31N.title" = "验证结果";
+
+/* Class = "NSButtonCell"; title = "Validate"; ObjectID = "RL5-pB-8JI"; */
+"RL5-pB-8JI.title" = "验证";
+
+/* Class = "NSTextFieldCell"; title = "Host:"; ObjectID = "SWh-CA-qNC"; */
+"SWh-CA-qNC.title" = "主机：";

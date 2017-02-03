@@ -2,8 +2,8 @@
 //  HostInfoViewController.swift
 //  cuImage
 //
-//  Created by HuLizhen on 10/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 10/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -17,7 +17,7 @@ protocol HostInfoViewController: class {
     func discardHostInfo()
 }
 
-// Default implementation
+// Default implementation.
 extension HostInfoViewController {
     /**
      Show alert dialog if the info is changed.
@@ -30,9 +30,12 @@ extension HostInfoViewController {
      */
     func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool {
         if (isInfoChanged) {
-            NSAlert.alert(for: window, messageText: "Do you want to save the changes?",
-                          informativeText: "The changes will be lost if you don't save them!",
-                          buttonTitles: ["Save", "Cancel", "Discard"], completion: completion)
+            NSAlert.alert(for: window, messageText: LocalizedStrings.saveChangesAlertMessageText,
+                          informativeText: LocalizedStrings.saveChangesAlertInformativeText,
+                          buttonTitles: [LocalizedStrings.save,
+                                         LocalizedStrings.cancel,
+                                         LocalizedStrings.discard],
+                          completion: completion)
         }
         return isInfoChanged
     }

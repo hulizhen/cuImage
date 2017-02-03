@@ -1,0 +1,12 @@
+
+/* Class = "NSWindow"; title = "About"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "关于";
+
+/* Class = "NSTextFieldCell"; title = "Copyright © 2017 Lizhen Hu. All rights reserved."; ObjectID = "fPv-Ot-VcE"; */
+"fPv-Ot-VcE.title" = "Copyright © 2017 Lizhen Hu. All rights reserved.";
+
+/* Class = "NSTextFieldCell"; title = "Version 1.2.3 (123)"; ObjectID = "gfO-PH-oqJ"; */
+"gfO-PH-oqJ.title" = "Version 1.2.3 (123)";
+
+/* Class = "NSTextFieldCell"; title = "cuImage"; ObjectID = "phg-vz-Gmt"; */
+"phg-vz-Gmt.title" = "cuImage";

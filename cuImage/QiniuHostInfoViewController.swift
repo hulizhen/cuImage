@@ -2,8 +2,8 @@
 //  QiniuHostInfoViewController.swift
 //  cuImage
 //
-//  Created by HuLizhen on 06/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 06/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -16,14 +16,6 @@ final class QiniuHostInfoViewController: NSViewController, HostInfoViewControlle
     
     // The access control is awesome :)
     fileprivate(set) var isInfoChanged = false
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        accessKeyTextField.delegate = self
-        secretKeyTextField.delegate = self
-        bucketTextField.delegate = self
-        domainTextField.delegate = self
-    }
     
     override func viewWillAppear() {
         super.viewWillAppear()

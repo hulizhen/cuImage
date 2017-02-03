@@ -2,8 +2,8 @@
 //  Constants.swift
 //  cuImage
 //
-//  Created by HuLizhen on 10/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 10/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Foundation
@@ -43,10 +43,9 @@ struct Constants {
     // Email information for feedback.
     static let emailRecipient = "ihulizhen@foxmail.com"
     static let emailSubject = "[cuImage Feedback]"
-    static let emailBody = systemInformation()
+    static let emailBody = environmentInformation()
     
     // Extra information in About window.
-    static let applicationDescription = "A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically."
     static let authorLink = "http://hulizhen.github.io"
     static let thirdPartyLibraries = [
         ThirdPartyLibrary(name: "MASShortcut",
@@ -74,6 +73,6 @@ struct Constants {
                                           0x6E, 0x6F, 0x38, 0x24,
                                           0x4F, 0x33, 0x4F, 0x64], encoding: .utf8)!
     
-    // Misc
+    // Misc.
     static let notificationPreferencesPane = "/System/Library/PreferencePanes/Notifications.prefPane"
 }

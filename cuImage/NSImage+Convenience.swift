@@ -2,8 +2,8 @@
 //  NSImage+Convenience.swift
 //  cuImage
 //
-//  Created by HuLizhen on 14/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 14/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa

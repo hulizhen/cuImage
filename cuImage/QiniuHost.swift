@@ -2,8 +2,8 @@
 //  QiniuHost.swift
 //  cuImage
 //
-//  Created by HuLizhen on 03/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 03/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -103,17 +103,6 @@ final class QiniuHost: NSObject {
             completion(succeeded)
         }, option: nil)
     }
-    
-    fileprivate func alertToConfigureHostInfo() {
-        NSAlert.alert(alertStyle: .critical,
-                      messageText: "Wrong host information. Do you want to configure your host now?",
-                      informativeText: "You should get your host configured correctly before uploading images.",
-                      buttonTitles: ["Configure", "Cancel"]) { response in
-                        if response == NSAlertFirstButtonReturn {   // Configure
-                            PreferencesWindowController.shared.showHostPreferencesPane()
-                        }
-        }
-    }
 }
 
 extension QiniuHost: Host {
@@ -144,6 +133,17 @@ extension QiniuHost: Host {
                 sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
             }
             }, option: option)
+    }
+    
+    private func alertToConfigureHostInfo() {
+        NSAlert.alert(alertStyle: .critical,
+                      messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                      informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                      buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
+                        if response == NSAlertFirstButtonReturn {   // Configure
+                            PreferencesWindowController.shared.showHostPreferencesPane()
+                        }
+        }
     }
     
     private func progressHandler(key: String?, percent: Float) {

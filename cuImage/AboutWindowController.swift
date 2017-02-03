@@ -2,8 +2,8 @@
 //  AboutWindowController.swift
 //  cuImage
 //
-//  Created by HuLizhen on 03/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 03/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -35,19 +35,21 @@ final class AboutWindowController: BaseWindowController {
         let copyright = infoDictionary[Constants.humanReadableCopyright] as! String
         let shortVersion = infoDictionary[Constants.shortVersion] as! String
         let buildVersion = infoDictionary[Constants.buildVersion] as! String
-        let version = "Version \(shortVersion) (\(buildVersion))"
+        let version = LocalizedStrings.version + " \(shortVersion) (\(buildVersion))"
         
         let attributes = [kCTFontAttributeName as String: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize())]
         let applicationDescription =
         NSAttributedString(string: "cuImage(See You, Image!)", attributes: attributes) +
         NSAttributedString(string: " by ") +
-        NSAttributedString.hyperlink(from: "Hu Lizhen", with: URL(string: Constants.authorLink)!) +
+        NSAttributedString.hyperlink(from: "Lizhen Hu", with: URL(string: Constants.authorLink)!) +
         NSAttributedString(string: "\n") +
-        NSAttributedString(string: Constants.applicationDescription) +
+        NSAttributedString(string: LocalizedStrings.applicationDescription) +
         NSAttributedString(string: "\n\n\n")
         
-        var thirdPartyLibrariesInfo = NSAttributedString(string: "Acknowledgment\n", attributes: attributes) +
-            NSAttributedString(string: "Special thanks to these awesome third-party libraries:\n")
+        var thirdPartyLibrariesInfo = NSAttributedString(string: LocalizedStrings.acknowledgment, attributes: attributes) +
+            NSAttributedString(string: "\n") +
+            NSAttributedString(string: LocalizedStrings.specialThanks) +
+            NSAttributedString(string: "\n")
         for lib in Constants.thirdPartyLibraries {
             thirdPartyLibrariesInfo += NSAttributedString(string: "\n")
             thirdPartyLibrariesInfo += NSAttributedString.hyperlink(from: lib.name, with: URL(string: lib.link)!)

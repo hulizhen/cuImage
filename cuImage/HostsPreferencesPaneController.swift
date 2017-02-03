@@ -2,8 +2,8 @@
 //  HostsPreferencesPaneController.swift
 //  cuImage
 //
-//  Created by HuLizhen on 03/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 03/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -29,8 +29,8 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         validationResultIndicator.image = nil
         
         // Tool tips.
-        validateButton.toolTip = "Press ⌘D to Validate."
-        saveButton.toolTip = "Press ↩ to Save."
+        validateButton.toolTip = LocalizedStrings.validateButtonToolTip
+        saveButton.toolTip = LocalizedStrings.saveButtonToolTip
         
         setUp()
     }
@@ -50,7 +50,7 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         }
         
         // TODO: Remove the following line after supporting more hosts.
-        hostsPopUpButton.toolTip = "Currently support Qiniu host only. Wait a moment, please :)"
+        hostsPopUpButton.toolTip = LocalizedStrings.hostsPopUpButtonToolTip
         
         // Select the current host.
         hostsPopUpButton.selectItem(withTitle: currentHost.rawValue)
@@ -62,14 +62,15 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
         
         switch button {
         case validateButton:
-            validationResultText.stringValue = "Validating..."
+            validationResultText.stringValue = LocalizedStrings.validating
             validationResultIndicator.image = nil
             validationProgressIndicator.isHidden = false
             validationProgressIndicator.startAnimation(self)
             controller.validateHostInfo { succeeded in
                 self.validationProgressIndicator.stopAnimation(self)
                 self.validationProgressIndicator.isHidden = true
-                self.validationResultText.stringValue = "Validation " + (succeeded ? "Succeeded!" : "Failed!")
+                self.validationResultText.stringValue = LocalizedStrings.validation +
+                    (succeeded ? LocalizedStrings.succeeded : LocalizedStrings.failed) + "!"
                 self.validationResultIndicator.image =
                     NSImage(named: succeeded ? Constants.succeededIndicator : Constants.failedIndicator)
             }

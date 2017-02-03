@@ -2,8 +2,8 @@
 //  StatusItemController.swift
 //  cuImage
 //
-//  Created by HuLizhen on 03/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 03/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -61,7 +61,7 @@ final class StatusItemController: NSObject {
         uploadHistoryMenu.autoenablesItems = false
         
         // Insert 'Clear History' and separator menu items to upload history submenu.
-        clearHistoryMenuItem = NSMenuItem(title: "Clear History",
+        clearHistoryMenuItem = NSMenuItem(title: LocalizedStrings.clearHistory,
                                           action: #selector(clearUploadHistory(_:)),
                                           keyEquivalent: "")
         clearHistoryMenuItem.target = self
@@ -198,7 +198,7 @@ final class StatusItemController: NSObject {
         
         if let urlString = uploadedItem.urlString {
             NSPasteboard.general().addURLStrings([urlString], markdown: preferences[.useMarkdownURL])
-            NSUserNotificationCenter.default.deliverNotification(with: "Selected image's URL copied.")
+            NSUserNotificationCenter.default.deliverNotification(with: LocalizedStrings.urlOfSelectedImageCopied)
         }
     }
 }

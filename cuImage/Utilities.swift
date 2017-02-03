@@ -2,8 +2,8 @@
 //  swift
 //  cuImage
 //
-//  Created by HuLizhen on 07/01/2017.
-//  Copyright © 2017 HuLizhen. All rights reserved.
+//  Created by Lizhen Hu on 07/01/2017.
+//  Copyright © 2017 Lizhen Hu. All rights reserved.
 //
 
 import Cocoa
@@ -22,7 +22,7 @@ func keepWindowsOnTop(_ top: Bool) {
     }
 }
 
-func systemInformation() -> String {
+func environmentInformation() -> String {
     var information = ""
     let processInfo = ProcessInfo()
     
@@ -41,15 +41,22 @@ func systemInformation() -> String {
     }
     
     let version = processInfo.operatingSystemVersion
-    let shortVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
-    let buildVersion = systemProfile("kern.osversion")
+    let osShortVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+    let osBuildVersion = systemProfile("kern.osversion")
+    let osVersion = "\(osShortVersion) (\(osBuildVersion))"
+    
+    let infoDictionary = Bundle.main.infoDictionary!
+    let appShortVersion = infoDictionary[Constants.shortVersion] as! String
+    let appBuildVersion = infoDictionary[Constants.buildVersion] as! String
+    let appVersion = "\(appShortVersion) (\(appBuildVersion))"
     
     information += "\n\n\n\n\n"
-    information += "------------------ System Information ------------------\n"
-    information += "| macOS:            Version \(shortVersion) (Build \(buildVersion))\n"
-    information += "| Machine Model:    \(systemProfile("hw.model"))\n"
-    information += "| CPU:              \(systemProfile("machdep.cpu.brand_string"))\n"
-    information += "| Physical Memory:  \(processInfo.physicalMemory / 1024 / 1024) MB\n"
+    information += "------------------ " + LocalizedStrings.environmentInformation + " ------------------\n"
+    information += "| macOS: Version \(osVersion)\n"
+    information += "| Machine Model: \(systemProfile("hw.model"))\n"
+    information += "| CPU: \(systemProfile("machdep.cpu.brand_string"))\n"
+    information += "| Physical Memory: \(processInfo.physicalMemory / 1024 / 1024) MB\n"
+    information += "| Application Version: \(appVersion)\n"
     information += "| Application Path: \(Bundle.main.bundlePath)\n"
     information += "--------------------------------------------------------\n"
     
@@ -63,13 +70,15 @@ func launchEmailApplication() {
         pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
         pasteboard.setString(Constants.emailRecipient, forType: NSPasteboardTypeString)
         
-        NSUserNotificationCenter.default.deliverNotification(with: "Email Address Copied",
+        NSUserNotificationCenter.default.deliverNotification(with: LocalizedStrings.copyEmailAddressNotificationTitle,
                                                              informativeText: Constants.emailRecipient)
     }
     
-    NSAlert.alert(messageText: "Do you want to launch email application?",
-                  informativeText: "You can also just copy author's email address.",
-                  buttonTitles: ["Launch", "Copy", "Cancel"]) { response in
+    NSAlert.alert(messageText: LocalizedStrings.launchEmailApplicationAlertMessageText,
+                  informativeText: LocalizedStrings.launchEmailApplicationAlertInformativeText,
+                  buttonTitles: [LocalizedStrings.launch,
+                                 LocalizedStrings.copy,
+                                 LocalizedStrings.cancel]) { response in
                     if response == NSAlertFirstButtonReturn {   // Launch
                         var done = false
                         
@@ -86,9 +95,9 @@ func launchEmailApplication() {
                         
                         // Offer an option of copying email address when failed to launch email application.
                         if !done {
-                            NSAlert.alert(messageText: "Failed to launch email application. Copy Author's email address?",
-                                          informativeText: "Please launch email application yourself.",
-                                          buttonTitles: ["Copy", "Cancel"]) { response in
+                            NSAlert.alert(messageText: LocalizedStrings.copyEmailAddressAlertMessageText,
+                                          informativeText: LocalizedStrings.copyEmailAddressAlertInformativeText,
+                                          buttonTitles: [LocalizedStrings.copy, LocalizedStrings.cancel]) { response in
                                             if response == NSAlertFirstButtonReturn {   // Copy
                                                 copyEmailAddress()
                                             }
