@@ -14,11 +14,11 @@ struct LocalizedStrings {
     static let acknowledgment = NSLocalizedString("Acknowledgment", comment: "")
     static let specialThanks = NSLocalizedString("Special thanks to these awesome third-party libraries:", comment: "")
     static let applicationDescription = NSLocalizedString("A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically.", comment: "")
-    static let systemInformation = NSLocalizedString("System Information", comment: "")
+    static let environmentInformation = NSLocalizedString("Environment Information", comment: "")
     static let clearHistory = NSLocalizedString("Clear History", comment: "")
     
-    static let urlOfUploadedImageCopied = NSLocalizedString("Uploaded image's URL copied.", comment: "")
-    static let urlOfSelectedImageCopied = NSLocalizedString("Selected image's URL copied.", comment: "")
+    static let urlOfUploadedImageCopied = NSLocalizedString("Uploaded image's URL copied", comment: "")
+    static let urlOfSelectedImageCopied = NSLocalizedString("Selected image's URL copied", comment: "")
 
     static let saveChangesAlertMessageText = NSLocalizedString("Do you want to save the changes?", comment: "")
     static let saveChangesAlertInformativeText = NSLocalizedString("The changes will be lost if you don't save them!", comment: "")
@@ -36,11 +36,11 @@ struct LocalizedStrings {
     
     static let uploadingAlertMessageText = NSLocalizedString("Previous uploads have not finished yet, try it later.", comment: "")
     
-    static let configureHostInfoAlertMessageText = NSLocalizedString("Wrong host information. Do you want to configure your host now?", comment: "")
+    static let configureHostInfoAlertMessageText = NSLocalizedString("Invalid host information. Do you want to configure now?", comment: "")
     static let configureHostInfoAlertInformativeText = NSLocalizedString("You should get your host configured correctly before uploading images.", comment: "")
     
     static let validateButtonToolTip = NSLocalizedString("Press ⌘D to Validate.", comment: "")
-    static let saveButtonToolTip = NSLocalizedString("Press ↩ to Validate.", comment: "")
+    static let saveButtonToolTip = NSLocalizedString("Press ↩ to Save.", comment: "")
     static let hostsPopUpButtonToolTip = NSLocalizedString("Currently support Qiniu host only. Wait a moment, please :)", comment: "")
     
     static let validating = NSLocalizedString("Validating...", comment: "")

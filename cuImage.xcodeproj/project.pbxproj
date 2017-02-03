@@ -56,6 +56,7 @@
 		258BE74F1E27516500D04D23 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258BE74E1E27516500D04D23 /* StatusItemView.swift */; };
 		258BE7531E2771D000D04D23 /* URL+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258BE7521E2771D000D04D23 /* URL+Convenience.swift */; };
 		258BE7551E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */; };
+		25A9489C1E44B3E800CDB134 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25A9489A1E44B3E800CDB134 /* Localizable.strings */; };
 		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
 		25DFF6D21E23A0040071F2EC /* cuImageLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25130C481E20E0C700830B3F /* cuImageLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E5F00E1E2886EC0004C12A /* HostInfo.swift */; };
@@ -155,6 +156,7 @@
 		258BE74E1E27516500D04D23 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		258BE7521E2771D000D04D23 /* URL+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Convenience.swift"; sourceTree = "<group>"; };
 		258BE7541E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserNotificationCenter+Convenience.swift"; sourceTree = "<group>"; };
+		25A9489B1E44B3E800CDB134 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
 		25E5F00E1E2886EC0004C12A /* HostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfo.swift; sourceTree = "<group>"; };
 		25E910B71E2F05DF006D74F9 /* NSAlert+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAlert+Convenience.swift"; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		255957FF1E1BD72400B8469E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				25A9489A1E44B3E800CDB134 /* Localizable.strings */,
 				255957F61E1BD2A600B8469E /* Info.plist */,
 				255957F11E1BD2A600B8469E /* Assets.xcassets */,
 				254834E11E24780F0098C16F /* cuImage.entitlements */,
@@ -558,6 +561,7 @@
 				254AF24B1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				254AF24E1E41DF6000FB7687 /* AboutWindowController.xib in Resources */,
+				25A9489C1E44B3E800CDB134 /* Localizable.strings in Resources */,
 				254AF2481E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
 				254AF2381E41DE8E00FB7687 /* StatusItemController.xib in Resources */,
@@ -769,6 +773,14 @@
 				254AF2361E41DE7E00FB7687 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		25A9489A1E44B3E800CDB134 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25A9489B1E44B3E800CDB134 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

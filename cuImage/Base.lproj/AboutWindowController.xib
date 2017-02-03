@@ -21,14 +21,14 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-            <rect key="contentRect" x="196" y="240" width="300" height="368"/>
+            <rect key="contentRect" x="196" y="240" width="300" height="390"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="368"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="390"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dkF-ON-iYW">
-                        <rect key="frame" x="118" y="284" width="64" height="64"/>
+                        <rect key="frame" x="118" y="306" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="FaD-O3-ddM"/>
                             <constraint firstAttribute="width" constant="64" id="tP1-xB-AMg"/>
@@ -36,7 +36,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="6Lw-4P-gNr"/>
                     </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ja-dO-bso">
-                        <rect key="frame" x="96" y="211" width="109" height="16"/>
+                        <rect key="frame" x="96" y="233" width="109" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 1.2.3 (123)" id="gfO-PH-oqJ">
                             <font key="font" metaFont="cellTitle"/>
                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +44,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b82-gQ-gwk">
-                        <rect key="frame" x="102" y="235" width="97" height="29"/>
+                        <rect key="frame" x="102" y="257" width="97" height="29"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="cuImage" id="phg-vz-Gmt">
                             <font key="font" size="24" name="HelveticaNeue"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,16 +52,16 @@
                         </textFieldCell>
                     </textField>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJb-Kr-R10">
-                        <rect key="frame" x="-1" y="44" width="302" height="159"/>
+                        <rect key="frame" x="-1" y="44" width="302" height="181"/>
                         <clipView key="contentView" id="LfW-32-Ylw">
-                            <rect key="frame" x="1" y="1" width="300" height="157"/>
+                            <rect key="frame" x="1" y="1" width="300" height="179"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" continuousSpellChecking="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="0QJ-il-pNH">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="157"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="179"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="300" height="157"/>
+                                    <size key="minSize" width="300" height="179"/>
                                     <size key="maxSize" width="2890" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="Extra Information">
@@ -81,7 +81,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="X1s-DQ-nWe">
-                            <rect key="frame" x="285" y="1" width="16" height="157"/>
+                            <rect key="frame" x="285" y="1" width="16" height="179"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>

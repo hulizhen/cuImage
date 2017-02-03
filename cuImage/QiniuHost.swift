@@ -103,17 +103,6 @@ final class QiniuHost: NSObject {
             completion(succeeded)
         }, option: nil)
     }
-    
-    fileprivate func alertToConfigureHostInfo() {
-        NSAlert.alert(alertStyle: .critical,
-                      messageText: LocalizedStrings.configureHostInfoAlertMessageText,
-                      informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
-                      buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
-                        if response == NSAlertFirstButtonReturn {   // Configure
-                            PreferencesWindowController.shared.showHostPreferencesPane()
-                        }
-        }
-    }
 }
 
 extension QiniuHost: Host {
@@ -144,6 +133,17 @@ extension QiniuHost: Host {
                 sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
             }
             }, option: option)
+    }
+    
+    private func alertToConfigureHostInfo() {
+        NSAlert.alert(alertStyle: .critical,
+                      messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                      informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                      buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
+                        if response == NSAlertFirstButtonReturn {   // Configure
+                            PreferencesWindowController.shared.showHostPreferencesPane()
+                        }
+        }
     }
     
     private func progressHandler(key: String?, percent: Float) {

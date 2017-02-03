@@ -43,7 +43,7 @@ struct Constants {
     // Email information for feedback.
     static let emailRecipient = "ihulizhen@foxmail.com"
     static let emailSubject = "[cuImage Feedback]"
-    static let emailBody = systemInformation()
+    static let emailBody = environmentInformation()
     
     // Extra information in About window.
     static let authorLink = "http://hulizhen.github.io"

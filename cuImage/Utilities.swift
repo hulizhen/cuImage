@@ -22,7 +22,7 @@ func keepWindowsOnTop(_ top: Bool) {
     }
 }
 
-func systemInformation() -> String {
+func environmentInformation() -> String {
     var information = ""
     let processInfo = ProcessInfo()
     
@@ -43,15 +43,15 @@ func systemInformation() -> String {
     let version = processInfo.operatingSystemVersion
     let osShortVersion = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
     let osBuildVersion = systemProfile("kern.osversion")
-    let osVersion = "\(osShortVersion) (Build \(osBuildVersion))"
+    let osVersion = "\(osShortVersion) (\(osBuildVersion))"
     
     let infoDictionary = Bundle.main.infoDictionary!
     let appShortVersion = infoDictionary[Constants.shortVersion] as! String
     let appBuildVersion = infoDictionary[Constants.buildVersion] as! String
-    let appVersion = "\(appShortVersion) (Build \(appBuildVersion))"
+    let appVersion = "\(appShortVersion) (\(appBuildVersion))"
     
     information += "\n\n\n\n\n"
-    information += "------------------ " + LocalizedStrings.systemInformation + " ------------------\n"
+    information += "------------------ " + LocalizedStrings.environmentInformation + " ------------------\n"
     information += "| macOS: Version \(osVersion)\n"
     information += "| Machine Model: \(systemProfile("hw.model"))\n"
     information += "| CPU: \(systemProfile("machdep.cpu.brand_string"))\n"
