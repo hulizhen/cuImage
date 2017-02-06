@@ -167,7 +167,7 @@ private let defaultPreferences: [PreferenceKeys: Any] = [
     .useMarkdownURL: true,
     .copyURLWhenUploaded: true,
     .useJPEGCompression: true,
-    .jpegCompressionQuality: 0.8,
+    .jpegCompressionQuality: 1.0,
     
     // Shortcuts
     .uploadImageShortcut: MASShortcut(key: kVK_F9).data(),

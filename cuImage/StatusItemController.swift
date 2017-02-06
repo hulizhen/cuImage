@@ -49,6 +49,7 @@ final class StatusItemController: NSObject {
             let nib = NSNib(nibNamed: nibName, bundle: nil),
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
                 assert(false, "Failed to instantiate \(self.className)")
+                return
         }
 
         let infoDictionary = Bundle.main.infoDictionary!
