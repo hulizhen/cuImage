@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class QiniuHostInfoViewController: NSViewController, HostInfoViewController {
+final class QiniuHostInfoViewController: BaseViewController, HostInfoViewController {
     @IBOutlet weak var accessKeyTextField: NSTextField!
     @IBOutlet weak var secretKeyTextField: NSTextField!
     @IBOutlet weak var bucketTextField: NSTextField!

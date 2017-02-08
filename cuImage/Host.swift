@@ -42,9 +42,9 @@ enum SupportedHost: String {
     }
     
     /// The view controller for host preferences setting pane.
-    var viewController: NSViewController {
+    var viewController: BaseViewController {
         switch self {
-        case .qiniu: return QiniuHostInfoViewController(nibName: "QiniuHostInfoViewController", bundle: nil)!
+        case .qiniu: return QiniuHostInfoViewController()
         }
     }
 }

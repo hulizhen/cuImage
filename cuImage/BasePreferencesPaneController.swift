@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class BasePreferencesPaneController: NSViewController {
+class BasePreferencesPaneController: BaseViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
         

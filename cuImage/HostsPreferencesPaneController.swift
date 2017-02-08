@@ -18,7 +18,7 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
     @IBOutlet weak var validationProgressIndicator: NSProgressIndicator!
     
     var currentHost = SupportedHost.defaultHost
-    var currentHostInfoViewController: NSViewController!
+    var currentHostInfoViewController: BaseViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,7 +10,7 @@ import Cocoa
 
 class BaseWindowController: NSWindowController {
     override var windowNibName: String? {
-        return self.className.components(separatedBy: ".").last
+        return className.components(separatedBy: ".").last
     }
 
     override func windowDidLoad() {
