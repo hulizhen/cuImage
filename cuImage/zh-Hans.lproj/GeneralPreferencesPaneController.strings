@@ -3,7 +3,7 @@
 "1ko-W3-yFJ.title" = "格式：";
 
 /* Class = "NSButtonCell"; title = "Automatically copy URL when uploaded"; ObjectID = "2BY-sC-PqD"; */
-"2BY-sC-PqD.title" = "上传完成时自动拷贝URL";
+"2BY-sC-PqD.title" = "上传完成时自动复制URL";
 
 /* Class = "NSTextFieldCell"; title = "Quality:"; ObjectID = "BaS-tZ-01I"; */
 "BaS-tZ-01I.title" = "质量：";
@@ -17,8 +17,8 @@
 /* Class = "NSButtonCell"; title = "Use JPEG to compress images before uploading"; ObjectID = "Nj0-xe-a4b"; */
 "Nj0-xe-a4b.title" = "上传前使用JPEG压缩图片";
 
-/* Class = "NSTextFieldCell"; title = "URL:"; ObjectID = "TB5-Kl-Qnw"; */
-"TB5-Kl-Qnw.title" = "URL：";
+/* Class = "NSTextFieldCell"; title = "Upload:"; ObjectID = "TB5-Kl-Qnw"; */
+"TB5-Kl-Qnw.title" = "上传：";
 
 /* Class = "NSTextFieldCell"; title = "Notification preferences are shown in macOS System Preferences."; ObjectID = "TX6-pu-fEP"; */
 "TX6-pu-fEP.title" = "通知设置位于macOS系统设置中。";
