@@ -13,7 +13,7 @@ struct LocalizedStrings {
     static let version = NSLocalizedString("Version", comment: "")
     static let acknowledgment = NSLocalizedString("Acknowledgment", comment: "")
     static let specialThanks = NSLocalizedString("Special thanks to these awesome third-party libraries:", comment: "")
-    static let applicationDescription = NSLocalizedString("A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically.", comment: "")
+    static let applicationDescription = NSLocalizedString("A handy utility to upload images to remote host and get Markdown-style URLs.", comment: "")
     static let environmentInformation = NSLocalizedString("Environment Information", comment: "")
     static let clearHistory = NSLocalizedString("Clear History", comment: "")
     

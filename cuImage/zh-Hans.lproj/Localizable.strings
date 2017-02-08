@@ -1,12 +1,11 @@
 ﻿/* No comment provided by engineer. */
-"A handy utility to upload images to remote host, then write markdown-style URLs onto your pasteboard automatically." = "一个可以用来方便地上传图片到远程图床的实用工具，并自动拷贝Markdown格式的URL到你的粘贴板上。";
+"A handy utility to upload images to remote host and get Markdown-style URLs." = "可用来方便地上传图片到远程图床并获取Markdown格式的URL。";
 
 /* No comment provided by engineer. */
 "Acknowledgment" = "致谢";
 
 /* No comment provided by engineer. */
 "Before uploading, you should take a screenshort, copy images or drag images to cuImage icon on status bar." = "在上传之前，请先截图、拷贝图片到粘贴板或者直接拖拽图片到状态栏的cuImage图标上。";
-
 
 /* No comment provided by engineer. */
 "Cancel" = "取消";
