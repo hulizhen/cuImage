@@ -35,9 +35,10 @@ fileprivate struct UploadStatus {
         if isFinished {
             let copyURLWhenUploaded = preferences[.copyURLWhenUploaded]
             let title = String(format: LocalizedStrings.uploadResult, succeededItemsCount, failedItemsCount)
-            let informativeText = copyURLWhenUploaded ? LocalizedStrings.urlOfUploadedImageCopied : ""
+            let informativeText = (copyURLWhenUploaded && succeededItemsCount > 0) ?
+                LocalizedStrings.urlOfUploadedImageCopied : ""
             
-            if copyURLWhenUploaded {
+            if copyURLWhenUploaded && succeededItemsCount > 0 {
                 NSPasteboard.general().addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
             }
             StatusItemController.shared.statusItemView.resetImage()

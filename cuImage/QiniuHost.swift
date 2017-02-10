@@ -53,10 +53,14 @@ final class QiniuHost: NSObject {
         }
     }
     
-    fileprivate func makeToken(accessKey: String, secretKey: String, scope: String) -> String? {
+    fileprivate func makeToken(accessKey: String, secretKey: String, bucket: String) -> String? {
+        guard accessKey != "", secretKey != "", bucket != "" else {
+            return nil
+        }
+
         // Construct upload policy.
         let deadline = UInt32(Date().timeIntervalSince1970 + tokenValidityDuration)
-        let uploadPolicy: [String: Any] = ["scope": scope, "deadline": deadline]
+        let uploadPolicy: [String: Any] = ["scope": bucket, "deadline": deadline]
         
         // Convert the policy to JSON data.
         guard let jsonData = try? JSONSerialization.data(withJSONObject: uploadPolicy, options: .prettyPrinted) else {
@@ -83,7 +87,7 @@ final class QiniuHost: NSObject {
         let testString = Constants.testString
         let token = makeToken(accessKey: hostInfo.accessKey,
                               secretKey: hostInfo.secretKey,
-                              scope: hostInfo.bucket)
+                              bucket: hostInfo.bucket)
         
         // Upload test string.
         uploadManager.put(testString.data(using: .utf8), key: testString, token: token, complete: { (info, key, response) in
@@ -107,12 +111,17 @@ final class QiniuHost: NSObject {
 
 extension QiniuHost: Host {
     func uploadImageData(_ data: Data, named name: String) {
+        let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
+        let error = NSError(domain: domain, code: 0, userInfo: nil)
+
         // Make the upload token first.
         guard let hostInfo = qiniuHostInfo,
             let token = makeToken(accessKey: hostInfo.accessKey,
                                   secretKey: hostInfo.secretKey,
-                                  scope: hostInfo.bucket) else {
+                                  bucket: hostInfo.bucket) else {
                                     alertToConfigureHostInfo()
+                                    
+                                    delegate?.host(self, didFailToUploadImageNamed: name, error: error)
                                     return
         }
         
@@ -128,8 +137,6 @@ extension QiniuHost: Host {
                 sself.delegate?.host(sself, didSucceedToUploadImageNamed: name, urlString: urlString)
             } else {
                 print("Failed to upload: \(info), \(key)")
-                let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
-                let error = NSError(domain: domain, code: 0, userInfo: nil)
                 sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
             }
             }, option: option)
