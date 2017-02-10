@@ -127,20 +127,9 @@ final class StatusItemController: NSObject {
     func clearUploadHistory(_ sender: NSMenuItem) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedItem")
         
-        if #available(macOS 10.11, *) {
             let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             let _ = try? coreDataController.persistentStoreCoordinator.execute(deleteRequest,
                                                                                with: coreDataController.managedObjectContext)
-        } else {
-            // Fallback on earlier versions
-            // Fetch them all and delete them all.
-            if let objects = (try? coreDataController.managedObjectContext.fetch(fetchRequest)) as? [NSManagedObject] {
-                for object in objects {
-                    coreDataController.managedObjectContext.delete(object)
-                }
-            }
-            coreDataController.save()
-        }
     
         makeUploadHistoryMenu(with: [])
     }
