@@ -1,0 +1,42 @@
+
+/* Class = "NSTextFieldCell"; title = "Format:"; ObjectID = "1ko-W3-yFJ"; */
+"1ko-W3-yFJ.title" = "格式：";
+
+/* Class = "NSButtonCell"; title = "Automatically copy URL when uploaded"; ObjectID = "2BY-sC-PqD"; */
+"2BY-sC-PqD.title" = "上传完成时自动复制URL";
+
+/* Class = "NSTextFieldCell"; title = "Quality:"; ObjectID = "BaS-tZ-01I"; */
+"BaS-tZ-01I.title" = "质量：";
+
+/* Class = "NSButtonCell"; title = "Notification Preferences…"; ObjectID = "Hwg-fa-Wt8"; */
+"Hwg-fa-Wt8.title" = "通知设置…";
+
+/* Class = "NSButtonCell"; title = "Launch cuImage at login"; ObjectID = "Kos-qa-NH8"; */
+"Kos-qa-NH8.title" = "开机启动cuImage";
+
+/* Class = "NSButtonCell"; title = "Use JPEG to compress images before uploading"; ObjectID = "Nj0-xe-a4b"; */
+"Nj0-xe-a4b.title" = "上传前使用JPEG压缩图片";
+
+/* Class = "NSTextFieldCell"; title = "Upload:"; ObjectID = "TB5-Kl-Qnw"; */
+"TB5-Kl-Qnw.title" = "上传：";
+
+/* Class = "NSTextFieldCell"; title = "Notification preferences are shown in macOS System Preferences."; ObjectID = "TX6-pu-fEP"; */
+"TX6-pu-fEP.title" = "通知设置位于macOS系统设置中。";
+
+/* Class = "NSTextFieldCell"; title = "Notifications:"; ObjectID = "UzJ-aw-rqW"; */
+"UzJ-aw-rqW.title" = "通知：";
+
+/* Class = "NSTextFieldCell"; title = "Smaller File"; ObjectID = "VTf-dM-p5C"; */
+"VTf-dM-p5C.title" = "小文件";
+
+/* Class = "NSButtonCell"; title = "Keep windows always on top"; ObjectID = "ddc-7V-Wgv"; */
+"ddc-7V-Wgv.title" = "保持窗口总在最前";
+
+/* Class = "NSTextFieldCell"; title = "Better Quality"; ObjectID = "gUs-Wi-8Ng"; */
+"gUs-Wi-8Ng.title" = "高质量";
+
+/* Class = "NSButtonCell"; title = "Use Markdown-style URL"; ObjectID = "hBu-Pl-8bf"; */
+"hBu-Pl-8bf.title" = "使用Markdown格式URL";
+
+/* Class = "NSTextFieldCell"; title = "Application:"; ObjectID = "oyf-rG-l1O"; */
+"oyf-rG-l1O.title" = "应用程序：";

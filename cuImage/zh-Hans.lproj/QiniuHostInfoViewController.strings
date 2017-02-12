@@ -1,0 +1,15 @@
+
+/* Class = "NSTextFieldCell"; title = "Tip: The domain should begin with \"https://\" or \"http://\"."; ObjectID = "1em-c9-YCx"; */
+"1em-c9-YCx.title" = "提示：域名需要以\"https://\"或\"http://\"开头。";
+
+/* Class = "NSTextFieldCell"; title = "Access Key:"; ObjectID = "3td-6B-hge"; */
+"3td-6B-hge.title" = "Access Key:";
+
+/* Class = "NSTextFieldCell"; title = "Bucket:"; ObjectID = "4zU-2Q-wm9"; */
+"4zU-2Q-wm9.title" = "Bucket:";
+
+/* Class = "NSTextFieldCell"; title = "Domain:"; ObjectID = "6HR-Hx-Efy"; */
+"6HR-Hx-Efy.title" = "Domain:";
+
+/* Class = "NSTextFieldCell"; title = "Secret Key:"; ObjectID = "pQo-lV-kJy"; */
+"pQo-lV-kJy.title" = "Secret Key:";

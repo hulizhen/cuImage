@@ -1,0 +1,21 @@
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "F0z-JX-Cv5"; */
+"F0z-JX-Cv5.title" = "偏好设置";
+
+/* Class = "NSToolbarItem"; label = "Hosts"; ObjectID = "F7E-0o-4KX"; */
+"F7E-0o-4KX.label" = "主机";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Hosts"; ObjectID = "F7E-0o-4KX"; */
+"F7E-0o-4KX.paletteLabel" = "主机";
+
+/* Class = "NSToolbarItem"; label = "Shortcuts"; ObjectID = "Rzg-nJ-aHP"; */
+"Rzg-nJ-aHP.label" = "快捷键";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Shortcuts"; ObjectID = "Rzg-nJ-aHP"; */
+"Rzg-nJ-aHP.paletteLabel" = "快捷键";
+
+/* Class = "NSToolbarItem"; label = "General"; ObjectID = "bua-bb-1FB"; */
+"bua-bb-1FB.label" = "通用";
+
+/* Class = "NSToolbarItem"; paletteLabel = "General"; ObjectID = "bua-bb-1FB"; */
+"bua-bb-1FB.paletteLabel" = "通用";

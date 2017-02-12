@@ -1,0 +1,102 @@
+﻿/* No comment provided by engineer. */
+"A handy utility to upload images to remote host and get Markdown-style URLs." = "可用来方便地上传图片到远程图床并获取Markdown格式的URL。";
+
+/* No comment provided by engineer. */
+"Acknowledgment" = "致谢";
+
+/* No comment provided by engineer. */
+"Before uploading, you should take a screenshort, copy images or drag images to cuImage icon on status bar." = "在上传之前，请先截图、复制图片到粘贴板或者直接拖拽图片到状态栏的cuImage图标上。";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Clear History" = "清除历史";
+
+/* No comment provided by engineer. */
+"Configure" = "配置";
+
+/* No comment provided by engineer. */
+"Copy" = "复制";
+
+/* No comment provided by engineer. */
+"Currently support Qiniu host only. Wait a moment, please :)" = "当前只支持七牛云，再等等吧 :)";
+
+/* No comment provided by engineer. */
+"Discard" = "放弃";
+
+/* No comment provided by engineer. */
+"Do you want to launch email application?" = "是否启动邮件客户端？";
+
+/* No comment provided by engineer. */
+"Do you want to save the changes?" = "是否保存修改？";
+
+/* No comment provided by engineer. */
+"Email Address Copied" = "邮箱地址已复制";
+
+/* No comment provided by engineer. */
+"Failed" = "失败";
+
+/* No comment provided by engineer. */
+"Failed to launch email application. Copy Author's email address?" = "启动邮件客户端失败。是否复制作者邮箱地址？";
+
+/* No comment provided by engineer. */
+"Images uploaded: %d succeeded, %d failed." = "图片已上传: %d 成功, %d 失败.";
+
+/* No comment provided by engineer. */
+"Launch" = "启动";
+
+/* No comment provided by engineer. */
+"No images to upload." = "没有要上传的图片。";
+
+/* No comment provided by engineer. */
+"Please launch email application yourself." = "请手动启动邮件客户端。";
+
+/* No comment provided by engineer. */
+"Press ↩ to Save." = "按下 ↩ 保存配置。";
+
+/* No comment provided by engineer. */
+"Press ⌘D to Validate." = "按下 ⌘D 验证配置。";
+
+/* No comment provided by engineer. */
+"Previous uploads have not finished yet, try it later." = "之前的上传尚未完成，请稍后再试。";
+
+/* No comment provided by engineer. */
+"Save" = "保存";
+
+/* No comment provided by engineer. */
+"Selected image's URL copied" = "选中图片的URL已复制";
+
+/* No comment provided by engineer. */
+"Special thanks to these awesome third-party libraries:" = "特别感谢这些超级棒的第三方库：";
+
+/* No comment provided by engineer. */
+"Succeeded" = "成功";
+
+/* No comment provided by engineer. */
+"Environment Information" = "环境信息";
+
+/* No comment provided by engineer. */
+"The changes will be lost if you don't save them!" = "如果不保存，这些修改将会丢失。";
+
+/* No comment provided by engineer. */
+"Uploaded image's URL copied" = "上传图片的URL已复制";
+
+/* No comment provided by engineer. */
+"Validating..." = "验证中...";
+
+/* No comment provided by engineer. */
+"Validation " = "验证";
+
+/* No comment provided by engineer. */
+"Version" = "版本";
+
+/* No comment provided by engineer. */
+"Invalid host information. Do you want to configure now?" = "无效配置。是否现在进行配置？";
+
+/* No comment provided by engineer. */
+"You can also just copy author's email address." = "你也可以直接复制作者的邮箱地址。";
+
+/* No comment provided by engineer. */
+"You should get your host configured correctly before uploading images." = "上传之前请正确配置主机信息。";
+
