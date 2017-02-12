@@ -8,7 +8,7 @@
 
 import Cocoa
 
-fileprivate struct UploadStatus {
+struct UploadStatus {
     var isUploading = false
     
     var totalItemsCount = 0
@@ -29,6 +29,14 @@ fileprivate struct UploadStatus {
     
     mutating func reset() {
         self = UploadStatus()
+    }
+    
+    func update() {
+        if isUploading {
+            StatusItemController.shared.statusItemView.updateImage(with: percent)
+        } else {
+            StatusItemController.shared.statusItemView.resetImage()
+        }
     }
     
     mutating func notifyIfFinished() {
@@ -62,10 +70,11 @@ fileprivate struct UploadItem {
 
 final class UploadManager {
     static let shared = UploadManager()
-    private var host: Host?
+
+    var uploadStatus = UploadStatus()
     
+    private var host: Host?
     fileprivate var uploadItems: [String: UploadItem]!
-    fileprivate var uploadStatus = UploadStatus()
     
     private init() {
         host = QiniuHost(delegate: self)
@@ -150,6 +159,8 @@ final class UploadManager {
         }
         
         if uploadItems.count > 0 {
+            uploadStatus.update()
+
             // Upload all of these images.
             for (fileName, uploadItem) in uploadItems {
                 host.uploadImageData(uploadItem.imageData, named: fileName)
@@ -171,7 +182,7 @@ extension UploadManager: HostDelegate {
         uploadStatus.uploadedBytesCount += uploadItem.uploadedBytesCount
         uploadItems[name] = uploadItem
         
-        StatusItemController.shared.statusItemView.updateImage(with: uploadStatus.percent)
+        uploadStatus.update()
     }
     
     func host(_ host: Host, didSucceedToUploadImageNamed name: String, urlString: String) {

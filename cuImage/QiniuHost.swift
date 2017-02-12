@@ -119,7 +119,14 @@ extension QiniuHost: Host {
             let token = makeToken(accessKey: hostInfo.accessKey,
                                   secretKey: hostInfo.secretKey,
                                   bucket: hostInfo.bucket) else {
-                                    alertToConfigureHostInfo()
+                                    NSAlert.alert(alertStyle: .critical,
+                                                  messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                                                  informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                                                  buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
+                                                    if response == NSAlertFirstButtonReturn {   // Configure
+                                                        PreferencesWindowController.shared.showHostPreferencesPane()
+                                                    }
+                                    }
                                     
                                     delegate?.host(self, didFailToUploadImageNamed: name, error: error)
                                     return
@@ -140,17 +147,6 @@ extension QiniuHost: Host {
                 sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
             }
             }, option: option)
-    }
-    
-    private func alertToConfigureHostInfo() {
-        NSAlert.alert(alertStyle: .critical,
-                      messageText: LocalizedStrings.configureHostInfoAlertMessageText,
-                      informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
-                      buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
-                        if response == NSAlertFirstButtonReturn {   // Configure
-                            PreferencesWindowController.shared.showHostPreferencesPane()
-                        }
-        }
     }
     
     private func progressHandler(key: String?, percent: Float) {
