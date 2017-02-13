@@ -57,6 +57,7 @@
 		25904C791E4AD601001E66E0 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25904C781E4AD601001E66E0 /* BaseViewController.swift */; };
 		25A9489C1E44B3E800CDB134 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25A9489A1E44B3E800CDB134 /* Localizable.strings */; };
 		25BE18091E1E97CA00F7D391 /* QiniuHostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */; };
+		25C5E4BB1E51CAC900E1350B /* ServicesMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25C5E4B91E51CAC900E1350B /* ServicesMenu.strings */; };
 		25E5F00F1E2886EC0004C12A /* HostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E5F00E1E2886EC0004C12A /* HostInfo.swift */; };
 		25E910B81E2F05DF006D74F9 /* NSAlert+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E910B71E2F05DF006D74F9 /* NSAlert+Convenience.swift */; };
 		25EAAE081E3F077700FA143A /* NSAttributedString+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EAAE071E3F077700FA143A /* NSAttributedString+Convenience.swift */; };
@@ -156,6 +157,7 @@
 		25904C781E4AD601001E66E0 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		25A9489B1E44B3E800CDB134 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		25BE18081E1E97CA00F7D391 /* QiniuHostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiniuHostInfo.swift; sourceTree = "<group>"; };
+		25C5E4BA1E51CAC900E1350B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ServicesMenu.strings"; sourceTree = "<group>"; };
 		25E5F00E1E2886EC0004C12A /* HostInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostInfo.swift; sourceTree = "<group>"; };
 		25E910B71E2F05DF006D74F9 /* NSAlert+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAlert+Convenience.swift"; sourceTree = "<group>"; };
 		25EAAE071E3F077700FA143A /* NSAttributedString+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Convenience.swift"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				25A9489A1E44B3E800CDB134 /* Localizable.strings */,
+				25C5E4B91E51CAC900E1350B /* ServicesMenu.strings */,
 				255957F61E1BD2A600B8469E /* Info.plist */,
 				255957F11E1BD2A600B8469E /* Assets.xcassets */,
 				254834E11E24780F0098C16F /* cuImage.entitlements */,
@@ -555,6 +558,7 @@
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				254AF24E1E41DF6000FB7687 /* AboutWindowController.xib in Resources */,
 				25A9489C1E44B3E800CDB134 /* Localizable.strings in Resources */,
+				25C5E4BB1E51CAC900E1350B /* ServicesMenu.strings in Resources */,
 				254AF2481E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib in Resources */,
 				255957F51E1BD2A600B8469E /* MainMenu.xib in Resources */,
 				254AF2381E41DE8E00FB7687 /* StatusItemController.xib in Resources */,
@@ -777,6 +781,14 @@
 				25A9489B1E44B3E800CDB134 /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		25C5E4B91E51CAC900E1350B /* ServicesMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25C5E4BA1E51CAC900E1350B /* zh-Hans */,
+			);
+			name = ServicesMenu.strings;
 			sourceTree = "<group>";
 		};
 		25FE569A1E4B074B00DE510A /* MainMenu.xib */ = {
