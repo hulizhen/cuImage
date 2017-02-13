@@ -8,10 +8,11 @@
 
 import Cocoa
 import Qiniu
+import HappyDNS
 
 final class QiniuHost: NSObject {
     weak var delegate: HostDelegate?
-    fileprivate let uploadManager = QNUploadManager()!
+    fileprivate var uploadManager: QNUploadManager!
     fileprivate var qiniuHostInfo: QiniuHostInfo?
     private let tokenValidityDuration: TimeInterval = 3600
     
@@ -22,6 +23,13 @@ final class QiniuHost: NSObject {
     override init() {
         super.init()
         addObservers()
+
+        // Automatically recognize different regions of the storage zone.
+        let configuration = QNConfiguration.build { builder in
+            let dns = QNDnsManager([QNResolver.system()], networkInfo: QNNetworkInfo.normal())
+            builder?.setZone(QNAutoZone(https: true, dns: dns))
+        }
+        uploadManager = QNUploadManager(configuration: configuration)
     }
     
     convenience init(delegate: HostDelegate?) {
