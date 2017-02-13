@@ -39,5 +39,29 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMessage</key>
+			<string>handleUploadService</string>
+			<key>NSPortName</key>
+			<string>$(PRODUCT_NAME)</string>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>Upload with cuImage</string>
+			</dict>
+			<key>NSSendTypes</key>
+			<array>
+				<string>public.image</string>
+			</array>
+			<key>NSSendFileTypes</key>
+			<array>
+				<string>public.image</string>
+			</array>
+			<key>NSRequiredContext</key>
+			<dict/>
+		</dict>
+	</array>
 </dict>
 </plist>
