@@ -10,7 +10,7 @@ import Cocoa
 
 final class ServicesProvider: NSObject {
     func handleUploadService(_ pboard: NSPasteboard, userData: String, error: AutoreleasingUnsafeMutablePointer<NSString?>) {
-        
+        UploadManager.shared.uploadImagesOnPasteboard(pboard)
     }
 }
 

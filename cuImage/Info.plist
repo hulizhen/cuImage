@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>6</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
@@ -42,25 +42,25 @@
 	<key>NSServices</key>
 	<array>
 		<dict>
-			<key>NSMessage</key>
-			<string>handleUploadService</string>
-			<key>NSPortName</key>
-			<string>$(PRODUCT_NAME)</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
 				<string>Upload with cuImage</string>
 			</dict>
-			<key>NSSendTypes</key>
-			<array>
-				<string>public.image</string>
-			</array>
+			<key>NSMessage</key>
+			<string>handleUploadService</string>
+			<key>NSPortName</key>
+			<string>$(PRODUCT_NAME)</string>
+			<key>NSRequiredContext</key>
+			<dict/>
 			<key>NSSendFileTypes</key>
 			<array>
 				<string>public.image</string>
 			</array>
-			<key>NSRequiredContext</key>
-			<dict/>
+			<key>NSSendTypes</key>
+			<array>
+				<string>public.image</string>
+			</array>
 		</dict>
 	</array>
 </dict>
