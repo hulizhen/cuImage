@@ -1,6 +1,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Tip: The domain should begin with \"https://\" or \"http://\"."; ObjectID = "1em-c9-YCx"; */
-"1em-c9-YCx.title" = "提示：域名需要以\"https://\"或\"http://\"开头。";
+"1em-c9-YCx.title" = "域名需要以\"https://\"或\"http://\"开头。";
 
 /* Class = "NSTextFieldCell"; title = "Access Key:"; ObjectID = "3td-6B-hge"; */
 "3td-6B-hge.title" = "Access Key:";
