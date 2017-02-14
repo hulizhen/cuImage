@@ -14,7 +14,7 @@ final class QiniuHost: NSObject {
     weak var delegate: HostDelegate?
     fileprivate var uploadManager: QNUploadManager!
     fileprivate var qiniuHostInfo: QiniuHostInfo?
-    private let tokenValidityDuration: TimeInterval = 3600
+    private let tokenValidityDuration: TimeInterval = (24 * 3600)
     
     deinit {
         removeObservers()
