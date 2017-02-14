@@ -18,6 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         addObservers()
         NSUserNotificationCenter.default.delegate = self
+        
+        // Register services.
+        NSApp.servicesProvider = ServicesProvider()
     }
     
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {

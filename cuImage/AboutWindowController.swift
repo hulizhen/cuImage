@@ -21,7 +21,7 @@ final class AboutWindowController: BaseWindowController {
     @IBOutlet weak var applicationNameTextField: NSTextField!
     @IBOutlet weak var copyrightTextField: NSTextField!
     @IBOutlet weak var versionTextField: NSTextField!
-    @IBOutlet weak var extraInfoTextField: NSTextView!
+    @IBOutlet var extraInfoTextField: NSTextView!  // NSTextView cannot be weak.
 
     override func windowDidLoad() {
         super.windowDidLoad()

@@ -8,10 +8,11 @@
 
 import Cocoa
 import Qiniu
+import HappyDNS
 
 final class QiniuHost: NSObject {
     weak var delegate: HostDelegate?
-    fileprivate let uploadManager = QNUploadManager()!
+    fileprivate var uploadManager: QNUploadManager!
     fileprivate var qiniuHostInfo: QiniuHostInfo?
     private let tokenValidityDuration: TimeInterval = 3600
     
@@ -22,6 +23,13 @@ final class QiniuHost: NSObject {
     override init() {
         super.init()
         addObservers()
+
+        // Automatically recognize different regions of the storage zone.
+        let configuration = QNConfiguration.build { builder in
+            let dns = QNDnsManager([QNResolver.system()], networkInfo: QNNetworkInfo.normal())
+            builder?.setZone(QNAutoZone(https: true, dns: dns))
+        }
+        uploadManager = QNUploadManager(configuration: configuration)
     }
     
     convenience init(delegate: HostDelegate?) {
@@ -119,7 +127,14 @@ extension QiniuHost: Host {
             let token = makeToken(accessKey: hostInfo.accessKey,
                                   secretKey: hostInfo.secretKey,
                                   bucket: hostInfo.bucket) else {
-                                    alertToConfigureHostInfo()
+                                    NSAlert.alert(alertStyle: .critical,
+                                                  messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                                                  informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                                                  buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
+                                                    if response == NSAlertFirstButtonReturn {   // Configure
+                                                        PreferencesWindowController.shared.showHostPreferencesPane()
+                                                    }
+                                    }
                                     
                                     delegate?.host(self, didFailToUploadImageNamed: name, error: error)
                                     return
@@ -140,17 +155,6 @@ extension QiniuHost: Host {
                 sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
             }
             }, option: option)
-    }
-    
-    private func alertToConfigureHostInfo() {
-        NSAlert.alert(alertStyle: .critical,
-                      messageText: LocalizedStrings.configureHostInfoAlertMessageText,
-                      informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
-                      buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
-                        if response == NSAlertFirstButtonReturn {   // Configure
-                            PreferencesWindowController.shared.showHostPreferencesPane()
-                        }
-        }
     }
     
     private func progressHandler(key: String?, percent: Float) {

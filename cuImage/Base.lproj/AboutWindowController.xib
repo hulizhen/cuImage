@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,10 +10,8 @@
             <connections>
                 <outlet property="appIconImageView" destination="dkF-ON-iYW" id="IlH-VY-ULV"/>
                 <outlet property="applicationNameTextField" destination="b82-gQ-gwk" id="I2j-uJ-Z3T"/>
-                <outlet property="copyrightLabel" destination="tcH-mh-mde" id="gFW-WY-S5b"/>
                 <outlet property="copyrightTextField" destination="tcH-mh-mde" id="Jki-kK-MDl"/>
-                <outlet property="extraInfoTextField" destination="0QJ-il-pNH" id="Nf0-Sh-sem"/>
-                <outlet property="versionLabel" destination="4Ja-dO-bso" id="Ij1-pe-6uf"/>
+                <outlet property="extraInfoTextField" destination="0QJ-il-pNH" id="v4c-fH-MBH"/>
                 <outlet property="versionTextField" destination="4Ja-dO-bso" id="yHv-Yj-srM"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>

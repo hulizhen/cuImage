@@ -49,7 +49,6 @@ final class StatusItemView: NSImageView {
     }
     
     func updateImage(with percent: Float) {
-        assert(percent >= 0 && percent <= 1)
         guard percent >= 0 && percent <= 1 else { return }
         let index = Int((percent * Float(Constants.uploadProgressImagesCount - 1)).rounded())
         image = uploadProgressImages[index]
@@ -97,8 +96,7 @@ extension StatusItemView {
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        image = statusItemIcon
-        let uploadManager = (NSApp.delegate as! AppDelegate).uploadManager
+        uploadManager.uploadStatus.update()
         uploadManager.uploadImagesOnPasteboard(sender.draggingPasteboard())
         return true
     }
@@ -108,6 +106,6 @@ extension StatusItemView {
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
-        image = statusItemIcon
+        uploadManager.uploadStatus.update()
     }
 }
