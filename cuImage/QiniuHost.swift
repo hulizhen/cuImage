@@ -85,10 +85,10 @@ final class QiniuHost: NSObject {
         return accessKey + ":" + encodedSign + ":" + encodedPolicy
     }
     
-    func validateHostInfo(_ hostInfo: QiniuHostInfo, completion: @escaping (Bool) -> Void) {
+    func validateHostInfo(_ hostInfo: QiniuHostInfo, completionHandler: @escaping (Bool) -> Void) {
         guard hostInfo.accessKey != "", hostInfo.secretKey != "",
             hostInfo.bucket != "", hostInfo.domain != "" else {
-                completion(false)
+                completionHandler(false)
                 return
         }
         
@@ -112,7 +112,7 @@ final class QiniuHost: NSObject {
                     succeeded = false
                 }
             }
-            completion(succeeded)
+            completionHandler(succeeded)
         }, option: nil)
     }
 }

@@ -11,8 +11,8 @@ import Cocoa
 protocol HostInfoViewController: class {
     var isInfoChanged: Bool { get }
     
-    func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool
-    func validateHostInfo(completion: @escaping (Bool) -> Void)
+    func alertToSaveInfo(for window: NSWindow, completionHandler: ((NSModalResponse) -> Void)?) -> Bool
+    func validateHostInfo(completionHandler: @escaping (Bool) -> Void)
     func saveHostInfo()
     func discardHostInfo()
 }
@@ -24,18 +24,18 @@ extension HostInfoViewController {
      
      - parameters:
         - window: The window on which to display the sheet.
-        - completion: The completion handler that gets called when the sheet’s modal session ends.
+        - completionHandler: The completionHandler handler that gets called when the sheet’s modal session ends.
      
      - returns: Return true if info is changed, otherwise return false.
      */
-    func alertToSaveInfo(for window: NSWindow, completion: ((NSModalResponse) -> Void)?) -> Bool {
+    func alertToSaveInfo(for window: NSWindow, completionHandler: ((NSModalResponse) -> Void)?) -> Bool {
         if (isInfoChanged) {
             NSAlert.alert(for: window, messageText: LocalizedStrings.saveChangesAlertMessageText,
                           informativeText: LocalizedStrings.saveChangesAlertInformativeText,
                           buttonTitles: [LocalizedStrings.save,
                                          LocalizedStrings.cancel,
                                          LocalizedStrings.discard],
-                          completion: completion)
+                          completionHandler: completionHandler)
         }
         return isInfoChanged
     }

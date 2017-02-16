@@ -31,10 +31,6 @@ class QiniuHostTests: XCTestCase {
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
-            let timer = Timer()
-            for _ in 0..<1000 {
-                self.host.refreshToken(timer)
-            }
         }
     }
 
