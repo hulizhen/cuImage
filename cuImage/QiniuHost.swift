@@ -14,7 +14,7 @@ final class QiniuHost: NSObject {
     weak var delegate: HostDelegate?
     fileprivate var uploadManager: QNUploadManager!
     fileprivate var qiniuHostInfo: QiniuHostInfo?
-    private let tokenValidityDuration: TimeInterval = (24 * 3600)
+    private let tokenValidityDuration = TimeInterval(integerLiteral: 24 * 3600)
     
     deinit {
         removeObservers()
@@ -124,20 +124,18 @@ extension QiniuHost: Host {
 
         // Make the upload token first.
         guard let hostInfo = qiniuHostInfo,
-            let token = makeToken(accessKey: hostInfo.accessKey,
-                                  secretKey: hostInfo.secretKey,
-                                  bucket: hostInfo.bucket) else {
-                                    NSAlert.alert(alertStyle: .critical,
-                                                  messageText: LocalizedStrings.configureHostInfoAlertMessageText,
-                                                  informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
-                                                  buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
-                                                    if response == NSAlertFirstButtonReturn {   // Configure
-                                                        PreferencesWindowController.shared.showHostPreferencesPane()
-                                                    }
-                                    }
-                                    
-                                    delegate?.host(self, didFailToUploadImageNamed: name, error: error)
-                                    return
+            let token = makeToken(accessKey: hostInfo.accessKey, secretKey: hostInfo.secretKey, bucket: hostInfo.bucket) else {
+                NSAlert.alert(alertStyle: .critical,
+                              messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                              informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                              buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
+                                if response == NSAlertFirstButtonReturn {   // Configure
+                                    PreferencesWindowController.shared.showHostPreferencesPane()
+                                }
+                }
+                
+                delegate?.host(self, didFailToUploadImageNamed: name, error: error)
+                return
         }
         
         let option = QNUploadOption(progressHandler: progressHandler)
