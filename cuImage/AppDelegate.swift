@@ -21,6 +21,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Register services.
         NSApp.servicesProvider = ServicesProvider()
+        
+        // Register value transformers.
+        let transformer = IntegerToStringTransformer()
+        ValueTransformer.setValueTransformer(transformer, forName: transformer.name)
     }
     
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
@@ -44,19 +48,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 // MARK: - Observers
 extension AppDelegate {
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
-        
-        switch key {
-        case PreferenceKeys.launchAtLogin:
-            launchAtLogin(preferences[.launchAtLogin])
-        case PreferenceKeys.keepWindowsOnTop:
-            keepWindowsOnTop(preferences[.keepWindowsOnTop])
-        default:
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
-    }
-    
     fileprivate func addObservers() {
         let defaults = UserDefaults.standard
         defaults.addObserver(self, forKeyPath: PreferenceKeys.launchAtLogin.rawValue,
@@ -69,6 +60,19 @@ extension AppDelegate {
         let defaults = UserDefaults.standard
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.launchAtLogin.rawValue)
         defaults.removeObserver(self, forKeyPath: PreferenceKeys.keepWindowsOnTop.rawValue)
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
+        
+        switch key {
+        case PreferenceKeys.launchAtLogin:
+            launchAtLogin(preferences[.launchAtLogin])
+        case PreferenceKeys.keepWindowsOnTop:
+            keepWindowsOnTop(preferences[.keepWindowsOnTop])
+        default:
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
     }
 }
 

@@ -10,14 +10,14 @@ import Cocoa
 
 // MARK: - Host
 protocol Host: class {
-    func uploadImageData(_ data: Data, named name: String)
+    func uploadData(_ data: Data, named name: String)
 }
 
 // MARK: - HostDelegate
 protocol HostDelegate: class {
-    func host(_ host: Host, isUploadingImageNamed name: String, percent: Float)
-    func host(_ host: Host, didSucceedToUploadImageNamed name: String, urlString: String)
-    func host(_ host: Host, didFailToUploadImageNamed name: String, error: NSError)
+    func host(_ host: Host, isUploadingDataNamed name: String, percent: Float)
+    func host(_ host: Host, didSucceedToUploadDataNamed name: String, urlString: String)
+    func host(_ host: Host, didFailToUploadDataNamed name: String, error: NSError)
 }
 
 // MARK: - SupportedHost

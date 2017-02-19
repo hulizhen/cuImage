@@ -37,30 +37,6 @@ final class QiniuHost: NSObject {
         self.delegate = delegate
     }
     
-    private func addObservers() {
-        let defaults = UserDefaults.standard
-        defaults.addObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue,
-                             options: [.initial, .new], context: nil)
-    }
-    
-    fileprivate func removeObservers() {
-        let defaults = UserDefaults.standard
-        defaults.removeObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue)
-    }
-
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
-        
-        switch key {
-        case PreferenceKeys.qiniuHostInfo:
-            if let hostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
-                qiniuHostInfo = hostInfo
-            }
-        default:
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
-    }
-    
     fileprivate func makeToken(accessKey: String, secretKey: String, bucket: String) -> String? {
         guard accessKey != "", secretKey != "", bucket != "" else {
             return nil
@@ -117,8 +93,35 @@ final class QiniuHost: NSObject {
     }
 }
 
+/// - MARK: Observers
+extension QiniuHost {
+    fileprivate func addObservers() {
+        let defaults = UserDefaults.standard
+        defaults.addObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue,
+                             options: [.initial, .new], context: nil)
+    }
+    
+    fileprivate func removeObservers() {
+        let defaults = UserDefaults.standard
+        defaults.removeObserver(self, forKeyPath: PreferenceKeys.qiniuHostInfo.rawValue)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
+        
+        switch key {
+        case PreferenceKeys.qiniuHostInfo:
+            if let hostInfo = preferences[.qiniuHostInfo] as? QiniuHostInfo {
+                qiniuHostInfo = hostInfo
+            }
+        default:
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+}
+
 extension QiniuHost: Host {
-    func uploadImageData(_ data: Data, named name: String) {
+    func uploadData(_ data: Data, named name: String) {
         let domain = Bundle.main.infoDictionary![Constants.mainBundleIdentifier] as! String
         let error = NSError(domain: domain, code: 0, userInfo: nil)
 
@@ -134,7 +137,7 @@ extension QiniuHost: Host {
                                 }
                 }
                 
-                delegate?.host(self, didFailToUploadImageNamed: name, error: error)
+                delegate?.host(self, didFailToUploadDataNamed: name, error: error)
                 return
         }
         
@@ -147,17 +150,17 @@ extension QiniuHost: Host {
             
             if info.isOK {
                 let urlString = hostInfo.domain + "/" + key
-                sself.delegate?.host(sself, didSucceedToUploadImageNamed: name, urlString: urlString)
+                sself.delegate?.host(sself, didSucceedToUploadDataNamed: name, urlString: urlString)
             } else {
                 print("Failed to upload: \(info), \(key)")
-                sself.delegate?.host(sself, didFailToUploadImageNamed: name, error: error)
+                sself.delegate?.host(sself, didFailToUploadDataNamed: name, error: error)
             }
             }, option: option)
     }
     
     private func progressHandler(key: String?, percent: Float) {
         if let name = key {
-            delegate?.host(self, isUploadingImageNamed: name, percent: percent)
+            delegate?.host(self, isUploadingDataNamed: name, percent: percent)
         }
     }
 }

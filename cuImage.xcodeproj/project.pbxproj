@@ -10,6 +10,7 @@
 		250B7E311E24FEC00095FAEA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250B7E301E24FEC00095FAEA /* Constants.swift */; };
 		251106E01E2A75F700FF0C8F /* NSImage+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251106DF1E2A75F700FF0C8F /* NSImage+Convenience.swift */; };
 		2513B30F1E517A4A006FFE7E /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2513B30E1E517A4A006FFE7E /* ServicesProvider.swift */; };
+		2517FC151E5ACC6600EAA622 /* IntegerToStringTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2517FC141E5ACC6600EAA622 /* IntegerToStringTransformer.swift */; };
 		2518C9311E221F45000F32DC /* MASShortcut+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */; };
 		254AF2381E41DE8E00FB7687 /* StatusItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF23A1E41DE8E00FB7687 /* StatusItemController.xib */; };
 		254AF23D1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254AF23F1E41DEBC00FB7687 /* QiniuHostInfoViewController.xib */; };
@@ -98,6 +99,7 @@
 		251106CE1E2A5C6900FF0C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		251106DF1E2A75F700FF0C8F /* NSImage+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Convenience.swift"; sourceTree = "<group>"; };
 		2513B30E1E517A4A006FFE7E /* ServicesProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		2517FC141E5ACC6600EAA622 /* IntegerToStringTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegerToStringTransformer.swift; sourceTree = "<group>"; };
 		2518C9301E221F45000F32DC /* MASShortcut+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MASShortcut+Convenience.swift"; sourceTree = "<group>"; };
 		254834E11E24780F0098C16F /* cuImage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cuImage.entitlements; sourceTree = "<group>"; };
 		254AF2361E41DE7E00FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		25577E051E20882C0091735A /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				2517FC141E5ACC6600EAA622 /* IntegerToStringTransformer.swift */,
 				25577E031E2088270091735A /* Utilities.swift */,
 				250B7E301E24FEC00095FAEA /* Constants.swift */,
 				2567B42B1E41D12E00085614 /* LocalizedStrings.swift */,
@@ -287,7 +290,9 @@
 				255957EF1E1BD2A600B8469E /* AppDelegate.swift */,
 				2559584F1E1BEF5300B8469E /* UploadManager.swift */,
 				2513B30E1E517A4A006FFE7E /* ServicesProvider.swift */,
-				2574586E1E2CC01A00138E3C /* Status Item */,
+				258BE74E1E27516500D04D23 /* StatusItemView.swift */,
+				255958021E1BD77100B8469E /* StatusItemController.swift */,
+				254AF23A1E41DE8E00FB7687 /* StatusItemController.xib */,
 				255957F31E1BD2A600B8469E /* MainMenu.xib */,
 			);
 			name = Application;
@@ -370,16 +375,6 @@
 				257458361E2C703B00138E3C /* DataModel.xcdatamodeld */,
 			);
 			name = "Data Model";
-			sourceTree = "<group>";
-		};
-		2574586E1E2CC01A00138E3C /* Status Item */ = {
-			isa = PBXGroup;
-			children = (
-				255958021E1BD77100B8469E /* StatusItemController.swift */,
-				254AF23A1E41DE8E00FB7687 /* StatusItemController.xib */,
-				258BE74E1E27516500D04D23 /* StatusItemView.swift */,
-			);
-			name = "Status Item";
 			sourceTree = "<group>";
 		};
 		25FE56911E4B074B00DE510A /* cuImageLauncher */ = {
@@ -643,6 +638,7 @@
 			files = (
 				258BE7531E2771D000D04D23 /* URL+Convenience.swift in Sources */,
 				255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */,
+				2517FC151E5ACC6600EAA622 /* IntegerToStringTransformer.swift in Sources */,
 				255958121E1BDDD900B8469E /* AboutWindowController.swift in Sources */,
 				25577E041E2088270091735A /* Utilities.swift in Sources */,
 				255958031E1BD77100B8469E /* StatusItemController.swift in Sources */,

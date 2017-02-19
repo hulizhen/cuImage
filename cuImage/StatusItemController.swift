@@ -10,6 +10,11 @@ import Cocoa
 import MASShortcut
 import CoreData
 
+enum StatusItemStatus {
+    case idle
+    case uploading(Float, Int, Int)  // (upload percent, uploaded items, total items)
+}
+
 final class StatusItemController: NSObject {
     static let shared = StatusItemController()
     private let coreDataController = CoreDataController.shared
@@ -26,9 +31,7 @@ final class StatusItemController: NSObject {
     @IBOutlet weak var feedbackMenuItem: NSMenuItem!
     @IBOutlet weak var aboutMenuItem: NSMenuItem!
     var clearHistoryMenuItem: NSMenuItem!
-    
     var uploadHistoryMenuItems = [NSMenuItem]()
-
     
     deinit {
         removeObservers()
@@ -52,12 +55,9 @@ final class StatusItemController: NSObject {
                 return
         }
 
-        let infoDictionary = Bundle.main.infoDictionary!
-        let applicationName = infoDictionary[Constants.applicationName] as! String
-        let shortVersion = infoDictionary[Constants.shortVersion] as! String
-        statusItem.toolTip = applicationName + " " + shortVersion
         statusItem.button!.addSubview(statusItemView)
         statusItem.menu = menu
+        updateStatusItemStatus(.idle)
         
         uploadHistoryMenu.autoenablesItems = false
         
@@ -91,39 +91,6 @@ final class StatusItemController: NSObject {
         }
     }
     
-    private func addObservers() {
-        let defaults = UserDefaults.standard
-        defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
-                             options: [.initial, .new], context: nil)
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
-                                       selector: #selector(managedObjectContextObjectsDidChange(notification:)),
-                                       name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
-                                       object: nil)
-    }
-    
-    fileprivate func removeObservers() {
-        let defaults = UserDefaults.standard
-        defaults.removeObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue)
-        
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.removeObserver(self)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
-        
-        switch key {
-        case PreferenceKeys.uploadImageShortcut:
-            if let shortcut = preferences[.uploadImageShortcut] {
-                uploadImageMenuItem.setKeyEquivalent(withShortcut: shortcut)
-            }
-        default:
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-        }
-    }
-
     func clearUploadHistory(_ sender: NSMenuItem) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedItem")
         
@@ -189,6 +156,61 @@ final class StatusItemController: NSObject {
         if let urlString = uploadedItem.urlString {
             NSPasteboard.general().addURLStrings([urlString], markdown: preferences[.useMarkdownURL])
             NSUserNotificationCenter.default.deliverNotification(with: LocalizedStrings.urlOfSelectedImageCopied)
+        }
+    }
+    
+    // Update status item view and tool tip.
+    func updateStatusItemStatus(_ status: StatusItemStatus) {
+        let infoDictionary = Bundle.main.infoDictionary!
+        let applicationName = infoDictionary[Constants.applicationName] as! String
+
+        switch status {
+        case .idle:
+            statusItemView.updateImage(.appIcon)
+            
+            let shortVersion = infoDictionary[Constants.shortVersion] as! String
+            statusItem.toolTip = applicationName + " " + shortVersion
+        case let .uploading(uploadPercent, uploadedItems, totalItems):
+            statusItemView.updateImage(.uploadProgress(uploadPercent))
+            
+            let percent = String(format: "%.2f", uploadPercent * 100)
+            statusItem.toolTip = applicationName + " is uploading: \(percent)% [\(uploadedItems)/\(totalItems)]"
+        }
+    }
+}
+
+// - MARK: Observers
+extension StatusItemController {
+    fileprivate func addObservers() {
+        let defaults = UserDefaults.standard
+        defaults.addObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue,
+                             options: [.initial, .new], context: nil)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self,
+                                       selector: #selector(managedObjectContextObjectsDidChange(notification:)),
+                                       name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+                                       object: nil)
+    }
+    
+    fileprivate func removeObservers() {
+        let defaults = UserDefaults.standard
+        defaults.removeObserver(self, forKeyPath: PreferenceKeys.uploadImageShortcut.rawValue)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath, let key = PreferenceKeys(rawValue: keyPath) else { return }
+        
+        switch key {
+        case PreferenceKeys.uploadImageShortcut:
+            if let shortcut = preferences[.uploadImageShortcut] {
+                uploadImageMenuItem.setKeyEquivalent(withShortcut: shortcut)
+            }
+        default:
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
 }

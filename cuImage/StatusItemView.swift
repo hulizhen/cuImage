@@ -8,12 +8,18 @@
 
 import Cocoa
 
+enum StatusItemImageType {
+    case appIcon
+    case uploadProgress(Float)
+    case draggingDestinationBox
+}
+
 // Implementation of the drag-drop-upload feature.
 final class StatusItemView: NSImageView {
-    fileprivate let uploadManager = UploadManager.shared
     fileprivate var statusItemIcon: NSImage!
     fileprivate var draggingDestinationBox: NSImage!
     private var uploadProgressImages: [NSImage]!
+    fileprivate var isUploading = false
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -53,9 +59,19 @@ final class StatusItemView: NSImageView {
         let index = Int((percent * Float(Constants.uploadProgressImagesCount - 1)).rounded())
         image = uploadProgressImages[index]
     }
-    
-    func resetImage() {
-        image = statusItemIcon
+
+    func updateImage(_ type: StatusItemImageType) {
+        switch type {
+        case .appIcon:
+            image = statusItemIcon
+        case .draggingDestinationBox:
+            image = draggingDestinationBox
+        case .uploadProgress(let percent):
+            if percent >= 0 && percent <= 1 {
+                let index = Int((percent * Float(Constants.uploadProgressImagesCount - 1)).rounded())
+                image = uploadProgressImages[index]
+            }
+        }
     }
 }
 
@@ -64,27 +80,31 @@ extension StatusItemView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         let pasteboard = sender.draggingPasteboard()
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
-        guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else { return NSDragOperation() }
+        var containsImages = false
         
-        
-        for object in objects {
-            var isImage = false
-            
-            if let url = object as? URL {
-                if url.imageFileExtension() != nil {
+        if let objects = pasteboard.readObjects(forClasses: classes, options: nil) {
+            for object in objects {
+                var isImage = false
+                
+                if let url = object as? URL {
+                    if url.imageFileExtension() != nil {
+                        isImage = true
+                    }
+                } else {
                     isImage = true
                 }
-            } else {
-                isImage = true
-            }
-            
-            if isImage {
-                image = draggingDestinationBox
-                return NSDragOperation.copy
+                
+                if isImage {
+                    if !UploadManager.shared.isUploading {
+                        updateImage(.draggingDestinationBox)
+                    }
+                    containsImages = true
+                    break
+                }
             }
         }
-
-        return NSDragOperation()
+        
+        return containsImages ? NSDragOperation.copy : NSDragOperation()
     }
     
     override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
@@ -96,16 +116,20 @@ extension StatusItemView {
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        uploadManager.uploadStatus.update()
-        uploadManager.uploadImagesOnPasteboard(sender.draggingPasteboard())
+        UploadManager.shared.uploadImagesOnPasteboard(sender.draggingPasteboard())
         return true
     }
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
         NSSound(named: Constants.dropSound)?.play()
+        if !UploadManager.shared.isUploading {
+            updateImage(.appIcon)
+        }
     }
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
-        uploadManager.uploadStatus.update()
+        if !UploadManager.shared.isUploading {
+            updateImage(.appIcon)
+        }
     }
 }

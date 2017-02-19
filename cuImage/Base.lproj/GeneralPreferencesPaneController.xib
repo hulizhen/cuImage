@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesPaneController" customModule="cuImage" customModuleProvider="target">
             <connections>
+                <outlet property="maxActiveUploadTasksPopUpButton" destination="m8f-Az-Jfd" id="q0D-fB-aRd"/>
                 <outlet property="notificationPreferencesButton" destination="KdG-Rx-LZi" id="0hD-xj-eDU"/>
                 <outlet property="qualitySlider" destination="8VX-db-nVh" id="51x-tl-nw0"/>
                 <outlet property="view" destination="UqQ-L8-ZeT" id="BAy-vF-E7J"/>
@@ -16,11 +17,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="UqQ-L8-ZeT">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="284"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="309"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="TBY-dC-2CI" userLabel="Launch At Login">
-                    <rect key="frame" x="108" y="246" width="170" height="18"/>
+                    <rect key="frame" x="108" y="271" width="170" height="18"/>
                     <buttonCell key="cell" type="check" title="Launch cuImage at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Kos-qa-NH8" userLabel="Launch At Login">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -30,7 +31,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="2PE-0Y-HbB" userLabel="Keep Windows Always On Top">
-                    <rect key="frame" x="108" y="224" width="195" height="18"/>
+                    <rect key="frame" x="108" y="249" width="195" height="18"/>
                     <buttonCell key="cell" type="check" title="Keep windows always on top" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ddc-7V-Wgv" userLabel="Keep Windows Always On Top">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -70,16 +71,8 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGD-TB-aVV">
-                    <rect key="frame" x="28" y="247" width="76" height="17"/>
+                    <rect key="frame" x="28" y="272" width="76" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Application:" id="oyf-rG-l1O">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y86-06-CwQ">
-                    <rect key="frame" x="52" y="191" width="52" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Upload:" id="TB5-Kl-Qnw">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -153,11 +146,61 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y86-06-CwQ">
+                    <rect key="frame" x="52" y="214" width="52" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Upload:" id="TB5-Kl-Qnw">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKI-nz-FkP">
+                    <rect key="frame" x="108" y="214" width="187" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Maximum active upload tasks:" id="280-tA-jkI">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-Az-Jfd">
+                    <rect key="frame" x="299" y="207" width="55" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Mir-le-yGQ"/>
+                    </constraints>
+                    <popUpButtonCell key="cell" type="push" title="5" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" altersStateOfSelectedItem="NO" selectedItem="qMh-CV-SYd" id="9Nj-Jo-fkx">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="7SJ-Td-gKH">
+                            <items>
+                                <menuItem title="1" id="YlI-jA-Lnq"/>
+                                <menuItem title="2" id="qwq-gq-MMi"/>
+                                <menuItem title="3" id="f8l-HQ-ESY"/>
+                                <menuItem title="4" id="Ay1-pd-rIr">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="5" id="qMh-CV-SYd">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <binding destination="jgw-3M-z5z" name="selectedValue" keyPath="values.MaxActiveUploadTasks" id="dme-4y-Zfx">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">IntegerToStringTransformer</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstItem="KzJ-ja-Eka" firstAttribute="top" secondItem="8VX-db-nVh" secondAttribute="bottom" constant="8" id="1Dh-IW-z4W"/>
-                <constraint firstItem="72M-YJ-QrW" firstAttribute="top" secondItem="2PE-0Y-HbB" secondAttribute="bottom" constant="20" id="AY5-WX-EZY"/>
+                <constraint firstItem="SLW-6U-XrC" firstAttribute="top" secondItem="Evl-Ft-h9U" secondAttribute="bottom" constant="8" id="3gL-OB-cX1"/>
+                <constraint firstItem="m8f-Az-Jfd" firstAttribute="top" secondItem="sKI-nz-FkP" secondAttribute="top" id="3hR-x8-pbM"/>
                 <constraint firstItem="KGD-TB-aVV" firstAttribute="leading" secondItem="UqQ-L8-ZeT" secondAttribute="leading" constant="30" id="B0G-fj-LdK"/>
+                <constraint firstItem="sKI-nz-FkP" firstAttribute="centerY" secondItem="Y86-06-CwQ" secondAttribute="centerY" id="DdW-yr-MWD"/>
+                <constraint firstItem="sKI-nz-FkP" firstAttribute="leading" secondItem="Y86-06-CwQ" secondAttribute="trailing" constant="8" id="DpR-jV-zXx"/>
+                <constraint firstItem="m8f-Az-Jfd" firstAttribute="leading" secondItem="sKI-nz-FkP" secondAttribute="trailing" constant="8" id="HKb-Wi-lgj"/>
                 <constraint firstItem="8VX-db-nVh" firstAttribute="leading" secondItem="Evl-Ft-h9U" secondAttribute="leading" id="HaU-fS-ycX"/>
                 <constraint firstItem="2PE-0Y-HbB" firstAttribute="top" secondItem="TBY-dC-2CI" secondAttribute="bottom" constant="8" id="ICO-2U-PVl"/>
                 <constraint firstItem="TBY-dC-2CI" firstAttribute="top" secondItem="UqQ-L8-ZeT" secondAttribute="top" constant="22" id="ILi-I3-I4v"/>
@@ -165,12 +208,14 @@
                 <constraint firstItem="Evl-Ft-h9U" firstAttribute="top" secondItem="8VX-db-nVh" secondAttribute="bottom" constant="8" id="Kbx-oW-TJT"/>
                 <constraint firstItem="duc-9O-CXc" firstAttribute="top" secondItem="BcR-si-wtr" secondAttribute="bottom" constant="8" id="NdA-OC-69T"/>
                 <constraint firstItem="2PE-0Y-HbB" firstAttribute="leading" secondItem="TBY-dC-2CI" secondAttribute="leading" id="OqF-Ap-QHK"/>
+                <constraint firstItem="72M-YJ-QrW" firstAttribute="top" secondItem="sKI-nz-FkP" secondAttribute="bottom" constant="8" id="RNG-h9-6L9"/>
                 <constraint firstItem="PnD-in-ejI" firstAttribute="top" secondItem="KdG-Rx-LZi" secondAttribute="bottom" constant="6" id="UyR-kT-EtZ"/>
                 <constraint firstItem="SLW-6U-XrC" firstAttribute="leading" secondItem="TBY-dC-2CI" secondAttribute="leading" id="V1L-3Y-sOl"/>
                 <constraint firstItem="BcR-si-wtr" firstAttribute="leading" secondItem="TBY-dC-2CI" secondAttribute="leading" id="Vfl-6p-4ci"/>
                 <constraint firstItem="KdG-Rx-LZi" firstAttribute="leading" secondItem="TBY-dC-2CI" secondAttribute="leading" id="W6J-n2-tsX"/>
                 <constraint firstItem="BcR-si-wtr" firstAttribute="top" secondItem="72M-YJ-QrW" secondAttribute="bottom" constant="8" id="XEc-C4-CZJ"/>
                 <constraint firstAttribute="bottom" secondItem="PnD-in-ejI" secondAttribute="bottom" constant="18" id="YNm-Oo-yAQ"/>
+                <constraint firstItem="sKI-nz-FkP" firstAttribute="top" secondItem="2PE-0Y-HbB" secondAttribute="bottom" constant="20" id="ZIp-tM-Hlb"/>
                 <constraint firstItem="8VX-db-nVh" firstAttribute="centerY" secondItem="kLR-Yv-i4e" secondAttribute="centerY" id="aQS-Y0-AAN"/>
                 <constraint firstItem="72M-YJ-QrW" firstAttribute="leading" secondItem="TBY-dC-2CI" secondAttribute="leading" id="aVM-Cb-NMI"/>
                 <constraint firstItem="KdG-Rx-LZi" firstAttribute="top" secondItem="FzQ-EO-adz" secondAttribute="top" id="bVI-W2-f4i"/>
@@ -178,7 +223,6 @@
                 <constraint firstItem="KdG-Rx-LZi" firstAttribute="top" secondItem="SLW-6U-XrC" secondAttribute="bottom" constant="20" id="cZH-kD-CSk"/>
                 <constraint firstItem="TBY-dC-2CI" firstAttribute="leading" secondItem="KGD-TB-aVV" secondAttribute="trailing" constant="8" id="gmB-ii-0mc"/>
                 <constraint firstItem="PnD-in-ejI" firstAttribute="leading" secondItem="KdG-Rx-LZi" secondAttribute="leading" id="h6A-Iw-Nlk"/>
-                <constraint firstItem="72M-YJ-QrW" firstAttribute="baseline" secondItem="Y86-06-CwQ" secondAttribute="baseline" id="jNc-xP-8FH"/>
                 <constraint firstItem="8VX-db-nVh" firstAttribute="leading" secondItem="kLR-Yv-i4e" secondAttribute="trailing" constant="7" id="q8j-6k-YGt"/>
                 <constraint firstItem="KdG-Rx-LZi" firstAttribute="leading" secondItem="FzQ-EO-adz" secondAttribute="trailing" constant="8" id="reK-eX-V9N"/>
                 <constraint firstItem="8VX-db-nVh" firstAttribute="top" secondItem="duc-9O-CXc" secondAttribute="bottom" constant="8" id="svS-yk-u0J"/>
@@ -186,7 +230,7 @@
                 <constraint firstItem="8VX-db-nVh" firstAttribute="trailing" secondItem="KzJ-ja-Eka" secondAttribute="trailing" id="wwv-66-JJ4"/>
                 <constraint firstItem="TBY-dC-2CI" firstAttribute="baseline" secondItem="KGD-TB-aVV" secondAttribute="baseline" id="ymK-XY-c2y"/>
             </constraints>
-            <point key="canvasLocation" x="108" y="499"/>
+            <point key="canvasLocation" x="108" y="464.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="jgw-3M-z5z"/>
     </objects>

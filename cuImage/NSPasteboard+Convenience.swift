@@ -9,13 +9,11 @@
 import Cocoa
 
 extension NSPasteboard {
-    /**
-     Add URL strings to pasteboard.
-     
-     - parameters:
-        - urlStrings: an array of URL strings.
-        - markdown: Make the specified URL string in markdown-style or not.
-     */
+    /// Add URL strings to pasteboard.
+    ///
+    /// - parameters:
+    ///     - urlStrings: an array of URL strings.
+    ///     - markdown: Make the specified URL string in markdown-style or not.
     func addURLStrings(_ urlStrings: [String], markdown: Bool) {
         let strings = markdown ? urlStrings.map { "![](\($0))" } : urlStrings
         declareTypes([NSPasteboardTypeString], owner: nil)

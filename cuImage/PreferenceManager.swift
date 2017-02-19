@@ -146,6 +146,7 @@ extension PreferenceKeys {
     // General
     static let launchAtLogin = PreferenceKey<Bool>("LaunchAtLogin")
     static let keepWindowsOnTop = PreferenceKey<Bool>("KeepWindowsOnTop")
+    static let maxActiveUploadTasks = PreferenceKey<Int>("MaxActiveUploadTasks")
     static let useMarkdownURL = PreferenceKey<Bool>("UseMarkdownURL")
     static let copyURLWhenUploaded = PreferenceKey<Bool>("CopyURLWhenUploaded")
     static let useJPEGCompression = PreferenceKey<Bool>("UseJPEGCompression")
@@ -160,10 +161,11 @@ extension PreferenceKeys {
 }
 
 // MARK: - Default Preference Values
-private let defaultPreferences: [PreferenceKeys: Any] = [
+let defaultPreferences: [PreferenceKeys: Any] = [
     // General
     .launchAtLogin: false,
     .keepWindowsOnTop: true,
+    .maxActiveUploadTasks: 5,
     .useMarkdownURL: true,
     .copyURLWhenUploaded: true,
     .useJPEGCompression: true,

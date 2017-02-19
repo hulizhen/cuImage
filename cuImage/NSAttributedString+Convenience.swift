@@ -9,9 +9,7 @@
 import Cocoa
 
 extension NSAttributedString {
-    /**
-     Make an attributed string with embeded hyperlink.
-     */
+    /// Make an attributed string with embeded hyperlink.
     static func hyperlink(from string: String, with url: URL) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
         let range = NSMakeRange(0, attributedString.length)

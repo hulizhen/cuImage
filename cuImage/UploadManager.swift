@@ -8,108 +8,122 @@
 
 import Cocoa
 
-struct UploadStatus {
-    var isUploading = false
-    
-    var totalItemsCount = 0
-    var succeededItemsCount = 0
-    var failedItemsCount = 0
-    var isFinished: Bool {
-        return succeededItemsCount + failedItemsCount == totalItemsCount
+class UploadItem {
+    init(data: Data, name: String) {
+        self.data = data
+        self.name = name
+        self.totalBytes = data.count
+        self.uploadedBytes = 0
     }
     
-    var totalBytesCount = 0
-    var uploadedBytesCount = 0
-    var percent: Float {
-        return Float(uploadedBytesCount) / Float(totalBytesCount)
-    }
-    
-    // Cache and copy to pasteboard at last.
-    var urlStrings = [String]()
-    
-    mutating func reset() {
-        self = UploadStatus()
-    }
-    
-    func update() {
-        if isUploading {
-            StatusItemController.shared.statusItemView.updateImage(with: percent)
-        } else {
-            StatusItemController.shared.statusItemView.resetImage()
-        }
-    }
-    
-    mutating func notifyIfFinished() {
-        if isFinished {
-            let copyURLWhenUploaded = preferences[.copyURLWhenUploaded]
-            let title = String(format: LocalizedStrings.uploadResult, succeededItemsCount, failedItemsCount)
-            let informativeText = (copyURLWhenUploaded && succeededItemsCount > 0) ?
-                LocalizedStrings.urlOfUploadedImageCopied : ""
-            
-            if copyURLWhenUploaded && succeededItemsCount > 0 {
-                NSPasteboard.general().addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
-            }
-            StatusItemController.shared.statusItemView.resetImage()
-            NSUserNotificationCenter.default.deliverNotification(with: title, informativeText: informativeText)
-            reset()
-        }
-    }
-}
-
-fileprivate struct UploadItem {
-    init(imageData: Data, totalBytesCount: Int, uploadedBytesCount: Int = 0) {
-        self.imageData = imageData
-        self.totalBytesCount = totalBytesCount
-        self.uploadedBytesCount = uploadedBytesCount
-    }
-    
-    var imageData: Data
-    var totalBytesCount: Int
-    var uploadedBytesCount: Int
+    var data: Data
+    var name: String
+    var totalBytes: Int
+    var uploadedBytes: Int
 }
 
 final class UploadManager {
     static let shared = UploadManager()
-
-    var uploadStatus = UploadStatus()
     
+    // Current host.
     private var host: Host?
-    fileprivate var uploadItems: [String: UploadItem]!
+    
+    // Qqueue for uploading.
+    private let serialUploadQueue = DispatchQueue(label: "SerialUploadQueue")
+    private let concurrentUploadQueue = DispatchQueue(label: "ConcurrentUploadQueue", attributes: .concurrent)
+    
+    // Max concurrent upload operation count.
+    fileprivate var uploadSemaphore = DispatchSemaphore(value: preferences[.maxActiveUploadTasks])
+
+    // Items to be uploaded.
+    fileprivate var uploadItems = [String: UploadItem]()
+    
+    // Cache URLs, and copy them to pasteboard when all items in @uploadItems uploaded.
+    fileprivate var urlStrings = [String]()
+
+    // Succeeded and failed items count for all items in @uploadItems.
+    fileprivate var succeededItems = 0
+    fileprivate var failedItems = 0
+    var isUploading: Bool {
+        return succeededItems + failedItems != uploadItems.count
+    }
+    
+    // Total bytes and uploaded bytes for all items in @uploadItems.
+    fileprivate var totalBytes = 0
+    fileprivate var uploadedBytes = 0
+    fileprivate var uploadPercent: Float {
+        return Float(uploadedBytes) / Float(totalBytes)
+    }
     
     private init() {
         host = QiniuHost(delegate: self)
     }
+
+    private func reset() {
+        uploadSemaphore = DispatchSemaphore(value: preferences[.maxActiveUploadTasks])
+        
+        uploadItems = [String: UploadItem]()
+        urlStrings = [String]()
+        
+        succeededItems = 0
+        failedItems = 0
+        
+        totalBytes = 0
+        uploadedBytes = 0
+    }
     
-    /**
-     Upload the images on pasteboard.
-     
-     - parameters:
-        - pasteboard: the pasteboard on which the images are, general pasteboard by default.
-     */
+    fileprivate func finish() {
+        if !isUploading {
+            let copyURLWhenUploaded = preferences[.copyURLWhenUploaded]
+            let title = String(format: LocalizedStrings.uploadResult, succeededItems, failedItems)
+            let informativeText = (copyURLWhenUploaded && succeededItems > 0) ?
+                LocalizedStrings.urlOfUploadedImageCopied : ""
+            
+            if copyURLWhenUploaded && succeededItems > 0 {
+                NSPasteboard.general().addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
+            }
+            NSUserNotificationCenter.default.deliverNotification(with: title, informativeText: informativeText)
+            StatusItemController.shared.updateStatusItemStatus(.idle)
+        }
+    }
+    
+    // Add to @uploadItems, upload them later.
+    private func uploadItem(_ item: UploadItem) {
+        if !isUploading {
+            reset()
+        }
+        
+        uploadItems[item.name] = item
+        totalBytes += item.data.count
+        
+        let uploading = StatusItemStatus.uploading(uploadPercent, succeededItems + failedItems, uploadItems.count)
+        StatusItemController.shared.updateStatusItemStatus(uploading)
+
+        // No need to introduce the weak-strong-dance, due to the UploadManager is a shared singleton.
+        serialUploadQueue.async {
+            self.uploadSemaphore.wait()
+            self.concurrentUploadQueue.async {
+                self.host?.uploadData(item.data, named: item.name)
+            }
+        }
+    }
+    
+    private func alertForNoImages() {
+        NSAlert.alert(messageText: LocalizedStrings.noImagesToUploadAlertMessageText,
+                      informativeText: LocalizedStrings.noImagesToUploadAlertInformativeText)
+    }
+    
+    /// Upload the images on pasteboard.
+    /// 
+    /// - parameters:
+    ///     - pasteboard: the pasteboard on which the images are, general pasteboard by default.
     func uploadImagesOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
-        guard let host = host else { return }
+        guard host != nil else { return }
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         
-        let alertForNoImages = {
-            NSAlert.alert(messageText: LocalizedStrings.noImagesToUploadAlertMessageText,
-                          informativeText: LocalizedStrings.noImagesToUploadAlertInformativeText)
-        }
-        
-        // Reset upload status, alert if currently uploading.
-        if uploadStatus.isUploading {
-            NSAlert.alert(messageText: LocalizedStrings.uploadingAlertMessageText)
-            return
-        } else {
-            uploadStatus.reset()
-            uploadItems = [:]
-
-            uploadStatus.isUploading = true
-        }
-
         // Read URLs or images data from pasteboard.
         guard let objects = pasteboard.readObjects(forClasses: classes, options: nil) else {
             alertForNoImages()
-            uploadStatus.isUploading = false
             return
         }
 
@@ -117,7 +131,7 @@ final class UploadManager {
         let jpegCompressionQuality = preferences[.jpegCompressionQuality]
         let jpegString = NSBitmapImageFileType.JPEG.string
         
-        // Get the images on pasteboard and add them to 'uploadItems'.
+        // Get and upload the images on pasteboard.
         for object in objects {
             var imageData: Data!
             var fileName: String!
@@ -151,41 +165,33 @@ final class UploadManager {
                 let characters = String.random(length: Constants.randomCharactersLength)
                 
                 fileName = date + "_" + characters + "_" + fileName
-                uploadItems[fileName] = UploadItem(imageData: imageData, totalBytesCount: imageData.count)
-                
-                uploadStatus.totalBytesCount += imageData.count
-                uploadStatus.totalItemsCount += 1
+                uploadItem(UploadItem(data: imageData, name: fileName))
             }
         }
         
-        if uploadItems.count > 0 {
-            uploadStatus.update()
-
-            // Upload all of these images.
-            for (fileName, uploadItem) in uploadItems {
-                host.uploadImageData(uploadItem.imageData, named: fileName)
-            }
-        } else {
+        if uploadItems.count <= 0 {
             alertForNoImages()
-            uploadStatus.isUploading = false
+            reset()
         }
     }
 }
 
 extension UploadManager: HostDelegate {
-    func host(_ host: Host, isUploadingImageNamed name: String, percent: Float) {
-        guard var uploadItem = uploadItems[name] else { return }
+    func host(_ host: Host, isUploadingDataNamed name: String, percent: Float) {
+        guard let item = uploadItems[name] else { return }
         
         // Update total bytes uploaded.
-        uploadStatus.uploadedBytesCount -= uploadItem.uploadedBytesCount
-        uploadItem.uploadedBytesCount = Int((percent * Float(uploadItem.totalBytesCount)).rounded())
-        uploadStatus.uploadedBytesCount += uploadItem.uploadedBytesCount
-        uploadItems[name] = uploadItem
+        uploadedBytes -= item.uploadedBytes
+        item.uploadedBytes = Int((percent * Float(item.totalBytes)).rounded())
+        uploadedBytes += item.uploadedBytes
         
-        uploadStatus.update()
+        let uploading = StatusItemStatus.uploading(uploadPercent, succeededItems + failedItems, uploadItems.count)
+        StatusItemController.shared.updateStatusItemStatus(uploading)
     }
     
-    func host(_ host: Host, didSucceedToUploadImageNamed name: String, urlString: String) {
+    func host(_ host: Host, didSucceedToUploadDataNamed name: String, urlString: String) {
+        uploadSemaphore.signal()
+
         // Add uploaded image to history.
         let managedObjectContext = CoreDataController.shared.managedObjectContext
         let uploadedItem = NSEntityDescription.insertNewObject(forEntityName: "UploadedItem",
@@ -193,7 +199,7 @@ extension UploadManager: HostDelegate {
         uploadedItem.date = NSDate()
         uploadedItem.urlString = urlString
         
-        if let data = uploadItems[name]?.imageData,
+        if let data = uploadItems[name]?.data,
             let image = NSImage(data: data),
             let thumbnail = image.thumbnail(maxSize: Constants.maxSizeOfthumbnail),
             let thumbnailTiff = thumbnail.tiffRepresentation {
@@ -206,17 +212,22 @@ extension UploadManager: HostDelegate {
             fatalError("Failure to save managed object context: \(error)")
         }
         
-        // Copy URL if prefered.
-        if preferences[.copyURLWhenUploaded] {
-            uploadStatus.urlStrings.append(urlString)
-        }
-        
-        uploadStatus.succeededItemsCount += 1
-        uploadStatus.notifyIfFinished()
+        urlStrings.append(urlString)
+        succeededItems += 1
+        finish()
     }
     
-    func host(_ host: Host, didFailToUploadImageNamed name: String, error: NSError) {
-        uploadStatus.failedItemsCount += 1
-        uploadStatus.notifyIfFinished()
+    func host(_ host: Host, didFailToUploadDataNamed name: String, error: NSError) {
+        uploadSemaphore.signal()
+        
+        guard let item = uploadItems[name] else { return }
+        
+        // Update total bytes uploaded even failed to upload this item.
+        uploadedBytes -= item.uploadedBytes
+        item.uploadedBytes = item.totalBytes
+        uploadedBytes += item.uploadedBytes
+
+        failedItems += 1
+        finish()
     }
 }
