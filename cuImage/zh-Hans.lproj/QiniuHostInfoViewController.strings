@@ -11,6 +11,9 @@
 /* Class = "NSTextFieldCell"; title = "Domain:"; ObjectID = "6HR-Hx-Efy"; */
 "6HR-Hx-Efy.title" = "域名：";
 
+/* Class = "NSSecureTextFieldCell"; placeholderString = "Required"; ObjectID = "NdT-Hl-jG4"; */
+"NdT-Hl-jG4.placeholderString" = "必填";
+
 /* Class = "NSTextFieldCell"; placeholderString = "Optional"; ObjectID = "k65-Qv-FSY"; */
 "k65-Qv-FSY.placeholderString" = "可选";
 
@@ -19,3 +22,12 @@
 
 /* Class = "NSTextFieldCell"; title = "Secret Key:"; ObjectID = "pQo-lV-kJy"; */
 "pQo-lV-kJy.title" = "私密密钥：";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Required"; ObjectID = "pWA-YB-9Af"; */
+"pWA-YB-9Af.placeholderString" = "必填";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Required"; ObjectID = "q2w-Z1-heO"; */
+"q2w-Z1-heO.placeholderString" = "必填";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Required"; ObjectID = "yf9-Cz-x3k"; */
+"yf9-Cz-x3k.placeholderString" = "必填";
