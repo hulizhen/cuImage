@@ -22,12 +22,12 @@ final class QiniuHostInfoViewController: BaseViewController, HostInfoViewControl
         loadHostInfo()
     }
     
-    func validateHostInfo(completion: @escaping (Bool) -> Void) {
+    func validateHostInfo(completionHandler: @escaping (Bool) -> Void) {
         let qiniuHostInfo = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                           secretKey: secretKeyTextField.stringValue,
                                           bucket: bucketTextField.stringValue,
                                           domain: domainTextField.stringValue)
-        QiniuHost().validateHostInfo(qiniuHostInfo, completion: completion)
+        QiniuHost().validateHostInfo(qiniuHostInfo, completionHandler: completionHandler)
     }
     
     func saveHostInfo() {

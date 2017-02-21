@@ -23,16 +23,17 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Host info validation things.
-        validationResultText.stringValue = ""
-        validationProgressIndicator.isHidden = true
-        validationResultIndicator.image = nil
-        
         // Tool tips.
         validateButton.toolTip = LocalizedStrings.validateButtonToolTip
         saveButton.toolTip = LocalizedStrings.saveButtonToolTip
         
         setUp()
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        resetValidationStatus()
     }
     
     private func setUp() {
@@ -75,9 +76,16 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
                     NSImage(named: succeeded ? Constants.succeededIndicator : Constants.failedIndicator)
             }
         case saveButton:
+            resetValidationStatus()
             controller.saveHostInfo()
         default:
             break
         }
+    }
+    
+    private func resetValidationStatus() {
+        validationResultText.stringValue = ""
+        validationProgressIndicator.isHidden = true
+        validationResultIndicator.image = nil
     }
 }

@@ -24,6 +24,8 @@ struct Constants {
     static let uploadProgressImagesCount = 13  // 0 ... 12
     static let maxSizeOfthumbnail: Float = 200
     
+    static let maxActiveUploadTasksValues = [1, 2, 3, 4, 5, 10, 15]
+    
     // Use for generating random string.
     static let characterSet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     static let randomCharactersLength = 6
