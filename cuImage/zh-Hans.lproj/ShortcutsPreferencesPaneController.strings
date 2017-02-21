@@ -1,3 +1,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Upload image on pasteboard:"; ObjectID = "2JL-FK-U4P"; */
 "2JL-FK-U4P.title" = "上传粘贴板中的图片：";
+
+/* Class = "NSTextFieldCell"; title = "Pop up cuImage menu:"; ObjectID = "dmD-JZ-ENe"; */
+"dmD-JZ-ENe.title" = "弹出cuImage菜单：";

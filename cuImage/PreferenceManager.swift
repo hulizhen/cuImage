@@ -153,6 +153,7 @@ extension PreferenceKeys {
     static let jpegCompressionQuality = PreferenceKey<Float>("JPEGCompressionQuality")
     
     // Shortcuts
+    static let popUpStatusItemMenuShortcut = PreferenceKey<MASShortcut>("PopUpStatusItemMenuShortcut")
     static let uploadImageShortcut = PreferenceKey<MASShortcut>("UploadImageShortcut")
     
     // Hosts
@@ -172,6 +173,7 @@ let defaultPreferences: [PreferenceKeys: Any] = [
     .jpegCompressionQuality: 1.0,
     
     // Shortcuts
+    .popUpStatusItemMenuShortcut: MASShortcut(key: kVK_F1).data(),
     .uploadImageShortcut: MASShortcut(key: kVK_F9).data(),
     
     // Hosts

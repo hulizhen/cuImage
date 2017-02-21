@@ -22,6 +22,8 @@ final class ShortcutManager {
     }
     
     private func bindShortcuts() {
+        MASShortcutBinder.shared().bindShortcut(withDefaultsKey: PreferenceKeys.popUpStatusItemMenuShortcut.rawValue,
+                                                toAction: popUpStatusItemMenu)
         MASShortcutBinder.shared().bindShortcut(withDefaultsKey: PreferenceKeys.uploadImageShortcut.rawValue,
                                                 toAction: uploadImageOnPasteboard)
     }
@@ -31,5 +33,9 @@ final class ShortcutManager {
 extension ShortcutManager {
     fileprivate func uploadImageOnPasteboard() {
         UploadManager.shared.uploadImagesOnPasteboard()
+    }
+    
+    fileprivate func popUpStatusItemMenu() {
+        StatusItemController.shared.menu.popUp(positioning: nil, at: NSEvent.mouseLocation(), in: nil)
     }
 }

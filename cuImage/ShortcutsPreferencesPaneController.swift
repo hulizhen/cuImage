@@ -10,6 +10,7 @@ import Cocoa
 import MASShortcut
 
 final class ShortcutsPreferencesPaneController: BasePreferencesPaneController {
+    @IBOutlet weak var popUpStatusItemMenuShortcutView: MASShortcutView!
     @IBOutlet weak var uploadImageShortcutView: MASShortcutView!
     
     override func viewDidLoad() {
@@ -18,5 +19,8 @@ final class ShortcutsPreferencesPaneController: BasePreferencesPaneController {
         // Join the key view loop, but without focus ring.
         uploadImageShortcutView.setAcceptsFirstResponder(true)
         uploadImageShortcutView.associatedUserDefaultsKey = PreferenceKeys.uploadImageShortcut.rawValue
+        
+        popUpStatusItemMenuShortcutView.setAcceptsFirstResponder(true)
+        popUpStatusItemMenuShortcutView.associatedUserDefaultsKey = PreferenceKeys.popUpStatusItemMenuShortcut.rawValue
     }
 }
