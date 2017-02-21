@@ -56,7 +56,7 @@ struct Constants {
         ThirdPartyLibrary(name: "RNCryptor",
                           link: "https://github.com/RNCryptor/RNCryptor",
                           description: "CCCryptor (AES encryption) wrappers for iOS/macOS in Swift."),
-        ThirdPartyLibrary(name: "QiniuSDK",
+        ThirdPartyLibrary(name: "Qiniu SDK",
                           link: "https://github.com/qiniu/objc-sdk",
                           description: "Qiniu Resource (Cloud) Storage Objective-C SDK for iOS/macOS"),
         ThirdPartyLibrary(name: "AFNetworking",
@@ -65,6 +65,9 @@ struct Constants {
         ThirdPartyLibrary(name: "HappyDNS",
                           link: "https://github.com/qiniu/happy-dns-objc",
                           description: "DNS library in Objective-C."),
+        ThirdPartyLibrary(name: "iRate",
+                          link: "https://github.com/nicklockwood/iRate",
+                          description: "A library to help you promote your iPhone and Mac App Store apps by prompting users to rate the app after using it for a few days."),
     ]
     
     // Random crypto string in hex format for cryptor.
