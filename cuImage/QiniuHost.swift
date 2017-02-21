@@ -69,23 +69,25 @@ final class QiniuHost: NSObject {
         }
         
         let testString = Constants.testString
-        let token = makeToken(accessKey: hostInfo.accessKey,
-                              secretKey: hostInfo.secretKey,
-                              bucket: hostInfo.bucket)
+        let token = makeToken(accessKey: hostInfo.accessKey, secretKey: hostInfo.secretKey, bucket: hostInfo.bucket)
         
         // Upload test string.
-        uploadManager.put(testString.data(using: .utf8), key: testString, token: token, complete: { (info, key, response) in
-            guard let info = info, let key = key else { return }
-            print(info, key)
-            var succeeded = info.isOK
+        let directory = hostInfo.directory
+        let fileName = directory.isEmpty ? testString : directory + "/" + testString
+        uploadManager.put(testString.data(using: .utf8), key: fileName, token: token, complete: { (info, key, response) in
+            var succeeded = false
             
-            // if the token is valid, then validate the domain.
-            if succeeded {
-                if let url = URL(string: hostInfo.domain + "/" + testString),
-                    let string = try? String(contentsOf: url) {
-                    succeeded = testString == string
-                } else {
-                    succeeded = false
+            if let info = info {
+                succeeded = info.isOK
+                
+                // if the token is valid, then validate the domain.
+                if succeeded {
+                    if let url = URL(string: hostInfo.domain + "/" + testString),
+                        let string = try? String(contentsOf: url) {
+                        succeeded = testString == string
+                    } else {
+                        succeeded = false
+                    }
                 }
             }
             completionHandler(succeeded)
@@ -93,7 +95,7 @@ final class QiniuHost: NSObject {
     }
 }
 
-/// - MARK: Observers
+/// MARK: - Observers
 extension QiniuHost {
     fileprivate func addObservers() {
         let defaults = UserDefaults.standard
@@ -144,7 +146,9 @@ extension QiniuHost: Host {
         let option = QNUploadOption(progressHandler: progressHandler)
         
         // Upload image data.
-        uploadManager.put(data, key: name, token: token, complete: { [weak self] (info, key, response) in
+        let directory = hostInfo.directory
+        let fileName = directory.isEmpty ? name : directory + "/" + name
+        uploadManager.put(data, key: fileName, token: token, complete: { [weak self] (info, key, response) in
             guard let sself = self else { return }
             guard let info = info, let key = key else { return }
             

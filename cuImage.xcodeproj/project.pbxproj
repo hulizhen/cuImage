@@ -95,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		250B7E301E24FEC00095FAEA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		251073331E5BE75200978DC7 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/QiniuHostInfoViewController.strings"; sourceTree = "<group>"; };
 		251106CA1E2A5C6900FF0C8F /* cuImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cuImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		251106CE1E2A5C6900FF0C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		251106DF1E2A75F700FF0C8F /* NSImage+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Convenience.swift"; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		254AF2391E41DE8E00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StatusItemController.xib; sourceTree = "<group>"; };
 		254AF23C1E41DE9800FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/StatusItemController.strings"; sourceTree = "<group>"; };
 		254AF23E1E41DEBC00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/QiniuHostInfoViewController.xib; sourceTree = "<group>"; };
-		254AF2411E41DEC800FB7687 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/QiniuHostInfoViewController.strings"; sourceTree = "<group>"; };
 		254AF2431E41DF5400FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindowController.xib; sourceTree = "<group>"; };
 		254AF2461E41DF5800FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPreferencesPaneController.xib; sourceTree = "<group>"; };
 		254AF2491E41DF5A00FB7687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShortcutsPreferencesPaneController.xib; sourceTree = "<group>"; };
@@ -712,7 +712,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				254AF23E1E41DEBC00FB7687 /* Base */,
-				254AF2411E41DEC800FB7687 /* zh-Hans */,
+				251073331E5BE75200978DC7 /* zh-Hans */,
 			);
 			name = QiniuHostInfoViewController.xib;
 			sourceTree = "<group>";

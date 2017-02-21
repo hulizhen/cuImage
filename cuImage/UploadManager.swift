@@ -178,7 +178,10 @@ final class UploadManager {
 
 extension UploadManager: HostDelegate {
     func host(_ host: Host, isUploadingDataNamed name: String, percent: Float) {
-        guard let item = uploadItems[name] else { return }
+        guard let name = name.components(separatedBy: "/").last,
+            let item = uploadItems[name] else {
+                return
+        }
         
         // Update total bytes uploaded.
         uploadedBytes -= item.uploadedBytes
@@ -220,7 +223,10 @@ extension UploadManager: HostDelegate {
     func host(_ host: Host, didFailToUploadDataNamed name: String, error: NSError) {
         uploadSemaphore.signal()
         
-        guard let item = uploadItems[name] else { return }
+        guard let name = name.components(separatedBy: "/").last,
+            let item = uploadItems[name] else {
+                return
+        }
         
         // Update total bytes uploaded even failed to upload this item.
         uploadedBytes -= item.uploadedBytes

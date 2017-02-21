@@ -1,15 +1,21 @@
 
-/* Class = "NSTextFieldCell"; title = "Tip: The domain should begin with \"https://\" or \"http://\"."; ObjectID = "1em-c9-YCx"; */
+/* Class = "NSTextFieldCell"; title = "The domain should begin with \"https://\" or \"http://\"."; ObjectID = "1em-c9-YCx"; */
 "1em-c9-YCx.title" = "域名需要以\"https://\"或\"http://\"开头。";
 
 /* Class = "NSTextFieldCell"; title = "Access Key:"; ObjectID = "3td-6B-hge"; */
-"3td-6B-hge.title" = "Access Key:";
+"3td-6B-hge.title" = "访问密钥：";
 
 /* Class = "NSTextFieldCell"; title = "Bucket:"; ObjectID = "4zU-2Q-wm9"; */
-"4zU-2Q-wm9.title" = "Bucket:";
+"4zU-2Q-wm9.title" = "空间：";
 
 /* Class = "NSTextFieldCell"; title = "Domain:"; ObjectID = "6HR-Hx-Efy"; */
-"6HR-Hx-Efy.title" = "Domain:";
+"6HR-Hx-Efy.title" = "域名：";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Optional"; ObjectID = "k65-Qv-FSY"; */
+"k65-Qv-FSY.placeholderString" = "可选";
+
+/* Class = "NSTextFieldCell"; title = "Directory:"; ObjectID = "pLX-mB-MWm"; */
+"pLX-mB-MWm.title" = "目录：";
 
 /* Class = "NSTextFieldCell"; title = "Secret Key:"; ObjectID = "pQo-lV-kJy"; */
-"pQo-lV-kJy.title" = "Secret Key:";
+"pQo-lV-kJy.title" = "私密密钥：";

@@ -12,15 +12,17 @@ final class QiniuHostInfo: HostInfo {
     var accessKey = ""
     var secretKey = ""
     var bucket = ""
+    var directory = ""
     var domain = ""
     
-    convenience init(name: String = "Qiniu", accessKey: String, secretKey: String, bucket: String, domain: String) {
+    convenience init(name: String = "Qiniu", accessKey: String, secretKey: String, bucket: String, directory: String = "", domain: String) {
         self.init()
         
         self.name = name
         self.accessKey = accessKey
         self.secretKey = secretKey
         self.bucket = bucket
+        self.directory = directory
         self.domain = domain
     }
 }

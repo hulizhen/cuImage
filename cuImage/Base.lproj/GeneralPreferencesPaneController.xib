@@ -163,7 +163,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m8f-Az-Jfd">
-                    <rect key="frame" x="299" y="207" width="55" height="26"/>
+                    <rect key="frame" x="299" y="208" width="55" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="Mir-le-yGQ"/>
                     </constraints>
@@ -196,7 +196,6 @@
             <constraints>
                 <constraint firstItem="KzJ-ja-Eka" firstAttribute="top" secondItem="8VX-db-nVh" secondAttribute="bottom" constant="8" id="1Dh-IW-z4W"/>
                 <constraint firstItem="SLW-6U-XrC" firstAttribute="top" secondItem="Evl-Ft-h9U" secondAttribute="bottom" constant="8" id="3gL-OB-cX1"/>
-                <constraint firstItem="m8f-Az-Jfd" firstAttribute="top" secondItem="sKI-nz-FkP" secondAttribute="top" id="3hR-x8-pbM"/>
                 <constraint firstItem="KGD-TB-aVV" firstAttribute="leading" secondItem="UqQ-L8-ZeT" secondAttribute="leading" constant="30" id="B0G-fj-LdK"/>
                 <constraint firstItem="sKI-nz-FkP" firstAttribute="centerY" secondItem="Y86-06-CwQ" secondAttribute="centerY" id="DdW-yr-MWD"/>
                 <constraint firstItem="sKI-nz-FkP" firstAttribute="leading" secondItem="Y86-06-CwQ" secondAttribute="trailing" constant="8" id="DpR-jV-zXx"/>
@@ -226,6 +225,7 @@
                 <constraint firstItem="8VX-db-nVh" firstAttribute="leading" secondItem="kLR-Yv-i4e" secondAttribute="trailing" constant="7" id="q8j-6k-YGt"/>
                 <constraint firstItem="KdG-Rx-LZi" firstAttribute="leading" secondItem="FzQ-EO-adz" secondAttribute="trailing" constant="8" id="reK-eX-V9N"/>
                 <constraint firstItem="8VX-db-nVh" firstAttribute="top" secondItem="duc-9O-CXc" secondAttribute="bottom" constant="8" id="svS-yk-u0J"/>
+                <constraint firstItem="m8f-Az-Jfd" firstAttribute="baseline" secondItem="sKI-nz-FkP" secondAttribute="baseline" id="wOX-dx-Tp3"/>
                 <constraint firstItem="72M-YJ-QrW" firstAttribute="leading" secondItem="Y86-06-CwQ" secondAttribute="trailing" constant="8" id="wVI-Dg-EOA"/>
                 <constraint firstItem="8VX-db-nVh" firstAttribute="trailing" secondItem="KzJ-ja-Eka" secondAttribute="trailing" id="wwv-66-JJ4"/>
                 <constraint firstItem="TBY-dC-2CI" firstAttribute="baseline" secondItem="KGD-TB-aVV" secondAttribute="baseline" id="ymK-XY-c2y"/>

@@ -12,6 +12,7 @@ final class QiniuHostInfoViewController: BaseViewController, HostInfoViewControl
     @IBOutlet weak var accessKeyTextField: NSTextField!
     @IBOutlet weak var secretKeyTextField: NSTextField!
     @IBOutlet weak var bucketTextField: NSTextField!
+    @IBOutlet weak var directoryTextField: NSTextField!
     @IBOutlet weak var domainTextField: NSTextField!
     
     // The access control is awesome :)
@@ -26,6 +27,7 @@ final class QiniuHostInfoViewController: BaseViewController, HostInfoViewControl
         let qiniuHostInfo = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                           secretKey: secretKeyTextField.stringValue,
                                           bucket: bucketTextField.stringValue,
+                                          directory: directoryTextField.stringValue,
                                           domain: domainTextField.stringValue)
         QiniuHost().validateHostInfo(qiniuHostInfo, completionHandler: completionHandler)
     }
@@ -35,6 +37,7 @@ final class QiniuHostInfoViewController: BaseViewController, HostInfoViewControl
         preferences[.qiniuHostInfo] = QiniuHostInfo(accessKey: accessKeyTextField.stringValue,
                                                     secretKey: secretKeyTextField.stringValue,
                                                     bucket: bucketTextField.stringValue,
+                                                    directory: directoryTextField.stringValue,
                                                     domain: domainTextField.stringValue)
     }
     
@@ -47,6 +50,7 @@ final class QiniuHostInfoViewController: BaseViewController, HostInfoViewControl
             accessKeyTextField.stringValue = qiniuHostInfo.accessKey
             secretKeyTextField.stringValue = qiniuHostInfo.secretKey
             bucketTextField.stringValue = qiniuHostInfo.bucket
+            directoryTextField.stringValue = qiniuHostInfo.directory
             domainTextField.stringValue = qiniuHostInfo.domain
         }
     }

@@ -33,7 +33,7 @@ final class GeneralPreferencesPaneController: BasePreferencesPaneController {
     }
 }
 
-// - MARK: Observers
+// MARK: - Observers
 extension GeneralPreferencesPaneController {
     fileprivate func addObservers() {
         let defaults = UserDefaults.standard

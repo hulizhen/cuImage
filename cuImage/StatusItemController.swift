@@ -179,7 +179,7 @@ final class StatusItemController: NSObject {
     }
 }
 
-// - MARK: Observers
+// MARK: - Observers
 extension StatusItemController {
     fileprivate func addObservers() {
         let defaults = UserDefaults.standard
