@@ -48,6 +48,8 @@
 		255B1DA01E1F8B29000791EC /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */; };
 		2567B42C1E41D12E00085614 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2567B42B1E41D12E00085614 /* LocalizedStrings.swift */; };
 		256E393D1E24AD5000CA2F5F /* HostInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */; };
+		25729DB51E5C554300A5B6A3 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 25729DB21E5C554300A5B6A3 /* iRate.bundle */; };
+		25729DB61E5C554300A5B6A3 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25729DB41E5C554300A5B6A3 /* iRate.m */; };
 		257458111E2C5FE900138E3C /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257458101E2C5FE900138E3C /* CoreDataController.swift */; };
 		257458381E2C703B00138E3C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 257458361E2C703B00138E3C /* DataModel.xcdatamodeld */; };
 		25806C351E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */; };
@@ -149,6 +151,9 @@
 		255B1D9F1E1F8B29000791EC /* PreferenceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
 		2567B42B1E41D12E00085614 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		256E393C1E24AD5000CA2F5F /* HostInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HostInfoViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		25729DB21E5C554300A5B6A3 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		25729DB31E5C554300A5B6A3 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		25729DB41E5C554300A5B6A3 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		257458101E2C5FE900138E3C /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		257458371E2C703B00138E3C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		25806C341E228F4B0068DB85 /* NSMenuItem+KeyEquivalent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+KeyEquivalent.swift"; sourceTree = "<group>"; };
@@ -228,6 +233,7 @@
 		25577E051E20882C0091735A /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				25729DB71E5C555100A5B6A3 /* iRate */,
 				2517FC141E5ACC6600EAA622 /* IntegerToStringTransformer.swift */,
 				25577E031E2088270091735A /* Utilities.swift */,
 				250B7E301E24FEC00095FAEA /* Constants.swift */,
@@ -366,6 +372,16 @@
 				255958441E1BED8400B8469E /* NSBitmapImageFileType+String.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		25729DB71E5C555100A5B6A3 /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				25729DB21E5C554300A5B6A3 /* iRate.bundle */,
+				25729DB31E5C554300A5B6A3 /* iRate.h */,
+				25729DB41E5C554300A5B6A3 /* iRate.m */,
+			);
+			name = iRate;
 			sourceTree = "<group>";
 		};
 		2574580F1E2C526600138E3C /* Data Model */ = {
@@ -552,6 +568,7 @@
 				254AF24B1E41DF5D00FB7687 /* HostsPreferencesPaneController.xib in Resources */,
 				255957F21E1BD2A600B8469E /* Assets.xcassets in Resources */,
 				254AF24E1E41DF6000FB7687 /* AboutWindowController.xib in Resources */,
+				25729DB51E5C554300A5B6A3 /* iRate.bundle in Resources */,
 				25A9489C1E44B3E800CDB134 /* Localizable.strings in Resources */,
 				25C5E4BB1E51CAC900E1350B /* ServicesMenu.strings in Resources */,
 				254AF2481E41DF5A00FB7687 /* ShortcutsPreferencesPaneController.xib in Resources */,
@@ -658,6 +675,7 @@
 				255B1D981E1F2873000791EC /* QiniuHostInfoViewController.swift in Sources */,
 				2567B42C1E41D12E00085614 /* LocalizedStrings.swift in Sources */,
 				255958411E1BED5E00B8469E /* Data+Base64.swift in Sources */,
+				25729DB61E5C554300A5B6A3 /* iRate.m in Sources */,
 				255958431E1BED7000B8469E /* String+Crypto.swift in Sources */,
 				258BE7551E27BB9D00D04D23 /* NSUserNotificationCenter+Convenience.swift in Sources */,
 				257458111E2C5FE900138E3C /* CoreDataController.swift in Sources */,
