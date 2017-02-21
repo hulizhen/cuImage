@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import iRate
 
 class UploadItem {
     init(data: Data, name: String) {
@@ -173,6 +174,8 @@ final class UploadManager {
             alertForNoImages()
             reset()
         }
+        
+        iRate.sharedInstance().logEvent(false)
     }
 }
 

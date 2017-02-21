@@ -13,6 +13,7 @@ PODS:
   - AFNetworking/Security (3.1.0)
   - AFNetworking/Serialization (3.1.0)
   - HappyDNS (0.3.10)
+  - iRate (1.11.7)
   - MASShortcut (2.3.6)
   - Qiniu (7.1.5):
     - AFNetworking (~> 3)
@@ -20,6 +21,7 @@ PODS:
   - RNCryptor (5.0.1)
 
 DEPENDENCIES:
+  - iRate (~> 1.11)
   - MASShortcut
   - Qiniu (~> 7.1)
   - RNCryptor (~> 5.0)
@@ -27,10 +29,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
+  iRate: adae3f183d83c925ac42d7a2e86e89e838963f57
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
 
-PODFILE CHECKSUM: 2b6ffa2c855dcf502983078582873a734a605e78
+PODFILE CHECKSUM: 8755d50ac74d35f8c74d0b4ff82825a8c43dbcc2
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

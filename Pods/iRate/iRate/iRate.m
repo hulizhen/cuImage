@@ -804,7 +804,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 
         dispatch_async(dispatch_get_main_queue(), ^{
             //handle errors (ignoring sandbox issues)
-            if (error && !(error.code == EPERM && [error.domain isEqualToString:NSPOSIXErrorDomain] && self->_appStoreID))
+            if (error && !(error.code == EPERM && [error.domain isEqualToString:NSPOSIXErrorDomain] && _appStoreID))
             {
                 [self connectionError:error];
             }
