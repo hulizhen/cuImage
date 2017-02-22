@@ -130,13 +130,15 @@ extension QiniuHost: Host {
         // Make the upload token first.
         guard let hostInfo = qiniuHostInfo,
             let token = makeToken(accessKey: hostInfo.accessKey, secretKey: hostInfo.secretKey, bucket: hostInfo.bucket) else {
-                NSAlert.alert(alertStyle: .critical,
-                              messageText: LocalizedStrings.configureHostInfoAlertMessageText,
-                              informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
-                              buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
-                                if response == NSAlertFirstButtonReturn {   // Configure
-                                    PreferencesWindowController.shared.showHostPreferencesPane()
-                                }
+                DispatchQueue.main.async {
+                    NSAlert.alert(alertStyle: .critical,
+                                  messageText: LocalizedStrings.configureHostInfoAlertMessageText,
+                                  informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
+                                  buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
+                                    if response == NSAlertFirstButtonReturn {   // Configure
+                                        PreferencesWindowController.shared.showHostPreferencesPane()
+                                    }
+                    }
                 }
                 
                 delegate?.host(self, didFailToUploadDataNamed: name, error: error)

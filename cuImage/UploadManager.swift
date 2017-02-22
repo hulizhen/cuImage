@@ -90,10 +90,6 @@ final class UploadManager {
     
     // Add to @uploadItems, upload them later.
     private func uploadItem(_ item: UploadItem) {
-        if !isUploading {
-            reset()
-        }
-        
         uploadItems[item.name] = item
         totalBytes += item.data.count
         
@@ -119,6 +115,10 @@ final class UploadManager {
     /// - parameters:
     ///     - pasteboard: the pasteboard on which the images are, general pasteboard by default.
     func uploadImagesOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
+        if !isUploading {
+            reset()
+        }
+        
         guard host != nil else { return }
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         
