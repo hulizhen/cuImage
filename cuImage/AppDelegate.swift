@@ -8,6 +8,8 @@
 
 import Cocoa
 import iRate
+import Fabric
+import Crashlytics
 
 // MARK: - AppDelegate
 @NSApplicationMain
@@ -35,6 +37,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Register value transformers.
         let transformer = IntegerToStringTransformer()
         ValueTransformer.setValueTransformer(transformer, forName: transformer.name)
+        
+        // Configure Crashlytics.
+        UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
+        Fabric.with([Crashlytics.self])
     }
     
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
