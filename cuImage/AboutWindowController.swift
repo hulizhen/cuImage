@@ -16,13 +16,13 @@ struct ThirdPartyLibrary {
 
 final class AboutWindowController: BaseWindowController {
     static let shared = AboutWindowController()
-
+    
     @IBOutlet weak var appIconImageView: NSImageView!
     @IBOutlet weak var applicationNameTextField: NSTextField!
     @IBOutlet weak var copyrightTextField: NSTextField!
     @IBOutlet weak var versionTextField: NSTextField!
     @IBOutlet var extraInfoTextField: NSTextView!  // NSTextView cannot be weak.
-
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
@@ -39,12 +39,12 @@ final class AboutWindowController: BaseWindowController {
         
         let attributes = [kCTFontAttributeName as String: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize())]
         let applicationDescription =
-        NSAttributedString(string: "cuImage(See You, Image!)", attributes: attributes) +
-        NSAttributedString(string: " by ") +
-        NSAttributedString.hyperlink(from: "Lizhen Hu", with: URL(string: Constants.authorLink)!) +
-        NSAttributedString(string: "\n") +
-        NSAttributedString(string: LocalizedStrings.applicationDescription) +
-        NSAttributedString(string: "\n\n\n")
+            NSAttributedString(string: "cuImage(See You, Image!)", attributes: attributes) +
+                NSAttributedString(string: " by ") +
+                NSAttributedString.hyperlink(from: "Lizhen Hu", with: URL(string: Constants.authorLink)!) +
+                NSAttributedString(string: "\n") +
+                NSAttributedString(string: LocalizedStrings.applicationDescription) +
+                NSAttributedString(string: "\n\n\n")
         
         var thirdPartyLibrariesInfo = NSAttributedString(string: LocalizedStrings.acknowledgment, attributes: attributes) +
             NSAttributedString(string: "\n") +

@@ -19,16 +19,6 @@ extension NSAttributedString {
                                       value: url.absoluteString,
                                       range: range)
         
-        // Make the text appear in blue.
-        attributedString.addAttribute(NSForegroundColorAttributeName,
-                                      value: NSColor.blue,
-                                      range: range)
-        
-        // Make the text appear with an underline.
-        attributedString.addAttribute(NSUnderlineStyleAttributeName,
-                                      value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue),
-                                      range: range)
-        
         return attributedString
     }
     

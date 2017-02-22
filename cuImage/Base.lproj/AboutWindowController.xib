@@ -26,7 +26,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="300" height="390"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dkF-ON-iYW">
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dkF-ON-iYW" customClass="AppImageView" customModule="cuImage" customModuleProvider="target">
                         <rect key="frame" x="118" y="306" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="FaD-O3-ddM"/>
