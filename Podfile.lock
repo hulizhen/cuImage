@@ -12,6 +12,9 @@ PODS:
   - AFNetworking/Reachability (3.1.0)
   - AFNetworking/Security (3.1.0)
   - AFNetworking/Serialization (3.1.0)
+  - Crashlytics (3.8.3):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.11)
   - HappyDNS (0.3.10)
   - iRate (1.11.7)
   - MASShortcut (2.3.6)
@@ -21,6 +24,8 @@ PODS:
   - RNCryptor (5.0.1)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - iRate (~> 1.11)
   - MASShortcut
   - Qiniu (~> 7.1)
@@ -28,12 +33,14 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   iRate: adae3f183d83c925ac42d7a2e86e89e838963f57
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   RNCryptor: 2e352a488779d1a9184ab629be22a7c5bc84acb5
 
-PODFILE CHECKSUM: 8755d50ac74d35f8c74d0b4ff82825a8c43dbcc2
+PODFILE CHECKSUM: a3629469c835d1c5fd3ea4fe59e72fc6ed20e880
 
 COCOAPODS: 1.2.0
