@@ -111,9 +111,8 @@ final class UploadManager {
     }
     
     /// Upload the images on pasteboard.
-    /// 
-    /// - parameters:
-    ///     - pasteboard: the pasteboard on which the images are, general pasteboard by default.
+    ///
+    /// - Parameter pasteboard: The pasteboard on which the images are, general pasteboard by default.
     func uploadImagesOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
         if !isUploading {
             reset()

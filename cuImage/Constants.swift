@@ -68,6 +68,9 @@ struct Constants {
         ThirdPartyLibrary(name: "iRate",
                           link: "https://github.com/nicklockwood/iRate",
                           description: "A library to help you promote your iPhone and Mac App Store apps by prompting users to rate the app after using it for a few days."),
+        ThirdPartyLibrary(name: "Fabric",
+                          link: "https://get.fabric.io",
+                          description: "A platform that helps your mobile team build better apps, understand your users, and grow your business."),
     ]
     
     // Random crypto string in hex format for cryptor.

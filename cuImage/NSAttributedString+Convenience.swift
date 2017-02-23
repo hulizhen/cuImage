@@ -10,6 +10,11 @@ import Cocoa
 
 extension NSAttributedString {
     /// Make an attributed string with embeded hyperlink.
+    ///
+    /// - Parameters:
+    ///   - string: The string is about to be embeded a hyperlink.
+    ///   - url: The URL used to be embeded.
+    /// - Returns: An atrributed string appended a hyperlink.
     static func hyperlink(from string: String, with url: URL) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: string)
         let range = NSMakeRange(0, attributedString.length)

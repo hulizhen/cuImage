@@ -95,7 +95,7 @@ final class QiniuHost: NSObject {
     }
 }
 
-/// MARK: - Observers
+// MARK: - Observers
 extension QiniuHost {
     fileprivate func addObservers() {
         let defaults = UserDefaults.standard

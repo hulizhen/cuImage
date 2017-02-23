@@ -11,12 +11,10 @@ import Cocoa
 extension NSImage {
     /// Get JPEG representation image data with specified compression quality.
     ///
-    /// - parameters:
-    ///     - quality: The value is a float between 0.0 and 1.0,
-    ///                 with 1.0 resulting in no compression and
-    ///                 0.0 resulting in the maximum compression possible.
-    ///
-    /// - returns: JPEG representation image data with specified compression quality.
+    /// - Parameter quality: The value is a float between 0.0 and 1.0,
+    ///                     with 1.0 resulting in no compression and
+    ///                     0.0 resulting in the maximum compression possible.
+    /// - Returns: JPEG representation image data with specified compression quality.
     func JPEGRepresentation(with quality: Float = 1.0) -> Data? {
         if let tiffRepresentation = self.tiffRepresentation,
             let bitmap = NSBitmapImageRep(data: tiffRepresentation),
@@ -28,10 +26,8 @@ extension NSImage {
 
     /// Generate thumbnail of the image.
     ///
-    /// - parameters:
-    ///     - maxSize: The maximum width and height in pixels of a thumbnail.
-    ///
-    /// - returns: Thumbnail of the image.
+    /// - Parameter maxSize: The maximum width and height in pixels of a thumbnail.
+    /// - Returns: Thumbnail of the image.
     func thumbnail(maxSize: Float) -> NSImage? {
         var options: [String: Any?] = [kCGImageSourceShouldCache as String: false]
 

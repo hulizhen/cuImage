@@ -13,9 +13,9 @@ import CoreServices
 extension URL {
     /// Get image file extension if it is an image file.
     ///
-    /// - note: The examination does not include PDF file.
+    /// - Note: The examination does not include PDF file.
     ///
-    /// - returns: Image file extension if it is an image file, nil if is not.
+    /// - Returns: Image file extension if it is an image file, nil if is not.
     func imageFileExtension() -> String? {
         let options: [String: Any?] = [kCGImageSourceShouldCache as String: false]
         
@@ -31,10 +31,8 @@ extension URL {
     
     /// Determine whether the URL conforms to the specified UTI type.
     ///
-    /// - parameters:
-    ///     - type: the uniform type identifier against which to test conformance.
-    ///
-    /// - returns: True if the URL conforms to the UTI type, false if not.
+    /// - Parameter type: The uniform type identifier against which to test conformance.
+    /// - Returns: True if the URL conforms to the UTI type, false if not.
     func conformsToUTI(type: CFString) -> Bool {
         let pathExtension = self.pathExtension as CFString
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, nil)
