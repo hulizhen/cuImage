@@ -111,7 +111,7 @@ final class StatusItemController: NSObject {
         
         // Populate menu with uploaded items.
         for uploadedItem in uploadedItems {
-            if let data = uploadedItem.thumbnail as? Data,
+            if let data = uploadedItem.thumbnail as Data?,
                 let thumbnail = NSImage(data: data) {
                 let item = NSMenuItem()
                 item.title = ""

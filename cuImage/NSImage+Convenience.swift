@@ -32,7 +32,7 @@ extension NSImage {
         var options: [String: Any?] = [kCGImageSourceShouldCache as String: false]
 
         var thumbnail: NSImage?
-        if let source = CGImageSourceCreateWithData(tiffRepresentation as! CFData, options as CFDictionary) {
+        if let source = CGImageSourceCreateWithData(tiffRepresentation! as CFData, options as CFDictionary) {
             options = [kCGImageSourceShouldCache as String: false,
                        kCGImageSourceThumbnailMaxPixelSize as String: maxSize,
                        kCGImageSourceCreateThumbnailFromImageAlways as String: true]
