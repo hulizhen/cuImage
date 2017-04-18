@@ -15,10 +15,22 @@ extension NSImage {
     ///                     with 1.0 resulting in no compression and
     ///                     0.0 resulting in the maximum compression possible.
     /// - Returns: JPEG representation image data with specified compression quality.
-    func JPEGRepresentation(with quality: Float = 1.0) -> Data? {
+    func jpegRepresentation(with quality: Float = 1.0) -> Data? {
         if let tiffRepresentation = self.tiffRepresentation,
             let bitmap = NSBitmapImageRep(data: tiffRepresentation),
             let data = bitmap.representation(using: .JPEG, properties: [NSImageCompressionFactor: quality]) {
+            return data
+        }
+        return nil
+    }
+    
+    /// Get PNG representation image data.
+    ///
+    /// - Returns: PNG representation image data.
+    func pngRepresentation() -> Data? {
+        if let tiffRepresentation = self.tiffRepresentation,
+            let bitmap = NSBitmapImageRep(data: tiffRepresentation),
+            let data = bitmap.representation(using: .PNG, properties: [:]) {
             return data
         }
         return nil

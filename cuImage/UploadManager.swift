@@ -130,6 +130,7 @@ final class UploadManager {
         let useJPEGCompression = preferences[.useJPEGCompression]
         let jpegCompressionQuality = preferences[.jpegCompressionQuality]
         let jpegString = NSBitmapImageFileType.JPEG.string
+        let pngString = NSBitmapImageFileType.PNG.string
         
         // Get and upload the images on pasteboard.
         for object in objects {
@@ -146,17 +147,22 @@ final class UploadManager {
                 
                 if useJPEGCompression && !isGIF {
                     let image = NSImage(contentsOf: url)
-                    imageData = image?.JPEGRepresentation(with: jpegCompressionQuality)
+                    imageData = image?.jpegRepresentation(with: jpegCompressionQuality)
                 } else {
                     imageData = try? Data(contentsOf: url)
                 }
                 fileName.append("." + (useJPEGCompression && !isGIF ? jpegString : fileExtension))
             } else {
-                // Always use JPEG for screenshots, but the compression quality depends on users' preferences.
                 let image = objects.first as? NSImage
-                let compressionQuality = useJPEGCompression ? jpegCompressionQuality : 1.0
-                imageData = image?.JPEGRepresentation(with: compressionQuality)
-                fileName = "Screenshot." + jpegString
+
+                // Use PNG if not need compression, otherwise use JPEG for screenshots.
+                if useJPEGCompression {
+                    imageData = image?.jpegRepresentation(with: jpegCompressionQuality)
+                    fileName = "Screenshot." + jpegString
+                } else {
+                    imageData = image?.pngRepresentation()
+                    fileName = "Screenshot." + pngString
+                }
             }
             
             if imageData != nil && fileName != nil {
