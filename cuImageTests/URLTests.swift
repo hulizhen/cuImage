@@ -31,7 +31,7 @@ class URLTests: XCTestCase {
         
         for object in objects {
             if let url = object as? URL {
-                print("[Path: \(url), Extension: \(url.imageFileExtension())]")
+                print("[Path: \(url), Extension: \(url.imageFileExtension() ?? "")]")
             }
         }
     }
