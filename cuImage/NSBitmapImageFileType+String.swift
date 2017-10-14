@@ -8,15 +8,15 @@
 
 import Cocoa
 
-extension NSBitmapImageFileType {
+extension NSBitmapImageRep.FileType {
     var string: String {
         switch self {
-        case .TIFF:     return "tiff"
-        case .BMP:      return "bmp"
-        case .GIF:      return "gif"
-        case .PNG:      return "png"
-        case .JPEG:     return "jpeg"
-        case .JPEG2000: return "jp2"
+        case .tiff:     return "tiff"
+        case .bmp:      return "bmp"
+        case .gif:      return "gif"
+        case .png:      return "png"
+        case .jpeg:     return "jpeg"
+        case .jpeg2000: return "jp2"
         }
     }
 }

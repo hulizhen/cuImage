@@ -48,7 +48,7 @@ struct Constants {
     static let emailBody = environmentInformation()
     
     // Extra information in About window.
-    static let authorLink = "http://hulizhen.github.io"
+    static let authorLink = "http://hulizhen.me"
     static let thirdPartyLibraries = [
         ThirdPartyLibrary(name: "MASShortcut",
                           link: "https://github.com/shpakovski/MASShortcut",
@@ -82,7 +82,7 @@ struct Constants {
                                           0x4F, 0x33, 0x4F, 0x64], encoding: .utf8)!
     
     // App link on Mac App Store.
-    static let macAppStoreLink = "macappstore://itunes.apple.com/cn/app/cuimage-upload-images-get/id1202764942?l=en&mt=12"
+    static let macAppStoreLink = "https://github.com/hulizhen/cuImage"
     
     // Misc.
     static let notificationPreferencesPane = "/System/Library/PreferencePanes/Notifications.prefPane"

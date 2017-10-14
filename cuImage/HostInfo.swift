@@ -8,6 +8,7 @@
 
 import Cocoa
 
+@objcMembers
 class HostInfo: NSObject, NSCoding {
     var name = ""
 

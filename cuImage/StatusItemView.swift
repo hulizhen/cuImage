@@ -33,14 +33,14 @@ final class StatusItemView: NSImageView {
     
     private func setUp() {
         // Make the images used for status menu templates.
-        statusItemIcon = NSImage(named: Constants.statusItemIcon)!
+        statusItemIcon = NSImage(named: NSImage.Name(rawValue: Constants.statusItemIcon))!
         statusItemIcon.isTemplate = true
-        draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
+        draggingDestinationBox = NSImage(named: NSImage.Name(rawValue: Constants.draggingDestinationBox))!
         draggingDestinationBox.isTemplate = true
         uploadProgressImages = (0..<Constants.uploadProgressImagesCount).reduce([]) {
-            var images: [NSImage] = $0.0
-            images.append(NSImage(named: Constants.uploadProgress + "\($0.1)")!)
-            images[$0.1].isTemplate = true
+            var images: [NSImage] = $0
+            images.append(NSImage(named: NSImage.Name(rawValue: Constants.uploadProgress + "\($1)"))!)
+            images[$1].isTemplate = true
             return images
         }
 
@@ -50,12 +50,14 @@ final class StatusItemView: NSImageView {
         unregisterDraggedTypes()
         
         // Register the dragged types for only file and image.
-        let draggedTypes = [kUTTypeFileURL as String, kUTTypeImage as String]
-        register(forDraggedTypes: draggedTypes)
+        let draggedTypes = [kUTTypeFileURL as NSPasteboard.PasteboardType,
+                            kUTTypeImage as NSPasteboard.PasteboardType]
+        registerForDraggedTypes(draggedTypes)
     }
     
     func updateImage(with percent: Float) {
         guard percent >= 0 && percent <= 1 else { return }
+        
         let index = Int((percent * Float(Constants.uploadProgressImagesCount - 1)).rounded())
         image = uploadProgressImages[index]
     }
@@ -121,7 +123,7 @@ extension StatusItemView {
     }
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
-        NSSound(named: Constants.dropSound)?.play()
+        NSSound(named: NSSound.Name(rawValue: Constants.dropSound))?.play()
         if !UploadManager.shared.isUploading {
             updateImage(.appIcon)
         }

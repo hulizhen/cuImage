@@ -16,7 +16,7 @@ final class ShortcutManager {
     private init() {
         // Set the value transformer for MASShortcut.
         let transformer = ValueTransformer(forName: .keyedUnarchiveFromDataTransformerName)!
-        MASShortcutBinder.shared().bindingOptions = [NSValueTransformerBindingOption: transformer]
+        MASShortcutBinder.shared().bindingOptions = [NSBindingOption.valueTransformer: transformer]
         
         bindShortcuts()
     }
@@ -36,6 +36,6 @@ extension ShortcutManager {
     }
     
     fileprivate func popUpStatusItemMenu() {
-        StatusItemController.shared.menu.popUp(positioning: nil, at: NSEvent.mouseLocation(), in: nil)
+        StatusItemController.shared.menu.popUp(positioning: nil, at: NSEvent.mouseLocation, in: nil)
     }
 }

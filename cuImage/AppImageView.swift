@@ -11,7 +11,7 @@ import Cocoa
 class AppImageView: NSImageView {
     override func mouseDown(with event: NSEvent) {
         if let url = URL(string: Constants.macAppStoreLink) {
-            NSWorkspace.shared().open(url)
+            NSWorkspace.shared.open(url)
         }
     }
 }
