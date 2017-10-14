@@ -41,12 +41,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Fabric.with([Crashlytics.self])
     }
     
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         // Ask whether the windows can be closed, in case there is unsaved changes.
         for window in NSApp.windows {
             if window.isMember(of: NSWindow.self),
                 let windowShouldClose = window.delegate?.windowShouldClose {
-                if !windowShouldClose(self) {
+                if !windowShouldClose(window) {
                     return .terminateLater
                 }
             }

@@ -9,7 +9,7 @@
 import Cocoa
 
 class BaseViewController: NSViewController {
-    override var nibName: String? {
-        return className.components(separatedBy: ".").last
+    override var nibName: NSNib.Name? {
+        return className.components(separatedBy: ".").last.map { NSNib.Name(rawValue: $0) }
     }
 }

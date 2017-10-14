@@ -17,7 +17,7 @@ func launchAtLogin(_ launch: Bool) {
 func keepWindowsOnTop(_ top: Bool) {
     for window in NSApp.windows {
         if window.isMember(of: NSWindow.self) {
-            window.level = Int(CGWindowLevelForKey(top ? .floatingWindow : .normalWindow))
+            window.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(top ? .floatingWindow : .normalWindow)))
         }
     }
 }
@@ -66,9 +66,9 @@ func environmentInformation() -> String {
 func launchEmailApplication() {
     // Closure for copying email address to general pasteboard.
     let copyEmailAddress = {
-        let pasteboard = NSPasteboard.general()
-        pasteboard.declareTypes([NSPasteboardTypeString], owner: nil)
-        pasteboard.setString(Constants.emailRecipient, forType: NSPasteboardTypeString)
+        let pasteboard = NSPasteboard.general
+        pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+        pasteboard.setString(Constants.emailRecipient, forType: NSPasteboard.PasteboardType.string)
         
         NSUserNotificationCenter.default.deliverNotification(with: LocalizedStrings.copyEmailAddressNotificationTitle,
                                                              informativeText: Constants.emailRecipient)
@@ -79,11 +79,11 @@ func launchEmailApplication() {
                   buttonTitles: [LocalizedStrings.launch,
                                  LocalizedStrings.copy,
                                  LocalizedStrings.cancel]) { response in
-                    if response == NSAlertFirstButtonReturn {   // Launch
+                    if response == .alertFirstButtonReturn {   // Launch
                         var done = false
                         
                         // Launch email application.
-                        if let emailService = NSSharingService(named: NSSharingServiceNameComposeEmail) {
+                        if let emailService = NSSharingService(named: NSSharingService.Name.composeEmail) {
                             emailService.recipients = [Constants.emailRecipient]
                             emailService.subject = Constants.emailSubject
                             
@@ -98,12 +98,12 @@ func launchEmailApplication() {
                             NSAlert.alert(messageText: LocalizedStrings.copyEmailAddressAlertMessageText,
                                           informativeText: LocalizedStrings.copyEmailAddressAlertInformativeText,
                                           buttonTitles: [LocalizedStrings.copy, LocalizedStrings.cancel]) { response in
-                                            if response == NSAlertFirstButtonReturn {   // Copy
+                                            if response == .alertFirstButtonReturn {   // Copy
                                                 copyEmailAddress()
                                             }
                             }
                         }
-                    } else if response == NSAlertSecondButtonReturn {   // Copy
+                    } else if response == .alertSecondButtonReturn {   // Copy
                         copyEmailAddress()
                     }
     }

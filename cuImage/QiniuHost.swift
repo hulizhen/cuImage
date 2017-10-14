@@ -135,7 +135,7 @@ extension QiniuHost: Host {
                                   messageText: LocalizedStrings.configureHostInfoAlertMessageText,
                                   informativeText: LocalizedStrings.configureHostInfoAlertInformativeText,
                                   buttonTitles: [LocalizedStrings.configure, LocalizedStrings.cancel]) { response in
-                                    if response == NSAlertFirstButtonReturn {   // Configure
+                                    if response == .alertFirstButtonReturn {   // Configure
                                         PreferencesWindowController.shared.showHostPreferencesPane()
                                     }
                     }

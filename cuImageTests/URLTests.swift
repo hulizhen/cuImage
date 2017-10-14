@@ -23,7 +23,7 @@ class URLTests: XCTestCase {
     
     // Copy one or more image files onto the general pasteboard.
     func testImageFileExtension() {
-        let pasteboard = NSPasteboard.general()
+        let pasteboard = NSPasteboard.general
         let classes: [AnyClass] = [NSImage.self, NSURL.self]
         let options: [String : Any]? = nil
         guard pasteboard.canReadObject(forClasses: classes, options: options) else { return }

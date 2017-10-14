@@ -81,7 +81,7 @@ final class UploadManager {
                 LocalizedStrings.urlOfUploadedImageCopied : ""
             
             if copyURLWhenUploaded && succeededItems > 0 {
-                NSPasteboard.general().addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
+                NSPasteboard.general.addURLStrings(urlStrings, markdown: preferences[.useMarkdownURL])
             }
             NSUserNotificationCenter.default.deliverNotification(with: title, informativeText: informativeText)
             StatusItemController.shared.updateStatusItemStatus(.idle)
@@ -113,7 +113,7 @@ final class UploadManager {
     /// Upload the images on pasteboard.
     ///
     /// - Parameter pasteboard: The pasteboard on which the images are, general pasteboard by default.
-    func uploadImagesOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general()) {
+    func uploadImagesOnPasteboard(_ pasteboard: NSPasteboard = NSPasteboard.general) {
         if !isUploading {
             reset()
         }
@@ -129,8 +129,8 @@ final class UploadManager {
 
         let useJPEGCompression = preferences[.useJPEGCompression]
         let jpegCompressionQuality = preferences[.jpegCompressionQuality]
-        let jpegString = NSBitmapImageFileType.JPEG.string
-        let pngString = NSBitmapImageFileType.PNG.string
+        let jpegString = NSBitmapImageRep.FileType.jpeg.string
+        let pngString = NSBitmapImageRep.FileType.png.string
         
         // Get and upload the images on pasteboard.
         for object in objects {
@@ -207,14 +207,14 @@ extension UploadManager: HostDelegate {
         let managedObjectContext = CoreDataController.shared.managedObjectContext
         let uploadedItem = NSEntityDescription.insertNewObject(forEntityName: "UploadedItem",
                                                                into: managedObjectContext) as! UploadedItem
-        uploadedItem.date = NSDate()
+        uploadedItem.date = NSDate() as Date
         uploadedItem.urlString = urlString
         
         if let data = uploadItems[name]?.data,
             let image = NSImage(data: data),
             let thumbnail = image.thumbnail(maxSize: Constants.maxSizeOfthumbnail),
             let thumbnailTiff = thumbnail.tiffRepresentation {
-            uploadedItem.thumbnail = NSData(data: thumbnailTiff)
+            uploadedItem.thumbnail = NSData(data: thumbnailTiff) as Data
         }
         
         do {

@@ -18,7 +18,7 @@ extension NSImage {
     func jpegRepresentation(with quality: Float = 1.0) -> Data? {
         if let tiffRepresentation = self.tiffRepresentation,
             let bitmap = NSBitmapImageRep(data: tiffRepresentation),
-            let data = bitmap.representation(using: .JPEG, properties: [NSImageCompressionFactor: quality]) {
+            let data = bitmap.representation(using: .jpeg, properties: [NSBitmapImageRep.PropertyKey.compressionFactor: quality]) {
             return data
         }
         return nil
@@ -30,7 +30,7 @@ extension NSImage {
     func pngRepresentation() -> Data? {
         if let tiffRepresentation = self.tiffRepresentation,
             let bitmap = NSBitmapImageRep(data: tiffRepresentation),
-            let data = bitmap.representation(using: .PNG, properties: [:]) {
+            let data = bitmap.representation(using: .png, properties: [:]) {
             return data
         }
         return nil

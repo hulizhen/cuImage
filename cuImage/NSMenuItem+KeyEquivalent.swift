@@ -12,6 +12,6 @@ import MASShortcut
 extension NSMenuItem {
     func setKeyEquivalent(withShortcut shortcut: MASShortcut) {
         keyEquivalent = shortcut.keyCodeStringForKeyEquivalent
-        keyEquivalentModifierMask = NSEventModifierFlags(rawValue: shortcut.modifierFlags)
+        keyEquivalentModifierMask = NSEvent.ModifierFlags(rawValue: shortcut.modifierFlags)
     }
 }
