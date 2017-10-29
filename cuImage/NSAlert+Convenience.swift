@@ -20,9 +20,9 @@ extension NSAlert {
     ///   - informativeText: The alert’s informative text.
     ///   - buttonTitles: The array of response buttons for the alert.
     ///   - completionHandler: The completionHandler handler that gets called when the sheet’s modal session ends.
-    static func alert(for window: NSWindow? = nil, alertStyle: NSAlertStyle = .warning,
+    static func alert(for window: NSWindow? = nil, alertStyle: NSAlert.Style = .warning,
                       messageText: String, informativeText: String = "",
-                      buttonTitles: [String]? = nil, completionHandler: ((NSModalResponse) -> Void)? = nil) {
+                      buttonTitles: [String]? = nil, completionHandler: ((NSApplication.ModalResponse) -> Void)? = nil) {
         let alert = NSAlert()
         
         alert.messageText = messageText
@@ -37,7 +37,7 @@ extension NSAlert {
         }
         
         // Play sound when alerting.
-        NSSound(named: Constants.alertSound)?.play()
+        NSSound(named: NSSound.Name(rawValue: Constants.alertSound))?.play()
         
         NSApp.activate(ignoringOtherApps: true)
         if let window = window {    // Call beginSheetModal(for:completionHandler:).

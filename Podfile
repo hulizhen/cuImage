@@ -1,3 +1,6 @@
+platform :osx, '10.11'
+inhibit_all_warnings!
+
 target 'cuImage' do
     use_frameworks!
 

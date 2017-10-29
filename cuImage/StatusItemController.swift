@@ -35,11 +35,11 @@ final class StatusItemController: NSObject {
     
     deinit {
         removeObservers()
-        NSStatusBar.system().removeStatusItem(statusItem)
+        NSStatusBar.system.removeStatusItem(statusItem)
     }
     
     private override init() {
-        statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItemView = StatusItemView(frame: statusItem.button!.frame)
         super.init()
         
@@ -49,7 +49,7 @@ final class StatusItemController: NSObject {
     
     private func setUp() {
         guard let nibName = className.components(separatedBy: ".").last,
-            let nib = NSNib(nibNamed: nibName, bundle: nil),
+            let nib = NSNib(nibNamed: NSNib.Name(rawValue: nibName), bundle: nil),
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
                 assert(false, "Failed to instantiate \(self.className)")
                 return
@@ -91,6 +91,7 @@ final class StatusItemController: NSObject {
         }
     }
     
+    @objc
     func clearUploadHistory(_ sender: NSMenuItem) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedItem")
         
@@ -138,6 +139,7 @@ final class StatusItemController: NSObject {
         }
     }
     
+    @objc
     func managedObjectContextObjectsDidChange(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
 
@@ -150,11 +152,12 @@ final class StatusItemController: NSObject {
         clearHistoryMenuItem.isEnabled = uploadHistoryMenu.numberOfItems > uploadHistoryMenuItems.count
     }
     
+    @objc
     func handleUploadedItemMenuItem(_ item: NSMenuItem) {
         guard let uploadedItem = item.representedObject as? UploadedItem else { return }
         
         if let urlString = uploadedItem.urlString {
-            NSPasteboard.general().addURLStrings([urlString], markdown: preferences[.useMarkdownURL])
+            NSPasteboard.general.addURLStrings([urlString], markdown: preferences[.useMarkdownURL])
             NSUserNotificationCenter.default.deliverNotification(with: LocalizedStrings.urlOfSelectedImageCopied)
         }
     }
@@ -166,15 +169,19 @@ final class StatusItemController: NSObject {
 
         switch status {
         case .idle:
-            statusItemView.updateImage(.appIcon)
-            
-            let shortVersion = infoDictionary[Constants.shortVersion] as! String
-            statusItem.toolTip = applicationName + " " + shortVersion
+            DispatchQueue.main.async {
+                self.statusItemView.updateImage(.appIcon)
+                
+                let shortVersion = infoDictionary[Constants.shortVersion] as! String
+                self.statusItem.toolTip = applicationName + " " + shortVersion
+            }
         case let .uploading(uploadPercent, uploadedItems, totalItems):
-            statusItemView.updateImage(.uploadProgress(uploadPercent))
-            
-            let percent = String(format: "%.2f", uploadPercent * 100)
-            statusItem.toolTip = applicationName + " is uploading: \(percent)% [\(uploadedItems)/\(totalItems)]"
+            DispatchQueue.main.async {
+                self.statusItemView.updateImage(.uploadProgress(uploadPercent))
+                
+                let percent = String(format: "%.2f", uploadPercent * 100)
+                self.statusItem.toolTip = applicationName + " is uploading: \(percent)% [\(uploadedItems)/\(totalItems)]"
+            }
         }
     }
 }

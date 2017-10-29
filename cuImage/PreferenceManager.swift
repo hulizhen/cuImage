@@ -97,7 +97,7 @@ extension PreferenceManager {
             var object: MASShortcut?
             let data = defaults.data(forKey: key.rawValue)
             if let options = MASShortcutBinder.shared().bindingOptions,
-                let transformer = options[NSValueTransformerBindingOption] as? ValueTransformer {
+                let transformer = options[NSBindingOption.valueTransformer] as? ValueTransformer {
                 object = transformer.transformedValue(data) as? MASShortcut
             }
             return object

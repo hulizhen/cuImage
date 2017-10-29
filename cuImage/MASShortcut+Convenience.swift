@@ -9,7 +9,7 @@
 import MASShortcut
 
 extension MASShortcut {
-    convenience init(key: Int, modifiers: [NSEventModifierFlags] = []) {
+    convenience init(key: Int, modifiers: [NSEvent.ModifierFlags] = []) {
         let flags = modifiers.reduce(0) { $0 | $1.rawValue }
         
         self.init(keyCode: UInt(key), modifierFlags: flags)
@@ -17,7 +17,7 @@ extension MASShortcut {
     
     func data() -> Data {
         let bindingOptions = MASShortcutBinder.shared().bindingOptions!
-        let transformer = bindingOptions[NSValueTransformerBindingOption] as! ValueTransformer
+        let transformer = bindingOptions[NSBindingOption.valueTransformer] as! ValueTransformer
         return transformer.reverseTransformedValue(self) as! Data
     }
 }

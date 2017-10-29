@@ -29,7 +29,7 @@ class NSPasteboardTests: XCTestCase {
             strings.append(string)
         }
 
-        NSPasteboard.general().addURLStrings(strings, markdown: true)
+        NSPasteboard.general.addURLStrings(strings, markdown: true)
     }
 
     func testPerformanceExample() {

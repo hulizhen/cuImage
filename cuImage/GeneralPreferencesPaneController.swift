@@ -29,7 +29,7 @@ final class GeneralPreferencesPaneController: BasePreferencesPaneController {
     
     @IBAction func handleTappedButton(_ button: NSButton) {
         let notificationPreferencesPaneURL = URL(fileURLWithPath: Constants.notificationPreferencesPane)
-        NSWorkspace.shared().open(notificationPreferencesPaneURL)
+        NSWorkspace.shared.open(notificationPreferencesPaneURL)
     }
 }
 

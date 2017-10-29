@@ -69,7 +69,7 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
         showPreferencesPane(with: hostsToolbarItem)
     }
     
-    func windowShouldClose(_ sender: Any) -> Bool {
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
         guard let preferencesPaneController =
             preferencesPaneControllers[hostsToolbarItem.tag] as? HostsPreferencesPaneController,
             let infoViewController =
@@ -81,11 +81,11 @@ final class PreferencesWindowController: BaseWindowController, NSWindowDelegate 
             var terminate = true
             
             switch response {
-            case NSAlertFirstButtonReturn:   // Save
+            case .alertFirstButtonReturn:   // Save
                 infoViewController.saveHostInfo()
-            case NSAlertSecondButtonReturn:  // Cancel
+            case .alertSecondButtonReturn:  // Cancel
                 terminate = false
-            case NSAlertThirdButtonReturn:   // Discard
+            case .alertThirdButtonReturn:   // Discard
                 infoViewController.discardHostInfo()
             default:
                 break

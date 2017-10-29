@@ -73,7 +73,7 @@ final class HostsPreferencesPaneController: BasePreferencesPaneController {
                 self.validationResultText.stringValue = LocalizedStrings.validation +
                     (succeeded ? LocalizedStrings.succeeded : LocalizedStrings.failed) + "!"
                 self.validationResultIndicator.image =
-                    NSImage(named: succeeded ? Constants.succeededIndicator : Constants.failedIndicator)
+                    NSImage(named: NSImage.Name(rawValue: succeeded ? Constants.succeededIndicator : Constants.failedIndicator))
             }
         case saveButton:
             resetValidationStatus()
