@@ -10,6 +10,6 @@ import Cocoa
 
 class BaseViewController: NSViewController {
     override var nibName: NSNib.Name? {
-        return className.components(separatedBy: ".").last.map { NSNib.Name(rawValue: $0) }
+        return className.components(separatedBy: ".").last.map { $0 }
     }
 }

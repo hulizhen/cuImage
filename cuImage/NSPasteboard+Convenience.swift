@@ -15,7 +15,7 @@ extension NSPasteboard {
     ///   - urlStrings: an array of URL strings.
     ///   - markdown: Make the specified URL string in markdown-style or not.
     func addURLStrings(_ urlStrings: [String], markdown: Bool) {
-        var strings = urlStrings.flatMap { $0.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) }
+        var strings = urlStrings.compactMap { $0.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) }
         if (markdown) {
             strings = strings.map { "![](\($0))" }
         }

@@ -21,6 +21,7 @@
 #import "HappyDNS.h"
 #import "QNDnspodEnterprise.h"
 #import "QNDnspodFree.h"
+#import "QNNiuDns.h"
 #import "QNHijackingDetectWrapper.h"
 #import "QNHosts.h"
 #import "QNResolver.h"
@@ -31,6 +32,7 @@
 #import "QNGetAddrInfo.h"
 #import "QNHex.h"
 #import "QNIP.h"
+#import "QNMD5.h"
 
 FOUNDATION_EXPORT double HappyDNSVersionNumber;
 FOUNDATION_EXPORT const unsigned char HappyDNSVersionString[];

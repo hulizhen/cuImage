@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "QNPipeline.h"
 #import "QNALAssetFile.h"
 #import "QNAsyncRun.h"
 #import "QNCrc32.h"

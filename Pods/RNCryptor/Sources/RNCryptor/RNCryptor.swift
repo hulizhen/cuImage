@@ -25,6 +25,10 @@
 //
 
 import Foundation
+#if SWIFT_PACKAGE
+import Cryptor
+#endif
+
 
 /// The `RNCryptorType` protocol defines generic API to a mutable,
 /// incremental, password-based encryptor or decryptor. Its generic
@@ -113,7 +117,7 @@ public enum RNCryptor {
     /// Generates random Data of given length
     /// Crashes if `length` is larger than allocatable memory, or if the system random number generator is not available.
     public static func randomData(ofLength length: Int) -> Data {
-        var data = Data(count: length)!
+        var data = Data(count: length)
         let result = data.withUnsafeMutableBytes { return SecRandomCopyBytes(kSecRandomDefault, length, $0) }
         guard result == errSecSuccess else {
             fatalError("SECURITY FAILURE: Could not generate secure random numbers: \(result).")
@@ -240,34 +244,32 @@ public extension RNCryptor {
         /// - returns: Key of length FormatV3.keySize
         public static func makeKey(forPassword password: String, withSalt salt: Data) -> Data {
 
-            var derivedKey = Data(count: keySize)!
-            let passwordData = password.data(using: String.Encoding.utf8)!
+            let passwordData = Data(password.utf8)
 
-            let result: CCCryptorStatus = derivedKey.withUnsafeMutableBytes { (derivedKeyPtr : UnsafeMutablePointer<UInt8>) in
-                passwordData.withUnsafeBytes { (passwordPtr : UnsafePointer<Int8>) in
-                    salt.withUnsafeBytes { (saltPtr : UnsafePointer<UInt8>) in
-
+            return passwordData.withUnsafeBytes { (passwordPtr : UnsafePointer<Int8>) in
+                salt.withUnsafeBytes { (saltPtr : UnsafePointer<UInt8>) in
+                    var derivedKey = Data(count: keySize)
+                    derivedKey.withUnsafeMutableBytes { (derivedKeyPtr : UnsafeMutablePointer<UInt8>) in
                         // All the crazy casting because CommonCryptor hates Swift
-                        let algorithm     = CCPBKDFAlgorithm(kCCPBKDF2)
-                        let prf           = CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1)
-                        let pbkdf2Rounds  = UInt32(10000)
+                        let algorithm    = CCPBKDFAlgorithm(kCCPBKDF2)
+                        let prf          = CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1)
+                        let pbkdf2Rounds = UInt32(10000)
 
-                        return CCCryptorStatus(
+                        let result = CCCryptorStatus(
                             CCKeyDerivationPBKDF(
-                            algorithm,
-                            passwordPtr,   passwordData.count,
-                            saltPtr,       salt.count,
-                            prf,           pbkdf2Rounds,
-                            derivedKeyPtr, derivedKey.count)
+                                algorithm,
+                                passwordPtr,   passwordData.count,
+                                saltPtr,       salt.count,
+                                prf,           pbkdf2Rounds,
+                                derivedKeyPtr, keySize)
                         )
+                        guard result == CCCryptorStatus(kCCSuccess) else {
+                            fatalError("SECURITY FAILURE: Could not derive secure password (\(result))")
+                        }
                     }
+                    return derivedKey
                 }
             }
-
-            guard result == CCCryptorStatus(kCCSuccess) else {
-                fatalError("SECURITY FAILURE: Could not derive secure password (\(result)): \(derivedKey).")
-            }
-            return derivedKey
         }
 
         static let formatVersion = UInt8(3)
@@ -666,7 +668,7 @@ private final class HMACV3 {
     }
 
     func finalData() -> Data {
-        var hmac = Data(count: V3.hmacSize)!
+        var hmac = Data(count: V3.hmacSize)
         hmac.withUnsafeMutableBytes { CCHmacFinal(&context, $0) }
         return hmac
     }
@@ -766,16 +768,4 @@ private func isEqualInConsistentTime(trusted: Data, untrusted: Data) -> Bool {
     }
     
     return result == 0
-}
-
-// From https://github.com/apple/swift-corelibs-foundation/blob/swift-3/Foundation/Data.swift#L285
-// Remove when added to Xcode
-private extension Data {
-    init?(count: Int) {
-        if let memory = malloc(count) {
-            self.init(bytesNoCopy: memory, count: count, deallocator: .free)
-        } else {
-            return nil
-        }
-    }
 }

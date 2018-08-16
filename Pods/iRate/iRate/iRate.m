@@ -1,7 +1,7 @@
 //
 //  iRate.m
 //
-//  Version 1.11.7
+//  Version 1.12.2
 //
 //  Created by Nick Lockwood on 26/01/2011.
 //  Copyright 2011 Charcoal Design
@@ -38,7 +38,6 @@
 #if !__has_feature(objc_arc)
 #error This class requires automatic reference counting
 #endif
-
 
 #pragma clang diagnostic ignored "-Warc-repeated-use-of-weak"
 #pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
@@ -85,13 +84,8 @@ static NSString *const iRateMacAppStoreBundleID = @"com.apple.appstore";
 static NSString *const iRateAppLookupURLFormat = @"https://itunes.apple.com/%@/lookup";
 
 static NSString *const iRateiOSAppStoreURLScheme = @"itms-apps";
-static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&pageNumber=0&sortOrdering=2&mt=8";
-static NSString *const iRateiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com/app/id%@";
-static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.com/app/id%@";
-
-
-#define IOS_7_0 7.0
-#define IOS_7_1 7.1
+static NSString *const iRateiOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/app/id%@?action=write-review";
+static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.com/app/id%@?action=write-review";
 
 
 #define SECONDS_IN_A_DAY 86400.0
@@ -216,6 +210,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         self.remindPeriod = 1.0;
         self.verboseLogging = NO;
         self.previewMode = NO;
+        self.useSKStoreReviewControllerIfAvailable = YES;
 
 #if DEBUG
 
@@ -305,15 +300,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 
 #if TARGET_OS_IPHONE
 
-    float iOSVersion = [[UIDevice currentDevice].systemVersion floatValue];
-    if (iOSVersion >= IOS_7_0 && iOSVersion < IOS_7_1)
-    {
-        URLString = iRateiOS7AppStoreURLFormat;
-    }
-    else
-    {
-        URLString = iRateiOSAppStoreURLFormat;
-    }
+    URLString = iRateiOSAppStoreURLFormat;
 
 #else
 
@@ -629,7 +616,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         }
 
         //prompt user
-        [self promptForRating];
+        [self promptForRating: NO];
     }
 }
 
@@ -648,7 +635,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         }
         else
         {
-            NSLog(@"iRate rating process failed because an unknown error occured");
+            NSLog(@"iRate rating process failed because an unknown error occurred");
         }
 
         //could not connect
@@ -699,7 +686,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         NSError *error = nil;
         NSURLResponse *response = nil;
         NSURL *url = [NSURL URLWithString:iTunesServiceURL];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:REQUEST_TIMEOUT];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:REQUEST_TIMEOUT];
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -729,7 +716,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
                 NSString *bundleID = [self valueForKey:@"bundleId" inJSON:json];
                 if (bundleID)
                 {
-                    if ([bundleID isEqualToString:self.applicationBundleID])
+                    if ([bundleID.lowercaseString isEqualToString:self.applicationBundleID.lowercaseString])
                     {
                         //get genre
                         if (self.appStoreGenreID == 0)
@@ -804,7 +791,7 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 
         dispatch_async(dispatch_get_main_queue(), ^{
             //handle errors (ignoring sandbox issues)
-            if (error && !(error.code == EPERM && [error.domain isEqualToString:NSPOSIXErrorDomain] && _appStoreID))
+            if (error && !(error.code == EPERM && [error.domain isEqualToString:NSPOSIXErrorDomain] && self.appStoreID))
             {
                 [self connectionError:error];
             }
@@ -846,81 +833,99 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 
 - (void)promptForRating
 {
+    [self promptForRating: YES];
+}
+
+- (void)promptForRating:(BOOL)manual
+{
     if (!self.visibleAlert)
     {
         NSString *message = self.ratedAnyVersion? self.updateMessage: self.message;
 
 #if TARGET_OS_IPHONE
 
-        UIViewController *topController = [UIApplication sharedApplication].delegate.window.rootViewController;
-        while (topController.presentedViewController)
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_10_2
+
+        if (!manual && [SKStoreReviewController class])
         {
-            topController = topController.presentedViewController;
-        }
-
-        if ([UIAlertController class] && topController && self.useUIAlertControllerIfAvailable)
-        {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:self.messageTitle message:message preferredStyle:UIAlertControllerStyleAlert];
-
-            //rate action
-            [alert addAction:[UIAlertAction actionWithTitle:self.rateButtonLabel style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
-                [self didDismissAlert:alert withButtonAtIndex:0];
-            }]];
-
-            //cancel action
-            if ([self showCancelButton])
-            {
-                [alert addAction:[UIAlertAction actionWithTitle:self.cancelButtonLabel style:UIAlertActionStyleCancel handler:^(__unused UIAlertAction *action) {
-                    [self didDismissAlert:alert withButtonAtIndex:1];
-                }]];
-            }
-
-            //remind action
-            if ([self showRemindButton])
-            {
-                [alert addAction:[UIAlertAction actionWithTitle:self.remindButtonLabel style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
-                    [self didDismissAlert:alert withButtonAtIndex:[self showCancelButton]? 2: 1];
-                }]];
-            }
-
-            self.visibleAlert = alert;
-
-            //get current view controller and present alert
-            [topController presentViewController:alert animated:YES completion:NULL];
+            [self remindLater];
+            [SKStoreReviewController requestReview];
         }
         else
+#endif
         {
+            UIViewController *topController = [UIApplication sharedApplication].delegate.window.rootViewController;
+            while (topController.presentedViewController)
+            {
+                topController = topController.presentedViewController;
+            }
+
+            if ([UIAlertController class] && topController && self.useUIAlertControllerIfAvailable)
+            {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:self.messageTitle message:message preferredStyle:UIAlertControllerStyleAlert];
+
+                //rate action
+                [alert addAction:[UIAlertAction actionWithTitle:self.rateButtonLabel style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+                    [self didDismissAlert:alert withButtonAtIndex:0];
+                }]];
+
+                //cancel action
+                if ([self showCancelButton])
+                {
+                    [alert addAction:[UIAlertAction actionWithTitle:self.cancelButtonLabel style:UIAlertActionStyleCancel handler:^(__unused UIAlertAction *action) {
+                        [self didDismissAlert:alert withButtonAtIndex:1];
+                    }]];
+                }
+
+                //remind action
+                if ([self showRemindButton])
+                {
+                    [alert addAction:[UIAlertAction actionWithTitle:self.remindButtonLabel style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+                        [self didDismissAlert:alert withButtonAtIndex:[self showCancelButton]? 2: 1];
+                    }]];
+                }
+
+                self.visibleAlert = alert;
+
+                //get current view controller and present alert
+                [topController presentViewController:alert animated:YES completion:NULL];
+            }
+            else
+            {
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.messageTitle
-                                                            message:message
-                                                           delegate:(id<UIAlertViewDelegate>)self
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:self.rateButtonLabel, nil];
+
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.messageTitle
+                                                                message:message
+                                                               delegate:(id<UIAlertViewDelegate>)self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:self.rateButtonLabel, nil];
 #pragma clang diagnostic pop
 
-            if ([self showCancelButton])
-            {
-                [alert addButtonWithTitle:self.cancelButtonLabel];
-                alert.cancelButtonIndex = 1;
-            }
+                if ([self showCancelButton])
+                {
+                    [alert addButtonWithTitle:self.cancelButtonLabel];
+                    alert.cancelButtonIndex = 1;
+                }
 
-            if ([self showRemindButton])
-            {
-                [alert addButtonWithTitle:self.remindButtonLabel];
-            }
+                if ([self showRemindButton])
+                {
+                    [alert addButtonWithTitle:self.remindButtonLabel];
+                }
 
-            self.visibleAlert = alert;
-            [self.visibleAlert show];
+                self.visibleAlert = alert;
+                [self.visibleAlert show];
+            }
         }
-
 #else
 
         //only show when main window is available
         if (self.onlyPromptIfMainWindowIsAvailable && ![[NSApplication sharedApplication] mainWindow])
         {
-            [self performSelector:@selector(promptForRating) withObject:nil afterDelay:0.5];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self promptForRating: NO];
+            });
             return;
         }
 
@@ -1074,13 +1079,6 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
         cantOpenMessage = @"iRate could not open the ratings page because the App Store is not available on the iOS simulator";
     }
 
-#elif DEBUG
-
-    if (![[UIApplication sharedApplication] canOpenURL:self.ratingsURL])
-    {
-        cantOpenMessage = [NSString stringWithFormat:@"iRate was unable to open the specified ratings URL: %@", self.ratingsURL];
-    }
-
 #endif
 
     void (^handler)(NSString *errorMessage) = ^(NSString *errorMessage)
@@ -1131,8 +1129,14 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
             }
         }];
 #else
-        [[UIApplication sharedApplication] openURL:self.ratingsURL];
-        handler(nil);
+        if ([[UIApplication sharedApplication] openURL:self.ratingsURL])
+        {
+            handler(nil);
+        }
+        else
+        {
+            handler([NSString stringWithFormat:@"iRate was unable to open the specified ratings URL: %@", self.ratingsURL]);
+        }
 #endif
 
     }
@@ -1140,10 +1144,12 @@ static NSString *const iRateMacAppStoreURLFormat = @"macappstore://itunes.apple.
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     [self didDismissAlert:alertView withButtonAtIndex:buttonIndex];
 }
+
 #pragma clang diagnostic pop
 
 #else

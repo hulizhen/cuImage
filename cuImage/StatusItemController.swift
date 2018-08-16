@@ -49,7 +49,7 @@ final class StatusItemController: NSObject {
     
     private func setUp() {
         guard let nibName = className.components(separatedBy: ".").last,
-            let nib = NSNib(nibNamed: NSNib.Name(rawValue: nibName), bundle: nil),
+            let nib = NSNib(nibNamed: nibName, bundle: nil),
             nib.instantiate(withOwner: self, topLevelObjects: nil) else {
                 assert(false, "Failed to instantiate \(self.className)")
                 return

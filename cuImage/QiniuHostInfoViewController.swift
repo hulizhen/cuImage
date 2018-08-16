@@ -57,7 +57,7 @@ final class QiniuHostInfoViewController: BaseViewController, HostInfoViewControl
 }
 
 extension QiniuHostInfoViewController: NSTextFieldDelegate {
-    override func controlTextDidChange(_ obj: Notification) {
+    func controlTextDidChange(_ obj: Notification) {
         isInfoChanged = true
     }
 }

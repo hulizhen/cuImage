@@ -1,3 +1,10 @@
+***************
+WARNING: THIS PROJECT IS DEPRECATED
+====================================
+It will not receive any future updates or bug fixes. If you are using it, please migrate to another solution.
+***************
+
+
 Purpose
 --------------
 
@@ -7,9 +14,9 @@ iRate is a library to help you promote your iPhone and Mac App Store apps by pro
 Supported OS & SDK Versions
 -----------------------------
 
-* Supported build target - iOS 10.1 / Mac OS 10.11 (Xcode 8.1, Apple LLVM compiler 8.0)
-* Earliest supported deployment target - iOS 7.0 / Mac OS 10.9
-* Earliest compatible deployment target - iOS 4.3 / Mac OS 10.6
+* Supported build target - iOS 10.3 / Mac OS 10.12 (Xcode 8.3)
+* Earliest supported deployment target - iOS 8.0 / Mac OS 10.11
+* Earliest compatible deployment target - iOS 7.0 / Mac OS 10.9
 
 NOTE: 'Supported' means that the library has been tested with this version. 'Compatible' means that the library should work on this OS version (i.e. it doesn't rely on any unavailable SDK features) but is no longer being tested for compatibility and may require tweaking or bug fixes to run correctly.
 
@@ -37,16 +44,19 @@ iRate typically requires no configuration at all and will simply run automatical
 
 **Note:** If you have apps with matching bundle IDs on both the Mac and iOS app stores (even if they use different capitalisation), the lookup mechanism won't work, so you'll need to manually set the appStoreID property, which is a numeric ID that can be found in iTunes Connect after you set up an app. Also, if you are creating a sandboxed Mac app and your app does not request the network access permission then you will need to set the appStoreID because it cannot be retrieved from the iTunes service. 
 
-If you do wish to customise iRate, the best time to do this is *before* the app has finished launching. The easiest way to do this is to add the iRate configuration code in your AppDelegate's `initialize` method, like this:
+If you do wish to customise iRate, the best time to do this is in your AppDelegate's `-[application:didFinishLaunchingWithOptions:]` method. Applying the configuration any later may not work, as the prompt may already have been shown by that point:
+
 
     #import "iRate.h"
 
-	+ (void)initialize
-	{
-		//configure iRate
-		[iRate sharedInstance].daysUntilPrompt = 5;
-		[iRate sharedInstance].usesUntilPrompt = 15;
-	}
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    {
+        //configure iRate
+        [iRate sharedInstance].daysUntilPrompt = 5;
+        [iRate sharedInstance].usesUntilPrompt = 15;
+        
+        return YES;
+    }
 
 
 Configuration
@@ -149,6 +159,10 @@ If set to YES, iRate will always display the rating prompt on launch, regardless
     @property (nonatomic, assign) BOOL useUIAlertControllerIfAvailable;
 
 By default, iRate will use UIAlertView on iOS to display the rating prompt. UIAlertView was deprecated in iOS8 and replaced by UIAlertController. Unfortunately, unlike UIAlertView, presenting an alert with UIAlertController interferes with the ability of the app to display other controllers, and since iRate could theoretically display an alert at any point during the app's lifetime, it might clash with the app attempting to present another view controller. For this reason, use of UIAlertController is disabled by default. You should only set this property to YES if you are certain that it won't clash with your app logic (e.g, if you have disabled automatic rating prompts, or if your app doesn't use any modal view controllers).
+
+    @property (nonatomic, assign) BOOL useSKStoreReviewControllerIfAvailable;
+    
+By default, iRate will use the SKStoreReviewController to request reviews on iOS 10.3 and above. To disable this, set `useSKStoreReviewControllerIfAvailable` to `NO`.
 
 
 Advanced properties
@@ -296,7 +310,7 @@ It is not recommended that you modify the strings files in the iRate.bundle, as 
 
 If you want to add an additional language for iRate in your app without submitting them back to the github project, you can add these strings directly to the appropriate Localizable.strings file in your project folder. If you wish to replace some or all of the default iRate strings, the simplest option is to copy just those strings into your own Localizable.strings file and then modify them. iRate will automatically use strings in the main application bundle in preference to the ones in the iRate bundle so you can override any string in this way.
 
-If you do not want to use *any* of the default localisations, you can omit the iRate.bundle altogether. Note that if you only want to support a subset of languages that iRate supports, it is not neccesary to delete the other strings files from iRate.bundle - just set `useAllAvailableLanguages` to NO, and iRate will only use the languages that your app already supports.
+If you do not want to use *any* of the default localisations, you can omit the iRate.bundle altogether. Note that if you only want to support a subset of languages that iRate supports, it is not necessary to delete the other strings files from iRate.bundle - just set `useAllAvailableLanguages` to NO, and iRate will only use the languages that your app already supports.
 
 The old method of overriding iRate's default strings by using individual setter methods (see below) is still supported, however the recommended approach is now to add those strings to your project's Localizable.strings file, which will be detected automatically by iRate.
 
@@ -332,6 +346,20 @@ The example is for Mac OS, but the same principle can be applied on iOS.
 Release Notes
 -----------------
 
+Version 1.12.2
+
+- Marked as deprecated
+
+Version 1.12.1
+
+- Fixed problems compiling on older Xcode versions due to SKStoreReviewController
+
+Version 1.12
+
+- Added support for SKStoreReviewController on iOS 10.3+ (thanks @EpicDraws!)
+- Added Catalan, Hungarian, Croatian and Bosnian localizations
+- Fixed random crash due to misconfigured NSURLRequest
+
 Version 1.11.7
 
 - Updated for iOS 10 and Xcode 8
@@ -350,7 +378,7 @@ Version 1.11.5
 - Added special case for Gibraltar
 - Fixed warnings on latest Xcode
 - Added Carthage support
-- Added Taiwan Chinese (zh-TW) Localization
+- Added Taiwan Chinese (zh-TW) localization
 - Better Italian localisation
 - Exposed remindLater method
 
@@ -487,7 +515,7 @@ Version 1.7.1
 - Fixed deprecation warning when targeting iOS6 as the base target
 - Added iRateDidPresentStoreKitModal and iRateDidDismissStoreKitModal delegate methods
 - Added additional error logging if StoreKit fails to load product info
-- Added Ukranian translation
+- Added Ukrainian translation
 
 Version 1.7
 

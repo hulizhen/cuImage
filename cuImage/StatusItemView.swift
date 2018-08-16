@@ -33,13 +33,13 @@ final class StatusItemView: NSImageView {
     
     private func setUp() {
         // Make the images used for status menu templates.
-        statusItemIcon = NSImage(named: NSImage.Name(rawValue: Constants.statusItemIcon))!
+        statusItemIcon = NSImage(named: Constants.statusItemIcon)!
         statusItemIcon.isTemplate = true
-        draggingDestinationBox = NSImage(named: NSImage.Name(rawValue: Constants.draggingDestinationBox))!
+        draggingDestinationBox = NSImage(named: Constants.draggingDestinationBox)!
         draggingDestinationBox.isTemplate = true
         uploadProgressImages = (0..<Constants.uploadProgressImagesCount).reduce([]) {
-            var images: [NSImage] = $0
-            images.append(NSImage(named: NSImage.Name(rawValue: Constants.uploadProgress + "\($1)"))!)
+            guard var images: [NSImage] = $0 else { return [] }
+            images.append(NSImage(named: Constants.uploadProgress + "\($1)")!)
             images[$1].isTemplate = true
             return images
         }
@@ -80,7 +80,7 @@ final class StatusItemView: NSImageView {
 // MARK: - NSDraggingDestination
 extension StatusItemView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        let pasteboard = sender.draggingPasteboard()
+        let pasteboard = sender.draggingPasteboard
         let classes: [AnyClass] = [NSURL.self, NSImage.self]
         var containsImages = false
         
@@ -118,12 +118,12 @@ extension StatusItemView {
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-        UploadManager.shared.uploadImagesOnPasteboard(sender.draggingPasteboard())
+        UploadManager.shared.uploadImagesOnPasteboard(sender.draggingPasteboard)
         return true
     }
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
-        NSSound(named: NSSound.Name(rawValue: Constants.dropSound))?.play()
+        NSSound(named: Constants.dropSound)?.play()
         if !UploadManager.shared.isUploading {
             updateImage(.appIcon)
         }

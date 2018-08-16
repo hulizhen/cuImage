@@ -25,7 +25,7 @@ class URLTests: XCTestCase {
     func testImageFileExtension() {
         let pasteboard = NSPasteboard.general
         let classes: [AnyClass] = [NSImage.self, NSURL.self]
-        let options: [String : Any]? = nil
+        let options: [NSPasteboard.ReadingOptionKey : Any]? = nil
         guard pasteboard.canReadObject(forClasses: classes, options: options) else { return }
         guard let objects = pasteboard.readObjects(forClasses: classes, options: options) else { return }
         

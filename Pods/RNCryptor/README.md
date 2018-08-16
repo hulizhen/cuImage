@@ -34,39 +34,19 @@ The RNCryptor data format is cross-platform and there are many implementations. 
 
 ## Basic Password Usage
 
-### Swift
-
 ```swift
 // Encryption
 let data: NSData = ...
 let password = "Secret password"
-let ciphertext = RNCryptor.encryptData(data, password: password)
+let ciphertext = RNCryptor.encrypt(data: data, withPassword: password)
 
 // Decryption
 do {
-    let originalData = try RNCryptor.decryptData(ciphertext, password: password)
+    let originalData = try RNCryptor.decrypt(data: ciphertext, withPassword: password)
     // ...
 } catch {
     print(error)
 }
-```
-
-### Obj-C
-
-``` objc
-// Encryption
-NSData *data = ...
-NSString *password = @"Secret password";
-NSData *ciphertext = [RNCryptor encryptData:data password:password];
-
-// Decryption
-NSError *error = nil;
-NSData *plaintext = [RNCryptor decryptData:ciphertext password:password error:&error];
-if (error != nil) {
-    NSLog(@"ERROR:%@", error);
-    return
-}
-// ...
 ```
 
 ## Incremental Usage
@@ -74,8 +54,6 @@ if (error != nil) {
 RNCryptor supports incremental use, for example when using with `NSURLSession`. This is also useful for cases where the encrypted or decrypted data will not comfortably fit in memory.
 
 To operate in incremental mode, you create an `Encryptor` or `Decryptor`, call `updateWithData()` repeatedly, gathering its results, and then call `finalData()` and gather its result.
-
-### Swift
 
 ```swift
 //
@@ -105,49 +83,6 @@ try plaintext.appendData(decryptor.updateWithData(data))
 try plaintext.appendData(decryptor.finalData())
 ```
 
-### Obj-C
-
-``` objc
-//
-// Encryption
-//
-NSString *password = @"Secret password";
-RNEncryptor *encryptor = [[RNEncryptor alloc] initWithPassword:password];
-NSMutableData *ciphertext = [NSMutableData new];
-
-// ... Each time data comes in, update the encryptor and accumulate some ciphertext ...
-[ciphertext appendData:[encryptor updateWithData:data]];
-
-// ... When data is done, finish up ...
-[ciphertext appendData:[encryptor finalData]];
-
-
-//
-// Decryption
-//
-RNDecryptor *decryptor = [[RNDecryptor alloc] initWithPassword:password];
-NSMutableData *plaintext = [NSMutableData new];
-
-// ... Each time data comes in, update the decryptor and accumulate some plaintext ...
-NSError *error = nil;
-NSData *partialPlaintext = [decryptor updateWithData:data error:&error];
-if (error != nil) {
-    NSLog(@"FAILED DECRYPT: %@", error);
-    return;
-}
-[plaintext appendData:partialPlaintext];
-
-// ... When data is done, finish up ...
-NSError *error = nil;
-NSData *partialPlaintext = [decryptor finalDataAndReturnError:&error];
-if (error != nil) {
-    NSLog(@"FAILED DECRYPT: %@", error);
-    return;
-}
-
-[ciphertext appendData:partialPlaintext];
-```
-
 ### Importing into Swift
 
 Most RNCryptor symbols are nested inside an `RNCryptor` namespace.
@@ -156,13 +91,11 @@ Most RNCryptor symbols are nested inside an `RNCryptor` namespace.
 
 ### Requirements
 
-RNCryptor 4 is written in Swift 2, so requires Xcode 7, and can target iOS 7 or later (iOS 8 or later if used as a framework), and OS X 10.9 or later. If you want a pure ObjC implementation that supports older versions of iOS and OS X, see [RNCryptor 3](https://github.com/RNCryptor/RNCryptor/releases/tag/RNCryptor-3.0.1).
+RNCryptor 5 is written in Swift 3 and does not bridge to Objective-C (it includes features that are not available). If you want an ObjC implementation, see [RNCryptor-objc](https://github.com/RNCryptor/RNCryptor-objc). That version can be accessed from Swift, or both versions can coexist in the same project.
 
 ### The Bridging Header
 
-CommonCrypto is not a modular header in Xcode 7. This makes it very challenging to import into Swift. To work around this, the necessary header files have been copied into `RNCryptor.h`, which needs to be bridged into Swift. You can do this either by using RNCryptor as a framework, adding `#import "RNCryptor/RNCryptor.h"` to your existing bridging header, or making `RNCryptor/RNCryptor.h` your bridging header in Build Settings, "Objective-C Bridging Header."
-
-Hopefully Apple will [make CommonCrypto a modular header soon](http://www.openradar.me/22965816). When this happens, the bridging header will not be needed, and RNCryptor will be a single file.
+CommonCrypto is not a modular header (and Apple has suggested it may never be). This makes it very challenging to import into Swift. To work around this, the necessary header files have been copied into `RNCryptor.h`, which needs to be bridged into Swift. You can do this either by using RNCryptor as a framework, adding `#import "RNCryptor/RNCryptor.h"` to your existing bridging header, or making `RNCryptor/RNCryptor.h` your bridging header in Build Settings, "Objective-C Bridging Header."
 
 ### Installing Manually
 
@@ -182,7 +115,7 @@ Built this way, you don't need to (and can't) `import RNCryptor` into your code.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
-    github "RNCryptor/RNCryptor" "RNCryptor-4.0.0"
+    github "RNCryptor/RNCryptor" ~> 5.0
 
 This approach will not work for OS X commandline apps. Don't forget to embed `RNCryptor.framework`. 
 
@@ -192,11 +125,11 @@ This approach will not work for OS X commandline apps.
 
 ### [CocoaPods](https://cocoapods.org)
 
-    pod 'RNCryptor', '~> 4.0.0-beta'
+    pod 'RNCryptor', '~> 5.0'
 
 This approach will not work for OS X commandline apps.
 
-Built this way, you should add `@import RNCryptor;` to your ObjC or `import RNCryptor` to your Swift code.
+Built this way, you should add `import RNCryptor` to your Swift code.
 
 ## Advanced Usage
 
@@ -225,11 +158,6 @@ In order to be secure, the keys must be a random sequence of bytes. See [Convert
 ```swift
 let encryptor = RNCryptor.EncryptorV3(encryptionKey: encryptKey, hmacKey: hmacKey)
 let decryptor = RNCryptor.DecryptorV3(encryptionKey: encryptKey, hmacKey: hmacKey)
-```
-
-```objc
-RNEncryptor *encryptor = [[RNEncryptorV3 alloc] initWithEncryptionKey:encryptionKey hmacKey:hmacKey];
-RNDecryptor *decryptor = [[RNDecryptorV3 alloc] initWithEncryptionKey:encryptionKey hmacKey:hmacKey];
 ```
 
 ## FAQ

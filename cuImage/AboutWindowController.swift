@@ -37,7 +37,7 @@ final class AboutWindowController: BaseWindowController {
         let buildVersion = infoDictionary[Constants.buildVersion] as! String
         let version = LocalizedStrings.version + " \(shortVersion) (\(buildVersion))"
         
-        let attributes = [kCTFontAttributeName as NSAttributedStringKey: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize)]
+        let attributes = [kCTFontAttributeName as NSAttributedString.Key: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize)]
         let applicationDescription =
             NSAttributedString(string: "cuImage(See You, Image!)", attributes: attributes) +
                 NSAttributedString(string: " by ") +
@@ -58,7 +58,7 @@ final class AboutWindowController: BaseWindowController {
         let extraInfo = NSAttributedString(attributedString: applicationDescription + thirdPartyLibrariesInfo)
         
         applicationNameTextField.stringValue = applicationName
-        appIconImageView.image = NSImage(named: NSImage.Name(rawValue: iconFileName))
+        appIconImageView.image = NSImage(named: iconFileName)
         copyrightTextField.stringValue = copyright
         versionTextField.stringValue = version
         extraInfoTextField.textStorage?.setAttributedString(extraInfo)
