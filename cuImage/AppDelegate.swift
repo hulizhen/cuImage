@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import iRate
 import Fabric
 import Crashlytics
 
@@ -21,13 +20,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         addObservers()
         NSUserNotificationCenter.default.delegate = self
-        
-        // Configure for iRate.
-        let rate = iRate.sharedInstance()!
-        rate.daysUntilPrompt = 1
-        rate.eventsUntilPrompt = 20
-        rate.usesUntilPrompt = 10
-        rate.onlyPromptIfLatestVersion = true
         
         // Register services.
         NSApp.servicesProvider = ServicesProvider()

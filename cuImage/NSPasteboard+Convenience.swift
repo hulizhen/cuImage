@@ -15,7 +15,10 @@ extension NSPasteboard {
     ///   - urlStrings: an array of URL strings.
     ///   - markdown: Make the specified URL string in markdown-style or not.
     func addURLStrings(_ urlStrings: [String], markdown: Bool) {
-        let strings = markdown ? urlStrings.map { "![](\($0))" } : urlStrings
+        var strings = urlStrings.compactMap { $0.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) }
+        if (markdown) {
+            strings = strings.map { "![](\($0))" }
+        }
         declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
         writeObjects(strings as [NSString])
     }

@@ -20,7 +20,7 @@ extension NSAttributedString {
         let range = NSMakeRange(0, attributedString.length)
         
         // Attach link.
-        attributedString.addAttribute(NSAttributedStringKey.link,
+        attributedString.addAttribute(NSAttributedString.Key.link,
                                       value: url.absoluteString,
                                       range: range)
         

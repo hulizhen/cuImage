@@ -27,7 +27,7 @@ final class QiniuHost: NSObject {
         // Automatically recognize different regions of the storage zone.
         let configuration = QNConfiguration.build { builder in
             let dns = QNDnsManager([QNResolver.system()], networkInfo: QNNetworkInfo.normal())
-            builder?.setZone(QNAutoZone(https: true, dns: dns))
+            builder?.setZone(QNAutoZone(dns: dns))
         }
         uploadManager = QNUploadManager(configuration: configuration)
     }

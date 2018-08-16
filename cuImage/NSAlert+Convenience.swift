@@ -37,7 +37,7 @@ extension NSAlert {
         }
         
         // Play sound when alerting.
-        NSSound(named: NSSound.Name(rawValue: Constants.alertSound))?.play()
+        NSSound(named: Constants.alertSound)?.play()
         
         NSApp.activate(ignoringOtherApps: true)
         if let window = window {    // Call beginSheetModal(for:completionHandler:).
