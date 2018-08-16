@@ -1,14 +1,11 @@
 platform :osx, '10.11'
 inhibit_all_warnings!
+use_frameworks!
 
 target 'cuImage' do
-    use_frameworks!
-
     pod 'MASShortcut'
     pod 'RNCryptor', '~> 5.0'
-    pod 'iRate', '~> 1.11'
+    pod 'Qiniu', '~> 7.0'
     pod 'Fabric'
     pod 'Crashlytics'
-  
-    pod 'Qiniu', '~> 7.1'
 end

@@ -3,7 +3,6 @@ PODS:
     - Fabric (~> 1.7.11)
   - Fabric (1.7.11)
   - HappyDNS (0.3.14)
-  - iRate (1.12.2)
   - MASShortcut (2.3.6)
   - Qiniu (7.2.4):
     - HappyDNS (~> 0.3)
@@ -12,9 +11,8 @@ PODS:
 DEPENDENCIES:
   - Crashlytics
   - Fabric
-  - iRate (~> 1.11)
   - MASShortcut
-  - Qiniu (~> 7.1)
+  - Qiniu (~> 7.0)
   - RNCryptor (~> 5.0)
 
 SPEC REPOS:
@@ -22,7 +20,6 @@ SPEC REPOS:
     - Crashlytics
     - Fabric
     - HappyDNS
-    - iRate
     - MASShortcut
     - Qiniu
     - RNCryptor
@@ -31,11 +28,10 @@ SPEC CHECKSUMS:
   Crashlytics: ccaac42660eb9351b9960c0d66106b0bcf99f4fa
   Fabric: f233c9492b3bbc1f04e3882986740f7988a58edb
   HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
-  iRate: 4fc69958788624545e5d050c8ffd20884013c3f1
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   Qiniu: 65384bca1cdb0480a68d9b9b8f54db53418c0355
   RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
 
-PODFILE CHECKSUM: 4b9ad1bba197d36e6913ec4860e8ebba186dd0f9
+PODFILE CHECKSUM: 54242a6e77a2865c727b66b1224eb70d546c2242
 
 COCOAPODS: 1.5.3
